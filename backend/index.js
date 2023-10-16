@@ -1,22 +1,23 @@
-import express from "express" 
-import mongoose from "mongoose";
-import {sRoute} from "./routes/student.routes.js"
-import cors from "cors"
+const express= require("express"); 
+//imports the Express library, which provides a framework for building web applications in Node.js
+const mongoose=require("mongoose")
+const studentRoute = require("./Routes/RegistrationRoutes.js")
 
-import dotenv, { config } from "dotenv"
-dotenv.config();
+const cors = require('cors');
+
+require("dotenv").config();
 const app= express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
 
-app.use("/students" , sRoute);
+app.use("/student" , studentRoute);
 
-app.listen(config.env.PORT || 3000, ()=>{
-    console.log(`App listening on port ${config.env.PORT}`)
+app.listen(process.env.PORT || 3000, ()=>{
+    console.log(`App listening on port ${process.env.PORT}`)
 })
 
-mongoose.connect(config.env.ATLAS_URI).then( ()=>{ 
+mongoose.connect(process.env.MONGO_URL).then( ()=>{ 
      console.log("connected")
 }).catch(err=>{
     console.log(err)
