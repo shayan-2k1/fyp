@@ -7,20 +7,20 @@ const fs = require('fs');
 
 require('dotenv').config();
 
-const uploadDirectory = 'D:/FYP/fyp/backend/uploads';
+// const uploadDirectory = 'D:/FYP/fyp/backend/uploads';
 
-// Create storage for multer to handle file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDirectory);
-  },
-  filename: (req, file, cb) => {
-    const uniqueFileName = `${Date.now()}-${file.originalname}`;
-    cb(null, uniqueFileName);
-  },
-});
+// // Create storage for multer to handle file uploads
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, uploadDirectory);
+//   },
+//   filename: (req, file, cb) => {
+//     const uniqueFileName = `${Date.now()}-${file.originalname}`;
+//     cb(null, uniqueFileName);
+//   },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 // Convert fs functions to promise-based
 const writeFile = util.promisify(fs.writeFile);
@@ -28,15 +28,19 @@ const unlink = util.promisify(fs.unlink); // For file cleanup
 
 async function saveDocumentToFileSystem(file, storedName) {
   const filePath = `${uploadDirectory}/${storedName}`;
-  // console.log(file)
+  //  console.log(filePath)
   // console.log(storedName)
   try {
+    // console.log(filePath)
+    // console.log('File buffer:', file.buffer);
+    // console.log('File originalname:', file.originalname);
+
     // Use the 'writeFile' function to save the file to the specified directory
     await writeFile(filePath, file.buffer);
 
     // Return details about the saved document, including the storedName and file path
-    console.log(file.buffer)
-    console.log(filePath)
+    // console.log(file.buffer)
+    // console.log(filePath)
     return { storedName, filePath };
     
   } catch (error) {
@@ -72,13 +76,16 @@ async function docWallet(req, res) {
     const storedName = `${Date.now()}-${originalName}`;
     // console.log(originalName)
     // Perform document upload and save logic
-    console.log(document)
-     console.log(storedName)
+    // console.log(document)
+    //  console.log(storedName)
+    console.log('req.file:', req.file.buffer);
+    
+    // console.log('buffer file:', file.buffer);
     uploadResult = await saveDocumentToFileSystem(document, storedName);
 
     // Save document details to MongoDB
     const documentDetails = new documentSchema({
-      user: decodedToken._id, 
+      user: decodedToken.id, 
       originalName,
       storedName: uploadResult.storedName,
       fileType: document.mimetype.split('/')[1],
