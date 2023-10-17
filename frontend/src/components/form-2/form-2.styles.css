@@ -1,0 +1,78 @@
+*{
+    color:#058B9E;
+}
+
+.content-container{
+    display: grid;
+    grid-template-columns: 60% 40%;
+   
+}
+
+.content-container .form-container{
+  margin-left: 200px;
+  width: 80%;
+}
+
+#welcome{
+    margin-top: 100px;
+}
+
+.radio-box{
+    display:flex;
+    flex-direction: row;
+    margin-left: 25%
+    
+}
+#sign-in{
+    margin-top: 30px;
+}
+
+#p1{
+    margin-left: 38px;
+    color:#6c6f77;
+}
+
+#forgot{
+    margin-left: 30px;
+}
+
+span{
+    color:blue;
+}
+#check_label1, #checkbox-2{
+    
+}
+
+.email-1, .username-2, .password-3 {
+    width:40%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+#submit {
+    padding: 10px 20px;
+    background-color: #6c6f77;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 30px;
+}
+#submit:hover {
+    background-color: #41488d;
+}
+
+
+#submit:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.image-container{
+    margin-top:30%
+}
