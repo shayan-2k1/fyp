@@ -20,8 +20,6 @@ const Navigation = () =>{
                     }/></div>
                 </Link>
                 <div className='nav-links-container'>
-                    <Link className='nav-link' to ='chat'>CHAT</Link>
-                    <Link className='nav-link' to ='wishlist'>FAVOURITE</Link>
                     <Link className='nav-link' to ='sign-in'>SIGN IN</Link>
                 </div>
             </div>
