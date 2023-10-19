@@ -11,6 +11,8 @@ const documentSchema = new mongoose.Schema({
       originalName: String,
       storedName: String,
       fileType: String,
+      // url: String, // Add a field for storing the file URL
+      
       uploadedAt: {
         type: Date,
         default: Date.now,

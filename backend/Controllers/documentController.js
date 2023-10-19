@@ -1,110 +1,95 @@
-const documentSchema = require('../Models/documentModel');
-// const multer = require('multer');
-const jwt = require('jsonwebtoken');
-const { MongoClient } = require('mongodb');
-const util = require('util');
-const fs = require('fs');
+const documentSchema = require("../Models/documentModel");
+const jwt = require("jsonwebtoken");
+const { MongoClient, GridFSBucket } = require("mongodb");
+const multer = require("multer");
+const { Readable } = require("stream");
+require("dotenv").config();
+// const Readable = require("stream").Readable;
 
-require('dotenv').config();
+const uri = process.env.MONGO_URL;
 
- const uploadDirectory = 'D:/FYP/fyp/backend/uploads';
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
+const db = client.db("EaseAssist");
+const bucket = new GridFSBucket(db, {
+  bucketName: "uploads",
+});
 
-const writeFile = util.promisify(fs.writeFile);
-const unlink = util.promisify(fs.unlink); // For file cleanup
-
-async function saveDocumentToFileSystem(file, storedName) {
-  const filePath = `${uploadDirectory}/${storedName}`;
-  //  console.log(filePath)
-  // console.log(storedName)
-  try {
-    
-
-    // Use the 'writeFile' function to save the file to the specified directory
-    await writeFile(filePath, file.buffer);
-
-    
-    return { storedName, filePath };
-    
-  } catch (error) {
-    throw new Error(`Failed to save the document: ${error.message}`);
-  }
-}
+// const storage = multer.memoryStorage();
+// const upload = multer({ storage: storage });
 
 async function docWallet(req, res) {
-  const uri = process.env.MONGO_URL;
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-  let uploadResult; // Define outside of try block to make it accessible in catch block
-
   try {
     await client.connect();
 
     const { authorization } = req.headers;
     if (!authorization) {
-      return res.status(401).json({ error: 'Unauthorized' });
+      return res.status(401).json({ error: "Unauthorized" });
     }
 
     const secretKey = process.env.SECRET_KEY;
-    const token = authorization.split(' ')[1]; // for bearer token
+    const token = authorization.split(" ")[1];
     const decodedToken = jwt.verify(token, secretKey);
 
-    // Extract the document from req.files (multer handles it)
-    const documents = req.files; // Access the array of uploaded files
+    const documents = req.files;
 
     if (!documents || documents.length === 0) {
-      return res.status(400).json({ error: 'No files uploaded' });
+      return res.status(400).json({ error: "No files uploaded" });
     }
 
     const savedDocuments = [];
 
     for (const document of documents) {
       const originalName = document.originalname;
-      const storedName = `${Date.now()}-${originalName}`;
 
-      uploadResult = await saveDocumentToFileSystem(document, storedName);
+      const uploadStream = bucket.openUploadStream(originalName);
+      const bufferStream = new Readable();
+
+      // Push the binary data from the buffer into the Readable stream
+      bufferStream.push(document.buffer);
+      bufferStream.push(null); // Signal the end of the stream
+
+      bufferStream.pipe(uploadStream).on("error", (error) => {
+        console.error("Error during streaming:", error);
+      });
+
+      // Wait for the upload to finish
+      await new Promise((resolve, reject) => {
+        uploadStream.on("finish", resolve);
+        uploadStream.on("error", reject);
+      });
 
       const newDocument = {
         originalName,
-        storedName: uploadResult.storedName,
-        fileType: document.mimetype.split('/')[1],
+        storedName: uploadStream.id.toString(),
+        fileType: document.mimetype.split("/")[1],
       };
 
-      // Push the new document to the user's `files` array in MongoDB
+      // Save the metadata to MongoDB
       await documentSchema.updateOne(
-        { user: decodedToken.id }, // Find the document by user ID
-        { $push: { files: newDocument } } // Push the new document into the 'files' array
+        { user: decodedToken.id },
+        { $push: { files: newDocument } },
+        { upsert: true }
       );
 
       savedDocuments.push(newDocument);
     }
 
-    
-
     res.status(200).json({
-      message: 'Documents uploaded and saved successfully',
+      message: "Documents uploaded and saved successfully",
       documents: savedDocuments,
     });
   } catch (error) {
     console.error(error);
-
-    if (uploadResult) {
-      try {
-        await unlink(uploadResult.filePath);
-      } catch (unlinkError) {
-        console.error(`Failed to remove the uploaded file: ${unlinkError.message}`);
-      }
-    }
-
-    // Respond with an error status code and message
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: "Internal Server Error" });
   } finally {
     client.close();
   }
 }
 
-
-
 module.exports = {
   docWallet,
-}
+};
