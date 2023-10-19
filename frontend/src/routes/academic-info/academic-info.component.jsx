@@ -9,6 +9,7 @@ const AcademicInfo=()=>{
             <Nav2/>
             <SideBar/>
             <AcademicForm/>
+            <h1>Hello World</h1>
         </>
     );
 };
