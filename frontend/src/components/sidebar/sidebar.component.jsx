@@ -6,7 +6,6 @@ import Email from '../../assets/email.svg';
 import Explore from '../../assets/explore.svg';
 import Track from '../../assets/track.svg';
 import Group from '../../assets/groups.svg';
-import { Link } from 'react-router-dom';
 import "./sidebar.styles.css";
 import { Link } from 'react-router-dom';
 
@@ -19,15 +18,15 @@ const SideBar=()=>{
                 <img className="menuPic" src={Menu} alt="Menu Icon"/>
                 </label>
 
-                <div class="vertical-menu">
-                <label for="toggle-menu" class="close-button">&#10006;</label>
-                <a class="ic" href="#"><img class="icons" src={Profile}/>&nbspProfile</a>
-                <a class="ic" href="#"><img class="icons" src={DocW}/>&nbspDoc Wallet</a>
-                <a class="ic" href="#"><img class="icons" src={Mentor}/>&nbspMentors</a>
-                <a class="ic" href="#"><img class="icons" src={Email}/>&nbspEmail</a>
-                <a class="ic" href="#"><img class="icons" src={Explore}/>&nbspExplore</a>
-                <a class="ic" href="#"><img class="icons" src={Track}/>&nbspTrack Applicatons</a>
-                <a class="ic" href="#"><img class="icons" src={Group}/>&nbspGroups</a>
+                <div className="vertical-menu">
+                <label for="toggle-menu" className="close-button">&#10006;</label>
+                <Link className="ic">Profile</Link>
+                <Link className="ic">Doc Wallet</Link>
+                <Link className="ic">Mentors</Link>
+                <Link className="ic">Email</Link>
+                <Link className="ic">Explore</Link>
+                <Link className="ic">Track Applicatons</Link>
+                <Link className="ic">Groups</Link>
                 </div>
             </div>
         </nav>
