@@ -1,51 +1,94 @@
+import { useState } from "react";
 import "./info-form.styles.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const InfoForm=()=>{
-
+    const [fName,setfName]=useState('');
+    const [lName,setlName]=useState('');
+    const [contactNo, setContact]=useState('');
+    const [gender, setGender]=useState('');
+    const [country, setCountry]=useState('');
+    const [nationality,setNationality]=useState('');
+    const [day, setDay]=useState(0);
+    const [month,setMonth]=useState('');
+    const [year,setYear]=useState(0);
+    const [error, setError]=useState(null);
+    const [loading,setLoading]=useState('');
     const navigate=useNavigate();
+
+    const handleSubmit=()=>{
+        try
+        {
+            const response=axios.post("http://localhost:3000/student/info",{
+                firstName:fName,
+                lastName:lName,
+                contactNo:contactNo,
+                gender:gender,
+                nationality:nationality,
+                countryOfResidence:country,
+                dob:{
+                    day:day,
+                    month:month,
+                    year:year
+                }
+            });
+            setLoading('true');
+            console.log(response.data);
+            navigate('/academic-info');
+        }
+        catch(error){
+            console.log(error);
+            setError(error);
+        }
+        setLoading('false');
+    }
 
     return(
         <div className="component">
             <div className="container">
                 <h1 id="title">PERSONAL INFORMATION</h1>
                 <div className="formDiv">
-                    <form id="personal-info"> 
+                    <form id="personal-info" onSubmit={handleSubmit}> 
 
                         <div className="input">
                             <label  className="bold" for="input-1">First Name</label>
                             <br></br>
-                            <input type="text" id="input-1" className="info-input" />
+                            <input type="text" id="input-1" className="info-input" onChange={(e)=>{
+                                setfName(e.target.value);
+                            }}/>
                         </div>
 
                         <div className="input">
                             <label className="bold" for="input-2">Last Name</label>
                             <br></br>
-                            <input type="text" id="input-2"  className="info-input"/>
+                            <input type="text" id="input-2"  className="info-input" onChange={(e)=>{
+                                setlName(e.target.value);
+                            }}/>
                         </div>
 
                         <div className="input">
                             <label className="bold" for="input-2">Contact Number</label>
                             <br></br>
-                            <input type="tel" className="phone info-input" id="input-2" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+                            <input type="tel" className="phone info-input" id="input-2" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required onChange={(e)=>{
+                                setContact(e.target.value);
+                            }}/>
                         </div>
 
                         <div className="input">
                             <label className="bold" for="input-2">Gender</label>
                             <br></br>
-                            <input type="text" id="input-2"  className="info-input" />
-                        </div>
-
-                        <div className="input">
-                            <label className="bold" for="input-2">Address</label>
-                            <br></br>
-                            <input type="text" id="input-2"  className="info-input"/>
+                            <input type="text" id="input-2"  className="info-input" onChange={(e)=>{
+                                setGender(e.target.value);
+                            }}/>
                         </div>
 
                         <div className="input">
                             <label className="bold" for="input-2">Country of Residence</label>
                             <br></br>
-                            <input type="text" id="input-2"  className="info-input" />
+                            <input type="text" id="input-2"  className="info-input" onChange={(e)=>{
+                                setCountry(e.target.value);
+                            }}/>
                         </div>
 
 
@@ -54,7 +97,9 @@ const InfoForm=()=>{
                             <br></br>
                             <div className="date-selector">
                             
-                                <select className="day" name="day" id="day">
+                                <select className="day" name="day" id="day" onChange={(e)=>{
+                                    setDay(e.target.value);
+                                }}>
                                     <option value="" disabled selected>Day</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -88,7 +133,9 @@ const InfoForm=()=>{
                                     <option value="31">31</option>
                                 {/* <!-- ... continue to 31 --> */}
                                 </select>
-                                <select className="month" name="month" id="month">
+                                <select className="month" name="month" id="month" onChange={(e)=>{
+                                    setMonth(e.target.value);
+                                }}>
                                     <option value="" disabled selected>Month</option>
                                     <option value="1">January</option>
                                     <option value="2">February</option>
@@ -104,7 +151,9 @@ const InfoForm=()=>{
                                     <option value="12">December</option>
                                 {/* <!-- ... continue to December --> */}
                                 </select>
-                                <select className="year" name="year" id="year">
+                                <select className="year" name="year" id="year" onChange={(e)=>{
+                                    setYear(e.target.value);
+                                }}>
                                     <option value="" disabled selected>Year</option>
                                     <option value="2023">2023</option>
                                     <option value="2022">2022</option>
@@ -143,7 +192,9 @@ const InfoForm=()=>{
                         <div className="nationality-selector input">
                             <label className="bold" for="input-2">Nationality</label>
                             <br></br>
-                            <select className="national-selector" name="national-country" id="N-country">
+                            <select className="national-selector" name="national-country" id="N-country" onChange={(e)=>{
+                                setNationality(e.target.value);
+                            }}>
                                 <option value="" disabled selected>Pakistani</option>
                                 <option value="1">American</option>
                                 <option value="2">British</option>
@@ -152,7 +203,7 @@ const InfoForm=()=>{
                     
                         </div>
 
-                        <button className='submit input' type="submit" onClick={()=>{navigate('/academic-info')}}>Submit and Continue</button>
+                        <button className='submit input' type="submit">Submit and Continue</button>
 
 
                     </form>

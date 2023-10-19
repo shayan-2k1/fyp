@@ -12,7 +12,7 @@ const LogInForm=()=>{
     const [error,setError]=useState(null);
     const [loading,setLoading]=useState('true');
 
-    const handleChange=()=>{
+    const handleSubmit=()=>{
         try{
             const response=axios.post("http://localhost:3000/student/signin",
             {
@@ -20,6 +20,7 @@ const LogInForm=()=>{
                 password:password
                 
             });
+        setLoading("true");
         console.log(response.data);
         navigate("/personal-info");
         }
@@ -27,7 +28,7 @@ const LogInForm=()=>{
             console.log(error);
             setError("Failed to sign in!")
         }
-        setLoading(false);
+        setLoading('false');
     };
     
     return(
@@ -37,7 +38,7 @@ const LogInForm=()=>{
                 WELCOME BACK!
             </h1>
             <p id="p1"> Don't have an account. <span ><Link  to="/sign-up" class="sign-up-container">Sign up</Link></span></p>
-            <form id="sign-in" onSubmit={handleChange}> 
+            <form id="sign-in" onSubmit={handleSubmit}> 
                 <label for="input-1">Email</label>
                 <br></br>
                 <input type="email" class="email-1" id='input-1'/>
