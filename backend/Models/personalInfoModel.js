@@ -11,27 +11,27 @@ const personalInfoSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'studentModel',
-    required: true,
+    // required: true,
   },
   firstName: {
     type: String,
-    required: true,
+    // required: true,
   },
   lastName: {
     type: String,
-    required: true,
+    // required: true,
   },
   contactNo: {
     type: String,
-    required: true,
+    // required: true,
   },
   gender: {
     type: String,
-    required: true,
+    // required: true,
   },
   Nationality: {
     type: String,
-    required: true,
+    // required: true,
   },
   countryOfResidence: {
     type: String,
@@ -54,8 +54,9 @@ const personalInfoSchema = new mongoose.Schema({
       min: 1970, 
       max: 2023, 
       required: true,
-    },
-  },
+    }
+  }
+
 });
 
 module.exports = mongoose.model('PersonalInfo', personalInfoSchema);
