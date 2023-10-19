@@ -1,0 +1,69 @@
+/* DocWallet.css */
+
+/* Container styles */
+.doc-wallet-container {
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+  .doc-wallet-heading-green {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #18da1e; /* Green color for the heading */
+  }
+  
+  /* Navigation bar styles */
+  .doc-wallet-nav {
+    margin-bottom: 20px;
+  }
+  
+  .doc-wallet-option {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .doc-wallet-option.active {
+    background-color: #0056b3; /* Darker color for active option */
+  }
+  
+  /* File input styles */
+  .doc-wallet-input {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  /* Optional: Button styles for file input */
+  .doc-wallet-upload-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .doc-wallet-upload-button:hover {
+    background-color: #0056b3;
+  }
+  

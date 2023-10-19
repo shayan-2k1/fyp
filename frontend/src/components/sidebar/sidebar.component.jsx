@@ -6,6 +6,7 @@ import Email from '../../assets/email.svg';
 import Explore from '../../assets/explore.svg';
 import Track from '../../assets/track.svg';
 import Group from '../../assets/groups.svg';
+import { Link } from 'react-router-dom';
 import "./sidebar.styles.css";
 
 const SideBar=()=>{
@@ -19,6 +20,7 @@ const SideBar=()=>{
 
                 <div class="vertical-menu">
                 <label for="toggle-menu" class="close-button">&#10006;</label>
+                <Link to="/profile" className="nav-link">Profile</Link>
                 <a class="ic" href="#"><img class="icons" src={Profile}/>&nbspProfile</a>
                 <a class="ic" href="#"><img class="icons" src={DocW}/>&nbspDoc Wallet</a>
                 <a class="ic" href="#"><img class="icons" src={Mentor}/>&nbspMentors</a>
