@@ -1,4 +1,4 @@
-const studentModel = require("../Models/studentModel");
+const studentModel = require("../models/studentModel");
 //const User=require("../Models/userModel")
 const jwt=require("jsonwebtoken")
 

@@ -1,8 +1,9 @@
 const express= require("express"); 
 //imports the Express library, which provides a framework for building web applications in Node.js
+// const multer = require('multer');
 const mongoose=require("mongoose")
-const studentRoute = require("./Routes/RegistrationRoutes.js")
-
+const studentRoute = require("./routes/RegistrationRoutes.js")
+const documentRoute = require("./routes/documentRoutes.js")
 const cors = require('cors');
 
 require("dotenv").config();
@@ -12,7 +13,7 @@ app.use(cors());
 app.use(express.static('public'));
 
 app.use("/student" , studentRoute);
-
+app.use("/document" , documentRoute); 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log(`App listening on port ${process.env.PORT}`)
 })

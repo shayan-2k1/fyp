@@ -5,17 +5,17 @@ import { height } from "@mui/system";
 
 const Nav1=()=>{
     return(
-        <div className="nav-container">
+        <nav className="nav-container">
             <div className="logo-container">
-                <div><img src={Logo} alt='logo' style={
+                <div><Link to={'/'}><img src={Logo} alt='logo' style={
                         {
                             width:"100px",
                             height:"80px"
                         }
-                    }/>
+                    }/></Link>
                 </div>
             </div>
-        </div>
+        </nav>
 
     );
 };
