@@ -3,15 +3,15 @@ import Nav3 from '../../components/nav-3/nav-3.component';
 import Nav2 from '../../components/nav-2/nav-2.component';
 import SideBar from '../../components/sidebar/sidebar.component';
 import './doc-wallet.styles.css'; // Import your CSS file
-
+import Cookies from 'js-cookie';
 const DocWallet = () => {
   const [currentPage, setCurrentPage] = useState('myDocuments');
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [userDocuments, setUserDocuments] = useState([]);
   const handleFileUpload = (event) => {
     setSelectedFile(event.target.files[0]);
   };
-
+  const authToken = Cookies.get('auth_token');
   const uploadDocument = async () => {
     if (!selectedFile) {
       console.error('No file selected for upload.');
@@ -34,6 +34,24 @@ const DocWallet = () => {
       }
     } catch (error) {
       console.error('Error uploading the document:', error);
+    }
+  };
+  const showDocuments = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/document/get', {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+
+      if (response.ok) {
+        const documents = await response.json();
+        setUserDocuments(documents);
+      } else {
+        console.error('Failed to fetch documents.');
+      }
+    } catch (error) {
+      console.error('Error fetching documents:', error);
     }
   };
 
@@ -61,11 +79,17 @@ const DocWallet = () => {
       
       )}
 
-      {currentPage === 'viewDocuments' && (
-        <div>
-          <h1>View Documents</h1>
-        </div>
-      )}
+{currentPage === 'viewDocuments' && (
+  <div>
+    <h1>View Documents</h1>
+    <button onClick={showDocuments}>Show Documents</button>
+    <ul>
+      {userDocuments.map((document) => (
+        <h2 key={document.storedName}>{document.originalName}</h2>
+      ))}
+    </ul>
+  </div>
+)}
     </div>
   );
 };

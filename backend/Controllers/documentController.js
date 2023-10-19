@@ -89,7 +89,32 @@ async function docWallet(req, res) {
     client.close();
   }
 }
+async function showDocuments(req, res) {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
 
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, secretKey);
+
+    // Find documents associated with the user
+    const userDocuments = await documentSchema.findOne({ user: decodedToken.id });
+
+    if (!userDocuments) {
+      return res.status(404).json({ error: "No documents found for this user." });
+    }
+
+    // Send the documents as a response
+    res.status(200).json(userDocuments.files);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
 module.exports = {
   docWallet,
+  showDocuments
 };

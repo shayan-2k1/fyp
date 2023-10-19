@@ -20,8 +20,8 @@ const SideBar=()=>{
 
                 <div className="vertical-menu">
                 <label for="toggle-menu" className="close-button">&#10006;</label>
-                <Link className="ic" >Profile</Link>
-                <Link className="ic" >Doc Wallet</Link>
+                <Link to="/profile" className="nav-link">Profile</Link>
+                <Link to="/docWallet" className="nav-link">DocWallet</Link>
                 <Link className="ic">Mentors</Link>
                 <Link className="ic">Email</Link>
                 <Link className="ic">Explore</Link>
