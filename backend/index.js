@@ -4,7 +4,7 @@ const express= require("express");
 const mongoose=require("mongoose")
 const studentRoute = require("./Routes/RegistrationRoutes.js")
 const documentRoute = require("./Routes/documentRoutes.js")
-// const infoRoute = require("./Routes/personalInfoRoutes.js")
+const infoRoute = require("./Routes/personalInfoRoutes.js")
 const cors = require('cors');
 
 require("dotenv").config();
@@ -15,7 +15,7 @@ app.use(express.static('public'));
 
 app.use("/student" , studentRoute);
 app.use("/document" , documentRoute); 
-// app.use("/student" , infoRoute); 
+app.use("/student" , infoRoute); 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log(`App listening on port ${process.env.PORT}`)
 })
