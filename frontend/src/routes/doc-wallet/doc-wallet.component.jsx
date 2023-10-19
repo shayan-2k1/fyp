@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './DocWallet.styles.css';
+import './doc-wallet.styles.css';
 
 const DocWallet = () => {
   const [currentPage, setCurrentPage] = useState('upload'); // Manage the current page
