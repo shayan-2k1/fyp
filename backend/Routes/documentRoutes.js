@@ -1,8 +1,8 @@
 const express = require('express');
 const multer = require('multer');
-const { docWallet } = require('../Controllers/documentController');
+const { docWallet } = require('../controllers/documentController');
 const docRouter = express.Router();
-const GridFsStorage = require('multer-gridfs-storage');
+const GridFsStorage = require('mongodb').GridFSBucket.GridFsStorage;
 
 
 const storage = new GridFsStorage({

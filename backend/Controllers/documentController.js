@@ -1,4 +1,4 @@
-const documentSchema = require('../Models/documentModel');
+const documentSchema = require('../models/documentModel');
 // const multer = require('multer');
 const jwt = require('jsonwebtoken');
 const { MongoClient } = require('mongodb');
