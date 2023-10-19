@@ -24,11 +24,11 @@ const SignUpForm=()=>{
                 
             });
         console.log(response.data);
-        navigate("/personal-info");
+        navigate("/");
         }
         catch{
             console.log(error);
-            setError("Failed to sign in!")
+            setError("Failed to sign up!")
         }
         setLoading(false);
     };

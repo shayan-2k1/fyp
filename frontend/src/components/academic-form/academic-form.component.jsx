@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import "./academic-form.styles.css";
 
 const AcademicForm=()=>{
+    const navigate=useNavigate();
+    
     return(
         <div className="component">
             <div className="container">
@@ -43,7 +46,9 @@ const AcademicForm=()=>{
                             <br></br>
                             <input type="number" id="input-2"  className="info-input" />
                         </div>
-                        <button className='submit input' type="submit">Submit and Continue</button>
+                        <button className='submit input' type="submit" onClick={()=>{
+                            navigate("/study-interest");
+                        }}>Submit and Continue</button>
                     </form>
                 </div>
             </div>
