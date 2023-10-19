@@ -23,13 +23,17 @@ const academicBackgroundSchema = new mongoose.Schema({
     type:String,
     required: true
   },
-  GPA :{
-    type:String,
-    required: true
+  GPA: {
+    type: Number, // Use Number data type for GPA
+    required: true,
+    min: 0, // Minimum GPA value
+    max: 4,  // Maximum GPA value (e.g., 4.0)
   },
-  yearOfCompletion :{
-    type:String,
-    required: true
+  yearOfCompletion: {
+    type: Number, // Use Number data type for year
+    required: true,
+    min: 2010, // Minimum year (e.g., 1970)
+    max: 2023,
   }
 });
 
