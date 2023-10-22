@@ -29,7 +29,7 @@ const personalInfoSchema = new mongoose.Schema({
     type: String,
     // required: true,
   },
-  Nationality: {
+  nationality: {
     type: String,
     // required: true,
   },

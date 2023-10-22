@@ -1,51 +1,95 @@
 import React, { useState } from 'react';
-import './doc-wallet.styles.css';
-
+import Nav3 from '../../components/nav-3/nav-3.component';
+import Nav2 from '../../components/nav-2/nav-2.component';
+import SideBar from '../../components/sidebar/sidebar.component';
+import './doc-wallet.styles.css'; // Import your CSS file
+import Cookies from 'js-cookie';
 const DocWallet = () => {
-  const [currentPage, setCurrentPage] = useState('upload'); // Manage the current page
-
+  const [currentPage, setCurrentPage] = useState('myDocuments');
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [userDocuments, setUserDocuments] = useState([]);
   const handleFileUpload = (event) => {
-    // Handle file upload logic here
-    const selectedFile = event.target.files[0];
-    // You can do something with the selected file, like sending it to the server.
-    console.log('Selected file:', selectedFile);
+    setSelectedFile(event.target.files[0]);
   };
+  const authToken = Cookies.get('auth_token');
+  const uploadDocument = async () => {
+    if (!selectedFile) {
+      console.error('No file selected for upload.');
+      return;
+    }
 
-  // Define a function to switch between pages
-  const switchPage = (page) => {
-    setCurrentPage(page);
+    const formData = new FormData();
+    formData.append('files', selectedFile);
+
+    try {
+      const response = await fetch('http://localhost:3000/document/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        console.log('Document uploaded successfully.');
+      } else {
+        console.error('Failed to upload the document.');
+      }
+    } catch (error) {
+      console.error('Error uploading the document:', error);
+    }
+  };
+  const showDocuments = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/document/get', {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+
+      if (response.ok) {
+        const documents = await response.json();
+        setUserDocuments(documents);
+      } else {
+        console.error('Failed to fetch documents.');
+      }
+    } catch (error) {
+      console.error('Error fetching documents:', error);
+    }
   };
 
   return (
-    <div className="doc-wallet-container">
-      <h1 className="doc-wallet-heading-green">Document Wallet</h1>
-      <div className="doc-wallet-nav">
-        <button
-          className={`doc-wallet-option ${currentPage === 'upload' ? 'active' : ''}`}
-          onClick={() => switchPage('upload')}
-        >
-          Upload Document
-        </button>
-        <button
-          className={`doc-wallet-option ${currentPage === 'display' ? 'active' : ''}`}
-          onClick={() => switchPage('display')}
-        >
-          View Documents
-        </button>
-      </div>
-      <div className="doc-wallet-upload">
-        {currentPage === 'upload' && (
-          <div>
-            <input className="doc-wallet-input" type="file" onChange={handleFileUpload} />
-            <button className="doc-wallet-upload-button">Upload</button>
+    <div>
+      <>
+        <Nav2 />
+        <SideBar/>
+      </>
+      <Nav3 currentPage={currentPage} setCurrentPage={setCurrentPage} />
+
+      {currentPage === 'myDocuments' && (
+        <div className="dash-container">
+        <div className="dash">
+       
+          <label className="custom-file-upload" >
+            <input type="file" onChange={handleFileUpload} />
+          </label>
+          
+          <div style={{ marginTop: '10px' }}>
+            <button onClick={uploadDocument}>Upload File</button>
           </div>
-        )}
-      </div>
-      {currentPage === 'display' && (
-        <div className="doc-wallet-display">
-          {/* Add code to display documents here */}
         </div>
+      </div>
+      
       )}
+
+{currentPage === 'viewDocuments' && (
+  <div>
+    <h1>View Documents</h1>
+    <button onClick={showDocuments}>Show Documents</button>
+    <ul>
+      {userDocuments.map((document) => (
+        <h2 key={document.storedName}>{document.originalName}</h2>
+      ))}
+    </ul>
+  </div>
+)}
     </div>
   );
 };

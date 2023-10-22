@@ -5,7 +5,8 @@ import SignUp from './routes/sign-up/sign-up.component';
 import PersonalInfo from './routes/personal-info/personal-info.component';
 import AcademicInfo from './routes/academic-info/academic-info.component';
 import StudyInterest from "./routes/study-interest/study-interest.component";
-
+import DocWallet from './routes/doc-wallet/doc-wallet.component';
+import Profile from './routes/profile/profile.component'
 function App() {
   return (
     <Routes>
@@ -14,8 +15,12 @@ function App() {
       <Route path='/personal-info' element={<PersonalInfo/>}/>
       <Route path='/academic-info' element={<AcademicInfo/>}/>
       <Route path='/study-interest' element={<StudyInterest/>}/>
+      <Route path='/docWallet' element={<DocWallet/>}/>
+      <Route path='/profile' element={<Profile/>}/>
     </Routes>
+   
+          
   );
-};
+}
 
 export default App;

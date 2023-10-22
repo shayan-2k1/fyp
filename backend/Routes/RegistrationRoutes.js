@@ -1,7 +1,7 @@
 const express = require("express");
-const { signup } = require('../controllers/studentRegistrationController');
-const { signin } = require('../controllers/studentRegistrationController');
-const { update } = require('../controllers/studentRegistrationController');
+const { signup } = require('../Controllers/studentRegistrationController');
+const { signin } = require('../Controllers/studentRegistrationController');
+const { update } = require('../Controllers/studentRegistrationController');
 const stdrouter = express.Router();
 stdrouter.post("/signup",signup);
 

@@ -5,7 +5,11 @@ const mongoose=require("mongoose")
 const studentRoute = require("./Routes/RegistrationRoutes.js")
 const documentRoute = require("./Routes/documentRoutes.js")
 const infoRoute = require("./Routes/personalInfoRoutes.js")
+
 const academicRoute = require("./Routes/academicRoutes.js")
+const academicPrefRoute = require("./Routes/studyInterestRoutes.js")
+
+
 const cors = require('cors');
 
 require("dotenv").config();
@@ -17,14 +21,17 @@ app.use(express.static('public'));
 app.use("/student" , studentRoute);
 app.use("/document" , documentRoute); 
 app.use("/student" , infoRoute); 
+
 app.use("/academic" , academicRoute); 
+app.use("/studyInterest" , academicPrefRoute); 
+
 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log(`App listening on port ${process.env.PORT}`)
 })
 
 mongoose.connect(process.env.MONGO_URL).then( ()=>{ 
-     console.log("connected")
+     console.log("connected to mongo db server")
 }).catch(err=>{
     console.log(err)
 })
