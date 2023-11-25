@@ -1,8 +1,13 @@
 *{
-    color:#058B9E;
+     color:#058B9E; 
+    
+}
+.form-group {
+    margin-bottom: 20px;
 }
 
 .content-container{
+    background:white;
     display: grid;
     grid-template-columns: 60% 40%;
    
@@ -14,39 +19,55 @@
 }
 
 #welcome{
-    margin-top: 100px;
+    margin-top: 150px;
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
 }
 
-.radio-class{
-    display:flex;
-    flex-direction: row;
-    margin-left: 25%;
-    
-}
+
+
 #sign-in{
     margin-top: 30px;
 }
-
 #p1{
+    color: black;
     margin-left: 38px;
-    color:#6c6f77;
+    font-weight:500;
+    font-size: larger;
 }
 
-#forgot{
-    margin-left: 30px;
+
+.radio-class {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 25%;
+    font-weight: 500;
+    margin-top: 15px; /* Add margin to align with the center */
 }
 
+#forgot {
+    margin-left: 10px; /* Adjust margin for spacing */
+    font-weight: 500;
+    color: #058B9E;
+    font-size: 20px;
+    display: inline-block;
+    margin-top: 15px; /* Add margin to align with the center */
+}
 span{
-    color:blue;
+    color:rgb(97, 97, 110);
 }
-#check_label{
-    
-    margin-top:17px;
-    margin-left: 4px;
+#check_label {
+    font-weight: 500;
+    color: #058B9E;
+    font-size: 20px;
+    display: inline-block;
 }
 
-.email-1, .password-2 {
-    width:40%;
+.email-1,
+.password-2 {
+    width: 60%; 
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -54,6 +75,9 @@ span{
     box-sizing: border-box;
     font-size: 16px;
     color: black;
+}
+#input-1.email-1 {
+    width: 60%; 
 }
 
 #submit {
@@ -65,6 +89,7 @@ span{
     cursor: pointer;
     font-size: 16px;
     margin-top: 30px;
+    margin-bottom: 5px; 
 }
 #submit:hover {
     background-color: #41488d;
@@ -78,4 +103,32 @@ span{
 
 .image-container{
     margin-top:30%
+}
+label{
+    font-weight:500;
+   
+}
+input{
+   width: 17px;
+   margin-top: 10px;
+}
+.l{
+    font-weight: 500;
+    color: #058B9E;
+    font-size: 20px;
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+#checkbox-1 {
+    width: 20px; 
+    height: 20px; 
+    margin-right: 5px; 
+} 
+.p{
+    text-align: center;
+    margin-top: 15px; /* Add some top margin for spacing */
+    color: #058B9E;
+    font-size: 20px;
+    font-weight: 400;
 }

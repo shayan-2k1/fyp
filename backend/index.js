@@ -8,6 +8,7 @@ const infoRoute = require("./Routes/personalInfoRoutes.js")
 
 const academicRoute = require("./Routes/academicRoutes.js")
 const academicPrefRoute = require("./Routes/studyInterestRoutes.js")
+const profileRouter=require('./Routes/profileRouter.js')
 
 
 const cors = require('cors');
@@ -21,7 +22,7 @@ app.use(express.static('public'));
 app.use("/student" , studentRoute);
 app.use("/document" , documentRoute); 
 app.use("/student" , infoRoute); 
-
+app.use("/profile" , profileRouter); 
 app.use("/academic" , academicRoute); 
 app.use("/studyInterest" , academicPrefRoute); 
 
