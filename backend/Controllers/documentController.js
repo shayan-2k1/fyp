@@ -122,40 +122,39 @@ async function showDocuments(req, res) {
 
 
 
-
-
 async function getFileFromGridFS(fileId) {
   try {
-    // Query upload.files to get the file metadata
-    const fileMetadata = await db.collection('upload.files').findOne({ _id: ObjectId(fileId) });
+    const fileMetadata = await db.collection('uploads.files').findOne({ _id: new ObjectId(fileId) });
 
     if (!fileMetadata) {
+      console.log("File not found in uploads.files for ID:", fileId);
       return null; // File not found
     }
 
-    // Fetch chunks related to this file from upload.chunks
-    const fileChunksCursor = db.collection('upload.chunks').find({ files_id: ObjectId(fileId) });
+    const fileChunksCursor = db.collection('uploads.chunks').find({ files_id: new ObjectId(fileId) });
     const chunks = await fileChunksCursor.toArray();
 
-    // Concatenate chunks to reconstruct the complete file data
-    const completeFileData = Buffer.concat(chunks.map(chunk => chunk.data));
+    // Ensure chunks are Buffers and then concatenate them
+    const bufferChunks = chunks.map(chunk => Buffer.from(chunk.data));
+    const completeFileData = Buffer.concat(bufferChunks);
 
+    console.log("Metadata found:", fileMetadata);
     return {
       metadata: fileMetadata,
       data: completeFileData,
     };
+    
   } catch (error) {
-    console.error(error);
+    console.error("Error in getFileFromGridFS:", error);
     return null; // Handle errors
   }
 }
 
 
-
- async function fetchdocument (req, res)  {
+async function fetchdocument(req, res) {
   try {
-    const fileId = req.query.fileId;
-
+    const fileId = req.params.fileId;
+    console.log("fileId" , fileId)
     const file = await getFileFromGridFS(fileId);
 
     if (!file) {
@@ -163,17 +162,18 @@ async function getFileFromGridFS(fileId) {
     }
 
     res.set({
-      'Content-Type': file.contentType,
-      'Content-Disposition': `attachment; filename="${file.filename}"`,
+      'Content-Type': file.metadata.contentType,
+      'Content-Disposition': `attachment; filename="${file.metadata.filename}"`,
     });
 
-    const fileStream = bucket.openDownloadStream(ObjectId(fileId));
+    const fileStream = bucket.openDownloadStream(new ObjectId(fileId));
     fileStream.pipe(res);
   } catch (error) {
-    console.error(error);
+    console.error("Error in fetchdocument:", error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-};
+}
+
 
 module.exports = {
   docWallet,

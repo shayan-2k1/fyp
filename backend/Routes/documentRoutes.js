@@ -12,5 +12,6 @@ const GridFsStorage = require('mongodb').GridFSBucket.GridFsStorage;
 // Apply the upload middleware for the '/upload' route
 docRouter.post('/upload', upload.array('files', 10), docWallet);
 docRouter.get('/get',showDocuments)
-docRouter.get ('/get/:fileid' , fetchdocument)
+docRouter.get ('/get/:fileId' , fetchdocument)
+
 module.exports = docRouter;
