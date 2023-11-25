@@ -4,6 +4,11 @@ const { MongoClient, GridFSBucket } = require("mongodb");
 const multer = require("multer");
 const { Readable } = require("stream");
 require("dotenv").config();
+const fs = require('fs');
+const {ObjectId} = require('mongodb')
+
+// Some code using fs...
+
 // const Readable = require("stream").Readable;
 
 const uri = process.env.MONGO_URL;
@@ -114,7 +119,65 @@ async function showDocuments(req, res) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
+
+
+
+
+
+async function getFileFromGridFS(fileId) {
+  try {
+    // Query upload.files to get the file metadata
+    const fileMetadata = await db.collection('upload.files').findOne({ _id: ObjectId(fileId) });
+
+    if (!fileMetadata) {
+      return null; // File not found
+    }
+
+    // Fetch chunks related to this file from upload.chunks
+    const fileChunksCursor = db.collection('upload.chunks').find({ files_id: ObjectId(fileId) });
+    const chunks = await fileChunksCursor.toArray();
+
+    // Concatenate chunks to reconstruct the complete file data
+    const completeFileData = Buffer.concat(chunks.map(chunk => chunk.data));
+
+    return {
+      metadata: fileMetadata,
+      data: completeFileData,
+    };
+  } catch (error) {
+    console.error(error);
+    return null; // Handle errors
+  }
+}
+
+
+
+ async function fetchdocument (req, res)  {
+  try {
+    const fileId = req.query.fileId;
+
+    const file = await getFileFromGridFS(fileId);
+
+    if (!file) {
+      return res.status(404).json({ error: 'File not found' });
+    }
+
+    res.set({
+      'Content-Type': file.contentType,
+      'Content-Disposition': `attachment; filename="${file.filename}"`,
+    });
+
+    const fileStream = bucket.openDownloadStream(ObjectId(fileId));
+    fileStream.pipe(res);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 module.exports = {
   docWallet,
-  showDocuments
+  showDocuments, 
+  fetchdocument
+  
 };
