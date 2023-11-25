@@ -4,6 +4,11 @@ const { MongoClient, GridFSBucket } = require("mongodb");
 const multer = require("multer");
 const { Readable } = require("stream");
 require("dotenv").config();
+const fs = require('fs');
+const {ObjectId} = require('mongodb')
+
+// Some code using fs...
+
 // const Readable = require("stream").Readable;
 
 const uri = process.env.MONGO_URL;
@@ -114,7 +119,65 @@ async function showDocuments(req, res) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
+
+
+
+async function getFileFromGridFS(fileId) {
+  try {
+    const fileMetadata = await db.collection('uploads.files').findOne({ _id: new ObjectId(fileId) });
+
+    if (!fileMetadata) {
+      console.log("File not found in uploads.files for ID:", fileId);
+      return null; // File not found
+    }
+
+    const fileChunksCursor = db.collection('uploads.chunks').find({ files_id: new ObjectId(fileId) });
+    const chunks = await fileChunksCursor.toArray();
+
+    // Ensure chunks are Buffers and then concatenate them
+    const bufferChunks = chunks.map(chunk => Buffer.from(chunk.data));
+    const completeFileData = Buffer.concat(bufferChunks);
+
+    console.log("Metadata found:", fileMetadata);
+    return {
+      metadata: fileMetadata,
+      data: completeFileData,
+    };
+    
+  } catch (error) {
+    console.error("Error in getFileFromGridFS:", error);
+    return null; // Handle errors
+  }
+}
+
+
+async function fetchdocument(req, res) {
+  try {
+    const fileId = req.params.fileId;
+    console.log("fileId" , fileId)
+    const file = await getFileFromGridFS(fileId);
+
+    if (!file) {
+      return res.status(404).json({ error: 'File not found' });
+    }
+
+    res.set({
+      'Content-Type': file.metadata.contentType,
+      'Content-Disposition': `attachment; filename="${file.metadata.filename}"`,
+    });
+
+    const fileStream = bucket.openDownloadStream(new ObjectId(fileId));
+    fileStream.pipe(res);
+  } catch (error) {
+    console.error("Error in fetchdocument:", error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+
 module.exports = {
   docWallet,
-  showDocuments
+  showDocuments, 
+  fetchdocument
+  
 };
