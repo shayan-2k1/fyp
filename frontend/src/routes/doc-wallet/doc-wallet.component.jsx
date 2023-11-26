@@ -64,16 +64,26 @@ const DocWallet = () => {
 
   const viewDocument = async (documentId) => {
     try {
-      const response = await fetch(`http://localhost:3000/document/${documentId}`, {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
-
+      const response = await fetch(`http://localhost:3000/document/get/${documentId}`);
+  
       if (response.ok) {
-        const documentContent = await response.blob();
-        const url = window.URL.createObjectURL(new Blob([documentContent]));
-        window.open(url);
+        const documentData = await response.blob();
+        const contentType = response.headers.get('content-type');
+  
+        // Handle different content types
+        if (contentType.startsWith('image')) {
+          const imageUrl = URL.createObjectURL(documentData);
+          window.open(imageUrl);
+        } else if (contentType === 'application/pdf') {
+          const pdfUrl = URL.createObjectURL(documentData);
+          // Display PDF in an iframe or using a library like PDF.js
+          // Example: display PDF in an iframe
+          window.open(pdfUrl, '_blank');
+        } else {
+          // For other file types, you may handle differently (e.g., offer download)
+          const downloadUrl = URL.createObjectURL(documentData);
+          window.open(downloadUrl);
+        }
       } else {
         console.error('Failed to fetch the document.');
       }
@@ -105,20 +115,20 @@ const DocWallet = () => {
         </div>
       )}
 
-      {currentPage === 'viewDocuments' && (
-        <div>
-          <h1>View Documents</h1>
-          <button onClick={showDocuments}>Show Documents</button>
-          <ul>
-            {userDocuments.map((document) => (
-              <div key={document.storedName}>
-                <h2>{document.originalName}</h2>
-                <button onClick={() => viewDocument(document.id)}>View</button>
-              </div>
-            ))}
-          </ul>
+{currentPage === 'viewDocuments' && (
+  <div>
+    <h1>View Documents</h1>
+    <button onClick={showDocuments}>Show Documents</button>
+    <ul>
+      {userDocuments.map((document) => (
+        <div key={document.storedName}>
+          <h2>{document.originalName}</h2>
+          <button onClick={() => viewDocument(document.id)}>View</button>
         </div>
-      )}
+      ))}
+    </ul>
+  </div>
+)}
     </div>
   );
 };
