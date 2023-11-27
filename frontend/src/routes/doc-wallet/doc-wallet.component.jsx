@@ -141,6 +141,10 @@ const DocWallet = () => {
     </ul>
   </div>
 )}
+{/* Console log outside the JSX block */}
+{userDocuments.map((document) => (
+  console.log('Original Name:', document.originalName)
+))}
     </div>
   );
 };
