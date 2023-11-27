@@ -63,7 +63,9 @@ const DocWallet = () => {
   };
 
   const viewDocument = async (documentId) => {
+    console.log(documentId)
     try {
+      console.log("i'm in view doc")
       const response = await fetch(`http://localhost:3000/document/get/${documentId}`);
   
       if (response.ok) {
@@ -91,6 +93,14 @@ const DocWallet = () => {
       console.error('Error fetching the document:', error);
     }
   };
+ 
+  useEffect(() => {
+    console.log('Logging document information:');
+    userDocuments.forEach((document) => {
+      console.log('Stored Name:', document.storedName);
+      console.log('Original Name:', document.originalName);
+    });
+  }, [userDocuments]);
 
   return (
     <div>
@@ -121,9 +131,11 @@ const DocWallet = () => {
     <button onClick={showDocuments}>Show Documents</button>
     <ul>
       {userDocuments.map((document) => (
+         
         <div key={document.storedName}>
           <h2>{document.originalName}</h2>
-          <button onClick={() => viewDocument(document.id)}>View</button>
+          <button onClick={() => viewDocument(document._id)}>View</button>
+          {console.log('Original Name:', document.originalName)}
         </div>
       ))}
     </ul>
