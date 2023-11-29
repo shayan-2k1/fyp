@@ -6,32 +6,42 @@ dotenv.config();
 
 // Function to upload a document to S3
 
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
-const { fromBase64 } = require('@aws-sdk/util-base64-node'); // For converting Base64 data to binary
 
-// Create an S3 client
-const s3Client = new S3Client({ region: 'US East (N. Virginia) us-east-1' });
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+
+// Create an S3 client with your AWS access key and secret key
+const s3Client = new S3Client({
+  region: 'US East (N. Virginia) us-east-1',
+  credentials: {
+    accessKeyId: 'AKIA6DVS3KHYZX3VMEUB',
+    secretAccessKey: '02WWlBJr3xa1WM1Qz179/YOxS40ZGcPTSpHdpUax',
+  },
+});
 
 // Function to upload a document to S3
 const uploadToS3 = async (fileData, fileName) => {
   try {
-    const buffer = fromBase64(fileData); // Convert Base64 data to binary buffer if needed
-
     const params = {
-      Bucket: 'student-doc-uploads',
+      Bucket: 'YOUR_S3_BUCKET_NAME',
       Key: fileName,
-      Body: buffer,
+      Body: fileData,
     };
 
     const uploadCommand = new PutObjectCommand(params);
     const uploadResult = await s3Client.send(uploadCommand);
 
-    return uploadResult.Location; // Return the S3 file URL
+    return uploadResult.Location;
   } catch (error) {
     console.error('Error uploading file to S3:', error);
     throw error;
   }
 };
+
+// Use the uploadToS3 function as needed
+
+
+
+
 
 async function documentUpload(req, res)  {
   try {
