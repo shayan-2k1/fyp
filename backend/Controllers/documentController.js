@@ -73,10 +73,31 @@ async function documentUpload(req, res) {
     // console.log(req.file);
     const fileData = req.file.buffer; // Assuming file buffer is in req.file.buffer
     const fileName = req.file.originalname; // Assuming original filename is in req.file.originalname
+
+    if (!fileData && !fileName) {
+            return res.status(400).json({ error: "No files uploaded" });
+          }
+
     // console.log(fileName)
     // console.log(fileData)
     const s3Url = await uploadToS3(fileData, fileName);
     console.log("url in s3",s3Url)
+    
+    const existingDocument = await Document.findOne({ user: decodedToken.id });
+
+    if (existingDocument) {
+      // If document exists, update the file array by adding a new document
+      existingDocument.files.push({
+        fileName: fileName,
+        fileUrl: await uploadToS3(fileData, fileName),
+        fileType: getMimeType(fileName),
+        uploadedAt: new Date(),
+      });
+
+      const updatedDocument = await existingDocument.save();
+      console.log('Document metadata updated:', updatedDocument);
+      res.status(200).json({ message: 'Document added successfully.' });
+    } else {
     const document = new Document({
       user: decodedToken.id,
       files: [
@@ -93,8 +114,10 @@ async function documentUpload(req, res) {
 
   //  console.log(document)
     const savedDocument = await document.save();
-    // console.log('Document metadata saved:', savedDocument);
+    console.log('Document metadata saved:', savedDocument);
     res.status(200).json({ message: 'Document uploaded successfully.' });
+  }
+
   } catch (error) {
     console.error('Error uploading document:', error);
     res.status(500).json({ error: 'Internal Server Error' });

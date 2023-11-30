@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import Nav3 from '../../components/nav-3/nav-3.component';
 import Nav2 from '../../components/nav-2/nav-2.component';
 import SideBar from '../../components/sidebar/sidebar.component';
-import './doc-wallet.styles.css'; // Import your CSS file
+import './doc-wallet.styles.css';
 import Cookies from 'js-cookie';
 
 const DocWallet = () => {
@@ -11,21 +12,16 @@ const DocWallet = () => {
   const [userDocuments, setUserDocuments] = useState([]);
   const authToken = Cookies.get('auth_token');
 
-  const handleFileUpload = (event) => {
+  const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
 
-  const uploadDocument = async () => {
-    if (!selectedFile) {
-      console.error('No file selected for upload.');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('files', selectedFile);
-
+  const handleUpload = async () => {
     try {
-      const response = await fetch('http://localhost:3000/document/upload', {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      const response = await fetch('http://127.0.0.1:3000/document/upload', {
         method: 'POST',
         body: formData,
         headers: {
@@ -35,72 +31,16 @@ const DocWallet = () => {
 
       if (response.ok) {
         console.log('Document uploaded successfully.');
+        // Add logic for UI update or success message
       } else {
         console.error('Failed to upload the document.');
+        // Handle failure - show error message or take appropriate action
       }
     } catch (error) {
       console.error('Error uploading the document:', error);
+      // Handle error scenario - show error message or take appropriate action
     }
   };
-
-  const showDocuments = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/document/get', {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      });
-
-      if (response.ok) {
-        const documents = await response.json();
-        setUserDocuments(documents);
-      } else {
-        console.error('Failed to fetch documents.');
-      }
-    } catch (error) {
-      console.error('Error fetching documents:', error);
-    }
-  };
-
-  const viewDocument = async (documentId) => {
-    console.log(documentId)
-    try {
-      console.log("i'm in view doc")
-      const response = await fetch(`http://localhost:3000/document/get/${documentId}`);
-  
-      if (response.ok) {
-        const documentData = await response.blob();
-        const contentType = response.headers.get('content-type');
-  
-        // Handle different content types
-        if (contentType.startsWith('image')) {
-          const imageUrl = URL.createObjectURL(documentData);
-          window.open(imageUrl);
-        } else if (contentType === 'application/pdf') {
-          const pdfUrl = URL.createObjectURL(documentData);
-          // Display PDF in an iframe or using a library like PDF.js
-          // Example: display PDF in an iframe
-          window.open(pdfUrl, '_blank');
-        } else {
-          // For other file types, you may handle differently (e.g., offer download)
-          const downloadUrl = URL.createObjectURL(documentData);
-          window.open(downloadUrl);
-        }
-      } else {
-        console.error('Failed to fetch the document.');
-      }
-    } catch (error) {
-      console.error('Error fetching the document:', error);
-    }
-  };
- 
-  useEffect(() => {
-    console.log('Logging document information:');
-    userDocuments.forEach((document) => {
-      console.log('Stored Name:', document.storedName);
-      console.log('Original Name:', document.originalName);
-    });
-  }, [userDocuments]);
 
   return (
     <div>
@@ -108,43 +48,21 @@ const DocWallet = () => {
         <Nav2 />
         <SideBar />
       </>
-
       <Nav3 currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
       {currentPage === 'myDocuments' && (
         <div className="dash-container">
           <div className="dash">
             <label className="custom-file-upload">
-              <input type="file" onChange={handleFileUpload} />
+              <input type="file" onChange={handleFileChange} />
             </label>
 
             <div style={{ marginTop: '10px' }}>
-              <button onClick={uploadDocument}>Upload File</button>
+              <button onClick={handleUpload}>Upload File</button>
             </div>
           </div>
         </div>
       )}
-
-{currentPage === 'viewDocuments' && (
-  <div>
-    <h1>View Documents</h1>
-    <button onClick={showDocuments}>Show Documents</button>
-    <ul>
-      {userDocuments.map((document) => (
-         
-        <div key={document.storedName}>
-          <h2>{document.originalName}</h2>
-          <button onClick={() => viewDocument(document._id)}>View</button>
-          {console.log('Original Name:', document.originalName)}
-        </div>
-      ))}
-    </ul>
-  </div>
-)}
-{/* Console log outside the JSX block */}
-{userDocuments.map((document) => (
-  console.log('Original Name:', document.originalName)
-))}
     </div>
   );
 };
