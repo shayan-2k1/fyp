@@ -6,7 +6,7 @@ dotenv.config();
 
 // Function to upload a document to S3
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
-//  const { fromBase64 } = require('@aws-sdk/util-base64-node');
+ const { fromBase64 } = require('@aws-sdk/util-base64-node');
 const { GetObjectCommand } = require('@aws-sdk/client-s3');
 
 
@@ -22,20 +22,24 @@ const s3Client = new S3Client({
 });
 
 // Function to upload a document to S3
-const uploadToS3 = async ( fileName) => {
+const uploadToS3 = async (fileData, fileName) => {
   try {
-  // const buffer = fromBase64(fileData); // Convert Base64 data to binary buffer if needed
-    console.log("uploadt to s3 func" , fileName)
     const params = {
       Bucket: 'student-doc-uploads',
       Key: fileName,
-      // Body: buffer,
+      Body: fileData,
     };
 
     const command = new PutObjectCommand(params);
     const uploadResult = await s3Client.send(command);
 
-    return uploadResult.Location; // Return the S3 file URL
+    // Ensure to return the S3 URL upon successful upload
+    if (uploadResult && uploadResult.$metadata && uploadResult.$metadata.httpStatusCode === 200) {
+      const s3Url = `https://student-doc-uploads.s3.amazonaws.com/${fileName}`;
+      return s3Url;
+    } else {
+      throw new Error('S3 upload did not return a valid URL');
+    }
   } catch (error) {
     console.error('Error uploading file to S3:', error);
     throw error;
@@ -66,21 +70,30 @@ async function documentUpload(req, res) {
     const secretKey = process.env.SECRET_KEY;
     const token = authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, secretKey);
-
-    //  const fileData = req.file.buffer; // Assuming file buffer is in req.file.buffer
+    // console.log(req.file);
+    const fileData = req.file.buffer; // Assuming file buffer is in req.file.buffer
     const fileName = req.file.originalname; // Assuming original filename is in req.file.originalname
-    console.log(fileName)
-    const s3Url = await uploadToS3( fileName);
-
+    // console.log(fileName)
+    // console.log(fileData)
+    const s3Url = await uploadToS3(fileData, fileName);
+    console.log("url in s3",s3Url)
     const document = new Document({
       user: decodedToken.id,
-      s3Url,
-      originalName: fileName,
-      fileType: getMimeType(fileName), // Get MIME type based on file extension
+      files: [
+        {
+          fileName: fileName, // Original filename
+          fileUrl: s3Url,     // URL of the uploaded file in S3
+          fileType: getMimeType(fileName), // MIME type based on file extension
+          uploadedAt: new Date(), // Set the upload timestamp
+        },
+      ],
     });
-   console.log(document)
+    
+
+
+  //  console.log(document)
     const savedDocument = await document.save();
-    console.log('Document metadata saved:', savedDocument);
+    // console.log('Document metadata saved:', savedDocument);
     res.status(200).json({ message: 'Document uploaded successfully.' });
   } catch (error) {
     console.error('Error uploading document:', error);
