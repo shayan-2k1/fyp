@@ -31,9 +31,11 @@ const DocWallet = () => {
 
       if (response.ok) {
         console.log('Document uploaded successfully.');
+        alert("document added!");
         // Add logic for UI update or success message
       } else {
         console.error('Failed to upload the document.');
+        alert("document failed to upload!");
         // Handle failure - show error message or take appropriate action
       }
     } catch (error) {
