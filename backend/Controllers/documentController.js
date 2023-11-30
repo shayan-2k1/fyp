@@ -22,10 +22,10 @@ const s3Client = new S3Client({
 });
 
 // Function to upload a document to S3
-const uploadToS3 = async (fileData, fileName) => {
+const uploadToS3 = async ( fileName) => {
   try {
   // const buffer = fromBase64(fileData); // Convert Base64 data to binary buffer if needed
-
+    console.log("uploadt to s3 func" , fileName)
     const params = {
       Bucket: 'student-doc-uploads',
       Key: fileName,
@@ -78,7 +78,7 @@ async function documentUpload(req, res) {
       originalName: fileName,
       fileType: getMimeType(fileName), // Get MIME type based on file extension
     });
-
+   console.log(document)
     const savedDocument = await document.save();
     console.log('Document metadata saved:', savedDocument);
     res.status(200).json({ message: 'Document uploaded successfully.' });
