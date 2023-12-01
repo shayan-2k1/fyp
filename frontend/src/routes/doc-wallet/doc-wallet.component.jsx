@@ -98,36 +98,39 @@ const DocWallet = () => {
         </div>
       )}
 
-      {currentPage === "viewDocuments" && (
-        <div className="dash-container">
-          <div className="dash">
-            <button onClick={handleGoBack}>Go Back</button>
-            <div>
-              {/* Display the document in an iframe */}
-              <iframe
-                src={viewDocumentUrl}
-                title="Document Viewer"
-                width="100%"
-                height="500px"
-              ></iframe>
-            </div>
+{currentPage === 'viewDocuments' && (
+  <div className="dash-container">
+    <div className="dash">
+      <button onClick={handleGoBack}>Go Back</button>
 
-            {/* Display user's documents with 'View Document' buttons */}
-            <div>
-              {userDocuments.map((document, index) => (
-                <div key={index}>
-                  <span>{document.fileName}</span>
-                  <button onClick={() => handleViewDocument(document.fileUrl)}>
-                    View Document
-                  </button>
-                </div>
-              ))}
-            </div>
+      {/* Display user's documents with 'View Document' buttons */}
+      <div className="document-list">
+        {userDocuments.map((document, index) => (
+          <div key={index}>
+            <span>{document.fileName}</span>
+            <button onClick={() => handleViewDocument(document.fileUrl)}>
+              View Document
+            </button>
           </div>
-        </div>
-      )}
+        ))}
+      </div>
+
+      <div>
+        {/* Display the document in an iframe */}
+        <iframe
+          src={viewDocumentUrl}
+          title="Document Viewer"
+          width="100%"
+          height="500px"
+        ></iframe>
+      </div>
     </div>
-  );
-};
+  </div>
+  
+)}
+</div>
+  )}
+
+
 
 export default DocWallet;

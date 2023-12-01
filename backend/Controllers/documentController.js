@@ -178,9 +178,61 @@ async function fetchDocument(req, res) {
   }
 }
 
+async function delDocument (req,res){
+
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, secretKey);
+
+    const { documentId } = req.params;
+
+    // Find the document by ID and the associated user
+    const document = await Document.findOne({
+      user: decodedToken.id,
+      'files._id': documentId
+    });
+    
+
+    if (!document) {
+      console.log("Document not found or unauthorized")
+      return res.status(404).json({ error: 'Document not found or unauthorized.' });
+      // console.log("Document not found or unauthorized")
+    }
+
+    // Check if the document ID is present in the files array
+    const fileIndex = document.files.findIndex(file => String(file._id) === String(documentId));
+
+    if (fileIndex === -1) {
+      console.log("Document ID not found in files array")
+      return res.status(404).json({ error: 'Document ID not found in files array.' });
+    }
+
+    // Perform deletion logic here
+    // Example: Delete the document from the database
+    await Document.findOneAndUpdate(
+      { _id: document._id },
+      { $pull: { files: { _id: documentId } } }
+    );
+      
+    res.status(200).json({ message: 'Document deleted successfully.' });
+    console.log("Document deleted successfully.")
+    
+  } catch (error) {
+    console.error('Error deleting document:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
 module.exports = {
   documentUpload,
-  fetchDocument
+  fetchDocument,
+  delDocument
 };
 
 
