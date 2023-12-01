@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import './profile.styles.css'
+import SideBar from "../../components/sidebar/sidebar.component";
 import axios from 'axios';
+import Nav1 from "../../components/nav-1/nav-1.component.jsx";
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import EditIcon from '@mui/icons-material/Edit';
+import IconButton from '@mui/material/IconButton';
 
 
 import {
@@ -14,84 +19,140 @@ import {
   MDBBtn,
   MDBProgress,
   MDBProgressBar,
-  MDBIcon,
-  MDBListGroup,
-  MDBListGroupItem
+  // MDBIcon,
+  // MDBListGroup,
+  // MDBListGroupItem
 } from 'mdb-react-ui-kit';
 
 const Profile = () => {
+  
   const [profilePicture, setProfilePicture] = useState(null);
-
-  const handleFileChange = (event) => {
-
-    const file = event.target.files[0];
-    setProfilePicture(file);
-    console.log('Profile picture updated:', event.target.files[0]);
-
-
+  const [showEditIcon, setShowEditIcon] = useState(false);
+  const [showAddBioForm, setShowAddBioForm] = useState(false);
+  const [userBio, setUserBio] = useState("");
+ const [bio, setBio] = useState("");
+  const handleAddBioClick = () => {
+    setShowAddBioForm(true);
   };
 
-  const handleUpload = async () => {
-    console.log('Upload button clicked');
-
+  const handleBioFormSubmit = () => {
+    // Handle the submission of bio form data, e.g., send it to the server
+    console.log('Bio submitted:', bio);
+    setUserBio(bio);
+    setShowAddBioForm(false);
+    setShowEditIcon(true);
+  };
+  const handleFileChange = async (event) => {
     try {
+      const file = event.target.files[0];
+      setProfilePicture(file);
+      setShowEditIcon(true);
+
       const formData = new FormData();
-      formData.append('profilePicture', profilePicture);
+      formData.append('profilePicture', file);
 
-      const response = await axios.post('http://localhost:3000/profile/add-picture', formData);
+      const response = await axios.post(
+        'http://localhost:3000/profile/add-picture',
+        formData
+      );
 
-      // Ensure the response status is OK (status code 200-299)
       if (response.status >= 200 && response.status < 300) {
         console.log('File uploaded successfully');
-        // Handle the response if needed
         console.log(response.data);
-        // You may want to update your UI based on the response
       } else {
-        // Handle unexpected status codes
         console.error('Unexpected response:', response);
       }
     } catch (error) {
       console.error('Error uploading file:', error);
-      // Handle errors
     }
   };
-
-
+  const handleEditClick = () => {
+    // Handle edit click (e.g., show file input again)
+    
+  };
 
   return (
-    <section style={{ backgroundColor: '#eee' }}>
+   <>
+   
+   <Nav1/>
+   <SideBar />
+   <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
 
 
         <MDBRow>
           <MDBCol lg="4">
-            <MDBCard className="mb-4">
-              <MDBCardBody className="text-center">
-                {/* Input for selecting a file */}
-                <input type="file" accept="image/*" onChange={handleFileChange} />
-
-                {/* Button to trigger the upload */}
-                <MDBBtn onClick={handleUpload}>Upload Picture</MDBBtn>
-
-                {/* Display the uploaded image or placeholder based on whether a file is selected */}
-                {profilePicture && (
-                  <MDBCardImage
-                    src={URL.createObjectURL(profilePicture)}
-                    alt="avatar"
-                    className="rounded-circle"
-                    style={{ width: '150px' }}
-                    fluid
-                  />
+          <MDBCard className="mb-4">
+        <MDBCardBody className="text-center">
+          {!profilePicture && (
+            <label htmlFor="upload-input">
+              <IconButton
+                component="span"
+                style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 1 }}
+              >
+                <CloudUploadIcon fontSize="large" />
+              </IconButton>
+            </label>
+          )}
+          {profilePicture && (
+            <div style={{ position: 'relative' }}>
+              <MDBCardImage
+                src={URL.createObjectURL(profilePicture)}
+                alt="avatar"
+                className="rounded-circle"
+                style={{ width: '250px', height: '250px' }}
+                fluid
+                onMouseEnter={() => setShowEditIcon(true)}
+                onMouseLeave={() => setShowEditIcon(false)}
+              />
+              {showEditIcon && (
+                <IconButton
+                  style={{
+                    position: 'absolute',
+                    top: '10px',
+                    right: '10px',
+                    backgroundColor: 'rgba(255,255,255,0.7)',
+                    zIndex: 1,
+                  }}
+                  onClick={handleEditClick}
+                >
+                  <EditIcon fontSize="large" />
+                </IconButton>
+              )}
+            </div>
+          )}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            style={{ display: 'none' }}
+            id="upload-input"
+          />
+           {showAddBioForm ? (
+                  <div key="bio-form">
+                    <textarea
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                      placeholder="Enter your bio"
+                    />
+                    <button className="btn btn-link" onClick={handleBioFormSubmit}>
+                      Save Bio
+                    </button>
+                  </div>
+                ) : (
+                  <button className="btn btn-link" onClick={handleAddBioClick}>
+                    Add Bio
+                  </button>
                 )}
-                <p className="text-muted mb-1">Full Stack Developer</p>
-                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
-                <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn>Follow</MDBBtn>
-                  <MDBBtn outline className="ms-1">Message</MDBBtn>
-                </div>
-              </MDBCardBody>
-            </MDBCard>
-
+                 <MDBCardText className="text-muted">{userBio}</MDBCardText>
+          <div className="d-flex justify-content-center mb-2">
+            <MDBBtn>Follow</MDBBtn>
+            <MDBBtn outline className="ms-1">
+              Message
+            </MDBBtn>
+          </div>
+        </MDBCardBody>
+      </MDBCard>
             <MDBCard className="mb-4 mb-lg-0">
               <MDBCardBody className="p-0">
                 {/* <MDBListGroup flush className="rounded-3">
@@ -200,30 +261,15 @@ const Profile = () => {
                 <hr />
                 <MDBRow>
                   <MDBCol sm="3">
-                    <MDBCardText>Phone</MDBCardText>
+                    <MDBCardText>Mobile</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
                     <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Mobile</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Address</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
+                
+               
               </MDBCardBody>
             </MDBCard>
             <MDBCard className="mb-4">
@@ -392,6 +438,7 @@ const Profile = () => {
         </MDBRow>
       </MDBContainer>
     </section>
+    </>
   );
 
 };
