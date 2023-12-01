@@ -78,6 +78,7 @@
   background-color: #f0f0f0;
   border-radius: 4px;
   font-weight: bold;
+  width: 70px;
   transition: background-color 0.3s;
 }
 
