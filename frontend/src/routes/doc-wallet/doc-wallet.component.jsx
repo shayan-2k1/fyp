@@ -74,6 +74,46 @@ const DocWallet = () => {
     setViewDocumentUrl("");
   };
 
+  useEffect(() => {
+    async function fetchUserDocuments() {
+      try {
+        const response = await axios.get("http://127.0.0.1:3000/document/get", {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+        setUserDocuments(response.data); // Update userDocuments state with fetched documents
+      } catch (error) {
+        console.error("Error fetching user documents:", error);
+      }
+    }
+  
+    fetchUserDocuments();
+  }, [authToken]);
+  
+  const handleDeleteDocument = async (documentId) => {
+    try {
+      const response = await axios.delete(`http://127.0.0.1:3000/document/delete/${documentId}`, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+  
+      if (response.status === 200) {
+        console.log('Document deleted successfully.');
+        // Update state or perform any other necessary actions after deletion
+        // For example, refresh the document list by refetching the documents
+        // fetchUserDocuments();
+      } else {
+        console.error('Failed to delete the document.');
+        // Handle failure - show error message or take appropriate action
+      }
+    } catch (error) {
+      console.error('Error deleting the document:', error);
+      // Handle error scenario - show error message or take appropriate action
+    }
+  };
+  
   return (
     <div>
       <>
@@ -101,16 +141,19 @@ const DocWallet = () => {
 {currentPage === 'viewDocuments' && (
   <div className="dash-container">
     <div className="dash">
-      
-
-      {/* Display user's documents with 'View Document' buttons */}
+      {/* Display user's documents with 'View Document' and 'Delete Document' buttons */}
       <div className="document-list">
         {userDocuments.map((document, index) => (
-          <div key={index}>
+          <div key={index} className="document-item">
             <span>{document.fileName}</span>
-            <button onClick={() => handleViewDocument(document.fileUrl)}>
-              View Document
-            </button>
+            <div>
+              <button onClick={() => handleViewDocument(document.fileUrl)}>
+                View Document
+              </button>
+              <button onClick={() => handleDeleteDocument(document._id)}>
+                Delete Document
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -123,16 +166,13 @@ const DocWallet = () => {
           width="100%"
           height="500px"
         ></iframe>
-         <button onClick={handleGoBack}>Go Back</button>
+        <button onClick={handleGoBack}>Go Back</button>
       </div>
-     
     </div>
   </div>
-  
 )}
 </div>
   )}
-
 
 
 export default DocWallet;

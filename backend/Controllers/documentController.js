@@ -178,8 +178,7 @@ async function fetchDocument(req, res) {
   }
 }
 
-async function delDocument (req,res){
-
+async function delDocument(req, res) {
   try {
     const { authorization } = req.headers;
     if (!authorization) {
@@ -195,39 +194,51 @@ async function delDocument (req,res){
     // Find the document by ID and the associated user
     const document = await Document.findOne({
       user: decodedToken.id,
-      'files._id': documentId
+      'files._id': documentId,
     });
-    
 
     if (!document) {
-      console.log("Document not found or unauthorized")
+      console.log('Document not found or unauthorized');
       return res.status(404).json({ error: 'Document not found or unauthorized.' });
-      // console.log("Document not found or unauthorized")
     }
 
     // Check if the document ID is present in the files array
-    const fileIndex = document.files.findIndex(file => String(file._id) === String(documentId));
+    const fileIndex = document.files.findIndex((file) => String(file._id) === String(documentId));
 
     if (fileIndex === -1) {
-      console.log("Document ID not found in files array")
+      console.log('Document ID not found in files array');
       return res.status(404).json({ error: 'Document ID not found in files array.' });
     }
 
     // Perform deletion logic here
-    // Example: Delete the document from the database
-    await Document.findOneAndUpdate(
-      { _id: document._id },
-      { $pull: { files: { _id: documentId } } }
-    );
-      
+    // Example: Delete the document reference from the database
+    await Document.findOneAndUpdate({ _id: document._id }, { $pull: { files: { _id: documentId } } });
+
+    // Now, delete the document from the AWS S3 bucket
+    const s3 = new AWS.S3({
+      region: 'us-east-1', // Replace with your S3 bucket region
+      accessKeyId: 'AKIA6DVS3KHYZX3VMEUB', // Replace with your AWS access key ID
+      secretAccessKey: '02WWlBJr3xa1WM1Qz179/YOxS40ZGcPTSpHdpUax', // Replace with your AWS secret access key
+    });
+
+    const fileName = document.files[fileIndex].fileName; // Get the file name from your document model
+
+    const params = {
+      Bucket: 'student-doc-uploads', // Replace with your S3 bucket name
+      Key: fileName, // Replace with the file key to be deleted
+    };
+
+    // Delete file from S3 bucket
+    await s3.deleteObject(params).promise();
+
     res.status(200).json({ message: 'Document deleted successfully.' });
-    console.log("Document deleted successfully.")
-    
+    console.log('Document deleted successfully.');
   } catch (error) {
     console.error('Error deleting document:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+
 
 module.exports = {
   documentUpload,
