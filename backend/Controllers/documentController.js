@@ -124,6 +124,43 @@ async function documentUpload(req, res) {
   }
 }
 
+async function fetchDocument (req,res){
+
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, secretKey);
+
+    // Find documents uploaded by the user
+    const userDocuments = await Document.find({ user: decodedToken.id });
+
+    if (!userDocuments || userDocuments.length === 0) {
+      return res.status(404).json({ message: 'No documents found for the user.' });
+    }
+
+    // Extract URLs of the documents
+    const documentUrls = userDocuments.map((document) => {
+      return {
+        fileName: document.files.fileName, // Change this according to your schema
+        fileUrl: document.files.fileUrl, // Change this according to your schema
+        // Add other necessary document information as needed
+      };
+    });
+
+    res.status(200).json(documentUrls); // Send the document URLs to the client
+  } catch (error) {
+    console.error('Error retrieving documents:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+
+}
+
 module.exports = {
   documentUpload,
+  fetchDocument
 };
