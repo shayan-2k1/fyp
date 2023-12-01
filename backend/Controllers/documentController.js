@@ -124,9 +124,15 @@ async function documentUpload(req, res) {
   }
 }
 
-async function fetchDocument (req,res){
-
+async function fetchDocument(req, res) {
   try {
+    const s3 = new AWS.S3({
+      region: 'us-east-1', // Change the region if needed
+      credentials: {
+        accessKeyId: 'AKIA6DVS3KHYZX3VMEUB',
+        secretAccessKey: '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',
+      },
+    });
     const { authorization } = req.headers;
     if (!authorization) {
       return res.status(401).json({ error: 'Unauthorized' });
@@ -138,29 +144,44 @@ async function fetchDocument (req,res){
 
     // Find documents uploaded by the user
     const userDocuments = await Document.find({ user: decodedToken.id });
+    console.log("documents ", userDocuments)
 
     if (!userDocuments || userDocuments.length === 0) {
       return res.status(404).json({ message: 'No documents found for the user.' });
     }
 
     // Extract URLs of the documents
-    const documentUrls = userDocuments.map((document) => {
-      return {
-        fileName: document.files.fileName, // Change this according to your schema
-        fileUrl: document.files.fileUrl, // Change this according to your schema
-        // Add other necessary document information as needed
-      };
-    });
+    const documentUrls = await Promise.all(userDocuments.map(async (document) => {
+      const urls = await Promise.all(document.files.map(async (file) => {
+        const params = {
+          Bucket: 'student-doc-uploads',
+          Key: file.fileName, // Assuming the file key is the fileName
+          Expires: 3600, // URL expires in 1 hour (you can adjust the expiry time)
+        };
 
-    res.status(200).json(documentUrls); // Send the document URLs to the client
+        // Generate presigned URL for each file
+        const url = await s3.getSignedUrlPromise('getObject', params);
+        return {
+          fileName: file.fileName,
+          fileUrl: url,
+          // Add other necessary document information as needed
+        };
+      }));
+      return urls;
+    }));
+
+    const flattenedUrls = documentUrls.flat(); // Flatten the array of arrays into a single array
+    res.status(200).json(flattenedUrls); // Send the document URLs to the client
   } catch (error) {
     console.error('Error retrieving documents:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-
 }
 
 module.exports = {
   documentUpload,
   fetchDocument
 };
+
+
+
