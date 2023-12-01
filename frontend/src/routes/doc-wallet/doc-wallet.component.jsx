@@ -101,7 +101,7 @@ const DocWallet = () => {
 {currentPage === 'viewDocuments' && (
   <div className="dash-container">
     <div className="dash">
-      <button onClick={handleGoBack}>Go Back</button>
+      
 
       {/* Display user's documents with 'View Document' buttons */}
       <div className="document-list">
@@ -123,7 +123,9 @@ const DocWallet = () => {
           width="100%"
           height="500px"
         ></iframe>
+         <button onClick={handleGoBack}>Go Back</button>
       </div>
+     
     </div>
   </div>
   
