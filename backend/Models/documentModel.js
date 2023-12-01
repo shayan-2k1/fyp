@@ -8,11 +8,9 @@ const documentSchema = new mongoose.Schema({
   },
   files: [
     {
-      originalName: String,
-      storedName: String,
+      fileName: String,
+      fileUrl: String,
       fileType: String,
-      // url: String, // Add a field for storing the file URL
-      
       uploadedAt: {
         type: Date,
         default: Date.now,

@@ -1,17 +1,12 @@
 const express = require('express');
 const multer = require('multer');
-const { docWallet,showDocuments, fetchdocument } = require('../Controllers/documentController');
+const { documentUpload, fetchDocument, delDocument } = require('../Controllers/documentController');
 const docRouter = express.Router();
-const GridFsStorage = require('mongodb').GridFSBucket.GridFsStorage;
+const storage = multer.memoryStorage(); // You can configure storage as needed
+const upload = multer({ storage: storage });
 
-
-
-  
-  const upload = multer();
-
-// Apply the upload middleware for the '/upload' route
-docRouter.post('/upload', upload.array('files', 10), docWallet);
-docRouter.get('/get',showDocuments)
-docRouter.get ('/get/:fileId' , fetchdocument)
+docRouter.post('/upload', upload.single('file'), documentUpload);
+docRouter.get('/get' , fetchDocument)
+docRouter.delete('/delete/:documentId' , delDocument)
 
 module.exports = docRouter;
