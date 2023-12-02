@@ -34,15 +34,67 @@ const Profile = () => {
   const [bio, setBio] = useState('');
   const [expertiseList, setExpertiseList] = useState([]);
   const [expertiseForm, setExpertiseForm] = useState({ name: '' });
-
   const [showExpertiseForm, setShowExpertiseForm] = useState(false);
+  const [interestList, setInterestList] = useState([]);
+  const [interestForm, setInterestForm] = useState({ name: '' });
+  const [showInterestForm, setShowInterestForm] = useState(false);
+  const [showAddAboutMeForm, setShowAddAboutMeForm] = useState(false);
+  const [aboutMe, setAboutMe] = useState('');
 
+  const handleAboutMeInputChange = (e) => {
+    setAboutMe(e.target.value);
+  };
 
+  const handleAddAboutMeClick = () => {
+    setShowAddAboutMeForm(true);
+  };
+
+  const handleAboutMeFormSubmit = () => {
+    // Handle saving the about me information
+    console.log('About Me submitted:', aboutMe);
+
+    // Update the aboutMe state or perform any necessary actions
+    setAboutMe(aboutMe);
+
+    // Hide the form after submission
+    setShowAddAboutMeForm(false);
+  };
+
+  const handleCancelAboutMe = () => {
+    // Handle canceling the form and reset any form-related state
+    setShowAddAboutMeForm(false);
+    setAboutMe('');
+  };
+  const handleAddExpertiseClick = () => {
+    setShowExpertiseForm(true);
+  };
+
+  const handleExpertiseInputChange = (e) => {
+    setExpertiseForm({ name: e.target.value });
+  };
+
+  const handleCancelExpertise = () => {
+    setShowExpertiseForm(false);
+    setExpertiseForm({ name: '' });
+  };
+  const handleAddInterestClick = () => {
+    setShowInterestForm(true);
+  };
+
+  const handleInterestInputChange = (e) => {
+    setInterestForm({ name: e.target.value });
+  };
+
+  const handleCancelInterest = () => {
+    setShowInterestForm(false);
+    setInterestForm({ name: '' });
+  };
 
 
   useEffect(() => {
     // Fetch expertise from the backend when the component mounts
     fetchExpertise();
+    fetchInterest();
   }, []);
 
   const fetchExpertise = async () => {
@@ -61,7 +113,7 @@ const Profile = () => {
     try {
       // Make API call to save expertise on the backend
       await axios.post('http://localhost:3000/profile/add-expertise', {
-        name: expertiseForm.name,
+        expertise: [expertiseForm.name], // Assuming expertiseForm.name is a string
       });
 
       // Update UI with the newly added expertise
@@ -78,6 +130,40 @@ const Profile = () => {
       console.error('Error adding expertise:', error);
     }
   };
+  const fetchInterest = async () => {
+    try {
+      // Fetch expertise from the backend
+      const response = await axios.get('http://localhost:3000/profile/get-interest');
+      setInterestList(response.data);
+
+
+    } catch (error) {
+      console.error('Error fetching Interest:', error);
+    }
+  };
+
+  const handleInterestFormSubmit = async () => {
+    try {
+      // Make API call to save expertise on the backend
+      await axios.post('http://localhost:3000/profile/add-interest', {
+        interest: [interestForm.name], 
+      });
+
+      // Update UI with the newly added expertise
+      fetchInterest();
+
+      // Reset form field
+      setInterestForm({
+        name: '',
+      });
+
+      // Hide expertise form after submission
+      setShowInterestForm(false);
+    } catch (error) {
+      console.error('Error adding interest:', error);
+    }
+  };
+
   const handleBioFormSubmit = () => {
     console.log('Bio submitted:', bio);
     setUserBio(bio);
@@ -206,24 +292,46 @@ const Profile = () => {
                 <MDBCardBody className="text-center">
                   <MDBCardText className="text-muted">Expertise:</MDBCardText>
                   <MDBListGroup flush>
-  {expertiseList.flat().map((expertise, index) => (
-    <div key={index} className="expertise-item">
-      <MDBRow>
-        <MDBCol sm="12">
-          <MDBCardText>{expertise}</MDBCardText>
-        </MDBCol>
-      </MDBRow>
-      {index < expertiseList.flat().length - 1 && <hr />}
-    </div>
-  ))}
-</MDBListGroup>
+                    {expertiseList.flat().map((expertise, index) => (
+                      <div key={index} className="expertise-item">
+                        <MDBRow>
+                          <MDBCol sm="12">
+                            <MDBCardText>{expertise}</MDBCardText>
+                          </MDBCol>
+                        </MDBRow>
+                        {index < expertiseList.flat().length - 1 && <hr />}
+                      </div>
+                    ))}
+                  </MDBListGroup>
+                  {showExpertiseForm && (
+                    <div className="expertise-form">
+                      <input
+                        type="text"
+                        placeholder="Add expertise"
+                        value={expertiseForm.name}
+                        onChange={handleExpertiseInputChange}
+                        style={{ height: '50px', width: '150px' }}
+                      />
+                      <br />
+                      <button className="btn btn-success" onClick={handleExpertiseFormSubmit}>
+                        Save
+                      </button>
+                      <button className="btn btn-secondary ms-2" onClick={handleCancelExpertise}>
+                        Cancel
+                      </button>
+                    </div>
+                  )}
+                  {!showExpertiseForm && (
+                    <button className="btn btn-primary mt-3" onClick={handleAddExpertiseClick}>
+                      Add Expertise
+                    </button>
+                  )}
 
 
 
 
 
 
-                 
                 </MDBCardBody>
               </MDBCard>
 
@@ -324,49 +432,45 @@ const Profile = () => {
               <MDBCard className="mb-4">
                 <MDBCardBody>
                   <MDBRow>
-                    <MDBCol sm="3">
-                      <MDBCardText>Full Name</MDBCardText>
+                    <MDBCol sm="12">
+                      <MDBCardText className="text-muted">About Me</MDBCardText>
                     </MDBCol>
                     <MDBCol sm="9">
-                      <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
+                      {showAddAboutMeForm ? (
+                        <textarea
+                          value={aboutMe}
+                          onChange={handleAboutMeInputChange}
+                          placeholder="Write something about yourself..."
+                          style={{ width: '100%', minHeight: '120px' }}
+                        />
+                      ) : (
+                        <MDBCardText className="text-muted">{aboutMe}</MDBCardText>
+                      )}
                     </MDBCol>
-                  </MDBRow>
-                  <hr />
-                  <MDBRow>
                     <MDBCol sm="3">
-                      <MDBCardText>Email</MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                      <MDBCardText className="text-muted">example@example.com</MDBCardText>
-                    </MDBCol>
-                  </MDBRow>
-                  <hr />
-                  <MDBRow>
-                    <MDBCol sm="3">
-                      <MDBCardText>Phone</MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                      <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
-                    </MDBCol>
-                  </MDBRow>
-                  <hr />
-                  <MDBRow>
-                    <MDBCol sm="3">
-                      <MDBCardText>Mobile</MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                      <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
+                      {showAddAboutMeForm ? (
+                        <>
+                          <button className="btn btn-link" onClick={handleAboutMeFormSubmit}>
+                            Save About Me
+                          </button>
+                          <button className="btn btn-link" onClick={handleCancelAboutMe}>
+                            Cancel
+                          </button>
+                        </>
+                      ) : (
+                        <button
+                          className="btn btn-link"
+                          onClick={handleAddAboutMeClick}
+                        >
+                          Add About Me
+                        </button>
+                      )}
                     </MDBCol>
                   </MDBRow>
-                  <hr />
-                  <MDBRow>
-                    <MDBCol sm="3">
-                      <MDBCardText>Address</MDBCardText>
-                    </MDBCol>
-                    <MDBCol sm="9">
-                      <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
-                    </MDBCol>
-                  </MDBRow>
+
+
+
+
                 </MDBCardBody>
               </MDBCard>
               <MDBCard className="mb-4">
@@ -420,35 +524,46 @@ const Profile = () => {
 
               <MDBRow>
                 <MDBCol md="6">
-                  <MDBCard className="mb-4 mb-md-0">
-                    <MDBCardBody>
-                      <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</MDBCardText>
-                      <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
-                      <MDBProgress className="rounded">
-                        <MDBProgressBar width={80} valuemin={0} valuemax={100} />
-                      </MDBProgress>
-
-                      <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
-                      <MDBProgress className="rounded">
-                        <MDBProgressBar width={72} valuemin={0} valuemax={100} />
-                      </MDBProgress>
-
-                      <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
-                      <MDBProgress className="rounded">
-                        <MDBProgressBar width={89} valuemin={0} valuemax={100} />
-                      </MDBProgress>
-
-                      <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
-                      <MDBProgress className="rounded">
-                        <MDBProgressBar width={55} valuemin={0} valuemax={100} />
-                      </MDBProgress>
-
-                      <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
-                      <MDBProgress className="rounded">
-                        <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                      </MDBProgress>
-                    </MDBCardBody>
-                  </MDBCard>
+                <MDBCard className="mb-4">
+                <MDBCardBody className="text-center">
+                  <MDBCardText className="text-muted">Interest:</MDBCardText>
+                  <MDBListGroup flush>
+                    {interestList.flat().map((interest, index) => (
+                      <div key={index} className="expertise-item">
+                        <MDBRow>
+                          <MDBCol sm="12">
+                            <MDBCardText>{interest}</MDBCardText>
+                          </MDBCol>
+                        </MDBRow>
+                        {index < interestList.flat().length - 1 && <hr />}
+                      </div>
+                    ))}
+                  </MDBListGroup>
+                  {showInterestForm && (
+                    <div className="expertise-form">
+                      <input
+                        type="text"
+                        placeholder="Add interest"
+                        value={interestForm.name}
+                        onChange={handleInterestInputChange}
+                        style={{ height: '50px', width: '150px' }}
+                      />
+                      <br />
+                      <button className="btn btn-success" onClick={handleInterestFormSubmit}>
+                        Save
+                      </button>
+                      <button className="btn btn-secondary ms-2" onClick={handleCancelInterest}>
+                        Cancel
+                      </button>
+                    </div>
+                  )}
+                  {!showInterestForm && (
+                    <button className="btn btn-primary mt-3" onClick={handleAddInterestClick}>
+                      Add Interest
+                    </button>
+                  )}
+            </MDBCardBody>
+              </MDBCard>
                 </MDBCol>
 
                 <MDBCol md="6">

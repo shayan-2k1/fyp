@@ -6,6 +6,8 @@ const profileSchema = new mongoose.Schema({
   contentType: String,
   data: Buffer,
   expertise: [String],
+  langauages:[String],
+  interest:[String],
 });
 
 const Profile = mongoose.model('Profile', profileSchema);

@@ -52,8 +52,37 @@ async function getExpertise(req, res) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+async function AddInterest(req, res) {
+  try {
+    const { interest } = req.body;
+
+    // Create a new document in MongoDB
+    const newProfile = new profileModel({
+      interest: interest, // Assuming expertise is an array of strings
+    });
+
+    await newProfile.save();
+
+    res.json({ message: 'Interest added successfully' });
+  } catch (error) {
+    console.error('Error adding Interest:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+async function getInterest(req, res) {
+  try {
+    const interestList = await profileModel.find({}, 'interest');
+    res.json(interestList.map(profile => profile.interest));
+  } catch (error) {
+    console.error('Error fetching interest:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 module.exports = {
   Addpicture,
   AddExpertise,
-  getExpertise
+  getExpertise,
+  AddInterest,
+  getInterest,
 };
