@@ -23,4 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 scrapy-project/venv/
-frontend/src/confidential/
+confidential/
