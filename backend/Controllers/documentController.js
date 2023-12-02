@@ -144,7 +144,7 @@ async function fetchDocument(req, res) {
 
     // Find documents uploaded by the user
     const userDocuments = await Document.find({ user: decodedToken.id });
-    console.log("documents ", userDocuments)
+    // console.log("documents ", userDocuments)
 
     if (!userDocuments || userDocuments.length === 0) {
       return res.status(404).json({ message: 'No documents found for the user.' });
@@ -190,7 +190,7 @@ async function delDocument(req, res) {
     const decodedToken = jwt.verify(token, secretKey);
 
     const { documentId } = req.params;
-
+    console.log("doc Id" , documentId)
     // Find the document by ID and the associated user
     const document = await Document.findOne({
       user: decodedToken.id,
@@ -204,7 +204,7 @@ async function delDocument(req, res) {
 
     // Check if the document ID is present in the files array
     const fileIndex = document.files.findIndex((file) => String(file._id) === String(documentId));
-
+    console.log("file id " , file._id)
     if (fileIndex === -1) {
       console.log('Document ID not found in files array');
       return res.status(404).json({ error: 'Document ID not found in files array.' });
