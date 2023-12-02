@@ -2,4 +2,12 @@
     margin-top: 7%;
   }
   
+  .expertise-item {
+    margin-bottom: 10px; /* Adjust as needed for the desired separation between expertise items */
+  }
+  
+  .expertise-divider {
+    margin: 5px 0; /* Adjust as needed for the desired height of the line between expertise items */
+    border-top: 1px solid #bc1111; /* Color of the line between expertise items */
+  }
   

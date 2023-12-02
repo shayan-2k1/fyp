@@ -43,7 +43,17 @@ async function AddExpertise(req, res) {
   }
 }
 
+async function getExpertise(req, res) {
+  try {
+    const expertiseList = await profileModel.find({}, 'expertise');
+    res.json(expertiseList.map(profile => profile.expertise));
+  } catch (error) {
+    console.error('Error fetching expertise:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 module.exports = {
   Addpicture,
-  AddExpertise
+  AddExpertise,
+  getExpertise
 };

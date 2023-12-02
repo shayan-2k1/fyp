@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './profile.styles.css'
 import SideBar from "../../components/sidebar/sidebar.component";
 import axios from 'axios';
@@ -6,6 +6,7 @@ import Nav1 from "../../components/nav-1/nav-1.component.jsx";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
+
 
 
 import {
@@ -19,9 +20,9 @@ import {
   MDBBtn,
   MDBProgress,
   MDBProgressBar,
-  // MDBIcon,
-  // MDBListGroup,
-  // MDBListGroupItem
+  MDBInput,
+  MDBListGroup,
+  MDBListGroupItem
 } from 'mdb-react-ui-kit';
 
 const Profile = () => {
@@ -31,13 +32,52 @@ const Profile = () => {
   const [showAddBioButton, setShowAddBioButton] = useState(true);
   const [userBio, setUserBio] = useState('');
   const [bio, setBio] = useState('');
+  const [expertiseList, setExpertiseList] = useState([]);
+  const [expertiseForm, setExpertiseForm] = useState({ name: '' });
 
-  const handleAddBioClick = () => {
-    setShowAddBioForm(true);
-    setShowAddBioButton(false);
-    setShowEditIcon(false);
+  const [showExpertiseForm, setShowExpertiseForm] = useState(false);
+
+
+
+
+  useEffect(() => {
+    // Fetch expertise from the backend when the component mounts
+    fetchExpertise();
+  }, []);
+
+  const fetchExpertise = async () => {
+    try {
+      // Fetch expertise from the backend
+      const response = await axios.get('http://localhost:3000/profile/get-expertise');
+      setExpertiseList(response.data);
+
+
+    } catch (error) {
+      console.error('Error fetching expertise:', error);
+    }
   };
 
+  const handleExpertiseFormSubmit = async () => {
+    try {
+      // Make API call to save expertise on the backend
+      await axios.post('http://localhost:3000/profile/add-expertise', {
+        name: expertiseForm.name,
+      });
+
+      // Update UI with the newly added expertise
+      fetchExpertise();
+
+      // Reset form field
+      setExpertiseForm({
+        name: '',
+      });
+
+      // Hide expertise form after submission
+      setShowExpertiseForm(false);
+    } catch (error) {
+      console.error('Error adding expertise:', error);
+    }
+  };
   const handleBioFormSubmit = () => {
     console.log('Bio submitted:', bio);
     setUserBio(bio);
@@ -88,7 +128,7 @@ const Profile = () => {
             <MDBCol lg="4">
               <MDBCard className="mb-4">
                 <MDBCardBody className="text-center">
-                {!profilePicture && (
+                  {!profilePicture && (
                     <label htmlFor="upload-input">
                       <IconButton
                         component="span"
@@ -111,11 +151,11 @@ const Profile = () => {
                         className="rounded-circle"
                         style={{ width: '250px', height: '250px' }}
                         fluid
-                       
+
                       />
-                   </div>
+                    </div>
                   )}
-                   
+
                   <input
                     type="file"
                     accept="image/*"
@@ -124,20 +164,20 @@ const Profile = () => {
                     id="upload-input"
                   />
                   {showAddBioForm && (
-              <div key="bio-form">
-                <textarea
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                  placeholder="Enter your bio"
-                />
-                <button
-                  className="btn btn-link"
-                  onClick={handleBioFormSubmit}
-                >
-                  Save Bio
-                </button>
-              </div>
-            )}
+                    <div key="bio-form">
+                      <textarea
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
+                        placeholder="Enter your bio"
+                      />
+                      <button
+                        className="btn btn-link"
+                        onClick={handleBioFormSubmit}
+                      >
+                        Save Bio
+                      </button>
+                    </div>
+                  )}
                   {!showAddBioForm && showEditIcon && (
                     <IconButton
                       style={{
@@ -161,32 +201,33 @@ const Profile = () => {
                   </div>
                 </MDBCardBody>
               </MDBCard>
-              <MDBCard className="mb-4 mb-lg-0">
-                <MDBCardBody className="p-0">
-                  {/* <MDBListGroup flush className="rounded-3">
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fas icon="globe fa-lg text-warning" />
-                    <MDBCardText>https://mdbootstrap.com</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="github fa-lg" style={{ color: '#333333' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="twitter fa-lg" style={{ color: '#55acee' }} />
-                    <MDBCardText>@mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="instagram fa-lg" style={{ color: '#ac2bac' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="facebook fa-lg" style={{ color: '#3b5998' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                </MDBListGroup> */}
+
+              <MDBCard className="mb-4">
+                <MDBCardBody className="text-center">
+                  <MDBCardText className="text-muted">Expertise:</MDBCardText>
+                  <MDBListGroup flush>
+  {expertiseList.flat().map((expertise, index) => (
+    <div key={index} className="expertise-item">
+      <MDBRow>
+        <MDBCol sm="12">
+          <MDBCardText>{expertise}</MDBCardText>
+        </MDBCol>
+      </MDBRow>
+      {index < expertiseList.flat().length - 1 && <hr />}
+    </div>
+  ))}
+</MDBListGroup>
+
+
+
+
+
+
+                 
                 </MDBCardBody>
               </MDBCard>
+
+
 
               <MDBCard className="mb-4 mb-md-0 c1">
                 <MDBCardBody>
@@ -444,8 +485,8 @@ const Profile = () => {
               </MDBRow>
             </MDBCol>
           </MDBRow>
-        </MDBContainer>
-      </section>
+        </MDBContainer >
+      </section >
     </>
   );
 
