@@ -62,7 +62,7 @@ const DocWallet = () => {
 
   useEffect(() => {
     fetchUserDocuments();
-  }, [authToken, currentPage,fetchUserDocuments]); // Make sure to include `authToken` and `currentPage` as dependencies
+  }, [authToken, currentPage, fetchUserDocuments]); // Make sure to include `authToken` and `currentPage` as dependencies
 
   const handleViewDocument = (url) => {
     setCurrentPage("viewDocuments");
@@ -75,7 +75,6 @@ const DocWallet = () => {
   };
 
   const handleDeleteDocument = async (documentId) => {
-    console.log('Attempting to delete document with ID:', documentId);
     try {
       const response = await axios.delete(`http://127.0.0.1:3000/document/delete/${documentId}`, {
         headers: {
@@ -85,8 +84,7 @@ const DocWallet = () => {
 
       if (response.status === 200) {
         console.log('Document deleted successfully.');
-        // Refresh the document list after deletion
-        fetchUserDocuments();
+        // Implement logic to update the UI or perform any necessary actions after deletion
       } else {
         console.error('Failed to delete the document.');
         // Handle failure - show error message or take appropriate action
@@ -96,8 +94,6 @@ const DocWallet = () => {
       // Handle error scenario - show error message or take appropriate action
     }
   };
-
-
 
   return (
     <div>
@@ -121,7 +117,7 @@ const DocWallet = () => {
         </div>
       )}
 
-      {currentPage === 'viewDocuments' && (
+      {currentPage === "viewDocuments" && (
         <div className="dash-container">
           <div className="dash">
             {/* Display user's documents with 'View Document' and 'Delete Document' buttons */}
@@ -129,13 +125,22 @@ const DocWallet = () => {
               {userDocuments.map((document, index) => (
                 <div key={index} className="document-item">
                   <span>{document.fileName}</span>
+                  <span>Document ID: {document._id ? document._id.toString() : 'No ID'}</span>
                   <div>
-                    <button onClick={() => handleViewDocument(document.fileUrl)}>
+                    <button
+                      onClick={() => handleViewDocument(document.fileUrl)}
+                    >
                       View Document
                     </button>
-                    <button onClick={() => handleDeleteDocument(document._id)}>
-                      Delete Document
-                    </button>
+                    
+                    <div>
+                      
+                      <button
+                        onClick={() => handleDeleteDocument(document._id)}
+                      >
+                        Delete Document
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
