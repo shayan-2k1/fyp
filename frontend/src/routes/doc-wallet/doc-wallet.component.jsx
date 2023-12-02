@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import Nav3 from "../../components/nav-3/nav-3.component";
 import Nav2 from "../../components/nav-2/nav-2.component";
@@ -47,25 +47,25 @@ const DocWallet = () => {
     }
   };
 
-  useEffect(() => {
-    async function fetchUserDocuments() {
-      try {
-        const response = await axios.get("http://127.0.0.1:3000/document/get", {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
-        setUserDocuments(response.data); // Update userDocuments state with fetched documents
-      } catch (error) {
-        console.error("Error fetching user documents:", error);
-      }
+  const fetchUserDocuments = useCallback(async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:3000/document/get", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+      setUserDocuments(response.data);
+    } catch (error) {
+      console.error("Error fetching user documents:", error);
     }
-
-    fetchUserDocuments();
   }, [authToken]);
 
+  useEffect(() => {
+    fetchUserDocuments();
+  }, [authToken, currentPage,fetchUserDocuments]); // Make sure to include `authToken` and `currentPage` as dependencies
+
   const handleViewDocument = (url) => {
-    setCurrentPage("viewDocument");
+    setCurrentPage("viewDocuments");
     setViewDocumentUrl(url);
   };
 
@@ -73,6 +73,31 @@ const DocWallet = () => {
     setCurrentPage("myDocuments");
     setViewDocumentUrl("");
   };
+
+  const handleDeleteDocument = async (documentId) => {
+    console.log('Attempting to delete document with ID:', documentId);
+    try {
+      const response = await axios.delete(`http://127.0.0.1:3000/document/delete/${documentId}`, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+
+      if (response.status === 200) {
+        console.log('Document deleted successfully.');
+        // Refresh the document list after deletion
+        fetchUserDocuments();
+      } else {
+        console.error('Failed to delete the document.');
+        // Handle failure - show error message or take appropriate action
+      }
+    } catch (error) {
+      console.error('Error deleting the document:', error);
+      // Handle error scenario - show error message or take appropriate action
+    }
+  };
+
+
 
   return (
     <div>
@@ -92,45 +117,45 @@ const DocWallet = () => {
             <div style={{ marginTop: "10px" }}>
               <button onClick={handleUpload}>Upload File</button>
             </div>
-
-            {/* Display user's documents with 'View Document' buttons */}
           </div>
         </div>
       )}
 
-{currentPage === 'viewDocuments' && (
-  <div className="dash-container">
-    <div className="dash">
-      <button onClick={handleGoBack}>Go Back</button>
+      {currentPage === 'viewDocuments' && (
+        <div className="dash-container">
+          <div className="dash">
+            {/* Display user's documents with 'View Document' and 'Delete Document' buttons */}
+            <div className="document-list">
+              {userDocuments.map((document, index) => (
+                <div key={index} className="document-item">
+                  <span>{document.fileName}</span>
+                  <div>
+                    <button onClick={() => handleViewDocument(document.fileUrl)}>
+                      View Document
+                    </button>
+                    <button onClick={() => handleDeleteDocument(document._id)}>
+                      Delete Document
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-      {/* Display user's documents with 'View Document' buttons */}
-      <div className="document-list">
-        {userDocuments.map((document, index) => (
-          <div key={index}>
-            <span>{document.fileName}</span>
-            <button onClick={() => handleViewDocument(document.fileUrl)}>
-              View Document
-            </button>
+            <div>
+              {/* Display the document in an iframe */}
+              <iframe
+                src={viewDocumentUrl}
+                title="Document Viewer"
+                width="100%"
+                height="500px"
+              ></iframe>
+              <button onClick={handleGoBack}>Go Back</button>
+            </div>
           </div>
-        ))}
-      </div>
-
-      <div>
-        {/* Display the document in an iframe */}
-        <iframe
-          src={viewDocumentUrl}
-          title="Document Viewer"
-          width="100%"
-          height="500px"
-        ></iframe>
-      </div>
+        </div>
+      )}
     </div>
-  </div>
-  
-)}
-</div>
-  )}
-
-
+  );
+};
 
 export default DocWallet;

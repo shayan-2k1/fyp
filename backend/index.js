@@ -8,7 +8,7 @@ const infoRoute = require("./Routes/personalInfoRoutes.js")
 
 const academicRoute = require("./Routes/academicRoutes.js")
 const academicPrefRoute = require("./Routes/studyInterestRoutes.js")
-const profileRouter=require('./Routes/profileRouter.js')
+const profileRouter=require("./Routes/profileRouter.js")
 
 
 const cors = require('cors');
