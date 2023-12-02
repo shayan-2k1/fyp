@@ -75,6 +75,7 @@ const DocWallet = () => {
   };
 
   const handleDeleteDocument = async (documentId) => {
+    console.log('Attempting to delete document with ID:', documentId);
     try {
       const response = await axios.delete(`http://127.0.0.1:3000/document/delete/${documentId}`, {
         headers: {
