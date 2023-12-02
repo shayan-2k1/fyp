@@ -25,7 +25,25 @@ async function Addpicture(req, res) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+async function AddExpertise(req, res) {
+  try {
+    const { expertise } = req.body;
+
+    // Create a new document in MongoDB
+    const newProfile = new profileModel({
+      expertise: expertise, // Assuming expertise is an array of strings
+    });
+
+    await newProfile.save();
+
+    res.json({ message: 'Expertise added successfully' });
+  } catch (error) {
+    console.error('Error adding expertise:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 
 module.exports = {
   Addpicture,
+  AddExpertise
 };
