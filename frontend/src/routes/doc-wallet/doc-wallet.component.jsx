@@ -125,6 +125,7 @@ const DocWallet = () => {
               {userDocuments.map((document, index) => (
                 <div key={index} className="document-item">
                   <span>{document.fileName}</span>
+                  {/* checking the document ids */}
                   <span>Document ID: {document._id ? document._id.toString() : 'No ID'}</span>
                   <div>
                     <button
