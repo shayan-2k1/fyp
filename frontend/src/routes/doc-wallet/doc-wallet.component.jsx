@@ -81,7 +81,7 @@ const DocWallet = () => {
           Authorization: `Bearer ${authToken}`,
         },
       });
-
+//checking doc del status
       if (response.status === 200) {
         console.log('Document deleted successfully.');
         // Implement logic to update the UI or perform any necessary actions after deletion
