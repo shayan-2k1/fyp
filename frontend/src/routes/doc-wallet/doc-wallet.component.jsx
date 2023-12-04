@@ -116,7 +116,7 @@ const DocWallet = () => {
           </div>
         </div>
       )}
-
+ {/* ids are undefined */}
       {currentPage === "viewDocuments" && (
         <div className="dash-container">
           <div className="dash">
