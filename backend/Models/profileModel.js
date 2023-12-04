@@ -6,7 +6,7 @@ const profileSchema = new mongoose.Schema({
   contentType: String,
   data: Buffer,
   expertise: [String],
-  langauages:[String],
+  language:[String],
   interest:[String],
 });
 

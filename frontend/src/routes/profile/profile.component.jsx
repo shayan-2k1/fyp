@@ -38,6 +38,9 @@ const Profile = () => {
   const [interestList, setInterestList] = useState([]);
   const [interestForm, setInterestForm] = useState({ name: '' });
   const [showInterestForm, setShowInterestForm] = useState(false);
+  const [languageList, setLanguageList] = useState([]);
+  const [languageForm, setLanguageForm] = useState({ name: '' });
+  const [showlanguageForm, setShowLanguageForm] = useState(false);
   const [showAddAboutMeForm, setShowAddAboutMeForm] = useState(false);
   const [aboutMe, setAboutMe] = useState('');
 
@@ -89,12 +92,25 @@ const Profile = () => {
     setShowInterestForm(false);
     setInterestForm({ name: '' });
   };
+  const handleAddLanguageClick = () => {
+    setShowLanguageForm(true);
+  };
+
+  const handleLanguageInputChange = (e) => {
+    setLanguageForm({ name: e.target.value });
+  };
+
+  const handleCancelLanguage = () => {
+    setShowLanguageForm(false);
+    setLanguageForm({ name: '' });
+  };
 
 
   useEffect(() => {
     // Fetch expertise from the backend when the component mounts
     fetchExpertise();
     fetchInterest();
+    fetchLanguage();
   }, []);
 
   const fetchExpertise = async () => {
@@ -161,6 +177,40 @@ const Profile = () => {
       setShowInterestForm(false);
     } catch (error) {
       console.error('Error adding interest:', error);
+    }
+  };
+
+  const fetchLanguage = async () => {
+    try {
+      // Fetch expertise from the backend
+      const response = await axios.get('http://localhost:3000/profile/get-interest');
+      setLanguageList(response.data);
+
+
+    } catch (error) {
+      console.error('Error fetching Language:', error);
+    }
+  };
+
+  const handleLanguageFormSubmit = async () => {
+    try {
+      // Make API call to save expertise on the backend
+      await axios.post('http://localhost:3000/profile/add-interest', {
+        language: [languageForm.name], 
+      });
+
+      // Update UI with the newly added expertise
+      fetchLanguage();
+
+      // Reset form field
+      setLanguageForm({
+        name: '',
+      });
+
+      // Hide expertise form after submission
+      setShowLanguageForm(false);
+    } catch (error) {
+      console.error('Error adding Language:', error);
     }
   };
 

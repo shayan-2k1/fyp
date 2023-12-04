@@ -79,10 +79,39 @@ async function getInterest(req, res) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+async function AddLanguage(req, res) {
+  try {
+    const { language } = req.body;
+
+    // Create a new document in MongoDB
+    const newProfile = new profileModel({
+      language: language, // Assuming expertise is an array of strings
+    });
+
+    await newProfile.save();
+
+    res.json({ message: 'language added successfully' });
+  } catch (error) {
+    console.error('Error adding Language:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+async function getLanguage(req, res) {
+  try {
+    const languageList = await profileModel.find({}, 'language');
+    res.json(languageList.map(profile => profile.language));
+  } catch (error) {
+    console.error('Error fetching language:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 module.exports = {
   Addpicture,
   AddExpertise,
   getExpertise,
   AddInterest,
   getInterest,
+  AddInterest,
+  getLanguage,
 };
