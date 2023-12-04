@@ -81,7 +81,7 @@ const DocWallet = () => {
           Authorization: `Bearer ${authToken}`,
         },
       });
-
+//checking doc del status
       if (response.status === 200) {
         console.log('Document deleted successfully.');
         // Implement logic to update the UI or perform any necessary actions after deletion
@@ -116,7 +116,7 @@ const DocWallet = () => {
           </div>
         </div>
       )}
-
+ {/* ids are undefined */}
       {currentPage === "viewDocuments" && (
         <div className="dash-container">
           <div className="dash">
@@ -125,6 +125,7 @@ const DocWallet = () => {
               {userDocuments.map((document, index) => (
                 <div key={index} className="document-item">
                   <span>{document.fileName}</span>
+                  {/* checking the document ids */}
                   <span>Document ID: {document._id ? document._id.toString() : 'No ID'}</span>
                   <div>
                     <button
