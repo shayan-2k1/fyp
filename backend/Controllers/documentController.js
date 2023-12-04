@@ -162,6 +162,7 @@ async function fetchDocument(req, res) {
         // Generate presigned URL for each file
         const url = await s3.getSignedUrlPromise('getObject', params);
         return {
+          _id: file._id,
           fileName: file.fileName,
           fileUrl: url,
           // Add other necessary document information as needed
