@@ -37,6 +37,9 @@ const Home = () => {
         <li>
           <Link to="/Profile">Profile</Link>
         </li>
+        <li>
+          <Link to="/Scholarships">Scholarships</Link>
+        </li>
       </ul>
     </div>
   );
