@@ -1,11 +1,76 @@
-import React from "react";
-
-import { Menu, MenuItem } from "react-pro-sidebar";
-
+import React, { useState } from "react";
 import { Button, Img, Input, Line, Text } from "components";
 import Sidebar1 from "components/Sidebar1";
-
+import axios from "axios";
 const PersonalForm = () => {
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
+  const months = [
+    "January", "February", "March", "April",
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"
+  ];
+  const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
+  // const handleSubmit = () => {
+  //   try {
+  //     const response = axios.post("http://localhost:3000/student/info", {
+  //       firstName: fName,
+  //       lastName: lName,
+  //       contactNo: contactNo,
+  //       gender: gender,
+  //       nationality: nationality,
+  //       countryOfResidence: country,
+  //       dob: {
+  //         day: day,
+  //         month: month,
+  //         year: year
+  //       }
+  //     });
+  //     setLoading('true');
+  //     console.log(response.data);
+  //     // navigate('/academic-info');
+  //   }
+  //   catch (error) {
+  //     console.log(error);
+  //     setError(error);
+  //   }
+  //   setLoading('false');
+  // }
+  const handleSubmit = async () => {
+    try {
+      setLoading('true');
+      const response = await axios.post("http://localhost:3000/student/info", {
+        firstName: fName,
+        lastName: lName,
+        contactNo: contactNo,
+        gender: gender,
+        nationality: nationality,
+        countryOfResidence: country,
+        dob: {
+          day: day,
+          month: month,
+          year: year
+        }
+      });
+      console.log(response.data);
+      // navigate('/academic-info');
+    } catch (error) {
+      console.error(error);
+      setError(error);
+    }
+    setLoading('false');
+  }
+  
+  const [fName, setfName] = useState('');
+  const [lName, setlName] = useState('');
+  const [contactNo, setContact] = useState('');
+  const [gender, setGender] = useState('');
+  const [country, setCountry] = useState('');
+  const [nationality, setNationality] = useState('');
+  const [day, setDay] = useState('');
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState(0);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState('');
   return (
 
     <>
@@ -86,15 +151,24 @@ const PersonalForm = () => {
                         size="txtNunitoSemiBold28"
                       >
                         First name
+                        
                       </Text>
 
                       <Input
-                        name="zipcode"
+                        name="fName"
+                        value={fName}
+                        onChange={(e) =>{
+                        console.log('Handling change:', e);
+                         console.log('e.target:', e.target);
+                         console.log('e.target:', e.target.value);
+                         setfName(e.target.value)}}
                         placeholder="Alina"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
+                        type="text"
                         style={{ color: '#000000' }} // Set the color to a darker shade, you can adjust the color code as needed
+
                       ></Input>
 
                     </div>
@@ -107,12 +181,17 @@ const PersonalForm = () => {
                       </Text>
 
                       <Input
-                        name="zipcode"
+                        name="contact"
+                        value={contactNo}
+                        onChange={(e) => setContact(e.target.value)}
                         placeholder="12345"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
-                        style={{ color: '#000000' }} // Set the color to a darker shade, you can adjust the color code as needed
+                        type="tel"
+                        style={{ color: '#000000' }}
+                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required
+
                       ></Input>
 
                     </div>
@@ -126,46 +205,48 @@ const PersonalForm = () => {
                           Date of birth
                         </Text>
                         <div className="bg-white-A700 border-2 border-indigo-300 border-solid flex flex-row font-inter gap-1.0 h-[66px] md:h-auto items-start justify-start sm:px-5 px-8 py-6 rounded-[33px] w-[229px]">
-                          <Text
-                            className="text-base text-black-900 w-[29px]"
-                            size="txtInterRegular16"
+                          <select
+                            name="day"
+                            value={day}
+                            onChange={(e) => setDay(e.target.value)}
+
                           >
-                            Day
-                          </Text>
-                          <Img
-                            className="h-6 w-6"
-                            src="images/img_arrowup_black_900.svg"
-                            alt="arrowup_Two"
-                          />
+                            <option value="">Day</option>
+                            {days.map(day => (
+                              <option key={day} value={day}>{day}</option>
+                            ))}
+                          </select>
                         </div>
                       </div>
                       <div className="bg-white-A700 border-2 border-indigo-300 border-solid flex flex-row font-inter gap-2.0 h-[66px] md:h-auto items-center justify-between mb-2.5 ml-[-2px] mt-auto sm:px-5 px-20 py-6 rounded-[33px] w-[229px] z-[1]">
-                        <Text
-                          className="text-base text-black-900 w-12"
-                          size="txtInterRegular16"
+                        <select
+                          name="month"
+                          value={month}
+                          onChange={(e) => setMonth(e.target.value)}
+
                         >
-                          Month
-                        </Text>
-                        <Img
-                          className="h-6 w-6"
-                          src="images/img_arrowup_black_900.svg"
-                          alt="arrowup_Three"
-                        />
+                          <option value="">Month</option>
+                          {months.map((month, index) => (
+                            <option key={index} value={month}>{month}</option>
+                          ))}
+                        </select>
                       </div>
                       <div className="bg-white-A700 border-2 border-indigo-300 border-solid flex flex-row font-inter gap-2. h-[66px] md:h-auto items-center justify-between mb-2.5 ml-[-1px] mt-auto sm:px-3 px-20 py-6 rounded-[33px] w-[229px] z-[1]">
-                        <Text
-                          className="text-base text-black-900 w-12"
-                          size="txtInterRegular16"
+                        <select
+                          name="year"
+                          value={year}
+                          onChange={(e) => setYear(e.target.value)}
+
+                        // className="border-2 border-indigo-300 border-solid p-3 rounded-[8px] w-[120px]"
                         >
-                          Year
-                        </Text>
-                        <Img
-                          className="h-6 w-6"
-                          src="images/img_arrowup_black_900.svg"
-                          alt="arrowup_Three"
-                        />
+                          <option value="">Year</option>
+                          {years.map(year => (
+                            <option key={year} value={year}>{year}</option>
+                          ))}
+                        </select>
                       </div>
                     </div>
+
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <Text
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
@@ -175,11 +256,15 @@ const PersonalForm = () => {
                       </Text>
 
                       <Input
-                        name="zipcode"
+                        name="nationality"
+                        value={nationality}
+                        onChange={(e) => setNationality(e.target.value)}
                         placeholder="Pakistani"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
+                        type="text"
+
                         style={{ color: '#000000' }} // Set the color to a darker shade, you can adjust the color code as needed
                       ></Input>
 
@@ -193,14 +278,29 @@ const PersonalForm = () => {
                       </Text>
 
                       <Input
-                        name="zipcode"
+                        name="Countryofresidence"
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
                         placeholder="Pakistan"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
+
+                        type="text"
                         style={{ color: '#000000' }} // Set the color to a darker shade, you can adjust the color code as needed
                       ></Input>
 
+                    </div>
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <div className="flex items-center justify-center mt-6">
+                      <Button
+                      className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[300px] sm:min-w-full ml-20 mt-[25px] text-0xl md:text-[10px] text-center sm:text-xl tracking-[1.60px] uppercase"
+                      shape="round"
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </Button>
+                      </div>
                     </div>
                   </div>
                   <div className="flex flex-col pl-8 gap-9 h-[369px] md:h-auto items-center justify-start ml-[undefinedpx] w-[606px] md:w-full z-[1] ">
@@ -213,11 +313,15 @@ const PersonalForm = () => {
                       </Text>
 
                       <Input
-                        name="zipcode"
+                        name="lastname"
+                        value={lName}
+                        onChange={(e) => setlName(e.target.value)}
                         placeholder="Asim"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
+                        type="text"
+
                         style={{ color: '#000000' }} // Set the color to a darker shade, you can adjust the color code as needed
                       ></Input>
 
@@ -231,23 +335,31 @@ const PersonalForm = () => {
                       </Text>
 
                       <Input
-                        name="zipcode"
+                        name="gender"
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
                         placeholder="male"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
+                        type="text"
+
                         style={{ color: '#000000' }} // Set the color to a darker shade, you can adjust the color code as needed
                       ></Input>
 
                     </div>
 
+
                   </div>
 
                 </div>
+
               </div>
 
             </div>
+
           </div>
+
         </div>
         <Sidebar1 className="!sticky !w-[346px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute overflow-x-auto right-[0] top-[2%] w-[14%]">
