@@ -1,12 +1,42 @@
 import React from "react";
-
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from 'axios';
+import Cookies from 'js-cookie'; // Import js-cookie
 import { Button, Img, Input, Line, List, Text } from "components";
 
 
 const Login = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); // Change to false
+
+  const handleChange = async (e) => {
+      e.preventDefault();
+      setError(null); // Clear any previous errors
+
+      try {
+          const response = await axios.post("http://localhost:3000/student/signin", {
+              email: email,
+              password: password
+          });
+
+          // Save the authentication token to a cookie
+          if (response.data.token) {
+              Cookies.set('auth_token', response.data.token, { expires: 1 }); // Set the token in a cookie
+          }
+
+          console.log(response.data);
+          navigate("/Scholarships");
+      } catch (error) {
+          console.log(error);
+          setError("Failed to sign in!");
+      }
+
+      setLoading(false);
+  };
 
   return (
    
@@ -107,10 +137,14 @@ const Login = () => {
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
                         size="txtNunitoSemiBold28"
                       >
-                        Username
+                        Email
                       </Text>
                       <Input
-                        name="username"
+                        name="email"
+                        value={email}
+                        onChange={(e) =>{
+                          console.log('email: ',  e.target.value);
+                           setEmail(e.target.value)}}
                         placeholder="2023"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
                         wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
@@ -127,6 +161,10 @@ const Login = () => {
                       </Text>
                       <Input
                         name="password"
+                        value={password}
+                        onChange={(e) =>{
+                          console.log('password: ',  e.target.value);
+                           setPassword(e.target.value)}}
                         placeholder="xyz"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
                         wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
@@ -172,6 +210,7 @@ const Login = () => {
                     <Button
                       className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[300px] sm:min-w-full ml-20 mt-[25px] text-0xl md:text-[10px] text-center sm:text-xl tracking-[1.60px] uppercase"
                       shape="round"
+                      onClick={handleChange}
                     >
                       Sign in
                     </Button>

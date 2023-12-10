@@ -2,9 +2,9 @@ import React from "react";
 
 import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
 
-import { Button, Img, Input, Line, List, RatingBar, Text } from "components";
+import { Buttonprofile, Img, Input, Line, List, RatingBar, Textprofile } from "components";
 
-const Profile = () => {
+const DesktopSixPage = () => {
   const { collapseSidebar, collapsed } = useProSidebar();
 
   return (
@@ -39,18 +39,18 @@ const Profile = () => {
                   <div className="border border-black-900_26 border-solid flex flex-col items-center justify-end md:ml-[0] ml-[3px] p-[11px] rounded-lg shadow-bs w-[99%] md:w-full">
                     <div className="flex flex-row items-start justify-between w-full">
                       <div className="flex flex-col gap-[13px] items-start justify-start">
-                        <Text
+                        <Textprofile
                           className="text-[10.67px] text-gray-900_e5"
                           size="txtOutfitMedium1067"
                         >
                           Professional Details
-                        </Text>
-                        <Text
+                        </Textprofile>
+                        <Textprofile
                           className="text-[10.67px] text-gray-800_cc tracking-[0.11px]"
                           size="txtOutfitRegular1067"
                         >
                           BS CS from FAST University{" "}
-                        </Text>
+                        </Textprofile>
                       </div>
                       <Img
                         className="h-12 w-12"
@@ -59,12 +59,12 @@ const Profile = () => {
                       />
                     </div>
                   </div>
-                  <Text
+                  <Textprofile
                     className="md:ml-[0] ml-[3px] mt-4 text-[10.67px] text-gray-900_e5"
                     size="txtOutfitMedium1067"
                   >
                     Expertise In
-                  </Text>
+                  </Textprofile>
                   {/* <div className="flex flex-row gap-[9px] items-center justify-start md:ml-[0] ml-[7px] mt-[17px] w-[63%] md:w-full">
                     <div className="bg-white-A700 border border-blue_gray-100 border-solid flex flex-row items-center justify-start p-1 rounded-[13px] w-[48%]">
                       <Img
@@ -122,7 +122,7 @@ const Profile = () => {
                     </div> */}
                   {/* </div> */}
                   <div className="flex flex-row gap-3.5 items-center justify-start md:ml-[0] ml-[11px] mt-2 w-[68%] md:w-full">
-                    <Button
+                    <Buttonprofile
                       className="border border-blue_gray-100 border-solid cursor-pointer flex items-center justify-center min-w-[67px] rounded-[13px]"
                       leftIcon={
                         <Img
@@ -136,8 +136,8 @@ const Profile = () => {
                       <div className="leading-[normal] text-[12.44px] text-left tracking-[0.12px]">
                         React
                       </div>
-                    </Button>
-                    <Button
+                    </Buttonprofile>
+                    <Buttonprofile
                       className="border border-blue_gray-100 border-solid cursor-pointer flex items-center justify-center min-w-[89px] rounded-[13px]"
                       leftIcon={
                         <Img
@@ -151,10 +151,10 @@ const Profile = () => {
                       <div className="leading-[normal] text-[12.44px] text-left tracking-[0.12px]">
                         Mongodb
                       </div>
-                    </Button>
+                    </Buttonprofile>
                   </div>
                   <div className="flex flex-row gap-3.5 items-center justify-start md:ml-[0] ml-[11px] mt-2 w-[68%] md:w-full">
-                    <Button
+                    <Buttonprofile
                       className="border border-blue_gray-100 border-solid cursor-pointer flex items-center justify-center min-w-[67px] rounded-[13px]"
                       leftIcon={
                         <Img
@@ -168,8 +168,8 @@ const Profile = () => {
                       <div className="leading-[normal] text-[12.44px] text-left tracking-[0.12px]">
                         Stock
                       </div>
-                    </Button>
-                    <Button
+                    </Buttonprofile>
+                    <Buttonprofile
                       className="border border-blue_gray-100 border-solid cursor-pointer flex items-center justify-center min-w-[89px] rounded-[13px]"
                       leftIcon={
                         <Img
@@ -183,14 +183,14 @@ const Profile = () => {
                       <div className="leading-[normal] text-[12.44px] text-left tracking-[0.12px]">
                         Mortgage
                       </div>
-                    </Button>
+                    </Buttonprofile>
                   </div>
-                  <Text
+                  <Textprofile
                     className="md:ml-[0] ml-[3px] mt-[13px] text-[10.67px] text-gray-900_e5"
                     size="txtOutfitMedium1067"
                   >
                     Published blogs{" "}
-                  </Text>
+                  </Textprofile>
                   <div className="border border-black-900_26 border-solid md:h-14 h-[47px] mt-[13px] pl-[7px] relative rounded-lg shadow-bs w-[99%]">
                     <div className="absolute bg-amber-A400_b2 flex flex-col h-max inset-y-[0] items-center justify-start my-auto p-[13px] right-[0] rounded-br-lg rounded-tr-lg w-[19%]">
                       <Img
@@ -199,12 +199,12 @@ const Profile = () => {
                         alt="signal"
                       />
                     </div>
-                    <Text
+                    <Textprofile
                       className="absolute left-[2%] text-[10.67px] text-gray-900_e5 top-[19%]"
                       size="txtOutfitMedium1067"
                     >
                       Campus Life at University.
-                    </Text>
+                    </Textprofile>
                     
                 
                   </div>
@@ -216,29 +216,29 @@ const Profile = () => {
                         alt="signal"
                       />
                     </div>
-                    <Text
+                    <Textprofile
                       className="absolute left-[2%] text-[10.67px] text-gray-900_e5 top-[19%]"
                       size="txtOutfitMedium1067"
                     >
                       My Experience 
-                    </Text>
+                    </Textprofile>
                     
                 
                   </div>
-                  <Text
+                  <Textprofile
                     className="md:ml-[0] ml-[3px] mt-4 text-[10.67px] text-gray-900_e5"
                     size="txtOutfitMedium1067"
                   >
                     Customer Reviews on blogs{" "}
-                  </Text>
+                  </Textprofile>
                   <div className="bg-white-A700 border border-blue_gray-100 border-solid flex flex-col items-center justify-end mt-[11px] py-2.5 rounded-lg shadow-bs1 w-[99%] md:w-full">
                     <div className="flex flex-col items-start justify-end p-0.5 w-full">
-                      <Text
+                      <Textprofile
                         className="md:ml-[0] ml-[11px] text-[11.81px] text-indigo-800 tracking-[0.12px]"
                         size="txtOutfitMedium1181"
                       >
                         Ankit Srivastava
-                      </Text>
+                      </Textprofile>
                     </div>
                     <div className="flex flex-row items-center justify-start mt-1 px-[13px] w-full">
                       <RatingBar
@@ -251,13 +251,13 @@ const Profile = () => {
                       ></RatingBar>
                     </div>
                     <div className="flex flex-col items-center justify-end mt-1 p-[3px] w-full">
-                      <Text
+                      <Textprofile
                         className="mt-0.5 text-[11.81px] text-gray-800_cc tracking-[0.12px] w-[92%] sm:w-full"
                         size="txtOutfitRegular1181"
                       >
                         excelent conversation with him.. very knowledgeble
                         personhappy to talk towith him
-                      </Text>
+                      </Textprofile>
                     </div>
                   </div>
                   <button
@@ -275,83 +275,83 @@ const Profile = () => {
               <div className="flex flex-col gap-[0px] items-center justify-start mb-7 w-[99%] md:w-full">
                 <div className="flex flex-row sm:gap-10 items-end justify-between w-full">
                   <div className="flex flex-col items-start justify-start">
-                    <Text
+                    <Textprofile
                       className="text-gray-900_b2 text-xl"
                       size="txtOutfitMedium20"
                     >
                       Your Name
-                    </Text>
-                    <Text
+                    </Textprofile>
+                    <Textprofile
                       className="text-[10.67px] text-gray-900_e5"
                       size="txtOutfitMedium1067"
                     >
                       Alina Asim{" "}
-                    </Text>
+                    </Textprofile>
                   </div>
-                  <Button
+                  <Buttonprofile
                     className="cursor-pointer font-medium leading-[normal] mb-[3px] min-w-[68px] mt-[15px] text-[6.46px] text-center"
                     shape="round"
                   >
                     Edit
-                  </Button>
+                  </Buttonprofile>
                 </div>
                 <div className="flex flex-row sm:gap-10 items-end justify-between w-full">
                   <div className="md:h-7 h-[39px] mb-0.5 relative w-[15%]">
-                    <Text
+                    <Textprofile
                       className="absolute left-[0] text-gray-900_b2 text-xl top-[0]"
                       size="txtOutfitMedium20"
                     >
                       Email
-                    </Text>
-                    <Text
+                    </Textprofile>
+                    <Textprofile
                       className="absolute bottom-[0] inset-x-[0] mx-auto text-[10.67px] text-gray-900_e5 w-max"
                       size="txtOutfitMedium1067"
                     >
                       alyna.asim86@gmail.com{" "}
-                    </Text>
+                    </Textprofile>
                   </div>
-                  <Button
+                  <Buttonprofile
                     className="cursor-pointer font-medium leading-[normal] mb-[3px] min-w-[68px] mt-[15px] text-[6.46px] text-center"
                     shape="round"
                   >
                     Edit
-                  </Button>
+                  </Buttonprofile>
                 </div>
                 <div className="flex flex-row sm:gap-10 items-end justify-between w-full">
                   <div className="md:h-[29px] h-[39px] mb-[3px] relative w-[16%]">
-                    <Text
+                    <Textprofile
                       className="absolute inset-x-[0] mx-auto text-gray-900_b2 text-xl top-[0] w-max"
                       size="txtOutfitMedium20"
                     >
                       Phone Number
-                    </Text>
-                    <Text
+                    </Textprofile>
+                    <Textprofile
                       className="absolute bottom-[0] left-[0] text-[10.67px] text-gray-900_e5"
                       size="txtOutfitMedium1067"
                     >
                       +91 49652845732
-                    </Text>
+                    </Textprofile>
                   </div>
-                  <Button
+                  <Buttonprofile
                     className="cursor-pointer font-medium leading-[normal] min-w-[68px] mt-[21px] text-[6.46px] text-center"
                     shape="round"
                   >
                     Edit
-                  </Button>
+                  </Buttonprofile>
                 </div>
               </div>
             </div>
             <div className="flex md:flex-col flex-row font-cairo md:gap-10 items-start justify-between mt-[30px] w-full">
-              <Text
+              <Textprofile
                 className="md:mt-0 mt-[11px] text-gray-500 text-lg"
                 size="txtCairoSemiBold18"
               >
                 l
-              </Text>
+              </Textprofile>
               <div className="border border-black-900_26 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[516px] p-2.5 rounded shadow-bs2 w-[63%] md:w-full">
                 <div className="flex flex-col items-start justify-start mb-[17px] w-[99%] md:w-full">
                   <div className="flex flex-row sm:gap-10 items-start justify-between w-full">
-                    <Text
+                    <Textprofile
                       className="text-black-900 text-xl"
                       size="txtPoppinsMedium20"
                     >
@@ -364,15 +364,15 @@ const Profile = () => {
                       <span className="text-cyan-700 font-outfit text-left font-medium">
                         Alina
                       </span>
-                    </Text>
-                    <Button
+                    </Textprofile>
+                    <Buttonprofile
                       className="cursor-pointer font-medium font-outfit leading-[normal] mb-1.5 min-w-[68px] mt-0.5 text-[6.46px] text-center"
                       shape="round"
                     >
                       Edit
-                    </Button>
+                    </Buttonprofile>
                   </div>
-                  <Text
+                  <Textprofile
                     className="mt-1 text-[10.67px] text-gray-800_cc tracking-[0.11px] w-[91%] sm:w-full"
                     size="txtOutfitRegular1067"
                   >
@@ -382,7 +382,7 @@ const Profile = () => {
                     using Economics to find a way to take better care of you.
                     Reassuringly, I am confident Hanken has the capabilities of
                     supporting me in my quest.
-                  </Text>
+                  </Textprofile>
                 </div>
               </div>
             </div>
@@ -390,20 +390,20 @@ const Profile = () => {
               <div className="border border-black-900_26 border-solid flex flex-col items-center justify-start p-3 rounded shadow-bs w-full">
                 <div className="flex flex-col gap-1.5 items-start justify-start mb-[9px] w-[99%] md:w-full">
                   <div className="flex flex-row sm:gap-10 items-start justify-between w-full">
-                    <Text
+                    <Textprofile
                       className="text-gray-900_e5 text-xl"
                       size="txtOutfitMedium20Gray900e5"
                     >
                       Education{" "}
-                    </Text>
-                    <Button
+                    </Textprofile>
+                    <Buttonprofile
                       className="cursor-pointer font-medium leading-[normal] mb-1 min-w-[68px] text-[6.46px] text-center"
                       shape="round"
                     >
                       Edit
-                    </Button>
+                    </Buttonprofile>
                   </div>
-                  <Text
+                  <Textprofile
                     className="text-[10.67px] text-gray-800_cc tracking-[0.11px]"
                     size="txtOutfitRegular1067"
                   >
@@ -446,60 +446,60 @@ const Profile = () => {
                     <span className="text-gray-800_cc font-outfit text-left font-normal">
                       Matric (Science)
                     </span>
-                  </Text>
+                  </Textprofile>
                 </div>
               </div>
               <div className="border border-black-900_26 border-solid flex md:flex-col flex-row md:gap-5 items-start justify-start p-[13px] rounded shadow-bs w-full">
-                <Text
+                <Textprofile
                   className="md:mt-0 mt-0.5 text-gray-900_e5 text-xl"
                   size="txtOutfitMedium20Gray900e5"
                 >
                   Projects{" "}
-                </Text>
+                </Textprofile>
                 <div className="border border-black-900 border-dashed flex md:flex-1 flex-col font-sairacondensed gap-1.5 items-center justify-start mb-1.5 md:ml-[0] ml-[37px] md:mt-0 mt-[26px] pb-2 px-2 rounded-[7px] w-[21%] md:w-full">
-                  <Button>
+                  <Buttonprofile>
                     <Img
                       className="h-[59px] md:h-auto object-cover"
                       src="images/img_icons8files1.png"
                       alt="icons8filesOne"
                     />
-                  </Button>
+                  </Buttonprofile>
                   <div className="h-[23px] md:h-[43px] mb-5 relative w-[96%]">
-                    <Text
+                    <Textprofile
                       className="m-auto text-black-900_7f text-sm"
                       size="txtSairaCondensedRegular14"
                     >
                       Drop your files here, or browse
-                    </Text>
+                    </Textprofile>
                   </div>
                 </div>
-                <Text
+                <Textprofile
                   className="md:ml-[0] ml-[66px] md:mt-0 mt-[78px] text-gray-900_e5 text-xl"
                   size="txtOutfitMedium20Gray900e5"
                 >
                   OR
-                </Text>
+                </Textprofile>
                 <div className="border border-black-900 border-dashed flex md:flex-1 flex-col font-sairacondensed gap-[25px] justify-start mb-3 md:ml-[0] ml-[81px] md:mt-0 mt-5 pl-1 py-1 rounded-[7px] w-[21%] md:w-full">
-                  <Button>
+                  <Buttonprofile>
                     <Img
                       className="h-[33px] md:h-auto md:ml-[0] ml-[75px] mt-3.5 object-cover w-[24%] sm:w-full"
                       src="images/img_rectangle76.png"
                       alt="rectangleSeventySix"
                     />
-                  </Button>
-                  <Text
+                  </Buttonprofile>
+                  <Textprofile
                     className="mb-[13px] text-black-900_7f text-sm"
                     size="txtSairaCondensedRegular14"
                   >
                     Upload you GitHub repository links
-                  </Text>
+                  </Textprofile>
                 </div>
-                <Button
+                <Buttonprofile
                   className="cursor-pointer font-medium leading-[normal] mb-32 min-w-[68px] md:ml-[0] ml-[126px] text-[6.46px] text-center"
                   shape="round"
                 >
                   Edit
-                </Button>
+                </Buttonprofile>
               </div>
             </div>
             <div className="flex md:flex-col flex-row font-outfit gap-12 items-center justify-end md:ml-[0] ml-[205px] mt-[19px] w-[82%] md:w-full">
@@ -507,12 +507,12 @@ const Profile = () => {
                 <div className="md:h-[134px] h-[152px] mb-[17px] relative w-[100%]">
                   <div className="absolute flex flex-col font-outfit justify-start left-[0] top-[0] w-4/5">
                     {/* <div className="flex flex-col items-center justify-center mr-[78px] p-2.5 w-auto"> */}
-                      <Text
+                      <Textprofile
                         className="md:mt-0 mt-0.5 text-gray-900_e5 text-xl"
                         size="txtOutfitMedium20Gray900e5"
                       >
                         Certificates{" "}
-                      </Text>
+                      </Textprofile>
                     {/* </div> */}
                     {/* <Button
                       style={{
@@ -531,20 +531,20 @@ const Profile = () => {
                       />
                      
                   </div>
-                  <Text
+                  <Textprofile
                     className="absolute bottom-[17%] right-[4%] text-black-900_7f text-sm"
                     size="txtSairaCondensedRegular14"
                   >
                     Drop your files here, or browse
-                  </Text>
+                  </Textprofile>
                   <div className="absolute border border-black-900 border-dashed bottom-[0] h-[117px] right-[0] rounded-[7px] w-[69%]"></div>
                 </div>
-                <Button
+                <Buttonprofile
                   className="cursor-pointer font-medium leading-[normal] mb-[138px] min-w-[68px] mt-2.5 text-[6.46px] text-center"
                   shape="round"
                 >
                   Edit
-                </Button>
+                </Buttonprofile>
               </div>
               <List
                 className="sm:flex-col flex-row gap-[46px] grid md:grid-cols-1 grid-cols-2 w-[66%] md:w-full"
@@ -554,21 +554,21 @@ const Profile = () => {
                   <div className="flex flex-col gap-[11px] items-center justify-start mb-[91px] w-[98%] md:w-full">
                     <div className="flex flex-row items-center justify-between w-full">
                       <div className="flex flex-col items-center justify-center p-2.5 w-auto">
-                        <Text
+                        <Textprofile
                           className="text-gray-900_e5 text-xl w-auto"
                           size="txtOutfitMedium20Gray900e5"
                         >
                           Interests{" "}
-                        </Text>
+                        </Textprofile>
                       </div>
-                      <Button
+                      <Buttonprofile
                         className="cursor-pointer font-medium leading-[normal] mb-2.5 min-w-[68px] mt-3.5 text-[6.46px] text-center"
                         shape="round"
                       >
                         Edit
-                      </Button>
+                      </Buttonprofile>
                     </div>
-                    <Text
+                    <Textprofile
                       className="text-[10.67px] text-black-900_01 tracking-[0.11px]"
                       size="txtOutfitRegular1067Black90001"
                     >
@@ -580,33 +580,33 @@ const Profile = () => {
                         Research Interests: Artificial Intelligence, Machine
                         Learning{" "}
                       </>
-                    </Text>
+                    </Textprofile>
                   </div>
                 </div>
                 <div className="border border-black-900_26 border-solid flex flex-col items-center justify-start p-[3px] rounded shadow-bs w-full">
                   <div className="flex flex-col gap-[38px] justify-start mb-[71px] w-[98%] md:w-full">
                     <div className="flex flex-row items-center justify-between w-full">
                       <div className="flex flex-col items-center justify-center p-2.5 w-auto">
-                        <Text
+                        <Textprofile
                           className="text-gray-900_e5 text-xl w-auto"
                           size="txtOutfitMedium20Gray900e5"
                         >
                           Languages
-                        </Text>
+                        </Textprofile>
                       </div>
-                      <Button
+                      <Buttonprofile
                         className="cursor-pointer font-medium leading-[normal] mb-[15px] min-w-[68px] mt-[9px] text-[6.46px] text-center"
                         shape="round"
                       >
                         Edit
-                      </Button>
+                      </Buttonprofile>
                     </div>
-                    <Text
+                    <Textprofile
                       className="md:ml-[0] ml-[30px] text-[10.67px] text-black-900_01 tracking-[0.11px]"
                       size="txtOutfitRegular1067Black90001"
                     >
                       Profant in English , urdu and punjabi{" "}
-                    </Text>
+                    </Textprofile>
                   </div>
                 </div>
               </List>
@@ -681,24 +681,24 @@ const Profile = () => {
               <div className="md:h-[202px] h-[209px] md:ml-[0] ml-[38px] relative w-[87%]">
                 <div className="absolute bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto w-[99%]">
                   <div className="flex flex-col gap-1.5 items-center justify-start w-full">
-                    <Text
+                    <Textprofile
                       className="text-base text-teal-50 w-full"
                       size="txtCairoBold16"
                     >
                       Kleon Clean Admin Dashboard
-                    </Text>
-                    <Text
+                    </Textprofile>
+                    <Textprofile
                       className="text-sm text-teal-50 w-[99%] sm:w-full"
                       size="txtCairoRegular14"
                     >
                       Made with ♥ by Peterdraw
-                    </Text>
+                    </Textprofile>
                   </div>
                 </div>
                 <div className="absolute md:h-[202px] h-[205px] inset-[0] justify-center m-auto w-[97%]">
                   <div className="absolute h-[202px] inset-[0] justify-center m-auto w-full">
-                    <div className="bg-gradient4  h-[202px] m-auto rounded-[32px] shadow-bs4 w-[63%]"></div>
-                    <div className="absolute bg-gradient4  flex flex-col h-full inset-[0] items-center justify-center m-auto rounded-[32px] w-full">
+                    <div className="bg-gradient  h-[202px] m-auto rounded-[32px] shadow-bs4 w-[63%]"></div>
+                    <div className="absolute bg-gradient  flex flex-col h-full inset-[0] items-center justify-center m-auto rounded-[32px] w-full">
                       <div
                         className="bg-cover bg-no-repeat flex flex-col h-[202px] items-center justify-start p-[21px] sm:px-5 w-full"
                         style={{
@@ -711,12 +711,12 @@ const Profile = () => {
                             src="images/img_grid.svg"
                             alt="grid"
                           />
-                          <Text
+                          <Textprofile
                             className="leading-[34.00px] mt-1 text-2xl md:text-[22px] text-white-A700 sm:text-xl w-full"
                             size="txtCairoBold24"
                           >
                             A new scholarship might interest you
-                          </Text>
+                          </Textprofile>
                           <Img
                             className="h-[11px] ml-1.5 md:ml-[0] mt-3.5"
                             src="images/img_arrowleft.svg"
@@ -727,8 +727,8 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="absolute h-[202px] inset-[0] justify-center m-auto w-full">
-                    <div className="bg-gradient5  h-[202px] m-auto rounded-[32px] shadow-bs4 w-[63%]"></div>
-                    <div className="absolute bg-gradient5 flex flex-col h-full inset-[0] items-center justify-center m-auto rounded-[32px] w-full">
+                    <div className="bg-gradient1  h-[202px] m-auto rounded-[32px] shadow-bs4 w-[63%]"></div>
+                    <div className="absolute bg-gradient1  flex flex-col h-full inset-[0] items-center justify-center m-auto rounded-[32px] w-full">
                       <div
                         className="bg-cover bg-no-repeat flex flex-col h-[202px] items-center justify-start p-[21px] sm:px-5 w-full"
                         style={{
@@ -741,12 +741,12 @@ const Profile = () => {
                             src="images/img_grid.svg"
                             alt="grid_One"
                           />
-                          <Text
+                          <Textprofile
                             className="leading-[34.00px] mt-1 text-2xl md:text-[22px] text-white-A700 sm:text-xl w-full"
                             size="txtCairoBold24"
                           >
                             A new scholarship might interest you
-                          </Text>
+                          </Textprofile>
                           <Img
                             className="h-[11px] ml-1.5 md:ml-[0] mt-3.5"
                             src="images/img_arrowleft.svg"
@@ -793,11 +793,11 @@ const Profile = () => {
                 src="images/img_dashboard1.svg"
                 alt="dashboardOne"
               />
-              <Text className="flex-1 w-full">Profile</Text>
+              <Textprofile className="flex-1 w-full">Profile</Textprofile>
             </div>
             <MenuItem>
               <div className="flex flex-row gap-[67px] items-start justify-end top-[17%]">
-                <Text className="w-[31%] sm:w-full">Doc-wallet</Text>
+                <Textprofile className="w-[31%] sm:w-full">Doc-wallet</Textprofile>
                 <Img
                   className="h-[23px] mt-0.5 w-6"
                   src="images/img_checkmark.svg"
@@ -814,7 +814,7 @@ const Profile = () => {
                 />
               }
             >
-              <Text className="w-[49%] sm:w-full">Mentors</Text>
+              <Textprofile className="w-[49%] sm:w-full">Mentors</Textprofile>
             </MenuItem>
             <div className="absolute bg-teal-50 bottom-[40%] flex md:flex-col flex-row md:gap-5 inset-x-[0] items-start justify-start w-full">
               <Img
@@ -822,7 +822,7 @@ const Profile = () => {
                 src="images/img_favorite.svg"
                 alt="favorite"
               />
-              <Text className="flex-1 text-gray-500 w-full">Email</Text>
+              <Textprofile className="flex-1 text-gray-500 w-full">Email</Textprofile>
               <Img
                 className="h-[23px] md:mt-0 mt-[5px] w-[345px]"
                 src="images/img_arrowright.svg"
@@ -847,9 +847,9 @@ const Profile = () => {
                       />
                     }
                   >
-                    <Text className="font-bold mb-[7px] text-black-900_02 text-sm">
+                    <Textprofile className="font-bold mb-[7px] text-black-900_02 text-sm">
                       17
-                    </Text>
+                    </Textprofile>
                   </MenuItem>
                 </div>
                 <div className="flex flex-col gap-[15px] items-center justify-start mt-6 pt-1 w-full">
@@ -862,11 +862,11 @@ const Profile = () => {
                       />
                     }
                   >
-                    <Text className="my-1 w-2/5 sm:w-full">Explore</Text>
+                    <Textprofile className="my-1 w-2/5 sm:w-full">Explore</Textprofile>
                     <div className="bg-pink-50 flex flex-col items-center justify-start mb-2 p-[3px] rounded-[17px]">
-                      <Text className="font-bold text-pink-400 text-sm w-[30px]">
+                      <Textprofile className="font-bold text-pink-400 text-sm w-[30px]">
                         NEW
-                      </Text>
+                      </Textprofile>
                     </div>
                   </MenuItem>
                   <MenuItem
@@ -878,9 +878,9 @@ const Profile = () => {
                       />
                     }
                   >
-                    <Text className="my-0.5 text-gray-500 w-[46%] sm:w-full">
+                    <Textprofile className="my-0.5 text-gray-500 w-[46%] sm:w-full">
                       Track Application
-                    </Text>
+                    </Textprofile>
                   </MenuItem>
                   <Img
                     className="h-[27px]"
@@ -892,12 +892,12 @@ const Profile = () => {
             </div>
           </Menu>
           {!collapsed && (
-            <Text
+            <Textprofile
               className="mb-[876px] ml-[105px] mr-[110px] mt-[511px] text-black-900 text-lg w-[38%] sm:w-full"
               size="txtCairoSemiBold18Black900"
             >
               Groups
-            </Text>
+            </Textprofile>
           )}
         </Sidebar>
         <div className="absolute font-cairo overflow-x-auto right-[0] top-[2%] w-[14%]">
@@ -910,18 +910,18 @@ const Profile = () => {
               />
             </div>
             <div className="flex flex-col items-center justify-start md:px-5">
-              <Text
+              <Textprofile
                 className="text-base text-black-900"
                 size="txtCairoBold16Black900"
               >
                 Franklin Jr.
-              </Text>
-              <Text
+              </Textprofile>
+              <Textprofile
                 className="text-gray-500_02 text-right text-sm"
                 size="txtCairoRegular14Gray50002"
               >
                 Student{" "}
-              </Text>
+              </Textprofile>
             </div>
           </div>
         </div>
@@ -935,4 +935,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default DesktopSixPage;
