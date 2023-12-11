@@ -1,79 +1,35 @@
 import React from "react";
 
-import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
+// import {  useProSidebar } from "react-pro-sidebar";
 
-import { Img, Line, List, Text } from "components";
-
+import { Button, Img, Line, List, Text, Input } from "components";
+import Sidebar1 from "components/Sidebar1";
 const Scholarships = () => {
-  const { collapseSidebar, collapsed } = useProSidebar();
-
-  const sideBarMenu = [
-    {
-      icon: (
-        <Img
-          className="h-6 md:h-auto object-cover w-[11%]"
-          src="images/img_rectangle70.png"
-          alt="rectangleSeventy"
-        />
-      ),
-      label: (
-        <>
-          <Text className="mt-[7px] w-[41%] sm:w-full">Explore</Text>
-          <div className="bg-pink-50 flex flex-col items-center justify-start mb-[5px] p-[3px] rounded-[17px]">
-            <Text className="font-bold text-pink-400 text-sm w-[30px]">
-              NEW
-            </Text>
-          </div>
-        </>
-      ),
-    },
-    {
-      icon: (
-        <Img
-          className="h-[27px] w-7"
-          src="images/img_calendarsilhouette.svg"
-          alt="calendarsilhoue"
-        />
-      ),
-      label: (
-        <Text className="my-0.5 text-gray-500 w-[46%] sm:w-full">
-          Track Application
-        </Text>
-      ),
-    },
-    {
-      icon: (
-        <Img
-          className="h-[27px] w-7"
-          src="images/img_contact1.svg"
-          alt="contactOne"
-        />
-      ),
-      label: <Text className="w-[47%] sm:w-full">Groups</Text>,
-    },
-  ];
+  // const { collapseSidebar, collapsed } = useProSidebar();
 
   return (
     <>
       <div className="bg-gray-300 h-[1196px] mx-auto overflow-auto relative w-full">
-        <div className="absolute font-cairo md:h-[1175px] h-[1194px] inset-[0] justify-center m-auto md:px-5 w-full">
-          <div className="absolute h-[1175px] inset-[0] justify-center m-auto w-full">
+        <div className="absolute font-cairo md:h-[1175px] h-[1194px] inset-[4] justify-center m-auto md:px-5 w-full">
+          <div className="absolute h-[1175px] inset-[3] justify-left m-auto w-full">
             <div className="bg-white-A700 flex flex-col h-full items-start justify-start m-auto p-6 sm:px-5 w-full">
-              <Img
+              {/* <Img
                 className="h-6 mb-[1103px] ml-40 md:ml-[0] w-6"
                 src="images/img_arrowup.svg"
                 alt="arrowup"
-              />
+              /> */}
             </div>
-            <div className="absolute bg-white-A700 flex flex-col gap-[41px] items-start justify-end p-0.5 right-[0] shadow-bs top-[8%]">
+            <div className="absolute bg-white-A700 flex flex-col gap-[41px] items-center justify-end p-0.5 right-[0.1] shadow-bs top-[8%] w-[70%]">
+              {" "}
+              {/* Adjust width as needed */}
               <Text
-                className="md:ml-[0] ml-[45px] mt-[3px] sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 tracking-[2.50px]"
+                className="md:ml-[0] ml-[45px] mt-[3px] sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 tracking-[2.50px] text-center" // Aligns text to the center
                 size="txtOverpassExtraBold25"
               >
                 Master’s degrees from all around the world
               </Text>
               <Text
-                className="md:ml-[0] ml-[45px] text-blue_gray-800 text-right text-xl tracking-[2.00px]"
+                className="md:ml-[0] ml-[45px] text-blue_gray-800 text-right text-xl tracking-[2.00px]" // Aligns text to the right
                 size="txtNunitoRegular20"
               >
                 Programmes
@@ -87,39 +43,48 @@ const Scholarships = () => {
             l
           </Text>
           <div className="absolute bg-white-A700 flex md:flex-col flex-row gap-[53px] items-center justify-center p-1.5 right-[0] shadow-bs top-[0] w-[82%]">
-            <div className="bg-gray-50 flex flex-row gap-5 items-center justify-start md:ml-[0] ml-[37px] md:mt-0 mt-2.5 p-[11px] rounded-[28px] w-2/5 md:w-full">
-              <Img
+            {/* <div className="bg-gray-50 flex flex-row gap-5 items-center justify-start md:ml-[0] ml-[37px] md:mt-0 mt-2.5 p-[11px] rounded-[28px] w-2/5 md:w-full"> */}
+            {/* <Img
                 className="h-[23px] ml-[27px]"
                 src="images/img_settings.svg"
                 alt="settings"
-              />
-              <Text
-                className="mt-1 text-base text-gray-500_01 w-[18%] sm:w-full"
-                size="txtCairoSemiBold16"
-              >
-                Search here
-              </Text>
-            </div>
+              /> */}
+            <Input
+              name="searchbox"
+              placeholder="Search here"
+              className="font-semibold leading-[normal] p-0 placeholder:text-gray-500 text-base text-left w-full"
+              wrapClassName="flex md:ml-[0] ml-[34px] md:mt-0 mt-[9px] rounded-[34px] w-2/5 md:w-full"
+              prefix={
+                <Img
+                  className="h-7 mr-5 my-px"
+                  src="images/img_search_2.svg"
+                  alt="search 2"
+                />
+              }
+              color="gray_50"
+              size="sm"
+            ></Input>
+            {/* </div> */}
             <div className="flex flex-row font-nunito gap-20 h-[29px] md:h-auto items-start justify-start mr-[245px] w-[445px] sm:w-full">
-              <Text
+              <button
                 className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
                 size="txtNunitoRegular20"
               >
                 Save
-              </Text>
-              <Text
+              </button>
+              <button
                 className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
                 size="txtNunitoRegular20"
               >
                 Notifications
-              </Text>
+              </button>
               <div className="flex flex-row items-start justify-between w-[100px]">
-                <Text
+                <button
                   className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
                   size="txtNunitoRegular20"
                 >
                   Blogs
-                </Text>
+                </button>
                 <div className="overflow-x-auto">
                   <div className="flex flex-row items-center justify-between py-[7px] w-full">
                     <Img
@@ -127,11 +92,11 @@ const Scholarships = () => {
                       src="images/img_arrowup_blue_gray_800.svg"
                       alt="arrowup_One"
                     />
-                    <Img
+                    {/* <Img
                       className="h-2"
                       src="images/img_arrow.svg"
                       alt="arrow"
-                    />
+                    /> */}
                   </div>
                 </div>
               </div>
@@ -165,163 +130,7 @@ const Scholarships = () => {
             </div>
           </div>
         </div>
-        <Sidebar
-          onClick={() => collapseSidebar(!collapsed)}
-          className="!sticky !w-[324px] bg-teal-50 flex font-cairo h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs1"
-        >
-          <Img
-            className="h-[63px] md:h-auto md:ml-[0] ml-[9px] mr-[229px] mt-[18px] object-cover w-[27%]"
-            src="images/img_logo1.png"
-            alt="logoOne"
-          />
-          <div className="bg-gray-900 h-0.5 md:ml-[0] ml-[286px] mr-3 mt-[52px] rounded-[1px] w-[8%]"></div>
-          <div className="bg-gray-900 h-0.5 md:ml-[0] ml-[286px] mr-3 mt-1 rounded-[1px] w-[8%]"></div>
-          <div className="h-[209px] md:h-[874px] md:ml-[0] mt-[672px] mx-[39px] relative w-[76%]">
-            <div className="absolute bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto w-[98%]">
-              <div className="flex flex-col gap-1.5 items-center justify-start w-full">
-                <Text
-                  className="text-base text-teal-50 w-full"
-                  size="txtCairoBold16Teal50"
-                >
-                  Kleon Clean Admin Dashboard
-                </Text>
-                <Text
-                  className="text-sm text-teal-50 w-[99%] sm:w-full"
-                  size="txtCairoRegular14Teal50"
-                >
-                  Made with ♥ by Peterdraw
-                </Text>
-              </div>
-            </div>
-            <div className="absolute h-[202px] inset-[0] justify-center m-auto w-[97%]">
-              <div className="bg-gradient  h-[202px] m-auto rounded-[32px] shadow-bs2 w-[63%]"></div>
-              <div className="absolute bg-gradient  flex flex-col h-full inset-[0] items-center justify-center m-auto rounded-[32px] w-full">
-                <div
-                  className="bg-cover bg-no-repeat flex flex-col h-[202px] items-center justify-start p-5 w-full"
-                  style={{ backgroundImage: "url('images/img_group9.png')" }}
-                >
-                  <div className="flex flex-col items-start justify-start mb-[19px] mt-3 w-[96%] md:w-full">
-                    <Img
-                      className="h-7 ml-0.5 md:ml-[0]"
-                      src="images/img_grid.svg"
-                      alt="grid"
-                    />
-                    <Text
-                      className="leading-[34.00px] mt-1 text-2xl md:text-[22px] text-white-A700 sm:text-xl w-full"
-                      size="txtCairoBold24"
-                    >
-                      A new scholarship might interest you
-                    </Text>
-                    <Img
-                      className="h-[11px] md:ml-[0] ml-[5px] mt-3.5"
-                      src="images/img_arrowleft.svg"
-                      alt="arrowleft"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Menu
-            menuItemStyles={{
-              button: {
-                padding: "7px",
-                gap: "67px",
-                color: "#000000",
-                fontWeight: 600,
-                fontSize: "18px",
-                marginLeft: "auto",
-                marginRight: "auto",
-                [`&:hover, &.ps-active`]: {
-                  color: "#111010",
-                  background: {
-                    gradientColors: { 0: "#e3e9eaff", 1: "#e3e9ea00" },
-                    type: "linear",
-                    angle: 180,
-                  },
-                  position: "relative",
-                },
-              },
-            }}
-            className="md:h-[1311px] sm:h-[1373px] h-[435px] mb-[943px] pt-[7px] relative w-full"
-          >
-            <div className="absolute flex sm:flex-col flex-row sm:gap-5 inset-x-[0] items-start justify-start top-[2%] w-full">
-              <Img
-                className="h-[31px] sm:mt-0 mt-[11px]"
-                src="images/img_dashboard1.svg"
-                alt="dashboardOne"
-              />
-              <Text className="flex-1 sm:mt-0 mt-[7px] w-full">Profile</Text>
-              <div className="bg-gray-900 h-0.5 mb-[38px] rounded-[1px] w-full"></div>
-            </div>
-            <MenuItem>
-              <div className="flex flex-row gap-[67px] inset-x-[0] items-start justify-end top-[17%]">
-                <Text className="w-[33%] sm:w-full">Doc-wallet</Text>
-                <Img
-                  className="h-[23px] mt-0.5 w-6"
-                  src="images/img_checkmark.svg"
-                  alt="checkmark"
-                />
-              </div>
-            </MenuItem>
-            <MenuItem
-              icon={
-                <Img
-                  className="h-[27px] w-7"
-                  src="images/img_comment1.svg"
-                  alt="commentOne"
-                />
-              }
-            >
-              <Text className="w-[49%] sm:w-full">Mentors</Text>
-            </MenuItem>
-            <div className="absolute bg-gradient2  flex md:flex-col flex-row md:gap-5 h-max inset-[0] items-center justify-center w-full">
-              <Img
-                className="h-2.5"
-                src="images/img_favorite.svg"
-                alt="favorite"
-              />
-              <Text className="flex-1 text-gray-500 w-full">Email</Text>
-              <Img
-                className="h-[23px] w-[324px]"
-                src="images/img_arrowright.svg"
-                alt="arrowright"
-              />
-            </div>
-            <div className="absolute bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto w-full">
-              <div className="flex flex-col items-center justify-start w-full">
-                <Line className="bg-deep_purple-600 h-12 rounded-[3px] w-full" />
-                <div className="flex flex-col md:gap-10 gap-[102px] items-center justify-start mt-[13px] w-full">
-                  <Img
-                    className="h-[23px]"
-                    src="images/img_grid_gray_800_01.svg"
-                    alt="grid_One"
-                  />
-                  <MenuItem
-                    icon={
-                      <Img
-                        className="h-3.5"
-                        src="images/img_lock.svg"
-                        alt="lock"
-                      />
-                    }
-                  >
-                    <Text className="font-bold mb-[7px] text-black-900_02 text-sm">
-                      17
-                    </Text>
-                  </MenuItem>
-                </div>
-                <div className="flex flex-col gap-[7.03px] items-center justify-end mt-6 py-[5px] w-full">
-                  {sideBarMenu?.map((menu, i) => (
-                    <MenuItem key={`sideBarMenuItem${i}`} {...menu}>
-                      {menu.label}
-                    </MenuItem>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Menu>
-        </Sidebar>
+        <Sidebar1 className="!sticky !w-[346px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute flex flex-col font-nunito items-start justify-start left-[27%] md:px-5 top-[36%]">
           <Text
             className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
@@ -350,7 +159,7 @@ const Scholarships = () => {
             className="sm:mt-0 mt-1 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
             size="txtNunitoBold25"
           >
-            Computer Science
+            {/* Computer Science */}
           </Text>
           <Text
             className="mb-1 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
@@ -361,13 +170,13 @@ const Scholarships = () => {
         </div>
         <div className="absolute flex flex-col font-nunito md:gap-10 gap-[63px] justify-start md:px-5 right-[6%] top-[27%] w-[7%]">
           <Text
-            className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
+            className="sm:text-[21px] md:text-[18px] text-[18px] text-blue_gray-800 text-right tracking-[2.50px]"
             size="txtNunitoBold25Bluegray800"
           >
             1 YEAR
           </Text>
           <Img
-            className="h-[52px] md:ml-[0] ml-[51px]"
+            className="h-[52px] mb-2 md:ml-[0] ml-[777px]"
             src="images/img_bookmark.svg"
             alt="bookmark"
           />
@@ -534,6 +343,7 @@ const Scholarships = () => {
                   2 YEAR
                 </Text>
               </div>
+
               <div className="flex sm:flex-col flex-row md:gap-10 gap-[709px] items-start justify-end ml-20 md:ml-[0] mt-[7px] w-[92%] md:w-full">
                 <div className="flex flex-col items-start justify-start sm:mt-0 mt-2.5">
                   <Text
