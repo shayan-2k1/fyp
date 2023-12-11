@@ -38,7 +38,7 @@ const PersonalForm = () => {
   const handleSubmit = async () => {
     try {
       setLoading('true');
-      const response = await axios.post("http://localhost:3000/student/info", {
+      const response = await axios.post("http://localhost:3000/students/infos", {
         firstName: fName,
         lastName: lName,
         contactNo: contactNo,

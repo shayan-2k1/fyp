@@ -29,7 +29,7 @@ const Login = () => {
           }
 
           console.log(response.data);
-          navigate("/Scholarships");
+          navigate("/desktopthree");
       } catch (error) {
           console.log(error);
           setError("Failed to sign in!");

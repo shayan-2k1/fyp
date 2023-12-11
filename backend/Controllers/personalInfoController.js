@@ -10,11 +10,12 @@ const client = new MongoClient(uri, {
 });
 
 async function personalInfo(req, res) {
+  console.log("AnnnnnnnnnnnnnnnnH");
   try {
     const { authorization } = req.headers;
-
+    console.log(req.headers);
     if (!authorization) {
-      return res.status(401).json({ error: "Unauthorized!" });
+      return res.status(401).json({ error: "Unauthoriiiiized!" });
     }
     let {
       firstname,

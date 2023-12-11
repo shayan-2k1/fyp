@@ -53,7 +53,7 @@ const personalInfoSchema = new mongoose.Schema({
       type: Number,
       min: 1970, 
       max: 2023, 
-      required: true,
+      // required: true,
     }
   }
 

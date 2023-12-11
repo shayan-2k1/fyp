@@ -8,10 +8,9 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^1.6.2",
-<<<<<<< HEAD
-=======
+    "cors": "^2.8.5",
     "js-cookie": "^3.0.5",
->>>>>>> 15ed5cb001e2befdc3d7156bc787848459136fca
+    "js-cookies": "^1.0.4",
     "prop-types": "^15.8.1",
     "react": "17.0.2",
     "react-datepicker": "^4.5.0",
