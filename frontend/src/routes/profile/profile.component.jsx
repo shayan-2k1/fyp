@@ -218,14 +218,14 @@ const Profile = () => {
     console.log('Bio submitted:', bio);
     setUserBio(bio);
     setShowAddBioForm(false);
-    setShowEditIcon(true);
+    
   };
 
   const handleFileChange = async (event) => {
     try {
       const file = event.target.files[0];
       setProfilePicture(file);
-      setShowEditIcon(true);
+     
 
       const formData = new FormData();
       formData.append('profilePicture', file);
@@ -299,7 +299,7 @@ const Profile = () => {
                     style={{ display: 'none' }}
                     id="upload-input"
                   />
-                  {showAddBioForm && (
+                  {/* {showAddBioForm && (
                     <div key="bio-form">
                       <textarea
                         value={bio}
@@ -313,8 +313,8 @@ const Profile = () => {
                         Save Bio
                       </button>
                     </div>
-                  )}
-                  {!showAddBioForm && showEditIcon && (
+                  )} */}
+                  {/* {!showAddBioForm && showEditIcon && (
                     <IconButton
                       style={{
                         position: 'absolute',
@@ -327,7 +327,7 @@ const Profile = () => {
                     >
                       <EditIcon fontSize="large" />
                     </IconButton>
-                  )}
+                  )} */}
                   <MDBCardText className="text-muted">{userBio}</MDBCardText>
                   <div className="d-flex justify-content-center mb-2">
                     <MDBBtn>Follow</MDBBtn>

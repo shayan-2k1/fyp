@@ -1,11 +1,50 @@
-import React from "react";
-
-import { Menu, MenuItem } from "react-pro-sidebar";
-
-import { Img, Input, Line, Text } from "components";
+import React,{ useState }  from "react";
+import {Button, Img, Input, Line, Text } from "components";
 import Sidebar1 from "components/Sidebar1";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const AcademicForm = () => {
+  const navigate = useNavigate();
+  const authToken = Cookies.get("auth_token");
+  const handleSubmit = async () => {
+    try {
+      setLoading(true); // Set loading state to true
+      const response = await axios.post(
+        "http://localhost:3000/academic/info",
+        {
+          degree:degree,
+          discipline:discipline,
+          country:country,
+          university:university,
+          GPA:GPA,
+          yearOfCompletion,yearOfCompletion,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+      console.log(response.data);
+      navigate('/desktopfive');
+    } catch (error) {
+      console.error(error);
+      setError(error); // Set error state if there's an error
+    } finally {
+      setLoading(false); // Set loading state to false after request completion (whether successful or not)
+    }
+  };
+
+  const [degree, setDegree] = useState('');
+  const [discipline, setDiscipline] = useState('');
+  const [country, setCountry] = useState('');
+  const [university, setUniversity] = useState('');
+  const [GPA, setGpa] = useState('');
+  const [yearOfCompletion, setYearOfCompletion] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState('');
   return (
     <>
       <div className="bg-gray-300 font-cairo h-[1210px] mx-auto overflow-auto relative w-full">
@@ -89,6 +128,9 @@ const AcademicForm = () => {
 
                       <Input
                         name="degree"
+                        value={degree}
+                        onChange={(e) =>{
+                        setDegree(e.target.value)}}
                         placeholder="Bachelor’s degree"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -107,6 +149,9 @@ const AcademicForm = () => {
 
                       <Input
                         name="discipline"
+                        value={discipline}
+                        onChange={(e) =>{
+                        setDiscipline(e.target.value)}}
                         placeholder="Software Engineering"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -127,6 +172,9 @@ const AcademicForm = () => {
 
                       <Input
                         name="country"
+                        value={country}
+                        onChange={(e) =>{
+                        setCountry(e.target.value)}}
                         placeholder="Pakistan"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -145,7 +193,10 @@ const AcademicForm = () => {
 
                       <Input
                         name="university"
-                        placeholder="Fast university"
+                        value={university}
+                        onChange={(e) =>{
+                        setUniversity(e.target.value)}}
+                        placeholder="university"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
@@ -165,6 +216,9 @@ const AcademicForm = () => {
                       </Text>
                       <Input
                         name="YOC"
+                        value={yearOfCompletion}
+                        onChange={(e) =>{
+                        setYearOfCompletion(e.target.value)}}
                         placeholder="2023"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -181,6 +235,9 @@ const AcademicForm = () => {
                       </Text>
                       <Input
                         name="CGPA"
+                        value={GPA}
+                        onChange={(e) =>{
+                        setGpa(e.target.value)}}
                         placeholder="3.12"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -188,14 +245,28 @@ const AcademicForm = () => {
                         style={{ color: '#000000' }}
                       ></Input>
                     </div>
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <div className="flex items-center justify-center mt-6">
+                      <Button
+                      className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[300px] sm:min-w-full ml-20 mt-[25px] text-0xl md:text-[10px] text-center sm:text-xl tracking-[1.60px] uppercase"
+                      shape="round"
+                      onClick={handleSubmit}
+                    >
+                      Submit
+                    </Button>
+                      </div>
+                    </div>
                   </div>
-
+                  
 
                 </div>
+                
               </div>
-
+              
             </div>
+            
           </div>
+          
         </div>
         <Sidebar1 className="!sticky !w-[346px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute overflow-x-auto right-[0] top-[2%] w-[14%]">

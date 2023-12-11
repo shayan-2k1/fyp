@@ -8,7 +8,9 @@ const variants = {
     deep_purple_50: "bg-deep_purple-50 text-gray-900_cc",
   },
 };
-const sizes = { xs: "p-1.5" };
+const sizes = { xs: "p-1.5",
+                
+ };
 
 const Buttonprofile = ({
   children,
@@ -16,7 +18,7 @@ const Buttonprofile = ({
   leftIcon,
   rightIcon,
   shape = "",
-  size = "xs",
+  size = "lg",
   variant = "fill",
   color = "deep_purple_50",
   ...restProps

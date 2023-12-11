@@ -25,6 +25,33 @@ async function Addpicture(req, res) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+
+
+
+async function saveAboutMe(req, res) {
+  try {
+    console.log("AlinaH")
+    const { aboutMe } = req.body; // Assuming you're sending 'aboutMe' from the frontend
+
+    // Find the profile (replace this with your logic to find the correct profile)
+    const profile = await profileModel.findOne({ /* your query to find the correct profile */ });
+
+    if (!profile) {
+      return res.status(404).json({ message: 'Profile not found' });
+    }
+
+    // Update the 'AboutMe' field
+    profile.AboutMe = aboutMe;
+
+    // Save the updated profile
+    await profile.save();
+
+    return res.status(200).json({ message: 'About Me saved successfully' });
+  } catch (error) {
+    console.error('Error saving About Me:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
 async function AddExpertise(req, res) {
   try {
     const { expertise } = req.body;
@@ -114,4 +141,5 @@ module.exports = {
   getInterest,
   AddInterest,
   getLanguage,
+  saveAboutMe,
 };
