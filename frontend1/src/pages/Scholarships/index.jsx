@@ -1,4 +1,7 @@
 import React from "react";
+import {database} from '../../utils/configFirebase'
+import {get,ref} from 'firebase/database'
+import { useEffect, useState } from "react";
 
 // import {  useProSidebar } from "react-pro-sidebar";
 
@@ -6,6 +9,46 @@ import { Button, Img, Line, List, Text, Input } from "components";
 import Sidebar1 from "components/Sidebar1";
 const Scholarships = () => {
   // const { collapseSidebar, collapsed } = useProSidebar();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+      const dataRef=ref(database, 'scholarships');
+      get(dataRef).then((snapsot)=>{
+        if(snapsot.exists()) {
+          const dataArray=Object.entries(snapsot.val()).map(([id,data1])=>({
+            id,
+            ...data1,
+          }));
+
+          setData(dataArray);
+        }else{
+          console.log("No Data Available!");
+        }
+      }).catch((error)=>{
+          console.log(error);
+      });
+  }, []);
+
+  const limitedData=data.slice(0,100);
+
+  const handleSave=(e)=>{
+    try{
+        const response=axios.post("http://localhost:3000/student/save",{
+            scholarshipName:e.target.name,
+            deadline:e.target.deadline,
+            ammount:e.target.amount
+            
+        });
+    setLoading('true');
+    console.log(response.data);
+    }
+    catch{
+        console.log(error);
+        setError("Unable to save")
+    }
+    setLoading('false');
+    alert("Post has been saved successfully");
+};
 
   return (
     <>
@@ -28,21 +71,15 @@ const Scholarships = () => {
               >
                 Master’s degrees from all around the world
               </Text>
-              <Text
+              {/* <Text
                 className="md:ml-[0] ml-[45px] text-blue_gray-800 text-right text-xl tracking-[2.00px]" // Aligns text to the right
                 size="txtNunitoRegular20"
               >
                 Programmes
-              </Text>
+              </Text> */}
             </div>
           </div>
-          <Text
-            className="absolute left-[5%] text-gray-500 text-lg top-[33%] w-[5%] sm:w-full"
-            size="txtCairoSemiBold18"
-          >
-            l
-          </Text>
-          <div className="absolute bg-white-A700 flex md:flex-col flex-row gap-[53px] items-center justify-center p-1.5 right-[0] shadow-bs top-[0] w-[82%]">
+          <div className="absolute bg-white-A700 flex md:flex-col flex-row gap-[53px] items-center justify-center p-1.5 right-[0] shadow-bs top-[0] w-[87%]">
             {/* <div className="bg-gray-50 flex flex-row gap-5 items-center justify-start md:ml-[0] ml-[37px] md:mt-0 mt-2.5 p-[11px] rounded-[28px] w-2/5 md:w-full"> */}
             {/* <Img
                 className="h-[23px] ml-[27px]"
@@ -69,6 +106,7 @@ const Scholarships = () => {
               <button
                 className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
                 size="txtNunitoRegular20"
+                onClick={handleSave}
               >
                 Save
               </button>
@@ -130,245 +168,72 @@ const Scholarships = () => {
             </div>
           </div>
         </div>
-        <Sidebar1 className="!sticky !w-[346px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
-        <div className="absolute flex flex-col font-nunito items-start justify-start left-[27%] md:px-5 top-[36%]">
-          <Text
-            className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-            size="txtNunitoRegular18"
-          >
-            University of Birmingham
-          </Text>
-          <Text
-            className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-            size="txtNunitoRegular18"
-          >
-            Dubai, UAE
-          </Text>
-        </div>
-        <Text
-          className="absolute inset-x-[0] mx-auto text-blue_gray-800 text-xl top-[28%] tracking-[2.00px] w-[56%] sm:w-full"
-          size="txtNunitoRegular20"
-        >
-          Designed to open the door to exciting new career opportunities in
-          computer science and information technology, the Computer Science
-          course from University of Birmingham Dubai is suitable for graduates
-          from diverse subject backgrounds.
-        </Text>
-        <div className="absolute flex sm:flex-col flex-row font-nunito md:gap-10 items-start justify-between md:px-5 right-[6%] top-[23%] w-full">
-          <Text
-            className="sm:mt-0 mt-1 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
-            size="txtNunitoBold25"
-          >
-            {/* Computer Science */}
-          </Text>
-          <Text
-            className="mb-1 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-            size="txtNunitoBold25Bluegray800"
-          >
-            10,074,012 PKR/YEAR
-          </Text>
-        </div>
-        <div className="absolute flex flex-col font-nunito md:gap-10 gap-[63px] justify-start md:px-5 right-[6%] top-[27%] w-[7%]">
-          <Text
-            className="sm:text-[21px] md:text-[18px] text-[18px] text-blue_gray-800 text-right tracking-[2.50px]"
-            size="txtNunitoBold25Bluegray800"
-          >
-            1 YEAR
-          </Text>
-          <Img
-            className="h-[52px] mb-2 md:ml-[0] ml-[777px]"
-            src="images/img_bookmark.svg"
-            alt="bookmark"
-          />
-        </div>
-        <Line className="absolute bg-cyan-700 h-1 left-[23%] rotate-[-90deg] rounded-sm top-[18%] w-[9%]" />
-        <div className="absolute bg-white-A700 flex flex-col font-nunito items-center justify-end pr-1 md:px-5 py-1 right-[5%] shadow-bs top-[21%] w-[73%]">
-          <div className="flex flex-col gap-[7px] items-center justify-start mt-[21px] w-full">
-            <div className="flex flex-col gap-[9px] items-center justify-start w-[99%] md:w-full">
-              <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full">
-                <Text
-                  className="sm:mt-0 mt-1 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
-                  size="txtNunitoBold25"
-                >
-                  Computer Science
-                </Text>
-                <Text
-                  className="mb-1 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                  size="txtNunitoBold25Bluegray800"
-                >
-                  10,074,012 PKR/YEAR
-                </Text>
-              </div>
-              <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full">
-                <Text
-                  className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
-                  size="txtNunitoRegular20"
-                >
-                  Designed to open the door to exciting new career opportunities
-                  in computer science and information technology, the Computer
-                  Science course from University of Birmingham Dubai is suitable
-                  for graduates from diverse subject backgrounds.
-                </Text>
-                <Text
-                  className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                  size="txtNunitoBold25Bluegray800"
-                >
-                  1 YEAR
-                </Text>
-              </div>
-            </div>
-            <div className="flex md:flex-col flex-row md:gap-5 items-start justify-start w-full">
-              <Img
-                className="md:flex-1 h-[46px] sm:h-auto md:mt-0 mt-[11px] object-cover w-[8%] md:w-full"
-                src="images/img_image3.png"
-                alt="imageThree"
-              />
-              <div className="flex flex-col items-start justify-start md:mt-0 mt-[9px]">
-                <Text
-                  className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                  size="txtNunitoRegular18"
-                >
-                  University of Birmingham
-                </Text>
-                <Text
-                  className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                  size="txtNunitoRegular18"
-                >
-                  Dubai, UAE
-                </Text>
-              </div>
-              <Img
-                className="h-[52px] mb-2 md:ml-[0] ml-[777px]"
-                src="images/img_bookmark.svg"
-                alt="bookmark_One"
-              />
-            </div>
-          </div>
-        </div>
-        <List
-          className="absolute bottom-[7%] flex flex-col font-nunito gap-[60px] md:px-5 right-[5%] w-[73%]"
-          orientation="vertical"
-        >
-          <div className="bg-white-A700 flex flex-col items-center justify-end p-1 shadow-bs w-full">
-            <div className="flex flex-col items-center justify-start mt-[21px] w-[99%] md:w-full">
-              <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full">
-                <Text
-                  className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
-                  size="txtNunitoBold25"
-                >
-                  Software Engineering
-                </Text>
-                <Text
-                  className="mb-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                  size="txtNunitoBold25Bluegray800"
-                >
-                  2,774,012 PKR/YEAR
-                </Text>
-              </div>
-              <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full">
-                <Text
-                  className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
-                  size="txtNunitoRegular20"
-                >
-                  JUNIA’s software engineering program consists of studying,
-                  designing, constructing, transforming, maintaining, and
-                  improving software. This internationally-accredited program
-                  delivers a Master of Science and Engineering,
-                </Text>
-                <Text
-                  className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                  size="txtNunitoBold25Bluegray800"
-                >
-                  2 YEAR
-                </Text>
-              </div>
-              <div className="flex md:flex-col flex-row md:gap-5 items-end justify-start mt-[7px] w-full">
-                <Img
-                  className="md:flex-1 h-[39px] sm:h-auto mb-[5px] md:mt-0 mt-[15px] object-cover w-[8%] md:w-full"
-                  src="images/img_image4.png"
-                  alt="imageFour"
-                />
-                <div className="flex flex-col items-start justify-start md:mt-0 mt-[9px]">
-                  <Text
-                    className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                    size="txtNunitoRegular18"
-                  >
-                    JUNIA
-                  </Text>
-                  <Text
-                    className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                    size="txtNunitoRegular18"
-                  >
-                    Lille, France
-                  </Text>
-                </div>
-                <Img
-                  className="h-[52px] mb-2 md:ml-[0] ml-[888px]"
-                  src="images/img_bookmark.svg"
-                  alt="bookmark"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="bg-white-A700 flex flex-col items-center justify-end shadow-bs w-full">
-            <div className="flex flex-col items-start justify-start mt-[25px] w-[98%] md:w-full">
-              <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full">
-                <Text
-                  className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
-                  size="txtNunitoBold25"
-                >
-                  Artificial Intelligence
-                </Text>
-                <Text
-                  className="mb-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                  size="txtNunitoBold25Bluegray800"
-                >
-                  14,023,607 PKR/YEAR
-                </Text>
-              </div>
-              <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between md:ml-[0] ml-[3px] mt-2.5 w-full">
-                <Text
-                  className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
-                  size="txtNunitoRegular20"
-                >
-                  A Master of Artificial Intelligence (STEM) from Illinois
-                  Institute of Technology will give you practical education in
-                  artificial Intelligence and its subfields of machine learning,
-                  deep learning, computer vision, natural language processing.
-                </Text>
-                <Text
-                  className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                  size="txtNunitoBold25Bluegray800"
-                >
-                  2 YEAR
-                </Text>
-              </div>
+        <Sidebar1 className="!sticky !w-[400px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
+        <div className="absolute flex flex-col font-nunito items-start justify-start left-[21%] md:px-5 top-[20%]">
+          <div>
+            {limitedData.map((sc) => (
+              <div key={sc.name} className="card">
+                {/* Display your card content here */}
 
-              <div className="flex sm:flex-col flex-row md:gap-10 gap-[709px] items-start justify-end ml-20 md:ml-[0] mt-[7px] w-[92%] md:w-full">
-                <div className="flex flex-col items-start justify-start sm:mt-0 mt-2.5">
-                  <Text
-                    className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                    size="txtNunitoRegular18"
-                  >
-                    Illinois Institute of Technology
+                <div className="bg-white-A700 flex flex-col items-center justify-end p-1 shadow-bs w-full">
+                <div className="flex flex-col items-center justify-start mt-[21px] w-[99%] md:w-full">
+            
+                  <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full">
+                    <Text
+                      className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
+                      size="txtNunitoBold25"
+                    >
+                      {sc.name}
                   </Text>
                   <Text
-                    className="mt-0.5 text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                    size="txtNunitoRegular18"
+                    className="mb-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
+                    size="txtNunitoBold25Bluegray800"
                   >
-                    Chicago, United States
+                    {sc.amount} USD/YEAR
                   </Text>
                 </div>
-                <Img
-                  className="h-[52px] mb-[11px]"
-                  src="images/img_bookmark.svg"
-                  alt="bookmark"
-                />
+                <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full">
+                  <Text
+                    className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
+                    size="txtNunitoRegular20"
+                  >
+                    {sc.description}
+                  </Text>
+                  <Text
+                    className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
+                    size="txtNunitoBold25Bluegray800"
+                  >
+                    {sc.deadline}
+                  </Text>
+                </div>
+                <div className="flex md:flex-col flex-row md:gap-5 items-end justify-start mt-[7px] w-full">
+                  <Img
+                    className="md:flex-1 h-[39px] sm:h-auto mb-[5px] md:mt-0 mt-[15px] object-cover w-[8%] md:w-full"
+                    src="images/img_image4.png"
+                    alt="imageFour"
+                  />
+                  <div className="flex flex-col items-start justify-start md:mt-0 mt-[9px]">
+                    <Text
+                      className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
+                      size="txtNunitoRegular18"
+                    >
+                      {sc.location}
+                    </Text>
+                    <Text
+                      className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
+                      size="txtNunitoRegular18"
+                    >
+                      {sc.eligibility}
+                    </Text>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </List>
+          ))}
+        </div>
       </div>
+    </div>
     </>
   );
 };
