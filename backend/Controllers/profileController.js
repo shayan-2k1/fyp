@@ -38,24 +38,34 @@ async function Addpicture(req, res) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
-async function getpicture(req, res) {
+async function getProfilePicture(req, res) {
   try {
-   
-    // Find the profile document for the given userId
-    const profile = await profileModel.findOne({ user: userId });
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
 
-    if (!profile || !profile.data) {
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, secretKey);
+    const userId = decodedToken.id;
+
+    // Find the profile picture document for the user
+    const profilePicture = await profileModel.findOne({ user: userId });
+
+    if (!profilePicture) {
       return res.status(404).json({ error: 'Profile picture not found' });
     }
 
-    // Send the profile picture data as a response
-    res.set('Content-Type', profile.contentType);
-    res.send(profile.data);
+    // Send the profile picture data in the response
+    res.setHeader('Content-Type', profilePicture.contentType);
+    res.send(profilePicture.data);
   } catch (error) {
-    console.error('Error getting profile picture:', error);
+    console.error('Error retrieving profile picture:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+
 
 
 
@@ -266,7 +276,7 @@ async function getAllLanguages(req, res) {
 
 module.exports = {
   Addpicture,
-  getpicture,
+  getProfilePicture,
   AddInterest,
   getAllInterests,
   AddLanguage,

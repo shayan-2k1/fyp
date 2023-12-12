@@ -14,17 +14,15 @@ const PersonalForm = () => {
     "September", "October", "November", "December"
   ];
   const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
-  
-  const handleSubmit = async () => {
-    
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      setLoading(true); // Set loading state to true
-      
-      const response = await axios.post(
-        "http://localhost:3000/students/infos",
-         {  
-          firstName:firstName,
-          lastName:lastName,
+      setLoading('true');
+      const response = await axios.post("http://localhost:3000/students/infos",
+        {
+          firstName: firstName,
+          lastName: lastName,
           contactNo: contactNo,
           gender: gender,
           nationality: nationality,
@@ -36,12 +34,13 @@ const PersonalForm = () => {
           }
         },
         {
-          headers: {
-            Authorization:`Bearer${authToken}`,
+          headers: 
+          {
+            Authorization: `Bearer ${authToken}`,
           },
         }
       );
-      
+      console.log(response.data);
       navigate('/desktopfour');
     } catch (error) {
       console.error(error);
@@ -50,8 +49,8 @@ const PersonalForm = () => {
       setLoading(false); // Set loading state to false after request completion (whether successful or not)
     }
   };
- 
-  
+
+
   const [firstName, setfName] = useState('');
   const [lastName, setlName] = useState('');
   const [contactNo, setContact] = useState('');
@@ -63,7 +62,7 @@ const PersonalForm = () => {
   const [year, setYear] = useState(0);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState('');
-  console.log("react"+firstName);
+  console.log("react" + firstName);
   return (
 
     <>
@@ -144,16 +143,17 @@ const PersonalForm = () => {
                         size="txtNunitoSemiBold28"
                       >
                         First name
-                        
+
                       </Text>
 
                       <Input
                         name="firstName"
                         value={firstName}
-                        onChange={(e) =>{
-                        setfName(e.target.value)}}
-                        
-                        
+                        onChange={(e) => {
+                          setfName(e.target.value)
+                        }}
+
+
                         placeholder="Alina"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -285,13 +285,13 @@ const PersonalForm = () => {
                     </div>
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <div className="flex items-center justify-center mt-6">
-                      <Button
-                      className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[300px] sm:min-w-full ml-20 mt-[25px] text-0xl md:text-[10px] text-center sm:text-xl tracking-[1.60px] uppercase"
-                      shape="round"
-                      onClick={handleSubmit}
-                    >
-                      Submit
-                    </Button>
+                        <Button
+                          className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[300px] sm:min-w-full ml-20 mt-[25px] text-0xl md:text-[10px] text-center sm:text-xl tracking-[1.60px] uppercase"
+                          shape="round"
+                          onClick={handleSubmit}
+                        >
+                          Submit
+                        </Button>
                       </div>
                     </div>
                   </div>

@@ -2,23 +2,24 @@ const academicBackgroundSchema = require("../Models/academicModel");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-async function academicBackground(req,res){
-    
-    try{
-    
-    let {
-        degree,
-        discipline,
-        country,
-        university,
-        GPA,
-        yearOfCompletion 
-    } = req.body
-    const { authorization } = req.headers;
+async function academicBackground(req, res) {
 
+  try {
+    const { authorization } = req.headers;
     if (!authorization) {
       return res.status(401).json({ error: "Unauthorized!" });
     }
+    let {
+      degree,
+      discipline,
+      country,
+      university,
+      GPA,
+      yearOfCompletion
+    } = req.body
+
+
+
     const secretKey = process.env.SECRET_KEY;
     const token = authorization.split(" ")[1];
     const decodedToken = jwt.verify(token, secretKey);
@@ -40,7 +41,7 @@ async function academicBackground(req,res){
         },
         { new: true }
       );
-      
+
 
       res.status(200).json({ message: "Academic Background updated successfully" });
     } else {
@@ -52,7 +53,7 @@ async function academicBackground(req,res){
         country,
         university,
         GPA,
-        yearOfCompletion 
+        yearOfCompletion
       });
 
       await academicBackground.save();
@@ -63,7 +64,31 @@ async function academicBackground(req,res){
     console.log(error);
   }
 }
+async function getAcademicBackground(req, res) {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: "Unauthorized!" });
+    }
 
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, secretKey);
+    const userId = decodedToken.id;
+
+    const academicBackground = await academicBackgroundSchema.findOne({ user: userId });
+
+    if (!academicBackground) {
+      return res.status(404).json({ error: "Academic background not found" });
+    }
+
+    res.status(200).json(academicBackground);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
+}
 module.exports = {
   academicBackground,
+  getAcademicBackground,
 };

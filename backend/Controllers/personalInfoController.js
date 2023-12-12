@@ -1,17 +1,17 @@
 const personalInfoSchema = require("../Models/personalInfoModel");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
-const { MongoClient } = require('mongodb');
+const dotenv = require('dotenv');
+// const { MongoClient } = require('mongodb');
 const uri = process.env.MONGO_URL;
-
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+dotenv.config();
+// const client = new MongoClient(uri, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 async function personalInfo(req, res) {
-
-  try {
+ 
+ try {
     const { authorization } = req.headers;
    
     if (!authorization) {
@@ -22,6 +22,7 @@ async function personalInfo(req, res) {
     const decodedToken = jwt.verify(token, secretKey);
     const userId = decodedToken.id;
     let {
+      
       firstName,
       lastName,
       contactNo,
@@ -59,7 +60,7 @@ async function getPersonalInfo(req, res) {
       return res.status(401).json({ error: "Unauthorized!" });
     }
 
-    // Extract user ID from the token
+    
     const token = authorization.split(" ")[1];
     const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
     const userId = decodedToken.id;
@@ -72,11 +73,11 @@ async function getPersonalInfo(req, res) {
     }
 
     // Extract relevant information from the user profile
-    const { firstname, lastname, contactNo, countryOfResidence } = userProfile;
+    const { firstName, lastName, contactNo, countryOfResidence } = userProfile;
 
     res.status(200).json({
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       contactNo,
       countryOfResidence,
     });

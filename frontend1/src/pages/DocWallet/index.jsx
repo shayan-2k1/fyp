@@ -88,15 +88,9 @@ const DocWallet = () => {
                     >
                       Blogs
                     </button>
-                    <div className="flex flex-row items-center justify-between py-[7px] w-full">
-                      <Img
-                        className="h-3 w-3"
-                        src="images/img_arrowup.svg"
-                        alt="arrowup_One"
-                      />
-                    </div>
+                    
                   </div>
-                </div>
+                  </div> 
               </div>
               <Text
                 className="md:ml-[10] ml-[272px] mt-[20px] text-4xl sm:text-[20px] md:text-[5px] text-cyan-700 tracking-[3.60px]"
@@ -173,22 +167,6 @@ const DocWallet = () => {
                             Upload File
                           </button>
                         </div>
-                        {/* <input type="file" onChange={handleFileChange} 
-                      />
-                    <button onClick={handleUpload}>Upload File</button> */}
-
-                        {/* <button onClick={handleUpload}>
-      Upload File */}
-                        {/* <img
-                      className="h-[132px] md:h-auto object-cover"
-                      src="images/img_icons8files1.png"
-                      alt="icons8filesOne"
-                    /> */}
-                        {/* </button> */}
-                        {/* <div style={{ marginTop: "10px" }}>
-              
-            </div> */}
-
                         <Text
                           className="mb-12 md:text-3xl sm:text-[20px] text-[28px] text-black-900_7f"
                           size="txtSairaCondensedRegular32"
