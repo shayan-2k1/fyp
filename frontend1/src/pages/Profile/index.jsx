@@ -1,10 +1,11 @@
 import React, { useState,  useEffect } from "react";
 import axios from 'axios';
 import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
+import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { Buttonprofile, Img, Input, Line, List, RatingBar, Textprofile, Text } from "components";
-
+import Sidebar1 from "components/Sidebar1";
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [profilePicture, setProfilePicture] = useState(null);
@@ -68,19 +69,22 @@ const Profile = () => {
   
 
 
-  const { collapseSidebar, collapsed } = useProSidebar();
+  // const { collapseSidebar, collapsed } = useProSidebar();
 
   return (
     <>
       <div className="bg-gray-300 font-outfit h-[1196px] mx-auto overflow-auto relative w-full">
 
         <div className="absolute sm:h-[1280px] h-[1213px] md:h-[1384px] inset-[0] justify-center m-auto md:px-5 w-full">
-          <div className="absolute h-[1153px] inset-[0] justify-center m-auto w-full">
-            <div className="h-[1153px] m-auto w-full">
+        
+          <div className="absolute h-[1199px] inset-[0] justify-center m-auto w-full">
+            
+            <div className="h-[1199px] m-auto w-full">
+              
               <div className="flex flex-col h-full items-center justify-start m-auto w-full">
-
+              
                 <Img
-                  className="h-[1153px] sm:h-auto object-cover w-full"
+                  className="h-[1199px] sm:h-auto object-cover w-full"
                   src="images/img_rectangle2.png"
                   alt="rectangleTwo"
                 />
@@ -112,6 +116,7 @@ const Profile = () => {
                 />
 
               </div>
+              
               <div className="flex flex-col gap-3 justify-start mb-[138px] w-[99%] md:w-full">
 
                 <div className="flex flex-col items-start justify-start mr-2 w-[97%] md:w-full">
@@ -291,8 +296,52 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-[8%] flex flex-col inset-x-[0] items-start justify-start mx-auto w-[86%]">
+          <div className="absolute bottom-[11%] flex flex-col inset-x-[0] items-start justify-start mx-auto w-[86%]">
+            
+          <div className="flex md:flex-col flex-row font-cairo md:gap-7 gap-[135px] items-start justify-end md:ml-[90px] ml-[90px]  w-[89%] md:w-full ">
+                <div className="bg-white-A700 flex md:flex-col flex-row gap-[19px] items-center justify-start p-[13px]  w-[90%] md:w-full">
+                  <div className="flex flex-row font-nunito gap-40 items-start justify-start w-auto sm:w-full">
+                  <div className="flex flex-col items-center justify-center">
+                    <Link to="/desktopthree">
+                      <button
+                        className="text-blue_gray-800 text-center text-xl tracking-[1.00px]"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Personal Information
+                      </button>
+                    </Link>
+                    <Line className="bg-cyan-700 h-[3px] mt-[-1.87px] mx-auto rounded-sm w-[90%] z-[1]" />
+                    </div>
+                    {/* <div className="flex flex-col relative w-1/2"> */}
+                    <div className="flex flex-col items-center justify-center">
+                    <Link to="/Desktopfour">
+                      <button
+                        className="mx-auto text-blue_gray-800 text-xl tracking-[1.00px] flex items-center justify-left"
+                        style={{ width: "250px", height: "40px" }}
+                      >
+                        Academic Background
+                      </button>
+                     </Link>
+                      <Line className="bg-cyan-700 h-[3px] mt-[-1.87px] mx-auto rounded-sm w-[90%] z-[1]" />
+                    </div>
+                    <div className="flex flex-col items-center justify-center">
+                    <Link to="/Desktopfive">
+                      <button
+                        className="mx-auto text-blue_gray-800 text-xl tracking-[1.00px] flex items-center justify-left"
+                        style={{ width: "150px", height: "40px" }}
+                      >
+                        Study Interest
+                      </button>
+                      </Link>
+                      <Line className="bg-cyan-700 h-[3px] mt-[-1.87px] mx-auto rounded-sm w-[90%] z-[1]" />
+                    </div>
+
+                    {/* </div>  */}
+                  </div>
+                </div>
+              </div>
             <div className="border border-black-900_26 border-solid flex flex-col items-center justify-start md:ml-[0] ml-[516px] p-2.5 rounded shadow-bs2 w-[63%] md:w-full">
+              
               <div className="flex flex-col gap-[0px] items-center justify-start mb-7 w-[99%] md:w-full">
                 <div className="flex flex-row sm:gap-10 items-end justify-between w-full">
                   <div className="flex flex-col items-start justify-start">
@@ -726,224 +775,8 @@ const Profile = () => {
           </div>
 
         </div>
-        <Sidebar
-          onClick={() => collapseSidebar(!collapsed)}
-          className="!sticky !w-[346px] bg-teal-50 flex font-cairo h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs3"
-        >
-          <div className="flex flex-row items-start justify-start mb-[493px] mt-[19px] mx-3 w-[93%]">
-            <div className="flex flex-col md:gap-10 gap-[648px] justify-start w-[91%]">
-              <Img
-                className="h-[63px] md:h-auto object-cover w-[30%]"
-                src="images/img_logo1.png"
-                alt="logoOne"
-              />
-              <div className="md:h-[202px] h-[209px] md:ml-[0] ml-[38px] relative w-[87%]">
-
-                <div className="absolute md:h-[202px] h-[205px] inset-[0] justify-center m-auto w-[97%]">
-                  <div className="absolute h-[202px] inset-[0] justify-center m-auto w-full">
-                    <div className="bg-gradient  h-[202px] m-auto rounded-[32px] shadow-bs4 w-[63%]"></div>
-                    <div className="absolute bg-gradient  flex flex-col h-full inset-[0] items-center justify-center m-auto rounded-[32px] w-full">
-                      <div
-                        className="bg-cover bg-no-repeat flex flex-col h-[202px] items-center justify-start p-[21px] sm:px-5 w-full"
-                        style={{
-                          backgroundImage: "url('images/img_group7.png')",
-                        }}
-                      >
-                        <div className="flex flex-col items-start justify-start mb-[19px] mt-[11px] w-[97%] md:w-full">
-                          <Img
-                            className="h-7 md:ml-[0] ml-[3px]"
-                            src="images/img_grid.svg"
-                            alt="grid"
-                          />
-                          <Textprofile
-                            className="leading-[34.00px] mt-1 text-2xl md:text-[22px] text-white-A700 sm:text-xl w-full"
-                            size="txtCairoBold24"
-                          >
-                            A new scholarship might interest you
-                          </Textprofile>
-                          <Img
-                            className="h-[11px] ml-1.5 md:ml-[0] mt-3.5"
-                            src="images/img_arrowleft.svg"
-                            alt="arrowleft"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute h-[202px] inset-[0] justify-center m-auto w-full">
-                    <div className="bg-gradient1  h-[202px] m-auto rounded-[32px] shadow-bs4 w-[63%]"></div>
-                    <div className="absolute bg-gradient1  flex flex-col h-full inset-[0] items-center justify-center m-auto rounded-[32px] w-full">
-                      <div
-                        className="bg-cover bg-no-repeat flex flex-col h-[202px] items-center justify-start p-[21px] sm:px-5 w-full"
-                        style={{
-                          backgroundImage: "url('images/img_group7.png')",
-                        }}
-                      >
-                        <div className="flex flex-col items-start justify-start mb-[19px] mt-[11px] w-[97%] md:w-full">
-                          <Img
-                            className="h-7 md:ml-[0] ml-[3px]"
-                            src="images/img_grid.svg"
-                            alt="grid_One"
-                          />
-                          <Textprofile
-                            className="leading-[34.00px] mt-1 text-2xl md:text-[22px] text-white-A700 sm:text-xl w-full"
-                            size="txtCairoBold24"
-                          >
-                            A new scholarship might interest you
-                          </Textprofile>
-                          <Img
-                            className="h-[11px] ml-1.5 md:ml-[0] mt-3.5"
-                            src="images/img_arrowleft.svg"
-                            alt="arrowleft_One"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col gap-[5px] items-center justify-start ml-[3px] mt-7 w-[9%]">
-              <div className="bg-gray-900 h-0.5 rounded-[1px] w-full"></div>
-              <div className="bg-gray-900 h-0.5 rounded-[1px] w-full"></div>
-              <div className="bg-gray-900 h-0.5 rounded-[1px] w-full"></div>
-            </div>
-          </div>
-          <Menu
-            menuItemStyles={{
-              button: {
-                padding: "7px",
-                backgroundColor: "#e3e9ea",
-                gap: "67px",
-                color: "#000000",
-                fontWeight: 600,
-                fontSize: "18px",
-                marginLeft: "auto",
-                marginRight: "auto",
-                left: "0px",
-                right: "0px",
-                [`&:hover, &.ps-active`]: {
-                  color: "#6418c3",
-                  backgroundColor: "#e3e9eaff !important",
-                  position: "relative",
-                },
-              },
-            }}
-            className="md:h-[1379px] sm:h-[1436px] h-[416px] mb-[903px] mt-[114px] pt-[7px] relative w-full"
-          >
-            <div className="absolute flex sm:flex-col flex-row sm:gap-5 inset-x-[0] items-start justify-start top-[2%] w-full">
-              <Img
-                className="h-[31px] sm:mt-0 mt-0.5"
-                src="images/img_dashboard1.svg"
-                alt="dashboardOne"
-              />
-              <Textprofile className="flex-1 w-full">Profile</Textprofile>
-            </div>
-            <MenuItem>
-              <div className="flex flex-row gap-[67px] items-start justify-end top-[17%]">
-                <Textprofile className="w-[31%] sm:w-full">Doc-wallet</Textprofile>
-                <Img
-                  className="h-[23px] mt-0.5 w-6"
-                  src="images/img_checkmark.svg"
-                  alt="checkmark"
-                />
-              </div>
-            </MenuItem>
-            <MenuItem
-              icon={
-                <Img
-                  className="h-[27px] w-7"
-                  src="images/img_comment1.svg"
-                  alt="commentOne"
-                />
-              }
-            >
-              <Textprofile className="w-[49%] sm:w-full">Mentors</Textprofile>
-            </MenuItem>
-            <div className="absolute bg-teal-50 bottom-[40%] flex md:flex-col flex-row md:gap-5 inset-x-[0] items-start justify-start w-full">
-              <Img
-                className="h-2.5 md:mt-0 mt-1"
-                src="images/img_favorite.svg"
-                alt="favorite"
-              />
-              <Textprofile className="flex-1 text-gray-500 w-full">Email</Textprofile>
-              <Img
-                className="h-[23px] md:mt-0 mt-[5px] w-[345px]"
-                src="images/img_arrowright.svg"
-                alt="arrowright"
-              />
-            </div>
-            <div className="absolute bottom-[0] flex flex-col inset-x-[0] items-center justify-start mx-auto w-full">
-              <div className="flex flex-col items-center justify-start w-full">
-                <Line className="bg-deep_purple-600 h-12 rounded-[3px] w-full" />
-                <div className="flex flex-col md:gap-10 gap-[97px] items-center justify-start mt-[15px] w-full">
-                  <Img
-                    className="h-[27px]"
-                    src="images/img_thumbnail1.svg"
-                    alt="thumbnailOne"
-                  />
-                  <MenuItem
-                    icon={
-                      <Img
-                        className="h-3.5 mt-1"
-                        src="images/img_lock.svg"
-                        alt="lock"
-                      />
-                    }
-                  >
-                    <Textprofile className="font-bold mb-[7px] text-black-900_02 text-sm">
-                      17
-                    </Textprofile>
-                  </MenuItem>
-                </div>
-                <div className="flex flex-col gap-[15px] items-center justify-start mt-6 pt-1 w-full">
-                  <MenuItem
-                    icon={
-                      <Img
-                        className="h-6 md:h-auto my-[9px] object-cover w-[10%]"
-                        src="images/img_rectangle70.png"
-                        alt="rectangleSeventy"
-                      />
-                    }
-                  >
-                    <Textprofile className="my-1 w-2/5 sm:w-full">Explore</Textprofile>
-                    <div className="bg-pink-50 flex flex-col items-center justify-start mb-2 p-[3px] rounded-[17px]">
-                      <Textprofile className="font-bold text-pink-400 text-sm w-[30px]">
-                        NEW
-                      </Textprofile>
-                    </div>
-                  </MenuItem>
-                  <MenuItem
-                    icon={
-                      <Img
-                        className="h-[27px] w-7"
-                        src="images/img_calendarsilhouette.svg"
-                        alt="calendarsilhoue"
-                      />
-                    }
-                  >
-                    <Textprofile className="my-0.5 text-gray-500 w-[46%] sm:w-full">
-                      Track Application
-                    </Textprofile>
-                  </MenuItem>
-                  <Img
-                    className="h-[27px]"
-                    src="images/img_contact1.svg"
-                    alt="contactOne"
-                  />
-                </div>
-              </div>
-            </div>
-          </Menu>
-          {!collapsed && (
-            <Textprofile
-              className="mb-[876px] ml-[105px] mr-[110px] mt-[511px] text-black-900 text-lg w-[38%] sm:w-full"
-              size="txtCairoSemiBold18Black900"
-            >
-              Groups
-            </Textprofile>
-          )}
-        </Sidebar>
+        <Sidebar1 className="!sticky !w-[346px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
+        
         <div className="absolute font-cairo overflow-x-auto right-[0] top-[2%] w-[14%]">
           <div className="flex flex-row gap-6 items-center justify-between w-full">
             <div className="flex flex-col h-[57px] items-center justify-start md:px-5 w-[57px]">

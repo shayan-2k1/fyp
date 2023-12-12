@@ -108,6 +108,18 @@ const DocWalletView = () => {
                       </button>
                       <Line className="bg-cyan-700 h-[3px] mt-[-1.87px] mx-auto rounded-sm w-[70%] z-[1]" />
                     </div>
+                    <div className="flex flex-col items-center justify-center">
+                    <Link to="/DocWallet">
+                      <button
+                        className="mx-auto text-blue_gray-800 text-xl tracking-[1.00px] flex items-center justify-left"
+                        style={{ width: "200px", height: "40px" }}
+                      >
+                        Upload Documents
+                      </button>
+                      </Link>
+                    
+                    </div>
+
 
                     {/* </div>  */}
                   </div>

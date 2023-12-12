@@ -19,7 +19,7 @@
 //           <Link to="/desktopfour">Academic Background</Link>
 //         </li>
 //         <li>
-//           <Link to="/desktopfive">desktopfive</Link>
+//           <Link to="/desktopfive">Study Interest</Link>
 //         </li>
 //         <li>
 //           <Link to="/landing">landing</Link>
@@ -226,10 +226,10 @@ const Home = () => {
             </Text>
           </div>
           <div
-            className="bg-cover bg-no-repeat flex flex-col font-opensans h-[588px] items-center justify-start mt-[303px] p-[101px] md:px-10 sm:px-5 w-full"
+            className="bg-cover bg-no-repeat flex flex-col font-opensans h-[588px] items-center justify-start mt-[303px] p-[101px] md:px-10 sm:px-5 w-full  transition-opacity duration-500 ease-in-out ${shouldShow ? 'opacity-100' : 'opacity-0'}`"
             style={{ backgroundImage: "url('images/img_service.svg')" }}
           >
-            <div className="flex flex-col gap-11 items-center justify-start max-w-[1091px] mb-[65px] mx-auto w-full">
+            <div className="flex flex-col gap-11 items-center justify-start max-w-[1091px] mb-[65px] mx-auto w-full   ">
               <Text
                 className="text-3xl sm:text-[26px] md:text-[28px] text-white-A700"
                 size="txtOpenSansBold30"
@@ -239,8 +239,8 @@ const Home = () => {
               <div className="flex md:flex-col flex-row md:gap-10 items-start justify-between w-full">
                 <div className="flex md:flex-1 flex-col justify-start md:mt-0 mt-[3px] pb-7 w-1/5 md:w-full">
                   <Img
-                    className="h-[82px] md:ml-[0] ml-[71px]"
-                    src="images/img_close.svg"
+                    className="h-[82px] md:ml-[0] ml-[60px]"
+                    src="images/1.png"
                     alt="close"
                   />
                   <Text
@@ -325,7 +325,7 @@ const Home = () => {
             </div>
           </div>
           <Img
-            className="h-[500px] sm:h-auto max-w-[1148px] mt-[209px] mx-auto object-cover w-full"
+            className="h-[500px] sm:h-auto max-w-[1148px] mt-[209px] mx-auto object-cover w-full "
             src="images/img_image2.png"
             alt="imageTwo"
           />
