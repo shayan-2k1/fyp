@@ -2,14 +2,19 @@ import React from "react";
 import {database} from '../../utils/configFirebase'
 import {get,ref} from 'firebase/database'
 import { useEffect, useState } from "react";
+import { Axios } from "axios";
 
 // import {  useProSidebar } from "react-pro-sidebar";
 
 import { Button, Img, Line, List, Text, Input } from "components";
 import Sidebar1 from "components/Sidebar1";
+import axios from "axios";
 const Scholarships = () => {
   // const { collapseSidebar, collapsed } = useProSidebar();
   const [data, setData] = useState([]);
+  const [name, setName] =useState('');
+  const [deadline,setDeadline]=useState('');
+  const [amount, setAmount]=useState('');
 
   useEffect(() => {
       const dataRef=ref(database, 'scholarships');
@@ -33,20 +38,17 @@ const Scholarships = () => {
 
   const handleSave=(e)=>{
     try{
-        const response=axios.post("http://localhost:3000/student/save",{
+        const response=Axios.post("http://localhost:3000/student/save",{
             scholarshipName:e.target.name,
             deadline:e.target.deadline,
             ammount:e.target.amount
             
         });
-    setLoading('true');
     console.log(response.data);
     }
-    catch{
+    catch(error){
         console.log(error);
-        setError("Unable to save")
     }
-    setLoading('false');
     alert("Post has been saved successfully");
 };
 
@@ -106,7 +108,6 @@ const Scholarships = () => {
               <button
                 className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
                 size="txtNunitoRegular20"
-                onClick={handleSave}
               >
                 Save
               </button>
@@ -178,7 +179,10 @@ const Scholarships = () => {
                 <div className="bg-white-A700 flex flex-col items-center justify-end p-1 shadow-bs w-full">
                 <div className="flex flex-col items-center justify-start mt-[21px] w-[99%] md:w-full">
             
-                  <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full">
+                  <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full" onChange={(e)=>{
+                    setName(sc.name);
+                    setAmount(sc.amount);
+                  }}>
                     <Text
                       className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
                       size="txtNunitoBold25"
@@ -187,12 +191,14 @@ const Scholarships = () => {
                   </Text>
                   <Text
                     className="mb-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                    size="txtNunitoBold25Bluegray800"
+                    size="txtNunitoBold25Bluegray800" 
                   >
                     {sc.amount} USD/YEAR
                   </Text>
                 </div>
-                <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full">
+                <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full" onChange={(e)=>{
+                  setDeadline(sc.deadline);
+                }}>
                   <Text
                     className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
                     size="txtNunitoRegular20"
@@ -207,11 +213,11 @@ const Scholarships = () => {
                   </Text>
                 </div>
                 <div className="flex md:flex-col flex-row md:gap-5 items-end justify-start mt-[7px] w-full">
-                  <Img
+                  {/* <Img
                     className="md:flex-1 h-[39px] sm:h-auto mb-[5px] md:mt-0 mt-[15px] object-cover w-[8%] md:w-full"
                     src="images/img_image4.png"
                     alt="imageFour"
-                  />
+                  /> */}
                   <div className="flex flex-col items-start justify-start md:mt-0 mt-[9px]">
                     <Text
                       className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
@@ -226,6 +232,12 @@ const Scholarships = () => {
                       {sc.eligibility}
                     </Text>
                   </div>
+                  <Img
+                  className="h-[52px] mb-[11px]"
+                  src="images/img_bookmark.svg"
+                  alt="bookmark"
+                  onClick={handleSave}
+                />
                 </div>
               </div>
             </div>
