@@ -49,6 +49,8 @@ module.exports = {
         cairo: "Cairo",
         inter: "Inter",
         opensans: "Open Sans",
+        outfit: "Outfit",
+        poppins: "Poppins",
       },
       backgroundImage: {
         gradient: "linear-gradient(180deg ,#e3e9ea,#e3e9ea00)",

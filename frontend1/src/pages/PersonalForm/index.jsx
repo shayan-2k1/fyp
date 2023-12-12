@@ -3,7 +3,9 @@ import { Button, Img, Input, Line, Text } from "components";
 import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 const PersonalForm = () => {
+  const navigate = useNavigate();
   const authToken = Cookies.get("auth_token");
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = [
@@ -38,7 +40,7 @@ const PersonalForm = () => {
         }
       );
       console.log(response.data);
-      // navigate('/academic-info');
+      navigate('/desktopfour');
     } catch (error) {
       console.error(error);
       setError(error); // Set error state if there's an error
@@ -146,10 +148,7 @@ const PersonalForm = () => {
                         name="fName"
                         value={fName}
                         onChange={(e) =>{
-                        console.log('Handling change:', e);
-                         console.log('e.target:', e.target);
-                         console.log('e.target:', e.target.value);
-                         setfName(e.target.value)}}
+                        setfName(e.target.value)}}
                         placeholder="Alina"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
