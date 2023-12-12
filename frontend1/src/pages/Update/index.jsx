@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'; // Import js-cookie
 import { Button, Img, Input, Line, List, Text } from "components";
 
 
-const Login = () => {
+const Update = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,18 +18,15 @@ const Login = () => {
       setError(null); // Clear any previous errors
 
       try {
-          const response = await axios.post("http://localhost:3000/student/signin", {
+          const response = await axios.put("http://localhost:3000/student/update", {
               email: email,
               password: password
           });
 
-          // Save the authentication token to a cookie
-          if (response.data.token) {
-              Cookies.set('auth_token', response.data.token, { expires: 1 }); // Set the token in a cookie
-          }
+          
 
           console.log(response.data);
-          navigate("/DocWallet");
+          navigate("/desktopone");
       } catch (error) {
           console.log(error);
           setError("Failed to sign in!");
@@ -178,33 +175,19 @@ const Login = () => {
                     >
                       <div className="flex flex-row gap-1 items-start justify-start w-auto">
                         <div className="flex items-center justify-start mt-[10px] ">
-                          <input type="radio" name="rememberMe" id="rememberMe" className="hidden" />
+                          {/* <input type="radio" name="rememberMe" id="rememberMe" className="hidden" />
                           <label
                             htmlFor="rememberMe"
                             className="bg-white-A700 border-2 border-cyan-800_01 border-solid flex items-center justify-center h-9 w-9 rounded-full cursor-pointer transition duration-300 ease-in-out hover:bg-cyan-800 hover:border-cyan-800"
                           >
                             <div className="bg-cyan-800 h-[29px] rounded-[14px] shadow-bs2 w-[29px]"></div>
-                          </label>
+                          </label> */}
                         </div>
-                        <div className="flex flex-col items-start justify-start mt-[10px] pr-[6px] py-[6px]">
-                          <Text
-                            className="text-blue_gray-800 text-xl tracking-[2.00px]"
-                            size="txtNunitoRegular20"
-                          >
-                            Remember me
-                          </Text>
-                        </div>
+                        
                       </div>
                       <div className="flex sm:flex-1 sm:flex-col flex-row gap-4 items-start justify-start w-auto sm:w-full">
                        
-                        <div className="flex flex-col items-center justify-end py-2">
-                          <button
-                            className="mt-[3px] text-blue_gray-800 text-xl tracking-[2.00px]"
-                            size="txtNunitoRegular20"
-                          >
-                            Forget password?
-                          </button>
-                        </div>
+                        
                       </div>
                     </List>
                     <Button
@@ -212,7 +195,7 @@ const Login = () => {
                       shape="round"
                       onClick={handleChange}
                     >
-                      Sign in
+                      Update Password
                     </Button>
 
                   </div>
@@ -234,4 +217,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Update;
