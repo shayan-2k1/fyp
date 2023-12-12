@@ -2,7 +2,7 @@ import React from "react";
 import {database} from '../../utils/configFirebase'
 import {get,ref} from 'firebase/database'
 import { useEffect, useState } from "react";
-
+import axios from 'axios';
 // import {  useProSidebar } from "react-pro-sidebar";
 
 import { Button, Img, Line, List, Text, Input } from "components";
@@ -10,7 +10,8 @@ import Sidebar1 from "components/Sidebar1";
 const Scholarships = () => {
   // const { collapseSidebar, collapsed } = useProSidebar();
   const [data, setData] = useState([]);
-
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
       const dataRef=ref(database, 'scholarships');
       get(dataRef).then((snapsot)=>{
@@ -33,7 +34,7 @@ const Scholarships = () => {
 
   const handleSave=(e)=>{
     try{
-        const response=axios.post("http://localhost:3000/student/save",{
+        const response=axios.post("http://localhost:3000/scholarship/save",{
             scholarshipName:e.target.name,
             deadline:e.target.deadline,
             ammount:e.target.amount
@@ -106,7 +107,7 @@ const Scholarships = () => {
               <button
                 className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
                 size="txtNunitoRegular20"
-                onClick={handleSave}
+               
               >
                 Save
               </button>

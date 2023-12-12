@@ -1,5 +1,5 @@
 const express = require("express");
 const {scholarship} = require("../Controllers/scholarshipController") 
-const personalInfoRouter = express.Router(); 
-personalInfoRouter.post("/save" ,scholarship)
-module.exports = personalInfoRouter
+const scholarshipRouter = express.Router(); 
+scholarshipRouter.post("/save" ,scholarship)
+module.exports = scholarshipRouter

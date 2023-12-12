@@ -16,27 +16,27 @@ async function scholarship(req, res) {
 
     const userId = decodedToken.id;
 
-    const { scholarshipDetails } = req.body; // Assuming 'githubRepo' is sent from the frontend
+    const { scholarshipDetails } = req.body; // Assuming 'scholarshipDetails' is sent from the frontend
 
-    // Find the project for the given userId
+    // Find the scholarship details for the given userId
     let user = await Scholarship.findOne({ user: userId });
 
     if (!user) {
-      // If project not found, create a new one and add the first link
+      // If scholarship details not found, create a new one and add the scholarship details
       const saveScholarships = new Scholarship({
         user: userId,
-        arrayOfScholarships: [scholarshipDetails], // Store the first link as an array
+        arrayOfScholarships: [scholarshipDetails],
       });
 
-      // Save the new project with the user's GitHub repository link
+      // Save the new scholarship details
       await saveScholarships.save();
 
       return res.status(200).json({ message: 'Scholarship saved successfully' });
     } else {
-      // If project exists, add the new link to the existing array of links
-      user.saveScholarships.push(scholarshipDetails);
+      // If scholarship details exist, add the new details to the existing array
+      user.arrayOfScholarships.push(scholarshipDetails);
 
-      // Save the updated project with the new link added
+      // Save the updated scholarship details
       await user.save();
 
       return res.status(200).json({ message: 'Scholarship saved successfully' });
