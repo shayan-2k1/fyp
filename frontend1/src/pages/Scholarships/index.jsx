@@ -36,14 +36,14 @@ const Scholarships = () => {
 
   const limitedData=data.slice(0,100);
 
-  const handleSave = async (e) => {
+  const handleSave = async (scholarship) => {
     try {
       const response = await axios.post(
         "http://localhost:3000/scholarship/save",
         {
-          scholarshipName: scholarshipName,
-          deadline: deadline,
-          amount: amount,
+          scholarshipName: scholarship.name,
+          deadline: scholarship.deadline,
+          amount: scholarship.amount,
         },
         {
           headers: {
@@ -117,7 +117,7 @@ const Scholarships = () => {
               <button
                 className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
                 size="txtNunitoRegular20"
-                onClick={handleSave}
+                // onClick={handleSave}
               >
                 Save
               </button>
@@ -190,8 +190,8 @@ const Scholarships = () => {
                 <div className="flex flex-col items-center justify-start mt-[21px] w-[99%] md:w-full">
             
                   <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full" onChange={(e)=>{
-                    setscholarshipName(sc.name);
-                    setAmount(sc.amount);
+                    // setscholarshipName(sc.name);
+                    // setAmount(sc.amount);
                   }}>
                     <Text
                       className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
@@ -206,9 +206,7 @@ const Scholarships = () => {
                     {sc.amount} USD/YEAR
                   </Text>
                 </div>
-                <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full" onChange={(e)=>{
-                  setDeadline(sc.deadline);
-                }}>
+                <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full" >
                   <Text
                     className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
                     size="txtNunitoRegular20"
@@ -246,7 +244,7 @@ const Scholarships = () => {
                   className="h-[52px] mb-[11px]"
                   src="images/img_bookmark.svg"
                   alt="bookmark"
-                  onClick={handleSave}
+                  onClick={() => handleSave(sc)}
                 />
                 </div>
               </div>
