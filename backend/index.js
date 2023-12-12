@@ -9,7 +9,7 @@ const infoRoute = require("./Routes/personalInfoRoutes.js")
 const academicRoute = require("./Routes/academicRoutes.js")
 const academicPrefRoute = require("./Routes/studyInterestRoutes.js")
 const profileRouter=require("./Routes/profileRouter.js")
-
+const projectRouter = require("./Routes/projectRoutes.js")
 
 const cors = require('cors');
 
@@ -25,7 +25,7 @@ app.use("/students" , infoRoute);
 app.use("/profile" , profileRouter); 
 app.use("/academic" , academicRoute); 
 app.use("/studyInterest" , academicPrefRoute); 
-
+app.use("/user", projectRouter)
 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log(`App listening on port ${process.env.PORT}`)

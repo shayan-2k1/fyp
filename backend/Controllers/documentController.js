@@ -156,7 +156,7 @@ async function fetchDocument(req, res) {
         const params = {
           Bucket: 'student-doc-uploads',
           Key: file.fileName, // Assuming the file key is the fileName
-          Expires: 3600, // URL expires in 1 hour (you can adjust the expiry time)
+          Expires: 3600, // URL expires in 1 hour 
         };
 
         // Generate presigned URL for each file
