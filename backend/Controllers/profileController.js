@@ -30,7 +30,7 @@ async function Addpicture(req, res) {
 
 async function saveAboutMe(req, res) {
   try {
-    console.log("AlinaH")
+  
     const { aboutMe } = req.body; // Assuming you're sending 'aboutMe' from the frontend
 
     // Find the profile (replace this with your logic to find the correct profile)
