@@ -4,10 +4,11 @@ import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
 import IconButton from '@mui/material/IconButton';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { Buttonprofile, Img, Input, Line, List, RatingBar, Textprofile, Text } from "components";
-
+import Cookies from "js-cookie";
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [profilePicture, setProfilePicture] = useState(null);
+  const authToken = Cookies.get("auth_token");
   const [editedText, setEditedText] = useState(
     // "Hello world, You have been changing faster than ever and we as a global community should start feeling the responsibility that follows this development. My goal is using Economics to find a way to take better care of you. Reassuringly, I am confident Hanken has the capabilities of supporting me in my quest."
   );
@@ -22,6 +23,9 @@ const Profile = () => {
       console.log("Alina")
       const response = await axios.post('http://localhost:3000/profile/save-about-me', {
         aboutMe: editedText,
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
       });
   
       console.log(response.data.message); // Log success message
@@ -50,7 +54,12 @@ const Profile = () => {
 
       const response = await axios.post(
         'http://localhost:3000/profile/add-picture',
-        formData
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
       );
 
       console.log("Server response:", response);
