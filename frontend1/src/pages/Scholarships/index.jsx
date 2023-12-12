@@ -3,16 +3,19 @@ import {database} from '../../utils/configFirebase'
 import {get,ref} from 'firebase/database'
 import { useEffect, useState } from "react";
 import { Axios } from "axios";
-
-// import {  useProSidebar } from "react-pro-sidebar";
-
+import Cookies from "js-cookie";
 import { Button, Img, Line, List, Text, Input } from "components";
 import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
+
+
 const Scholarships = () => {
   // const { collapseSidebar, collapsed } = useProSidebar();
   const [data, setData] = useState([]);
-
+  const [scholarshipName, setscholarshipName] = useState("");
+  const [deadline, setDeadline] = useState("");
+  const [amount, setAmount] = useState("");
+  const authToken = Cookies.get("auth_token");
   useEffect(() => {
       const dataRef=ref(database, 'scholarships');
       get(dataRef).then((snapsot)=>{
@@ -33,21 +36,30 @@ const Scholarships = () => {
 
   const limitedData=data.slice(0,100);
 
-  const handleSave=(e)=>{
-    try{
-        const response=axios.post("http://localhost:3000/student/save",{
-            scholarshipName:e.target.name,
-            deadline:e.target.deadline,
-            ammount:e.target.amount
-            
-        });
-    console.log(response.data);
+  const handleSave = async (e) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/scholarship/save",
+        {
+          scholarshipName: scholarshipName,
+          deadline: deadline,
+          amount: amount,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+  
+      console.log(response.data);
+      alert("Post has been saved successfully");
+    } catch (error) {
+      console.log(error);
+      alert("Error occurred while saving the post");
     }
-    catch(error){
-        console.log(error);
-    }
-    alert("Post has been saved successfully");
-};
+  };
+  
 
   return (
     <>
@@ -178,7 +190,7 @@ const Scholarships = () => {
                 <div className="flex flex-col items-center justify-start mt-[21px] w-[99%] md:w-full">
             
                   <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full" onChange={(e)=>{
-                    setName(sc.name);
+                    setscholarshipName(sc.name);
                     setAmount(sc.amount);
                   }}>
                     <Text
