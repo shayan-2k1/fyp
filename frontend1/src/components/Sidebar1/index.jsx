@@ -3,7 +3,7 @@ import React from "react";
 import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
 
 import { Img, Line, Text } from "components";
-
+import { Link } from "react-router-dom";
 const Sidebar1 = (props) => {
   const { collapseSidebar, collapsed } = useProSidebar();
 
@@ -48,6 +48,7 @@ const Sidebar1 = (props) => {
             >
 
               {/* Third Menu Item */}
+              <Link to="/Profile">
               <MenuItem
                 icon={
                   <Img
@@ -64,22 +65,27 @@ const Sidebar1 = (props) => {
                   alt="arrowright"
                 />
               </MenuItem>
-              <MenuItem
-                icon={
+              </Link>
+
+              <Link to="/DocWallet">
+                <MenuItem
+                  icon={
+                    <Img
+                      className="h-[27px] w-10"
+                      src="images/wallet.png"
+                      alt="commentOne"
+                    />
+                  }
+                >
+                  <Text className="w-[49%] sm:w-full">Doc-wallet</Text>
                   <Img
-                    className="h-[27px] w-10"
-                    src="images/wallet.png"
-                    alt="commentOne"
+                    className="h-[23px] w-[345px]"
+                    src="images/img_arrowright.svg"
+                    alt="arrowright"
                   />
-                }
-              >
-                <Text className="w-[49%] sm:w-full">Doc-wallet</Text>
-                <Img
-                  className="h-[23px] w-[345px]"
-                  src="images/img_arrowright.svg"
-                  alt="arrowright"
-                />
-              </MenuItem>
+                </MenuItem>
+              </Link>
+              <Link to="/UploadC">
               <MenuItem
                 icon={
                   <Img
@@ -89,6 +95,7 @@ const Sidebar1 = (props) => {
                   />
                 }
               >
+                
                 <Text className="w-[49%] sm:w-full">Emails</Text>
                 <Img
                   className="h-[23px] w-[345px]"
@@ -96,6 +103,8 @@ const Sidebar1 = (props) => {
                   alt="arrowright"
                 />
               </MenuItem>
+              </Link>
+              <Link to="/Scholarships">
               <MenuItem
                 icon={
                   <Img
@@ -112,6 +121,8 @@ const Sidebar1 = (props) => {
                   </Text>
                 </div>
               </MenuItem>
+              </Link>
+              <Link to="/UploadLinks">
               <MenuItem
                 icon={
                   <Img
@@ -120,7 +131,7 @@ const Sidebar1 = (props) => {
                     alt="commentOne"
                   />
                 }
-              >
+              > 
                 <Text className="w-[49%] sm:w-full">Track Application </Text>
                 <Img
                   className="h-[23px] w-[345px]"
@@ -128,6 +139,7 @@ const Sidebar1 = (props) => {
                   alt="arrowright"
                 />
               </MenuItem>
+              </Link>
               <MenuItem
                 icon={
                   <Img
