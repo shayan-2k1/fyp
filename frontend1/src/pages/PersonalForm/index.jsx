@@ -16,13 +16,15 @@ const PersonalForm = () => {
   const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
   
   const handleSubmit = async () => {
+    
     try {
       setLoading(true); // Set loading state to true
+      
       const response = await axios.post(
         "http://localhost:3000/students/infos",
-        {
-          firstName: fName,
-          lastName: lName,
+         {  
+          firstName:firstName,
+          lastName:lastName,
           contactNo: contactNo,
           gender: gender,
           nationality: nationality,
@@ -35,11 +37,11 @@ const PersonalForm = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${authToken}`,
+            Authorization:`Bearer${authToken}`,
           },
         }
       );
-      console.log(response.data);
+      
       navigate('/desktopfour');
     } catch (error) {
       console.error(error);
@@ -48,10 +50,10 @@ const PersonalForm = () => {
       setLoading(false); // Set loading state to false after request completion (whether successful or not)
     }
   };
+ 
   
-  
-  const [fName, setfName] = useState('');
-  const [lName, setlName] = useState('');
+  const [firstName, setfName] = useState('');
+  const [lastName, setlName] = useState('');
   const [contactNo, setContact] = useState('');
   const [gender, setGender] = useState('');
   const [country, setCountry] = useState('');
@@ -61,6 +63,7 @@ const PersonalForm = () => {
   const [year, setYear] = useState(0);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState('');
+  console.log("react"+firstName);
   return (
 
     <>
@@ -145,10 +148,12 @@ const PersonalForm = () => {
                       </Text>
 
                       <Input
-                        name="fName"
-                        value={fName}
+                        name="firstName"
+                        value={firstName}
                         onChange={(e) =>{
                         setfName(e.target.value)}}
+                        
+                        
                         placeholder="Alina"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -301,7 +306,7 @@ const PersonalForm = () => {
 
                       <Input
                         name="lastname"
-                        value={lName}
+                        value={lastName}
                         onChange={(e) => setlName(e.target.value)}
                         placeholder="Asim"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"

@@ -35,19 +35,19 @@ const personalInfoSchema = new mongoose.Schema({
   },
   countryOfResidence: {
     type: String,
-    required: true,
+    // required: true,
   },
   dob: {
     day: {
       type: Number,
       min: 1,
       max: 31,
-      required: true,
+      // required: true,
     },
     month: {
       type: String, // Store the month as a string
       enum: monthNames, // Validate that the month value is one of the month names
-      required: true,
+      // required: true,
     },
     year: {
       type: Number,
