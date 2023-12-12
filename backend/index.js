@@ -5,7 +5,7 @@ const mongoose=require("mongoose")
 const studentRoute = require("./Routes/RegistrationRoutes.js")
 const documentRoute = require("./Routes/documentRoutes.js")
 const infoRoute = require("./Routes/personalInfoRoutes.js")
-
+const certificateRoute = require ("./Routes/certificateRoutes.js")
 const academicRoute = require("./Routes/academicRoutes.js")
 const academicPrefRoute = require("./Routes/studyInterestRoutes.js")
 const profileRouter=require("./Routes/profileRouter.js")
@@ -26,6 +26,7 @@ app.use("/profile" , profileRouter);
 app.use("/academic" , academicRoute); 
 app.use("/studyInterest" , academicPrefRoute); 
 app.use("/user", projectRouter)
+app.use("/certificate" , certificateRoute)
 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log(`App listening on port ${process.env.PORT}`)
