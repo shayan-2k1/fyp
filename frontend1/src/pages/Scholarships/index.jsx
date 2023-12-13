@@ -39,7 +39,7 @@ const Scholarships = () => {
   const handleSave = async (scholarship) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/scholarship/save",
+        "http://localhost:3000/scholarships/save",
         {
           scholarshipName: scholarship.name,
           deadline: scholarship.deadline,
@@ -244,7 +244,9 @@ const Scholarships = () => {
                   className="h-[52px] mb-[11px]"
                   src="images/img_bookmark.svg"
                   alt="bookmark"
-                  onClick={() => handleSave(sc)}
+                  onClick={()=>{console.log(sc);
+                      handleSave(sc);
+                  }}
                 />
                 </div>
               </div>
