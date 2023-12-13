@@ -85,7 +85,7 @@ const Sidebar1 = (props) => {
                   />
                 </MenuItem>
               </Link>
-              <Link to="/UploadC">
+              <Link to="/SaveScholarships">
               <MenuItem
                 icon={
                   <Img
@@ -96,7 +96,7 @@ const Sidebar1 = (props) => {
                 }
               >
                 
-                <Text className="w-[49%] sm:w-full">Emails</Text>
+                <Text className="w-[49%] sm:w-full">Save Scholarships</Text>
                 <Img
                   className="h-[23px] w-[345px]"
                   src="images/img_arrowright.svg"
