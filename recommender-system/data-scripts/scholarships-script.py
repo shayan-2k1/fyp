@@ -7,7 +7,7 @@ def generate_unique_data(data):
     name_set = set()
     budget_set = set()
 
-    for _ in range(3000):
+    for _ in range(500):
         name = f"Scholarship{_}"
         budget_limit=random.choice([0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5])*1000
 

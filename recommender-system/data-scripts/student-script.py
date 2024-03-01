@@ -7,7 +7,7 @@ def generate_unique_data(data):
     name_set = set()
     cgpa_set = set()
 
-    for _ in range(3000):
+    for _ in range(500):
         name = f"Person{_}"
         cgpa = round(random.uniform(2.5, 4.0), 2)
 
