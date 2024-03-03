@@ -1,0 +1,501 @@
+Name,CGPA,Budget_Prefrence,Education_Level,Country_Preference,Domain_Area
+Person0,3.09,3000.0,PhD,USA,Business Administration
+Person1,2.73,5000.0,PhD,UK,Medical Science
+Person2,3.21,1000.0,Master,UK,Business Administration
+Person3,2.87,6000.0,Master,Australia,Computer Science
+Person4,3.5,9000.0,Master,Canada,Computer Science
+Person5,2.7,3500.0,Bachelor,Australia,Physics
+Person6,2.69,500.0,Master,Australia,Medical Research
+Person7,3.77,500.0,Bachelor,Australia,Electrical Engineering
+Person8,2.87,500.0,PhD,Canada,History
+Person9,3.64,7500.0,PhD,UK,Chemistry
+Person10,2.72,3000.0,PhD,USA,Finance
+Person11,2.67,500.0,PhD,Canada,Medical Research
+Person12,3.35,2500.0,Bachelor,UK,Fine Arts
+Person13,2.8,2000.0,Master,UK,Finance
+Person14,3.32,4000.0,PhD,Australia,Business Administration
+Person15,3.99,7000.0,PhD,USA,Medical Science
+Person16,3.65,8000.0,Master,Canada,History
+Person17,3.7,6500.0,Master,Canada,Physics
+Person18,2.9,5500.0,Master,Australia,Medical Science
+Person19,3.04,2000.0,Master,Australia,Fine Arts
+Person20,3.98,3000.0,Bachelor,UK,Physics
+Person21,3.69,1500.0,Master,UK,Business Administration
+Person22,2.96,8000.0,PhD,UK,Computer Science
+Person23,3.23,2500.0,Bachelor,Canada,Chemistry
+Person24,3.48,2000.0,Master,USA,Medical Science
+Person25,4.0,7500.0,PhD,UK,Fine Arts
+Person26,3.56,8000.0,PhD,UK,Chemistry
+Person27,3.13,8500.0,Bachelor,UK,Electrical Engineering
+Person28,3.03,8500.0,Bachelor,Australia,Business Administration
+Person29,2.75,4000.0,PhD,UK,Physics
+Person30,3.03,2500.0,Bachelor,Australia,Finance
+Person31,3.76,6000.0,PhD,USA,History
+Person32,3.33,9000.0,Bachelor,USA,Medical Science
+Person33,3.93,3000.0,Bachelor,UK,Finance
+Person34,3.78,500.0,Master,Australia,Physics
+Person35,3.86,7000.0,PhD,USA,Business Administration
+Person36,3.48,3500.0,Bachelor,Australia,Physics
+Person37,2.98,500.0,Bachelor,UK,Medical Research
+Person38,3.69,6500.0,PhD,UK,Business Administration
+Person39,3.62,4000.0,Bachelor,Canada,Medical Research
+Person40,3.53,1000.0,Master,Australia,Finance
+Person41,2.84,5000.0,PhD,UK,History
+Person42,3.3,500.0,PhD,Canada,Medical Science
+Person43,3.72,5500.0,Bachelor,USA,Chemistry
+Person44,3.09,7000.0,Bachelor,Australia,Medical Science
+Person45,3.64,7000.0,Master,Australia,Medical Research
+Person46,2.59,8000.0,PhD,USA,Medical Science
+Person47,2.67,7500.0,Bachelor,UK,Computer Science
+Person48,3.48,7000.0,Master,Australia,Medical Science
+Person49,2.96,5500.0,Bachelor,Australia,Physics
+Person50,2.94,4000.0,PhD,UK,Business Administration
+Person51,3.75,4500.0,PhD,UK,History
+Person52,3.97,6500.0,PhD,Canada,Physics
+Person53,3.94,3500.0,PhD,UK,Chemistry
+Person54,2.65,6500.0,PhD,Canada,Chemistry
+Person55,2.88,2000.0,Master,USA,Business Administration
+Person56,3.32,5500.0,Master,Canada,Finance
+Person57,3.53,3500.0,Master,UK,History
+Person58,3.03,9500.0,PhD,USA,Medical Science
+Person59,3.0,8500.0,Master,USA,Fine Arts
+Person60,3.04,9000.0,Master,UK,Electrical Engineering
+Person61,2.78,9000.0,Bachelor,UK,Finance
+Person62,2.81,500.0,PhD,USA,Medical Science
+Person63,2.68,4000.0,Bachelor,Canada,Medical Science
+Person64,3.37,500.0,PhD,USA,Computer Science
+Person65,2.65,4000.0,Bachelor,UK,Chemistry
+Person66,2.66,6500.0,Master,Australia,Medical Research
+Person67,2.54,3000.0,PhD,Australia,Finance
+Person68,3.63,500.0,Bachelor,UK,Computer Science
+Person69,3.38,9500.0,PhD,Canada,Fine Arts
+Person70,3.23,1500.0,PhD,USA,Medical Science
+Person71,2.78,1000.0,PhD,UK,History
+Person72,3.25,2500.0,PhD,Canada,Medical Science
+Person73,3.13,5500.0,Master,UK,Medical Research
+Person74,2.82,9500.0,Master,UK,Medical Research
+Person75,2.64,9500.0,Master,USA,Medical Research
+Person76,2.92,5500.0,Master,USA,Computer Science
+Person77,2.99,6000.0,Master,Australia,History
+Person78,3.09,4500.0,PhD,Canada,Fine Arts
+Person79,3.39,8000.0,Bachelor,UK,Medical Research
+Person80,3.12,5500.0,PhD,Canada,Medical Science
+Person81,3.86,7000.0,Bachelor,Australia,Finance
+Person82,2.96,2000.0,PhD,Australia,Finance
+Person83,3.52,2500.0,Bachelor,Canada,Medical Science
+Person84,3.25,7000.0,Master,Canada,Electrical Engineering
+Person85,3.19,8500.0,Master,USA,History
+Person86,3.04,5000.0,Bachelor,Canada,Computer Science
+Person87,3.38,4000.0,Bachelor,Canada,Medical Science
+Person88,3.76,7000.0,Master,Australia,Medical Science
+Person89,3.75,8500.0,PhD,Australia,Medical Research
+Person90,2.61,2500.0,PhD,Canada,Business Administration
+Person91,3.98,5000.0,Bachelor,USA,Chemistry
+Person92,3.27,500.0,Master,UK,Finance
+Person93,3.2,500.0,Bachelor,UK,Business Administration
+Person94,2.78,5500.0,PhD,Canada,Medical Science
+Person95,2.75,4500.0,Bachelor,USA,Business Administration
+Person96,2.7,3500.0,Master,Canada,Medical Research
+Person97,3.15,8500.0,Master,USA,Electrical Engineering
+Person98,2.54,3000.0,Bachelor,Australia,Chemistry
+Person99,2.68,9500.0,Bachelor,Australia,Medical Science
+Person100,2.89,4500.0,Master,USA,Chemistry
+Person101,3.17,5500.0,PhD,UK,Chemistry
+Person102,2.53,5000.0,PhD,Australia,Fine Arts
+Person103,3.61,8000.0,PhD,Canada,Fine Arts
+Person104,3.15,1000.0,Master,Australia,Medical Science
+Person105,3.82,1500.0,Master,UK,Electrical Engineering
+Person106,3.18,6500.0,Master,Canada,Finance
+Person107,3.52,3500.0,PhD,Australia,Chemistry
+Person108,2.93,3500.0,Master,Canada,Finance
+Person109,3.78,5500.0,Bachelor,Canada,Finance
+Person110,3.33,9500.0,PhD,UK,Medical Research
+Person111,3.49,7500.0,Bachelor,USA,Electrical Engineering
+Person112,3.32,8000.0,Master,Australia,Computer Science
+Person113,3.25,4000.0,PhD,Canada,Chemistry
+Person114,3.51,1500.0,Bachelor,USA,Fine Arts
+Person115,3.19,2000.0,Bachelor,UK,Computer Science
+Person116,3.59,7500.0,Master,Canada,Chemistry
+Person117,2.98,6000.0,PhD,USA,Computer Science
+Person118,3.16,8000.0,PhD,USA,Chemistry
+Person119,2.61,500.0,PhD,UK,History
+Person120,3.62,9500.0,PhD,Australia,Physics
+Person121,3.33,6500.0,Bachelor,UK,Finance
+Person122,2.89,5000.0,PhD,UK,Medical Science
+Person123,3.62,9000.0,Master,USA,Electrical Engineering
+Person124,3.3,5500.0,PhD,Australia,Chemistry
+Person125,3.54,500.0,Bachelor,USA,Medical Research
+Person126,3.93,2500.0,Master,Australia,Chemistry
+Person127,3.64,4500.0,Bachelor,Australia,Fine Arts
+Person128,2.78,4500.0,Bachelor,USA,Fine Arts
+Person129,3.3,3000.0,PhD,Canada,Electrical Engineering
+Person130,3.89,500.0,PhD,UK,Chemistry
+Person131,3.64,3000.0,PhD,Australia,Electrical Engineering
+Person132,3.13,6000.0,PhD,UK,Medical Science
+Person133,3.7,3500.0,Master,Australia,Physics
+Person134,3.1,7000.0,PhD,Canada,Computer Science
+Person135,3.36,5000.0,Bachelor,Canada,Electrical Engineering
+Person136,3.24,6000.0,Bachelor,UK,Finance
+Person137,3.39,8000.0,Master,USA,Physics
+Person138,3.29,2000.0,PhD,USA,History
+Person139,3.16,3000.0,Master,USA,Physics
+Person140,2.83,6500.0,PhD,Canada,Finance
+Person141,3.94,8000.0,Bachelor,UK,Computer Science
+Person142,3.94,7000.0,Bachelor,Australia,History
+Person143,3.33,6500.0,Bachelor,Australia,Computer Science
+Person144,2.81,5000.0,PhD,UK,Finance
+Person145,3.3,2000.0,Master,UK,Finance
+Person146,3.85,3500.0,Bachelor,Australia,Medical Research
+Person147,3.2,6500.0,PhD,Australia,Medical Science
+Person148,3.38,2500.0,Master,Canada,Medical Research
+Person149,3.8,8500.0,Bachelor,UK,History
+Person150,3.07,1000.0,Bachelor,USA,Computer Science
+Person151,2.82,8500.0,Master,USA,Chemistry
+Person152,3.6,2000.0,Master,Canada,Business Administration
+Person153,3.28,6500.0,PhD,USA,Chemistry
+Person154,2.83,1000.0,Master,USA,Electrical Engineering
+Person155,3.41,4500.0,PhD,Australia,Medical Research
+Person156,3.58,1500.0,Bachelor,Australia,Medical Research
+Person157,3.42,2000.0,Master,Canada,Computer Science
+Person158,3.41,4500.0,Bachelor,USA,Medical Research
+Person159,3.09,7000.0,PhD,USA,Medical Research
+Person160,3.18,2500.0,Bachelor,USA,Physics
+Person161,3.21,2000.0,PhD,Canada,Electrical Engineering
+Person162,3.44,4500.0,Master,Canada,Medical Science
+Person163,2.75,1000.0,Master,USA,Electrical Engineering
+Person164,3.43,2500.0,Bachelor,UK,Medical Science
+Person165,2.8,3000.0,PhD,USA,Medical Science
+Person166,2.9,9500.0,Master,Canada,Computer Science
+Person167,2.67,1000.0,Master,UK,Medical Research
+Person168,3.95,2000.0,Master,Australia,Chemistry
+Person169,3.53,1000.0,PhD,USA,Finance
+Person170,2.56,5500.0,PhD,UK,Business Administration
+Person171,3.38,500.0,Master,Australia,Chemistry
+Person172,2.68,1000.0,Bachelor,USA,Business Administration
+Person173,3.32,4500.0,Master,UK,Medical Science
+Person174,3.67,4000.0,Master,UK,Medical Science
+Person175,3.28,3500.0,PhD,UK,Finance
+Person176,3.25,8500.0,Bachelor,Canada,Business Administration
+Person177,2.55,3000.0,Bachelor,Canada,Medical Research
+Person178,3.95,5500.0,Master,UK,Medical Science
+Person179,3.75,5000.0,Master,USA,Fine Arts
+Person180,2.81,3500.0,Bachelor,USA,Computer Science
+Person181,2.57,3000.0,Bachelor,Australia,Computer Science
+Person182,3.9,500.0,Master,Australia,Computer Science
+Person183,3.48,3500.0,Bachelor,UK,History
+Person184,2.98,1500.0,Bachelor,Canada,Fine Arts
+Person185,3.85,1500.0,Master,Canada,Medical Science
+Person186,3.26,3500.0,Master,USA,Electrical Engineering
+Person187,3.79,9500.0,PhD,Australia,Fine Arts
+Person188,2.87,6500.0,PhD,UK,Medical Science
+Person189,3.93,9000.0,Bachelor,USA,History
+Person190,2.67,9500.0,PhD,UK,Medical Science
+Person191,3.49,3500.0,PhD,USA,Medical Research
+Person192,3.46,6500.0,Master,Canada,Chemistry
+Person193,2.75,1500.0,Bachelor,USA,Medical Science
+Person194,2.56,8000.0,Master,Canada,Electrical Engineering
+Person195,3.7,4000.0,PhD,USA,Medical Science
+Person196,2.62,6500.0,Master,Canada,Electrical Engineering
+Person197,2.8,5000.0,Master,Canada,Business Administration
+Person198,2.96,3000.0,Master,Canada,Physics
+Person199,2.88,1000.0,Bachelor,USA,Business Administration
+Person200,2.78,9500.0,PhD,Canada,Physics
+Person201,3.83,7500.0,Bachelor,Canada,Medical Science
+Person202,3.0,500.0,Master,Canada,Medical Science
+Person203,2.54,500.0,Master,Australia,Finance
+Person204,3.21,1000.0,PhD,USA,Computer Science
+Person205,3.1,6500.0,Master,Canada,Electrical Engineering
+Person206,3.04,9500.0,PhD,USA,Computer Science
+Person207,2.64,9000.0,PhD,Canada,Chemistry
+Person208,2.62,6000.0,PhD,USA,Computer Science
+Person209,3.54,9500.0,PhD,Canada,Computer Science
+Person210,3.98,1500.0,Master,USA,Medical Research
+Person211,3.27,8500.0,PhD,UK,Business Administration
+Person212,3.07,3000.0,Bachelor,USA,History
+Person213,3.88,8500.0,Master,Canada,Finance
+Person214,3.27,3500.0,PhD,Australia,Physics
+Person215,2.53,7500.0,Master,Canada,History
+Person216,2.91,7000.0,Bachelor,Australia,Physics
+Person217,3.96,7500.0,Bachelor,USA,Electrical Engineering
+Person218,3.97,5500.0,Bachelor,UK,Medical Research
+Person219,2.95,5000.0,PhD,USA,Medical Research
+Person220,3.97,6500.0,Master,Australia,Electrical Engineering
+Person221,3.25,4000.0,Master,Canada,Medical Research
+Person222,2.82,3500.0,Bachelor,Australia,Medical Research
+Person223,2.65,3500.0,Bachelor,UK,Finance
+Person224,3.44,4500.0,Master,Australia,History
+Person225,3.58,8000.0,Master,UK,Computer Science
+Person226,2.76,3500.0,Bachelor,UK,Fine Arts
+Person227,2.68,2000.0,Master,Australia,Chemistry
+Person228,3.85,5000.0,Bachelor,UK,History
+Person229,2.79,2500.0,Master,Australia,Fine Arts
+Person230,3.14,2500.0,Bachelor,Canada,Business Administration
+Person231,2.92,3500.0,Bachelor,USA,Fine Arts
+Person232,3.32,1500.0,PhD,Australia,Business Administration
+Person233,2.88,1000.0,Bachelor,UK,Business Administration
+Person234,3.03,1500.0,Master,USA,Computer Science
+Person235,3.5,6000.0,PhD,UK,Computer Science
+Person236,3.04,1500.0,PhD,Canada,Electrical Engineering
+Person237,2.89,1500.0,Master,Australia,History
+Person238,2.86,3000.0,PhD,USA,Medical Science
+Person239,2.91,6500.0,PhD,USA,History
+Person240,3.99,7000.0,Master,UK,Electrical Engineering
+Person241,3.7,3000.0,PhD,USA,Electrical Engineering
+Person242,3.04,9500.0,PhD,UK,Fine Arts
+Person243,2.88,2000.0,Master,UK,Fine Arts
+Person244,3.2,9000.0,Bachelor,Canada,Finance
+Person245,2.73,7500.0,Bachelor,Canada,Computer Science
+Person246,3.88,1000.0,Bachelor,Australia,Business Administration
+Person247,3.13,2000.0,PhD,UK,Chemistry
+Person248,2.7,2500.0,Bachelor,USA,Medical Research
+Person249,2.99,7000.0,PhD,UK,Physics
+Person250,3.6,9000.0,PhD,Australia,Business Administration
+Person251,3.82,1500.0,PhD,Canada,Chemistry
+Person252,3.14,2500.0,PhD,Canada,Business Administration
+Person253,3.54,5500.0,Master,Australia,Electrical Engineering
+Person254,3.48,5500.0,PhD,USA,Fine Arts
+Person255,3.86,2000.0,Bachelor,UK,Finance
+Person256,3.84,500.0,PhD,Australia,Chemistry
+Person257,3.66,3500.0,Bachelor,Australia,Computer Science
+Person258,2.54,6500.0,PhD,Canada,History
+Person259,2.54,1000.0,PhD,USA,Physics
+Person260,3.93,8000.0,PhD,UK,Fine Arts
+Person261,3.54,3000.0,Bachelor,USA,Computer Science
+Person262,3.5,2500.0,Bachelor,Australia,Medical Research
+Person263,3.76,2500.0,Master,Australia,Fine Arts
+Person264,3.95,9500.0,Bachelor,Canada,Medical Science
+Person265,2.55,1500.0,PhD,UK,Fine Arts
+Person266,3.15,500.0,PhD,UK,History
+Person267,2.99,500.0,Bachelor,Canada,Finance
+Person268,3.63,7000.0,Master,Canada,Physics
+Person269,3.34,3000.0,Bachelor,Australia,Business Administration
+Person270,3.16,1500.0,PhD,Canada,Computer Science
+Person271,3.27,2500.0,PhD,Canada,Electrical Engineering
+Person272,3.63,3000.0,Bachelor,UK,Physics
+Person273,3.03,1000.0,Bachelor,UK,Medical Research
+Person274,2.64,500.0,PhD,Canada,Finance
+Person275,3.35,9500.0,Master,Canada,Finance
+Person276,3.83,6500.0,PhD,Australia,History
+Person277,3.7,3000.0,PhD,Australia,Fine Arts
+Person278,3.67,2000.0,Bachelor,UK,Fine Arts
+Person279,3.52,8500.0,Bachelor,USA,Electrical Engineering
+Person280,3.85,8000.0,Bachelor,UK,Computer Science
+Person281,3.25,2500.0,Bachelor,Canada,Fine Arts
+Person282,3.66,6000.0,Bachelor,USA,Computer Science
+Person283,2.92,4500.0,Master,USA,Physics
+Person284,3.3,9500.0,PhD,Australia,Fine Arts
+Person285,3.91,5000.0,PhD,UK,History
+Person286,3.97,500.0,Master,UK,Medical Research
+Person287,3.67,500.0,Master,Canada,Business Administration
+Person288,3.92,1000.0,PhD,Canada,Business Administration
+Person289,2.72,4000.0,PhD,Australia,Finance
+Person290,3.77,8500.0,PhD,USA,History
+Person291,3.29,500.0,Master,Canada,Computer Science
+Person292,3.94,7500.0,Master,USA,Electrical Engineering
+Person293,3.86,6500.0,Bachelor,UK,Physics
+Person294,3.14,7000.0,PhD,UK,Chemistry
+Person295,2.93,6000.0,Bachelor,UK,Electrical Engineering
+Person296,2.82,1500.0,Master,Canada,Medical Science
+Person297,2.64,2500.0,Master,USA,History
+Person298,2.66,1500.0,Master,Australia,Finance
+Person299,3.67,6500.0,Master,UK,Fine Arts
+Person300,2.95,7500.0,Bachelor,UK,Fine Arts
+Person301,2.85,1000.0,Bachelor,UK,Medical Research
+Person302,3.76,500.0,PhD,USA,Electrical Engineering
+Person303,3.01,2000.0,PhD,Australia,Electrical Engineering
+Person304,3.92,5000.0,PhD,Australia,Computer Science
+Person305,2.59,6500.0,Master,Australia,Electrical Engineering
+Person306,2.81,9500.0,PhD,UK,Business Administration
+Person307,3.12,3500.0,PhD,Australia,Fine Arts
+Person308,3.08,4000.0,Bachelor,Canada,Medical Science
+Person309,3.91,8000.0,Bachelor,Canada,Physics
+Person310,3.12,4000.0,PhD,UK,Fine Arts
+Person311,3.98,7000.0,Bachelor,UK,Business Administration
+Person312,2.8,9000.0,Master,Canada,History
+Person313,3.58,8500.0,PhD,UK,Physics
+Person314,2.78,6000.0,Master,UK,Business Administration
+Person315,3.14,4500.0,Bachelor,USA,Physics
+Person316,3.06,5000.0,Bachelor,USA,Chemistry
+Person317,2.84,500.0,Bachelor,USA,Electrical Engineering
+Person318,3.21,9000.0,Master,Canada,Physics
+Person319,2.89,1000.0,Master,Australia,History
+Person320,3.56,4500.0,Bachelor,USA,Electrical Engineering
+Person321,2.81,3000.0,Bachelor,Australia,Chemistry
+Person322,2.75,4000.0,PhD,Canada,Business Administration
+Person323,2.5,8500.0,Master,USA,Physics
+Person324,2.67,3500.0,PhD,Canada,Medical Science
+Person325,3.83,7000.0,Bachelor,UK,Computer Science
+Person326,2.62,4000.0,Master,UK,Fine Arts
+Person327,3.12,4000.0,Bachelor,Australia,Fine Arts
+Person328,3.72,1000.0,Master,Australia,Computer Science
+Person329,2.63,7000.0,Bachelor,Australia,Chemistry
+Person330,3.96,2000.0,PhD,UK,Fine Arts
+Person331,2.72,8500.0,Bachelor,Canada,Finance
+Person332,3.85,8000.0,Bachelor,Australia,Fine Arts
+Person333,3.81,7500.0,Master,Canada,Electrical Engineering
+Person334,3.36,6000.0,PhD,UK,Computer Science
+Person335,3.25,8500.0,PhD,UK,Medical Research
+Person336,2.78,3000.0,Master,Canada,History
+Person337,2.87,4000.0,Master,USA,Electrical Engineering
+Person338,3.78,6500.0,Bachelor,USA,Business Administration
+Person339,2.5,500.0,Master,Australia,Fine Arts
+Person340,3.57,1500.0,Master,USA,Medical Science
+Person341,3.01,1000.0,Master,Canada,Fine Arts
+Person342,3.85,7000.0,Master,Canada,Finance
+Person343,3.9,1500.0,PhD,Canada,Finance
+Person344,3.35,1000.0,Master,Canada,Medical Science
+Person345,3.14,6000.0,Master,Canada,Electrical Engineering
+Person346,2.71,7000.0,Master,UK,Physics
+Person347,3.95,7000.0,Bachelor,USA,Business Administration
+Person348,2.7,7000.0,Bachelor,USA,History
+Person349,3.69,3000.0,PhD,Canada,Medical Science
+Person350,2.5,9000.0,PhD,Australia,History
+Person351,3.57,8500.0,PhD,UK,Physics
+Person352,3.82,6000.0,Master,USA,Medical Science
+Person353,3.88,7000.0,Bachelor,UK,Medical Research
+Person354,2.63,500.0,PhD,UK,Physics
+Person355,2.81,5000.0,Bachelor,USA,Medical Science
+Person356,3.83,8500.0,PhD,Australia,Electrical Engineering
+Person357,3.69,8000.0,Master,Australia,Physics
+Person358,2.55,1000.0,Bachelor,UK,Medical Science
+Person359,2.75,5500.0,PhD,Australia,Electrical Engineering
+Person360,3.39,7000.0,PhD,Canada,Physics
+Person361,3.11,2000.0,PhD,Australia,Medical Science
+Person362,3.69,3500.0,Master,USA,Chemistry
+Person363,3.82,1000.0,Master,Australia,Finance
+Person364,2.88,5000.0,Master,Canada,Electrical Engineering
+Person365,3.25,6500.0,PhD,USA,Electrical Engineering
+Person366,2.86,7500.0,PhD,Canada,Electrical Engineering
+Person367,2.9,8500.0,Bachelor,Australia,Physics
+Person368,3.79,5500.0,Bachelor,USA,Business Administration
+Person369,3.37,8500.0,PhD,Australia,Medical Science
+Person370,2.66,1500.0,Master,Canada,History
+Person371,3.5,6000.0,Master,USA,Chemistry
+Person372,2.81,3500.0,Master,Canada,Medical Science
+Person373,3.78,3000.0,Bachelor,Australia,Computer Science
+Person374,2.67,3500.0,Master,Canada,Medical Research
+Person375,3.31,3000.0,Master,USA,History
+Person376,3.65,5500.0,PhD,Canada,Chemistry
+Person377,2.79,3000.0,Master,USA,Fine Arts
+Person378,3.9,4500.0,Bachelor,Canada,Medical Science
+Person379,3.82,2000.0,PhD,Canada,Medical Science
+Person380,3.66,9000.0,Master,Canada,Chemistry
+Person381,3.31,2000.0,Master,USA,Medical Science
+Person382,3.83,3000.0,PhD,UK,Medical Science
+Person383,2.71,1000.0,PhD,Canada,History
+Person384,2.87,6500.0,Master,Australia,Physics
+Person385,3.86,7000.0,Bachelor,UK,History
+Person386,2.62,6500.0,Master,UK,Computer Science
+Person387,3.89,2500.0,Master,Australia,Medical Science
+Person388,3.72,4500.0,Master,Canada,Computer Science
+Person389,3.4,9000.0,PhD,UK,Finance
+Person390,2.83,1000.0,Bachelor,USA,Fine Arts
+Person391,3.02,6500.0,Master,Australia,Medical Research
+Person392,2.86,9500.0,Master,Canada,Medical Science
+Person393,3.33,5500.0,Bachelor,Australia,Chemistry
+Person394,3.71,3000.0,Master,UK,Fine Arts
+Person395,3.05,9500.0,PhD,Australia,Physics
+Person396,2.88,4500.0,Bachelor,Australia,Business Administration
+Person397,2.97,1000.0,PhD,USA,Medical Research
+Person398,3.91,6000.0,PhD,Canada,Electrical Engineering
+Person399,3.95,2500.0,Master,USA,Medical Research
+Person400,3.32,2500.0,Master,USA,Physics
+Person401,3.69,5500.0,Master,UK,Finance
+Person402,3.46,2000.0,PhD,USA,Business Administration
+Person403,2.87,2500.0,Master,Canada,Chemistry
+Person404,3.19,6000.0,Master,Canada,Finance
+Person405,3.16,9000.0,PhD,Canada,Finance
+Person406,2.67,3500.0,Master,UK,Finance
+Person407,3.97,8500.0,Master,UK,Business Administration
+Person408,3.78,7000.0,Bachelor,Canada,Medical Science
+Person409,2.64,3000.0,PhD,Canada,Fine Arts
+Person410,3.98,6500.0,PhD,Australia,Medical Research
+Person411,3.0,8500.0,Master,Australia,Fine Arts
+Person412,3.44,1000.0,Master,Australia,Medical Science
+Person413,3.01,2000.0,Master,Australia,History
+Person414,3.94,4000.0,Bachelor,Australia,Physics
+Person415,2.9,3500.0,Bachelor,Australia,Fine Arts
+Person416,3.59,6500.0,Master,Canada,Computer Science
+Person417,3.73,5500.0,Master,UK,Fine Arts
+Person418,3.18,6500.0,Bachelor,USA,Medical Science
+Person419,3.93,7500.0,Bachelor,USA,Medical Research
+Person420,2.56,7500.0,Master,UK,Medical Science
+Person421,3.02,2000.0,Bachelor,Canada,Medical Research
+Person422,3.16,9500.0,Master,USA,Fine Arts
+Person423,3.2,5000.0,Master,Australia,History
+Person424,2.61,6000.0,Bachelor,Australia,Physics
+Person425,3.31,6500.0,Master,UK,Computer Science
+Person426,3.2,4500.0,Bachelor,UK,Chemistry
+Person427,3.64,9500.0,Master,Canada,Business Administration
+Person428,3.92,9500.0,Master,USA,Business Administration
+Person429,3.61,7000.0,Bachelor,UK,Medical Science
+Person430,3.39,1000.0,PhD,Australia,Physics
+Person431,3.12,4500.0,Master,USA,Computer Science
+Person432,2.66,5000.0,Bachelor,UK,Chemistry
+Person433,3.87,1000.0,PhD,Canada,Fine Arts
+Person434,2.51,9500.0,Bachelor,Australia,Medical Research
+Person435,3.38,9000.0,Bachelor,Canada,History
+Person436,2.73,4500.0,Bachelor,UK,Physics
+Person437,2.94,4500.0,PhD,UK,Finance
+Person438,3.11,9000.0,Bachelor,Canada,Medical Science
+Person439,3.45,4000.0,PhD,Australia,Physics
+Person440,2.5,4500.0,PhD,Australia,Physics
+Person441,3.2,4000.0,PhD,USA,Fine Arts
+Person442,3.62,4000.0,Bachelor,Canada,Medical Research
+Person443,2.81,4000.0,Master,UK,Finance
+Person444,3.8,5000.0,PhD,Canada,Medical Research
+Person445,3.56,6000.0,Master,Australia,Computer Science
+Person446,3.6,3500.0,Master,UK,Physics
+Person447,3.71,5000.0,Bachelor,Canada,Computer Science
+Person448,3.35,6000.0,Bachelor,USA,Finance
+Person449,3.86,3000.0,Bachelor,Australia,Electrical Engineering
+Person450,3.81,3000.0,PhD,Canada,Chemistry
+Person451,3.61,6000.0,PhD,UK,Medical Science
+Person452,2.7,2000.0,Bachelor,Canada,Finance
+Person453,3.84,5500.0,Bachelor,USA,Finance
+Person454,3.36,3500.0,Bachelor,USA,Chemistry
+Person455,2.51,5000.0,PhD,Canada,Business Administration
+Person456,3.54,8500.0,PhD,UK,History
+Person457,2.76,500.0,PhD,Australia,Fine Arts
+Person458,3.64,2500.0,PhD,Canada,Fine Arts
+Person459,3.92,9500.0,PhD,Canada,History
+Person460,3.09,7000.0,Master,USA,Finance
+Person461,3.47,500.0,Master,UK,History
+Person462,3.45,7500.0,PhD,UK,Medical Research
+Person463,2.95,3000.0,Bachelor,Canada,Business Administration
+Person464,3.81,1000.0,Bachelor,UK,Medical Research
+Person465,2.97,2000.0,Master,Australia,Computer Science
+Person466,3.67,3000.0,Master,Canada,Computer Science
+Person467,2.97,4000.0,Bachelor,UK,Medical Research
+Person468,3.88,9000.0,PhD,Canada,Physics
+Person469,2.66,3500.0,Master,UK,Finance
+Person470,3.93,8500.0,Master,Canada,Business Administration
+Person471,3.71,4500.0,PhD,Australia,Fine Arts
+Person472,2.82,2500.0,PhD,Australia,Electrical Engineering
+Person473,3.55,7500.0,Master,Canada,Physics
+Person474,3.34,7500.0,Bachelor,USA,History
+Person475,3.32,500.0,Bachelor,UK,Business Administration
+Person476,2.94,4000.0,Bachelor,UK,Physics
+Person477,2.8,8500.0,Master,Australia,Business Administration
+Person478,3.09,8500.0,PhD,USA,Fine Arts
+Person479,3.48,6000.0,PhD,Canada,History
+Person480,2.96,9500.0,Bachelor,Canada,Physics
+Person481,3.56,9000.0,Bachelor,USA,History
+Person482,2.59,6000.0,Master,UK,Business Administration
+Person483,2.87,2000.0,PhD,Australia,Electrical Engineering
+Person484,3.97,2000.0,Bachelor,Australia,Finance
+Person485,3.13,6500.0,PhD,Canada,Electrical Engineering
+Person486,2.67,4000.0,Master,USA,Electrical Engineering
+Person487,3.75,4000.0,PhD,Australia,Chemistry
+Person488,2.78,3000.0,PhD,Australia,Business Administration
+Person489,3.94,4000.0,PhD,UK,Medical Science
+Person490,2.55,500.0,Master,UK,Finance
+Person491,2.9,7500.0,Bachelor,Australia,Finance
+Person492,3.49,1000.0,PhD,Canada,Fine Arts
+Person493,3.82,1000.0,Master,Australia,Medical Science
+Person494,3.79,2000.0,Bachelor,Canada,Electrical Engineering
+Person495,3.79,4000.0,Master,UK,History
+Person496,3.17,2500.0,Bachelor,UK,Computer Science
+Person497,2.84,6500.0,Bachelor,Australia,History
+Person498,2.73,5000.0,PhD,UK,Electrical Engineering
+Person499,3.67,500.0,PhD,Australia,Computer Science
