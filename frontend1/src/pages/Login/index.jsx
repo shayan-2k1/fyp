@@ -201,6 +201,7 @@ const Login = () => {
                           <button
                             className="mt-[3px] text-blue_gray-800 text-xl tracking-[2.00px]"
                             size="txtNunitoRegular20"
+                            onClick={() => navigate("/Update")}
                           >
                             Forget password?
                           </button>

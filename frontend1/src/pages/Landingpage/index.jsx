@@ -39,7 +39,7 @@ const LandingPage = () => {
                       href="javascript:"
                       className="absolute inset-x-[0] mx-auto text-base text-center text-white-A700 top-[32%] w-max"
                     >
-                      <Text size="txtAlfaSlabOneRegular16">lOGIN</Text>
+                      <Text size="txtAlfaSlabOneRegular16">Login</Text>
                     </a>
                   </div>
                 </div>
@@ -53,7 +53,7 @@ const LandingPage = () => {
                   size="txtLatoRegular20"
                 >
                   {" "}
-                  Home  About  Us  Our  Projects  CSR  Conatct Us
+                  About Us  Conatct Us
                 </Text>
               </div>
             </div>
@@ -72,15 +72,15 @@ const LandingPage = () => {
                 About Us
               </Text>
               <Text
-              className="absolute bottom-[0] left-[5%] text-[15px] text-gray-500 w-[57%] sm:w-full"
-              size="txtLatoRegular15"
-            >
-              Welcome to EaseAssist, a passionate community committed to
-              empowering the next generation through education and
-              opportunities. At EaseAssist we firmly believe that every student
-              deserves the chance to fulfill their academic dreams and
-              contribute meaningfully to society.
-            </Text>
+  className="absolute bottom-[0] left-0 right-0 text-[15px] text-gray-500 w-[57%] sm:w-full text-center mx-auto"
+  size="txtLatoRegular15"
+>
+  Welcome to EaseAssist, a passionate community committed to empowering the
+  next generation through education and opportunities. At EaseAssist we firmly
+  believe that every student deserves the chance to fulfill their academic
+  dreams and contribute meaningfully to society.
+</Text>
+
             </div>
             <Img
               className="absolute h-[553px] object-cover right-[0] top-[0] w-[56%]"
