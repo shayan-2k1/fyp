@@ -11,6 +11,7 @@ const academicPrefRoute = require("./Routes/studyInterestRoutes.js")
 const profileRouter=require("./Routes/profileRouter.js")
 const projectRouter = require("./Routes/projectRoutes.js")
 const scholarshipRouter = require("./Routes/scholarshipRouter.js")
+const universityRoute = require("./Routes/universityRegistrationRouter.js")
 const cors = require('cors');
 
 require("dotenv").config();
@@ -28,6 +29,7 @@ app.use("/studyInterest" , academicPrefRoute);
 app.use("/user", projectRouter)
 app.use("/certificate" , certificateRoute)
 app.use("/scholarship" , scholarshipRouter)
+app.use("/university" , universityRoute)
 app.listen(process.env.PORT || 3000, ()=>{
     console.log(`App listening on port ${process.env.PORT}`)
 })

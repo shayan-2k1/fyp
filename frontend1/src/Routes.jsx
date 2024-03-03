@@ -16,6 +16,9 @@ const Update =React.lazy(()=>import("pages/Update"))
 const UploadCertificates=React.lazy(()=>import("pages/UploadCertificates"))
 const UploadLinks=React.lazy(()=>import("pages/UploadLinks"))
 const SaveScholarships=React.lazy(()=>import("pages/SaveScholarships"))
+const LoginUni = React.lazy(()=>import("pages/LoginUni"))
+const SignupUni = React.lazy(()=>import("pages/SignupUni"))
+const UpdateUni = React.lazy(()=>import("pages/UpdateUni"))
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<>Loading...</>}>
@@ -37,6 +40,9 @@ const ProjectRoutes = () => {
           <Route path="/UploadC" element={<UploadCertificates/>} />
           <Route path="/UploadLinks" element={<UploadLinks/>} />
           <Route path="/SaveScholarships" element={<SaveScholarships/>} />
+          <Route path="/LoginUni" element={<LoginUni/>} />
+          <Route path="/SignupUni" element={<SignupUni/>} />
+          <Route path="/UpdateUni" element={<UpdateUni/>} />
         </Routes>
       </Router>
     </React.Suspense>

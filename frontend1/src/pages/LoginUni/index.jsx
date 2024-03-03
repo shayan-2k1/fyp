@@ -18,7 +18,11 @@ const Login = () => {
       setError(null); // Clear any previous errors
 
       try {
-          const response = await axios.post("http://localhost:3000/student/signin", {
+        if (!password || !email ) {
+          alert("Please fill in all fields");
+          return;
+        }
+          const response = await axios.post("http://localhost:3000/university/login", {
               email: email,
               password: password
           });
@@ -27,9 +31,9 @@ const Login = () => {
           if (response.data.token) {
               Cookies.set('auth_token', response.data.token, { expires: 1 }); // Set the token in a cookie
           }
-
+          alert("Signin successful");
           console.log(response.data);
-          navigate("/Scholarships");
+          // navigate("/Scholarships");
       } catch (error) {
           console.log(error);
           setError("Failed to sign in!");
@@ -117,7 +121,7 @@ const Login = () => {
                   <Text
                     className="common-pointer mt-[25px] text-2xl md:text-[22px] text-blue_gray-800 sm:text-xl tracking-[2.40px]"
                     size="txtOpenSans24"
-                    onClick={() => navigate("/desktoptwo")}
+                    onClick={() => navigate("/SignupUni")}  
                   >
                     <span className="text-blue_gray-800 font-nunito text-left font-normal">
                       Don’t have a account,
