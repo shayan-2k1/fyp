@@ -18,10 +18,11 @@ const universitySchema=mongoose.Schema({
       },
       address: {
         type: String
-      },
-      otp: {
-        type: String // Add this field for storing OTP
-    }
+      }
+    //   },
+    //   otp: {
+    //     type: String // Add this field for storing OTP
+    // }
    
     },
 {
