@@ -1,4 +1,4 @@
-const Scholarship = require('../Models/scholarshipModel');
+const Students = require('../Models/studentModel');
 const jwt = require("jsonwebtoken");
 const dotenv = require('dotenv');
 dotenv.config();
@@ -15,38 +15,61 @@ async function scholarship(req, res) {
     const decodedToken = jwt.verify(token, secretKey);
 
     const userId = decodedToken.id;
+    const { scholarshipName, deadline, amount } = req.body;
 
-    const { scholarshipDetails } = req.body; // Assuming 'scholarshipDetails' is sent from the frontend
-
-    // Find the scholarship details for the given userId
-    let user = await Scholarship.findOne({ user: userId });
-
+    // Find the user
+    const user = await Students.findById(userId);
     if (!user) {
-      // If scholarship details not found, create a new one and add the scholarship details
-      const saveScholarships = new Scholarship({
-        user: userId,
-        arrayOfScholarships: [scholarshipDetails],
-      });
-
-      // Save the new scholarship details
-      await saveScholarships.save();
-
-      return res.status(200).json({ message: 'Scholarship saved successfully' });
-    } else {
-      // If scholarship details exist, add the new details to the existing array
-      user.arrayOfScholarships.push(scholarshipDetails);
-
-      // Save the updated scholarship details
-      await user.save();
-
-      return res.status(200).json({ message: 'Scholarship saved successfully' });
+      return res.status(404).json({ error: 'Student not found' });
     }
+
+    // Initialize savedScholarships array if not present
+    user.savedScholarships = user.savedScholarships || [];
+
+    // Add scholarship details to the savedScholarships array
+    user.savedScholarships.push({
+      scholarshipName,
+      deadline,
+      amount,
+    });
+
+    // Save the user document
+    await user.save();
+
+    res.status(201).json({ message: 'Scholarship details saved successfully' });
   } catch (error) {
     console.error('Error saving Scholarship', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
 
+async function getSavedScholarships(req, res) {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, secretKey);
+
+    const userId = decodedToken.id;
+    const user = await Students.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: 'Student not found' });
+    }
+
+    res.status(200).json({ savedScholarships: user.savedScholarships });
+  } catch (error) {
+    console.error('Error fetching saved scholarships', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+
 module.exports = {
-  scholarship
+  scholarship,
+  getSavedScholarships
 };

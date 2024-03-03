@@ -42,10 +42,20 @@
 // };
 // export default Home;
 import React from "react";
-
+import { useState } from "react";
 import { Img, List, Text } from "components";
 import { Link } from "react-router-dom";
 const Home = () => {
+  const [showAbout, setShowAbout] = useState(false);
+  const [showContact, setContactUs] = useState(false);
+  const handleAboutUsClick = () => {
+    setShowAbout(true);
+    setContactUs(false); // Close contact info
+  };
+  const handleContactUsClick = () => {
+    setShowAbout(false); // Close about info
+    setContactUs(true);
+  };
   return (
     <>
       <div className="bg-white-A700 flex flex-col items-center justify-start mx-auto w-full">
@@ -78,29 +88,78 @@ const Home = () => {
                   </Text>
                   <div className="font-alfaslabone md:h-[113px] h-[72px] mb-2 ml-9 md:ml-[0] mt-[34px] relative w-[65%]">
                     <div className="bg-black-900 h-[71px] m-auto rounded-[35px] shadow-bs w-full"></div>
-                    <Link to="/desktopone">
-                    <a
-                      href="javascript:"
-                      className="absolute inset-x-[0] mx-auto text-base text-center text-white-A700 top-[32%] w-max"
-                    >
-                      <Text size="txtAlfaSlabOneRegular16">lOGIN</Text>
-                    </a>
-                    </Link>
+
+                    <div className="flex flex-col items-center justify-center">
+                      <Link to="/desktopone">
+                        <a
+                          href="javascript:"
+                          className="absolute inset-x-[0] mx-auto text-base text-center text-white-A700 top-[32%] w-max"
+                        >
+                          <Text size="txtAlfaSlabOneRegular16">
+                            Login as a Student
+                          </Text>
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="font-alfaslabone md:h-[113px] h-[72px] mb-2 ml-9 md:ml-[0] mt-[34px] relative w-[65%]">
+                    <div className="bg-black-900 h-[71px] m-auto rounded-[35px] shadow-bs w-full"></div>
+
+                    <div className="flex flex-col items-center justify-center">
+                      <Link to="/LoginUni">
+                        <a
+                          href="javascript:"
+                          className="absolute inset-x-[0] mx-auto text-base text-center text-white-A700 top-[32%] w-max"
+                        >
+                          <Text size="txtAlfaSlabOneRegular16">
+                            Login as a University
+                          </Text>
+                        </a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
               <div
-                className="absolute bg-cover bg-no-repeat flex flex-col font-lato h-[498px] items-start justify-start p-[21px] sm:px-5 right-[0] top-[0]"
-                style={{ backgroundImage: "url('images/img_group9.png')" }}
-              >
-                <Text
-                  className="mb-[414px] mt-[17px] text-white-A700 text-xl tracking-[0.08px]"
-                  size="txtLatoRegular20"
-                >
-                  {" "}
-                  Home  About  Us  Our  Projects  CSR  Conatct Us
-                </Text>
-              </div>
+  className="absolute bg-cover bg-no-repeat flex flex-col font-lato h-[498px] items-start justify-start p-[21px] sm:px-5 right-[0] top-[0]"
+  style={{ backgroundImage: "url('images/img_group9.png')" }}
+>
+  <div className="flex">
+    <button
+      className="mb-[414px] mt-[17px] mr-4 text-white-A700 text-xl tracking-[0.08px] bg-transparent border-none cursor-pointer"
+      onClick={() => handleAboutUsClick()}
+    >
+      About Us
+    </button>
+
+    <button
+      className="mb-[414px] mt-[17px] text-white-A700 text-xl tracking-[0.08px] bg-transparent border-none cursor-pointer"
+      onClick={() => handleContactUsClick()}
+    >
+      Contact Us
+    </button>
+  </div>
+  {showAbout && (
+        <div className="absolute top-[77px] right-[21px]">
+          <p className="text-white-A700 text-base">
+          A passionate community committed to empowering the next generation through 
+          education and opportunities. At EaseAssist we firmly believe that every 
+          student deserves the chance to fulfill their academic dreams and contribute 
+          meaningfully to society.
+          </p>
+        </div>
+      )}
+       {showContact && (
+        <div className="absolute top-[77px] right-[21px]">
+          <p className="text-white-A700 text-base">
+            gmail: easeassist24@gmail.com
+            contact: 0311-1234120
+          </p>
+        </div>
+      )}
+</div>
+
             </div>
             <Img
               className="absolute h-[550px] object-cover right-[3%] top-[22%] w-[44%]"
@@ -108,7 +167,7 @@ const Home = () => {
               alt="rectangleNine"
             />
           </div>
-         
+
           <div className="font-lato h-[553px] md:h-[605px] max-w-[1030px] mt-[300px] mx-auto relative w-[45%]">
             <div className="absolute bg-white-A700 flex flex-col items-center justify-center p-[180px] w-full h-full left-[300px] md:px-45 sm:px-5 shadow-bs1">
               <Text
@@ -121,13 +180,15 @@ const Home = () => {
                 className="text-[15px] text-black-500 w-full sm:w-[90%]"
                 size="txtLatoRegular15"
               >
-                Welcome to EaseAssist, a passionate community committed to empowering
-                the next generation through education and opportunities. At EaseAssist
-                we firmly believe that every student deserves the chance to fulfill
-                their academic dreams and contribute meaningfully to society. Welcome to EaseAssist, a passionate community committed to empowering
-                the next generation through education and opportunities. At EaseAssist
-                we firmly believe that every student deserves the chance to fulfill
-                their academic dreams and contribute meaningfully to society.
+                Welcome to EaseAssist, a passionate community committed to
+                empowering the next generation through education and
+                opportunities. At EaseAssist we firmly believe that every
+                student deserves the chance to fulfill their academic dreams and
+                contribute meaningfully to society. Welcome to EaseAssist, a
+                passionate community committed to empowering the next generation
+                through education and opportunities. At EaseAssist we firmly
+                believe that every student deserves the chance to fulfill their
+                academic dreams and contribute meaningfully to society.
               </Text>
             </div>
             <div className="absolute h-full left-[0] top-[0] w-[57%]">

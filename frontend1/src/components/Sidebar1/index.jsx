@@ -122,7 +122,7 @@ const Sidebar1 = (props) => {
                 </div>
               </MenuItem>
               </Link>
-              <Link to="/UploadLinks">
+              <Link to="/Notification">
               <MenuItem
                 icon={
                   <Img
@@ -140,6 +140,7 @@ const Sidebar1 = (props) => {
                 />
               </MenuItem>
               </Link>
+             
               <MenuItem
                 icon={
                   <Img

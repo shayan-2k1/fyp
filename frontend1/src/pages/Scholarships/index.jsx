@@ -2,7 +2,6 @@ import React from "react";
 import { database } from '../../utils/configFirebase'
 import { get, ref } from 'firebase/database'
 import { useEffect, useState } from "react";
-import { Axios } from "axios";
 import Cookies from "js-cookie";
 import { Button, Img, Line, List, Text, Input } from "components";
 import Sidebar1 from "components/Sidebar1";
@@ -38,7 +37,7 @@ const Scholarships = () => {
   const limitedData = data.slice(0, 100);
   
   const handleSave = async () => {
-   console.log("Alinaaa aaaa"+ scholarshipName)
+   console.log("Alinaaa"+ scholarshipName)
     try {
       const response = await axios.post(
         "http://localhost:3000/scholarship/save",
@@ -222,7 +221,7 @@ const Scholarships = () => {
                         src="images/img_bookmark.svg"
                         alt="bookmark"
                         onClick={() => {
-                          console.log(sc);
+                          
                           setscholarshipName(sc.name);
                           setDeadline(sc.deadline);
                           setAmount(sc.amount);
