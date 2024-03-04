@@ -7,6 +7,11 @@ const { Server } = require('socket.io');
 
 
 // const sendNotification = require('./notificationService.js');
+const socketIo = require('socket.io');
+const http = require('http');
+const cron = require('node-cron');
+const jwt = require('jsonwebtoken');
+const sendNotification = require('./notificationService.js');
 const Student = require('./Models/studentModel');
 
 const studentRoute = require("./Routes/RegistrationRoutes.js")
@@ -19,6 +24,7 @@ const profileRouter = require("./Routes/profileRouter.js")
 const projectRouter = require("./Routes/projectRoutes.js")
 const scholarshipRouter = require("./Routes/scholarshipRouter.js")
 const universityRoute = require("./Routes/universityRegistrationRouter.js")
+const scholarshipPostRoute = require("./Routes/scholarshipPostRouter.js")
 const cors = require('cors');
 
 require("dotenv").config();
@@ -46,6 +52,11 @@ const io = new Server(httpServer, {
         origin: "http://localhost:3001"
     }
 });
+app.use("/user", projectRouter);
+app.use("/certificate", certificateRoute);
+app.use("/scholarship", scholarshipRouter);
+app.use("/university" , universityRoute);
+app.use("/universityP" , scholarshipPostRoute)
 // WebSocket connection handling
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
@@ -143,4 +154,3 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 }).catch(err => {
     console.log(err)
 })
-
