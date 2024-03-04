@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const socketIo = require('socket.io');
 const http = require('http');
 const cron = require('node-cron');
-
+const jwt = require('jsonwebtoken');
 const sendNotification = require('./notificationService.js');
 const Student = require('./Models/studentModel');
 
@@ -19,6 +19,7 @@ const profileRouter = require("./Routes/profileRouter.js")
 const projectRouter = require("./Routes/projectRoutes.js")
 const scholarshipRouter = require("./Routes/scholarshipRouter.js")
 const universityRoute = require("./Routes/universityRegistrationRouter.js")
+const scholarshipPostRoute = require("./Routes/scholarshipPostRouter.js")
 const cors = require('cors');
 
 require("dotenv").config();
@@ -35,10 +36,11 @@ app.use("/students", infoRoute);
 app.use("/profile", profileRouter);
 app.use("/academic", academicRoute);
 app.use("/studyInterest", academicPrefRoute);
-app.use("/user", projectRouter)
-app.use("/certificate", certificateRoute)
-app.use("/scholarship", scholarshipRouter)
-
+app.use("/user", projectRouter);
+app.use("/certificate", certificateRoute);
+app.use("/scholarship", scholarshipRouter);
+app.use("/university" , universityRoute);
+app.use("/universityP" , scholarshipPostRoute)
 // WebSocket connection handling
 io.on('connection', (socket) => {
     console.log('A user connected:', socket.id);
@@ -124,17 +126,12 @@ cron.schedule('* * * * *', async () => {
 
 
 
-app.listen(process.env.PORT || 3000, () => {
-app.use("/certificate" , certificateRoute)
-app.use("/scholarship" , scholarshipRouter)
-app.use("/university" , universityRoute)
 app.listen(process.env.PORT || 3000, ()=>{
     console.log(`App listening on port ${process.env.PORT}`)
 })
-})
-mongoose.connect(process.env.MONGO_URL).then(() => {
-    console.log("connected to mongo db server")
-}).catch(err => {
+
+mongoose.connect(process.env.MONGO_URL).then( ()=>{ 
+     console.log("connected to mongo db server")
+}).catch(err=>{
     console.log(err)
 })
-
