@@ -33,7 +33,7 @@ const Login = () => {
           }
           alert("Signin successful");
           console.log(response.data);
-          // navigate("/Scholarships");
+          navigate("/ScholarshipPost");
       } catch (error) {
           console.log(error);
           setError("Failed to sign in!");

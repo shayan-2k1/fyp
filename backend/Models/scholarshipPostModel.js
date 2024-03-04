@@ -2,6 +2,16 @@ const mongoose = require('mongoose');
 
 // Define schema for Scholarship
 const scholarshipPostSchema = new mongoose.Schema({
+    uniId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'universityModel',
+            required: true,
+    },
+    uniname: {
+            type: String,
+            ref: 'universityModel',
+            required: true,
+    },
     scholarshipName: {
         type: String,
         required: true
