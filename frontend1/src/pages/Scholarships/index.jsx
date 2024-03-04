@@ -56,7 +56,7 @@ const Scholarships = () => {
       console.log(response.data);
       alert("Post has been saved successfully");
     } catch (error) {
-      console.log(error);
+      console.log(error+amount);
       alert("Error occurred while saving the post");
     }
   };
