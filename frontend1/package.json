@@ -6,6 +6,7 @@
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.20",
     "@tailwindcss/forms": "0.4.0",
+    "@tensorflow/tfjs-converter": "^4.17.0",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
