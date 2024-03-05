@@ -3,12 +3,13 @@ import { io } from 'socket.io-client';
 import Cookies from "js-cookie";
 
 
-const SOCKET_SERVER_URL = 'http://localhost:3001'; 
+const SOCKET_SERVER_URL = 'http://localhost:5000'; 
 
 const Notification = () => {
     const authToken = Cookies.get("auth_token");
   useEffect(() => {
     const socket = io(SOCKET_SERVER_URL);
+    console.log("aaaaaaa"+socket);
 
     // Emit an event to store the socketId on the server
     socket.emit('storeSocketId', { token: authToken });

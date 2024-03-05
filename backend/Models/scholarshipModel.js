@@ -1,31 +1,34 @@
 const mongoose = require('mongoose');
 
 
-const subSchema= new mongoose.Schema({
+const scholarshipSchema= new mongoose.Schema({
   scholarshipName:{
-    type: String
+    type: String,
+   
   },
 
   deadline:{
-    type: String
+    type: String,
+   
   },
 
   amount: {
     type: Number
+    
   }
 })
 
-const scholarshipSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'studentModel',
-    required: true,
-  },
+// const scholarshipSchema = new mongoose.Schema({
+//   user: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'studentModel',
+//     required: true,
+//   },
 
-  arrayOfScholarships:{
-    type: [subSchema],
-    default: [],
-  }
-});
+//   arrayOfScholarships:{
+//     type: [subSchema],
+//     default: [],
+//   }
+// });
 
 module.exports = mongoose.model('Scholarship', scholarshipSchema);

@@ -108,7 +108,7 @@ async function signin(req, res) {
     const founduni = await universityModel.findOne({ email });
 
     if (!founduni) {
-      return res.status(404).send({ message: 'User not found' });
+      return res.status(404).send({ message: 'University not found' });
     }
     
     // Compare hashed password
@@ -122,6 +122,7 @@ async function signin(req, res) {
     const token = jwt.sign(
       {
         id: founduni._id,
+        uniname: founduni.uniname,
         
       },
       process.env.SECRET_KEY,
