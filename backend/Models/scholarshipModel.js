@@ -8,7 +8,7 @@ const scholarshipSchema= new mongoose.Schema({
   },
 
   deadline:{
-    type: String,
+    type: Date,
    
   },
 
