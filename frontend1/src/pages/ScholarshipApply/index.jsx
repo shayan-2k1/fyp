@@ -5,7 +5,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const AcademicForm = () => {
+const ScholarshipApply = () => {
   const navigate = useNavigate();
   const authToken = Cookies.get("auth_token");
   const handleSubmit = async () => {
@@ -292,4 +292,4 @@ const AcademicForm = () => {
   );
 };
 
-export default AcademicForm;
+export default ScholarshipApply;

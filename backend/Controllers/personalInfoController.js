@@ -73,12 +73,17 @@ async function getPersonalInfo(req, res) {
     }
 
     // Extract relevant information from the user profile
-    const { firstName, lastName, contactNo, countryOfResidence } = userProfile;
+    const { firstName, lastName, contactNo, countryOfResidence, gender,
+      nationality,
+      dob } = userProfile;
 
     res.status(200).json({
       firstName,
       lastName,
       contactNo,
+      gender,
+      nationality,
+      dob,
       countryOfResidence,
     });
   } catch (error) {

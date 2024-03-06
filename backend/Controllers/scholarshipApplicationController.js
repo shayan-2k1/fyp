@@ -1,10 +1,10 @@
 const ScholarshipApplication = require("../Models/scholarshipApplicationModel");
 const AcademicBackground = require("../Models/academicModel"); // Assuming you have this model
 const PersonalInfo = require("../Models/personalInfoModel"); // Assuming you have this model
-const certificates = require("../Models/certificateModel.js")
-const documents = require ("../Models/documentModel")
+const certificates = require("../Models/certificateModel.js");
+const documents = require("../Models/documentModel");
 const jwt = require("jsonwebtoken");
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 async function ScholarshipApplicationController(req, res) {
@@ -20,40 +20,73 @@ async function ScholarshipApplicationController(req, res) {
     // console.log(token)
     const decodedToken = jwt.verify(token, secretKey);
     const userId = decodedToken.id;
-    console.log(decodedToken.id)
+    console.log(decodedToken.id);
     const username = decodedToken.name;
-    console.log(username)
-    const { ielts, toefl, linkedIn, github, fieldOfInterest, participationYear, achievements } = req.body;
+    console.log(username);
+    const {
+      ielts,
+      toefl,
+      linkedIn,
+      github,
+      fieldOfInterest,
+      participationYear,
+      achievements,
+    } = req.body;
 
     // Check if the user meets the admission requirements
-    if (!ielts || !toefl || !linkedIn || !github || !fieldOfInterest || !participationYear || !achievements) {
+    if (
+      !ielts ||
+      !toefl ||
+      !linkedIn ||
+      !github ||
+      !fieldOfInterest ||
+      !participationYear ||
+      !achievements
+    ) {
       return res.status(400).json({ error: "Fill all the required fields!" });
     }
 
-   
     const academicBackground = await AcademicBackground.findOne({
       user: userId,
     }); // Assuming you have a userId field in AcademicBackground model
 
     const studentDoc = await documents.findOne({
-        user:userId
-    })
+      user: userId,
+    });
     // console.log(studentDoc)
-    const documentOptions = studentDoc.files.map(document =>({
-        value: document._id,
-        label: document.fileName,
-        fileUrl: document.fileUrl // Assuming you have a fileUrl field in the Certificate model
-    }))
+    const documentOptions = studentDoc.files.map((document) => ({
+      value: document._id,
+      label: document.fileName,
+      fileUrl: document.fileUrl, // Assuming you have a fileUrl field in the Certificate model
+    }));
+    const selectedDocumentIds = req.body.selectedDocuments;
+
+    // Filter the document options based on the selected document IDs
+    const selectedDocuments = documentOptions.filter((option) =>
+      selectedDocumentIds.includes(option.value)
+    );
+
     //   const academicBackground = await AcademicBackground.findById(academicBackgroundId);
-    const studentCertificate = await certificates.findOne({user:userId});
-    const certificateOptions = studentCertificate.files.map(certificate => ({
-        value: certificate._id,
-        label: certificate.fileName,
-        fileUrl: certificate.fileUrl // Assuming you have a fileUrl field in the Certificate model
-      }));
-      console.log(certificateOptions)
+    const studentCertificate = await certificates.findOne({ user: userId });
+    const certificateOptions = studentCertificate.files.map((certificate) => ({
+      value: certificate._id,
+      label: certificate.fileName,
+      fileUrl: certificate.fileUrl, // Assuming you have a fileUrl field in the Certificate model
+    }));
+
+    const selectedCertificateIds = req.body.selectedCertificate;
+
+    // Check if selectedCertificateIds is an array
+    // if (!Array.isArray(selectedCertificateIds)) {
+    //     return res.status(400).json({ error: "Selected certificates must be an array" });
+    // }
+
+    // Filter the certificateOptions based on the selectedCertificateIds
+    const selectedCertificate = certificateOptions.filter((option) =>
+      selectedCertificateIds.includes(option.value)
+    );
+    console.log(certificateOptions);
     const personalInfo = await PersonalInfo.findOne({ user: userId }); // Assuming you have a userId field in PersonalInfo model
-    
 
     // Populate the fields in the scholarship application form
     const scholarshipApplication = new ScholarshipApplication({
@@ -75,25 +108,23 @@ async function ScholarshipApplicationController(req, res) {
         GPA: academicBackground.GPA,
         yearOfCompletion: academicBackground.yearOfCompletion,
       },
-      extraCurricularActivities:{
+      extraCurricularActivities: {
         fieldOfInterest,
         participationYear,
         achievements,
-        certificates: certificateOptions
-
+        certificates: selectedCertificate,
       },
       admissionRequirements: {
         ielts: ielts,
-        toefl: toefl
+        toefl: toefl,
       },
       attachDocuments: {
-        transcript: documentOptions,
+        transcript: selectedDocuments,
         links: {
           linkedIn,
-          github
-        }
-      }
-
+          github,
+        },
+      },
     });
 
     await scholarshipApplication.save();
@@ -108,5 +139,5 @@ async function ScholarshipApplicationController(req, res) {
 }
 
 module.exports = {
-    ScholarshipApplicationController
+  ScholarshipApplicationController,
 };
