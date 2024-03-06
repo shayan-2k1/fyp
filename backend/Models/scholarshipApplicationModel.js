@@ -1,6 +1,25 @@
 const mongoose = require('mongoose');
 
+const monthNames = [
+  'January', 'February', 'March', 'April',
+  'May', 'June', 'July', 'August',
+  'September', 'October', 'November', 'December'
+];
+
 const scholarshipApplicationSchema = new mongoose.Schema({
+
+ 
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'studentModel',
+        required: true,
+      },
+      username:{
+
+        type: String,
+        ref: 'studentModel',
+        required: true,
+      },
   personalInfo: {
     contactNo: {
       type: String
@@ -17,13 +36,21 @@ const scholarshipApplicationSchema = new mongoose.Schema({
     },
     dob: {
       day: {
-        type: Number
+        type: Number,
+        min: 1,
+        max: 31,
+        // required: true,
       },
       month: {
-        type: Number
+        type: String, // Store the month as a string
+        enum: monthNames, // Validate that the month value is one of the month names
+        // required: true,
       },
       year: {
-        type: Number
+        type: Number,
+        min: 1970, 
+        max: 2023, 
+        // required: true,
       }
     }
   },
@@ -58,7 +85,9 @@ const scholarshipApplicationSchema = new mongoose.Schema({
       type: String
     },
     certificates: [{
-      type: String // Store document URLs or paths
+      value: String,
+      label: String,
+      fileUrl: String
     }]
   }],
   admissionRequirements: {
@@ -69,26 +98,23 @@ const scholarshipApplicationSchema = new mongoose.Schema({
       type: String
     }
   },
-  visaRequirements: {
-    passport: {
-      type: String // Store document URL or path
-    }
-  },
+//   visaRequirements: {
+//     passport: {
+//       type: String // Store document URL or path
+//     }
+//   },
   attachDocuments: {
     transcript: [{
-      type: String // Store document URLs or paths
+      value: String,
+      label: String,
+      fileUrl: String
     }],
-    otherCertificates: [{
-      type: String // Store document URLs or paths
-    }],
+    
     links: {
       linkedIn: {
         type: String
       },
       github: {
-        type: String
-      },
-      other: {
         type: String
       }
     }

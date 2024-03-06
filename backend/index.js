@@ -25,6 +25,7 @@ const projectRouter = require("./Routes/projectRoutes.js")
 const scholarshipRouter = require("./Routes/scholarshipRouter.js")
 const universityRoute = require("./Routes/universityRegistrationRouter.js")
 const scholarshipPostRoute = require("./Routes/scholarshipPostRouter.js")
+const scholarshipApply = require ("./Routes/scholarshipApplyRoutes.js")
 const cors = require('cors');
 
 require("dotenv").config();
@@ -44,7 +45,7 @@ app.use("/studyInterest", academicPrefRoute);
 app.use("/user", projectRouter)
 app.use("/certificate", certificateRoute)
 app.use("/scholarship", scholarshipRouter)
-
+app.use("/scholarship" , scholarshipApply)
 
 const httpServer = require('http').createServer(app); // Create an HTTP server
 const io = new Server(httpServer, {
