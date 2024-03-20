@@ -4,7 +4,7 @@ import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
 
 import { Img, Text } from "components";
 import { Link } from "react-router-dom";
-const Sidebar1 = (props) => {
+const Sidebar2 = (props) => {
   const { collapseSidebar, collapsed } = useProSidebar();
 
   return (
@@ -48,7 +48,7 @@ const Sidebar1 = (props) => {
             >
 
              
-              <Link to="/Profile">
+              <Link to="/MentorProfile">
               <MenuItem
                 icon={
                   <Img
@@ -63,32 +63,32 @@ const Sidebar1 = (props) => {
               </MenuItem>
               </Link>
 
-              <Link to="/DocWallet">
+              <Link to="/MentorForm">
                 <MenuItem
                   icon={
                     <Img
                       className="h-[27px] w-10"
-                      src="images/wallet.png"
+                      src="images/form.png"
                       alt="commentOne"
                     />
                   }
                 >
-                  <Text className="w-[49%] sm:w-full">Doc-wallet</Text>
+                  <Text className="w-[49%] sm:w-full">Mentor Form</Text>
                   
                 </MenuItem>
               </Link>
-              <Link to="/SaveScholarships">
+              {/* <Link to="/SaveScholarships">
               <MenuItem
                 icon={
                   <Img
                     className="h-[27px] w-10"
-                    src="images/email.png"
+                    src="images/form.jpg"
                     alt="commentOne"
                   />
                 }
-              >
+              > */}
                 
-                <Text className="w-[49%] sm:w-full">Save Scholarships</Text>
+                {/* <Text className="w-[49%] sm:w-full">Save Scholarships</Text>
                
               </MenuItem>
               </Link>
@@ -150,7 +150,7 @@ const Sidebar1 = (props) => {
                 <Text className="w-[49%] sm:w-full">mentors</Text>
                
               </MenuItem>
-              </Link>
+              </Link> */}
 
             </Menu>
 
@@ -201,6 +201,6 @@ const Sidebar1 = (props) => {
   );
 };
 
-Sidebar1.defaultProps = {};
+Sidebar2.defaultProps = {};
 
-export default Sidebar1;
+export default Sidebar2;

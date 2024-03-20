@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Cookies from 'js-cookie'; // Import js-cookie
-import { Button, Img, Input, Line, List, Text } from "components";
+import { Button, Img, Input, List, Text } from "components";
 
 
 const Login = () => {
@@ -33,7 +33,7 @@ const Login = () => {
           }
           alert("Signin successful");
           console.log(response.data);
-          // navigate("/Scholarships");
+          navigate("/MentorRequest");
       } catch (error) {
           console.log(error);
           setError("Failed to sign in!");
@@ -227,8 +227,8 @@ const Login = () => {
                 </div>
               </div>
               <Img
-                className="md:flex-1 h-[500px] sm:h-auto md:mt-0 mt-[100px] object-cover rounded-bl-[10px] rounded-br-[150px] rounded-tl-[150px] rounded-tr-[30px] w-[50%] md:w-full"
-                src="images/sc2.png"
+                className="md:flex-1 h-[500px] sm:h-auto md:mt-0 mt-[150px] object-cover rounded-bl-[10px] rounded-br-[100px] rounded-tl-[150px] rounded-tr-[30px] w-[50%] md:w-full"
+                src="images/uni.jpg"
                 alt="rectangleThree"
               />
             </div>

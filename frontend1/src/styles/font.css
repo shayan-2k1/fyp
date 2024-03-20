@@ -9,3 +9,32 @@
  @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/InterRegular.ttf"); font-family : "Inter"; font-weight : 400;  }
  @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/CairoBold.ttf"); font-family : "Cairo"; font-weight : 700;  }
  @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/CairoRegular.ttf"); font-family : "Cairo"; font-weight : 400;  }
+@font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/NunitoSansSemiBold.ttf");
+    font-family: "Nunito Sans";
+    font-weight: 600;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/QuicksandBold.ttf");
+    font-family: "Quicksand";
+    font-weight: 700;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/QuicksandRegular.ttf");
+    font-family: "Quicksand";
+    font-weight: 400;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/OutfitMedium.ttf");
+    font-family: "Outfit";
+    font-weight: 500;
+  }
+  

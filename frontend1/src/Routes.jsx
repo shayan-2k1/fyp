@@ -20,6 +20,11 @@ const Notification=React.lazy(()=>import("pages/Notification"))
 const LoginUni = React.lazy(()=>import("pages/LoginUni"))
 const SignupUni = React.lazy(()=>import("pages/SignupUni"))
 const UpdateUni = React.lazy(()=>import("pages/UpdateUni"))
+const MentorLogin = React.lazy(()=>import("pages/MentorLogin"))
+const MentorRequestPage=React.lazy(()=>import("pages/MentorRequestPage"))
+const MentorProfile=React.lazy(()=>import("pages/MentorProfile"))
+const MentorForm=React.lazy(()=>import("pages/MentorForm"))
+const MentorPublished=React.lazy(()=>import("pages/MentorPublished"))
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<>Loading...</>}>
@@ -45,6 +50,11 @@ const ProjectRoutes = () => {
           <Route path="/LoginUni" element={<LoginUni/>} />
           <Route path="/SignupUni" element={<SignupUni/>} />
           <Route path="/UpdateUni" element={<UpdateUni/>} />
+          <Route path="/MentorLogin" element={<MentorLogin/>} />
+          <Route path="/MentorRequest" element={<MentorRequestPage/>} />
+          <Route path="/MentorProfile" element={<MentorProfile/>} />
+          <Route path="/MentorForm" element={<MentorForm/>} />
+          <Route path="/MentorPublished" element={<MentorPublished/>} />
         </Routes>
       </Router>
     </React.Suspense>

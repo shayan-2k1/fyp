@@ -3,10 +3,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Cookies from 'js-cookie'; // Import js-cookie
-import { Button, Img, Input, Line, List, Text } from "components";
+import { Button, Img, Input,  List, Text } from "components";
 
 
-const Login = () => {
+const MentorLogin = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,7 +18,7 @@ const Login = () => {
       setError(null); // Clear any previous errors
 
       try {
-          const response = await axios.post("http://localhost:3000/student/signin", {
+          const response = await axios.post("http://localhost:3000/mentor/signin", {
               email: email,
               password: password
           });
@@ -29,7 +29,7 @@ const Login = () => {
           }
 
           console.log(response.data);
-          navigate("/Scholarships");
+          navigate("/MentorProfile");
       } catch (error) {
           console.log(error);
           setError("Failed to sign in!");
@@ -235,4 +235,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default MentorLogin;

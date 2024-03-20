@@ -12,3 +12,5 @@ export { List } from "./List";
 export { Text } from "./Text";
 export { Textprofile } from "./Textprofile";
 export { RatingBar } from "./RatingBar";
+export { Heading } from "./Heading";
+export { Ratingbar1 } from "./Ratingbar1";
