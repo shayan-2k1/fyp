@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
 
-const subSchema= new mongoose.Schema({
+const scholarshipSchema= new mongoose.Schema({
   scholarshipName:{
     type: String,
    
   },
 
   deadline:{
-    type: String,
+    type: Date,
    
   },
 

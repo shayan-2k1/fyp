@@ -1,501 +1,501 @@
 Scholarship_Name,Scholarship_Type,Required_GPA,Scholarship_Budget,Education_Preference,Country_of_Scholarship,Eligible_Domain
-Scholarship0,Need-Based,2.5,3000.0,PhD,Canada,Fine Arts
-Scholarship1,Need-Based,3.0,7500.0,Bachelor,UK,Chemistry
-Scholarship2,Merit-Based,3.0,5000.0,Bachelor,USA,Medical Science
-Scholarship3,Need-Based,2.5,6000.0,PhD,USA,Medical Science
-Scholarship4,Merit-Based,2.0,1000.0,Master,UK,Electrical Engineering
-Scholarship5,Need-Based,2.5,7500.0,PhD,Canada,Chemistry
-Scholarship6,Need-Based,2.0,3500.0,PhD,USA,History
-Scholarship7,Need-Based,3.0,6000.0,Master,Australia,Computer Science
-Scholarship8,Need-Based,2.0,9500.0,Master,Canada,Finance
-Scholarship9,Need-Based,2.5,8500.0,PhD,Australia,Business Administration
-Scholarship10,Merit-Based,2.5,2500.0,Bachelor,UK,History
-Scholarship11,Need-Based,2.5,9000.0,PhD,USA,Chemistry
-Scholarship12,Need-Based,2.5,5000.0,Bachelor,Canada,Medical Science
-Scholarship13,Need-Based,3.0,6500.0,PhD,Canada,Computer Science
-Scholarship14,Need-Based,2.0,5000.0,Master,UK,Finance
-Scholarship15,Merit-Based,2.5,4000.0,PhD,UK,Chemistry
-Scholarship16,Merit-Based,3.0,5000.0,Bachelor,Australia,Fine Arts
-Scholarship17,Merit-Based,3.0,3500.0,Master,USA,Electrical Engineering
-Scholarship18,Merit-Based,2.5,1500.0,PhD,USA,Medical Science
-Scholarship19,Merit-Based,3.0,2000.0,PhD,Australia,Electrical Engineering
-Scholarship20,Merit-Based,2.5,8500.0,Master,Australia,Medical Science
-Scholarship21,Merit-Based,3.0,8000.0,PhD,USA,Fine Arts
-Scholarship22,Merit-Based,2.5,3000.0,PhD,Australia,History
-Scholarship23,Need-Based,2.0,9000.0,Master,USA,Electrical Engineering
-Scholarship24,Merit-Based,2.5,3500.0,Bachelor,USA,Physics
-Scholarship25,Merit-Based,3.0,2500.0,PhD,Australia,Finance
-Scholarship26,Need-Based,2.5,3000.0,Bachelor,USA,Finance
-Scholarship27,Need-Based,2.0,4000.0,Master,UK,Electrical Engineering
-Scholarship28,Merit-Based,2.0,5000.0,PhD,UK,Business Administration
-Scholarship29,Need-Based,2.0,8000.0,Master,Canada,Physics
-Scholarship30,Need-Based,2.5,2500.0,PhD,Australia,Fine Arts
-Scholarship31,Merit-Based,2.0,6000.0,PhD,Canada,Fine Arts
-Scholarship32,Merit-Based,2.0,3500.0,Master,Australia,Medical Science
-Scholarship33,Need-Based,2.5,1000.0,Master,Australia,Finance
-Scholarship34,Merit-Based,2.0,500.0,PhD,Canada,Finance
-Scholarship35,Need-Based,2.5,4000.0,PhD,UK,Medical Research
-Scholarship36,Merit-Based,2.5,8000.0,PhD,Australia,Chemistry
-Scholarship37,Need-Based,2.5,4500.0,Bachelor,USA,Chemistry
-Scholarship38,Merit-Based,2.5,3000.0,Master,UK,Medical Science
-Scholarship39,Merit-Based,2.0,8000.0,Master,UK,Medical Research
-Scholarship40,Merit-Based,2.5,4500.0,PhD,Australia,Medical Science
-Scholarship41,Need-Based,3.0,7000.0,Master,Canada,Computer Science
-Scholarship42,Need-Based,3.0,9000.0,Bachelor,Canada,Computer Science
-Scholarship43,Need-Based,2.5,3000.0,PhD,Australia,Finance
-Scholarship44,Merit-Based,3.0,6000.0,Master,Canada,Chemistry
-Scholarship45,Merit-Based,2.5,3500.0,Bachelor,UK,Computer Science
-Scholarship46,Need-Based,2.5,8000.0,PhD,USA,Medical Science
-Scholarship47,Merit-Based,3.0,2500.0,Bachelor,USA,History
-Scholarship48,Merit-Based,3.0,500.0,Master,USA,Business Administration
-Scholarship49,Merit-Based,3.0,6000.0,PhD,USA,Finance
-Scholarship50,Merit-Based,2.5,7000.0,Bachelor,USA,Fine Arts
-Scholarship51,Need-Based,3.0,2500.0,Master,Australia,Physics
-Scholarship52,Need-Based,2.0,4000.0,Master,Australia,Finance
-Scholarship53,Need-Based,3.0,8000.0,PhD,Australia,Physics
-Scholarship54,Need-Based,3.0,9500.0,PhD,USA,Computer Science
-Scholarship55,Merit-Based,3.0,9000.0,Bachelor,Canada,Fine Arts
-Scholarship56,Merit-Based,2.0,3000.0,Master,USA,Chemistry
-Scholarship57,Merit-Based,2.5,9000.0,PhD,Canada,Fine Arts
-Scholarship58,Merit-Based,3.0,500.0,PhD,UK,Business Administration
-Scholarship59,Need-Based,2.5,4000.0,PhD,Australia,Fine Arts
-Scholarship60,Merit-Based,3.0,3500.0,Bachelor,Australia,Medical Research
-Scholarship61,Need-Based,3.0,5000.0,Bachelor,Canada,Business Administration
-Scholarship62,Merit-Based,2.0,6500.0,Bachelor,Canada,Finance
-Scholarship63,Merit-Based,2.5,3000.0,Master,Australia,Computer Science
-Scholarship64,Need-Based,2.0,4000.0,PhD,Canada,Business Administration
-Scholarship65,Need-Based,3.0,5500.0,Master,USA,Medical Research
-Scholarship66,Need-Based,3.0,4000.0,PhD,UK,Chemistry
-Scholarship67,Need-Based,2.5,1500.0,Bachelor,Canada,Fine Arts
-Scholarship68,Need-Based,2.5,3500.0,Bachelor,Australia,Medical Science
-Scholarship69,Need-Based,3.0,9000.0,Bachelor,Canada,Finance
-Scholarship70,Merit-Based,2.0,9000.0,PhD,UK,Fine Arts
-Scholarship71,Need-Based,3.0,6000.0,PhD,Australia,Finance
-Scholarship72,Need-Based,3.0,3000.0,Master,Canada,Business Administration
-Scholarship73,Need-Based,3.0,6500.0,Bachelor,USA,Chemistry
-Scholarship74,Need-Based,2.0,7500.0,PhD,Canada,Physics
-Scholarship75,Merit-Based,2.0,2000.0,Bachelor,Canada,Medical Science
-Scholarship76,Need-Based,2.0,2000.0,PhD,UK,Business Administration
-Scholarship77,Need-Based,3.0,7000.0,Bachelor,Canada,Electrical Engineering
-Scholarship78,Merit-Based,3.0,6000.0,Master,USA,Medical Science
-Scholarship79,Need-Based,2.0,1000.0,Bachelor,Canada,Medical Science
-Scholarship80,Need-Based,2.0,500.0,Master,Australia,Electrical Engineering
-Scholarship81,Need-Based,2.0,2000.0,Bachelor,UK,History
-Scholarship82,Merit-Based,2.0,7500.0,Master,UK,Electrical Engineering
-Scholarship83,Merit-Based,3.0,5000.0,Bachelor,USA,Computer Science
-Scholarship84,Need-Based,2.0,1000.0,Master,Australia,Finance
-Scholarship85,Merit-Based,2.5,7500.0,Master,UK,Finance
-Scholarship86,Merit-Based,2.0,8500.0,Bachelor,Australia,Fine Arts
-Scholarship87,Merit-Based,2.0,2500.0,Master,USA,Medical Research
-Scholarship88,Merit-Based,3.0,4500.0,PhD,Canada,Computer Science
-Scholarship89,Merit-Based,2.5,6000.0,Bachelor,Canada,Electrical Engineering
-Scholarship90,Merit-Based,2.5,3000.0,Master,Canada,Physics
-Scholarship91,Merit-Based,2.0,8500.0,Bachelor,USA,Physics
-Scholarship92,Merit-Based,2.5,5000.0,Master,UK,History
-Scholarship93,Merit-Based,2.0,1500.0,PhD,UK,Medical Research
-Scholarship94,Need-Based,2.0,7000.0,Master,Canada,Physics
-Scholarship95,Merit-Based,3.0,8000.0,PhD,Australia,Physics
-Scholarship96,Merit-Based,3.0,5500.0,Bachelor,Canada,Fine Arts
-Scholarship97,Need-Based,2.5,3500.0,Bachelor,UK,Finance
-Scholarship98,Merit-Based,3.0,7500.0,Master,Canada,Finance
-Scholarship99,Merit-Based,2.0,7000.0,Master,USA,Fine Arts
-Scholarship100,Merit-Based,2.5,9000.0,PhD,Australia,Fine Arts
-Scholarship101,Need-Based,2.0,8500.0,PhD,UK,Electrical Engineering
-Scholarship102,Need-Based,2.0,4000.0,PhD,Australia,Finance
-Scholarship103,Merit-Based,2.5,4500.0,Master,Australia,Finance
-Scholarship104,Need-Based,2.5,3000.0,Master,UK,Chemistry
-Scholarship105,Merit-Based,2.5,1500.0,PhD,USA,Electrical Engineering
-Scholarship106,Need-Based,2.0,9500.0,PhD,Australia,Chemistry
-Scholarship107,Need-Based,2.0,6500.0,PhD,Australia,Computer Science
-Scholarship108,Need-Based,3.0,4500.0,PhD,Canada,Computer Science
-Scholarship109,Merit-Based,2.5,7500.0,PhD,Canada,Business Administration
-Scholarship110,Merit-Based,3.0,9000.0,PhD,Australia,Finance
-Scholarship111,Need-Based,2.5,9500.0,PhD,USA,Fine Arts
-Scholarship112,Merit-Based,3.0,5500.0,PhD,Canada,History
-Scholarship113,Need-Based,2.5,7000.0,Master,Canada,Business Administration
-Scholarship114,Need-Based,3.0,1500.0,Bachelor,Canada,Physics
-Scholarship115,Merit-Based,3.0,1000.0,Bachelor,UK,Business Administration
-Scholarship116,Need-Based,2.0,7000.0,Master,UK,Business Administration
-Scholarship117,Need-Based,2.5,3000.0,PhD,UK,Medical Science
-Scholarship118,Merit-Based,2.0,1500.0,Master,USA,Medical Research
-Scholarship119,Merit-Based,2.5,5500.0,Bachelor,Canada,Medical Research
-Scholarship120,Merit-Based,3.0,4000.0,Master,Australia,Electrical Engineering
-Scholarship121,Need-Based,3.0,4500.0,PhD,Canada,Business Administration
-Scholarship122,Need-Based,2.0,5000.0,PhD,Australia,Business Administration
-Scholarship123,Need-Based,3.0,1500.0,Master,UK,Fine Arts
-Scholarship124,Need-Based,2.5,7000.0,PhD,USA,Computer Science
-Scholarship125,Need-Based,2.5,9000.0,Bachelor,Australia,Medical Research
-Scholarship126,Merit-Based,2.0,2500.0,Master,Australia,Medical Science
-Scholarship127,Need-Based,3.0,3500.0,Master,Canada,History
-Scholarship128,Merit-Based,2.0,3500.0,Bachelor,UK,Medical Science
-Scholarship129,Need-Based,2.5,500.0,Bachelor,USA,Medical Research
-Scholarship130,Need-Based,3.0,2500.0,Master,USA,Computer Science
-Scholarship131,Need-Based,2.0,8000.0,Bachelor,USA,Physics
-Scholarship132,Merit-Based,2.5,5500.0,PhD,Canada,Fine Arts
-Scholarship133,Need-Based,2.5,5500.0,Master,UK,Electrical Engineering
-Scholarship134,Need-Based,3.0,4500.0,PhD,Australia,Electrical Engineering
-Scholarship135,Need-Based,2.0,9500.0,Bachelor,Australia,Computer Science
-Scholarship136,Need-Based,2.0,3000.0,PhD,USA,Computer Science
-Scholarship137,Need-Based,2.5,7000.0,Bachelor,Canada,Medical Science
-Scholarship138,Merit-Based,2.5,3000.0,Master,UK,Medical Science
-Scholarship139,Need-Based,2.0,4000.0,Master,USA,Electrical Engineering
-Scholarship140,Merit-Based,3.0,3500.0,Master,Canada,Medical Science
-Scholarship141,Need-Based,3.0,9000.0,PhD,Australia,History
-Scholarship142,Need-Based,2.5,4500.0,Master,Australia,Physics
-Scholarship143,Merit-Based,2.5,5500.0,Master,Australia,Electrical Engineering
-Scholarship144,Merit-Based,2.5,6000.0,Master,UK,Medical Research
-Scholarship145,Merit-Based,3.0,9500.0,PhD,Canada,History
-Scholarship146,Merit-Based,2.0,6500.0,Bachelor,UK,Fine Arts
-Scholarship147,Need-Based,3.0,4500.0,Master,USA,Physics
-Scholarship148,Need-Based,2.5,9500.0,PhD,Canada,Finance
-Scholarship149,Need-Based,3.0,8000.0,Bachelor,Canada,History
-Scholarship150,Need-Based,2.0,3000.0,Bachelor,USA,Chemistry
-Scholarship151,Need-Based,2.5,2000.0,Master,Australia,History
-Scholarship152,Merit-Based,2.0,7500.0,PhD,USA,Medical Science
-Scholarship153,Merit-Based,2.0,9000.0,PhD,Canada,Electrical Engineering
-Scholarship154,Need-Based,3.0,8500.0,PhD,Canada,Business Administration
-Scholarship155,Need-Based,2.0,8500.0,Bachelor,Australia,Medical Research
-Scholarship156,Need-Based,2.5,8500.0,Master,Canada,Finance
-Scholarship157,Merit-Based,2.0,9500.0,Bachelor,Australia,Fine Arts
-Scholarship158,Need-Based,2.0,2000.0,PhD,USA,Computer Science
-Scholarship159,Merit-Based,2.0,6000.0,PhD,Australia,Fine Arts
-Scholarship160,Merit-Based,2.5,8500.0,Master,Canada,Electrical Engineering
-Scholarship161,Merit-Based,2.0,3500.0,Master,Canada,Finance
-Scholarship162,Merit-Based,2.5,9500.0,PhD,UK,Fine Arts
-Scholarship163,Merit-Based,2.0,7500.0,Master,UK,Business Administration
-Scholarship164,Merit-Based,2.5,2500.0,Bachelor,Australia,Medical Science
-Scholarship165,Merit-Based,2.5,6500.0,Master,USA,Medical Science
-Scholarship166,Need-Based,3.0,6000.0,PhD,Canada,Physics
-Scholarship167,Merit-Based,2.0,2500.0,Bachelor,Australia,Physics
-Scholarship168,Merit-Based,3.0,9000.0,Master,USA,Medical Science
-Scholarship169,Merit-Based,3.0,5000.0,Bachelor,Australia,Business Administration
-Scholarship170,Need-Based,2.0,7500.0,Master,USA,Computer Science
-Scholarship171,Need-Based,2.0,6500.0,Master,Australia,Computer Science
-Scholarship172,Merit-Based,3.0,4000.0,PhD,Australia,Medical Research
-Scholarship173,Merit-Based,2.5,500.0,Bachelor,USA,Computer Science
-Scholarship174,Merit-Based,3.0,7500.0,Master,UK,Electrical Engineering
-Scholarship175,Need-Based,2.5,4000.0,PhD,Australia,Electrical Engineering
-Scholarship176,Need-Based,3.0,9000.0,Master,Canada,Business Administration
-Scholarship177,Need-Based,2.0,4000.0,PhD,Australia,Business Administration
-Scholarship178,Need-Based,2.5,4000.0,Master,Canada,Physics
-Scholarship179,Need-Based,3.0,5000.0,Master,UK,Finance
-Scholarship180,Merit-Based,3.0,3500.0,Master,UK,Physics
-Scholarship181,Merit-Based,3.0,500.0,Master,USA,Finance
-Scholarship182,Merit-Based,2.0,5500.0,Master,USA,Business Administration
-Scholarship183,Need-Based,2.0,3500.0,Bachelor,USA,Physics
-Scholarship184,Merit-Based,2.5,3500.0,PhD,USA,Physics
-Scholarship185,Merit-Based,2.0,3500.0,Bachelor,Canada,Chemistry
-Scholarship186,Need-Based,3.0,8500.0,Bachelor,UK,Fine Arts
-Scholarship187,Merit-Based,2.5,8500.0,Master,Canada,Electrical Engineering
-Scholarship188,Need-Based,3.0,5000.0,Master,Australia,Medical Research
-Scholarship189,Need-Based,2.5,3000.0,Bachelor,UK,Electrical Engineering
-Scholarship190,Need-Based,2.5,9500.0,PhD,UK,History
-Scholarship191,Need-Based,2.5,3000.0,Bachelor,UK,Computer Science
-Scholarship192,Need-Based,2.5,4500.0,PhD,Australia,History
-Scholarship193,Merit-Based,2.0,2500.0,Bachelor,USA,History
-Scholarship194,Merit-Based,2.5,7500.0,PhD,USA,Fine Arts
-Scholarship195,Need-Based,2.0,3500.0,PhD,Australia,Electrical Engineering
-Scholarship196,Need-Based,3.0,7500.0,Master,Canada,Physics
-Scholarship197,Need-Based,3.0,5000.0,Master,UK,Physics
-Scholarship198,Merit-Based,2.5,5500.0,Bachelor,USA,Finance
-Scholarship199,Need-Based,3.0,1000.0,PhD,UK,Medical Science
-Scholarship200,Need-Based,3.0,7000.0,Master,USA,History
-Scholarship201,Merit-Based,2.0,3000.0,PhD,Australia,Fine Arts
-Scholarship202,Merit-Based,3.0,500.0,Master,UK,History
-Scholarship203,Need-Based,3.0,3500.0,Bachelor,USA,Electrical Engineering
-Scholarship204,Merit-Based,2.5,4500.0,PhD,UK,Chemistry
-Scholarship205,Need-Based,2.0,7000.0,Bachelor,UK,Medical Science
-Scholarship206,Need-Based,2.0,8000.0,PhD,Canada,History
-Scholarship207,Need-Based,2.5,1000.0,Bachelor,Canada,Medical Science
-Scholarship208,Need-Based,2.0,4000.0,Bachelor,USA,Fine Arts
-Scholarship209,Need-Based,2.0,9500.0,Master,Australia,Medical Science
-Scholarship210,Need-Based,3.0,3000.0,Master,Australia,Medical Science
-Scholarship211,Merit-Based,2.5,7500.0,Bachelor,UK,Finance
-Scholarship212,Merit-Based,2.0,4000.0,Bachelor,USA,History
-Scholarship213,Need-Based,2.5,4500.0,Master,USA,History
-Scholarship214,Merit-Based,3.0,9000.0,PhD,Australia,Computer Science
-Scholarship215,Merit-Based,2.5,500.0,PhD,USA,Business Administration
-Scholarship216,Merit-Based,2.5,1000.0,Master,USA,Business Administration
-Scholarship217,Need-Based,3.0,4500.0,Bachelor,Australia,Computer Science
-Scholarship218,Need-Based,2.5,4000.0,PhD,USA,Fine Arts
-Scholarship219,Merit-Based,2.5,8000.0,Master,USA,Chemistry
-Scholarship220,Need-Based,2.0,2500.0,Master,USA,Fine Arts
-Scholarship221,Merit-Based,2.0,5500.0,PhD,UK,Electrical Engineering
-Scholarship222,Need-Based,2.5,1000.0,Master,UK,Medical Research
-Scholarship223,Need-Based,2.0,3500.0,Bachelor,Australia,History
-Scholarship224,Need-Based,2.0,5500.0,Master,Canada,Business Administration
-Scholarship225,Need-Based,3.0,1500.0,PhD,Canada,Physics
-Scholarship226,Merit-Based,2.0,6000.0,PhD,Australia,Computer Science
-Scholarship227,Merit-Based,2.0,7500.0,Bachelor,USA,Computer Science
-Scholarship228,Need-Based,3.0,4500.0,Bachelor,UK,Finance
-Scholarship229,Need-Based,3.0,6000.0,Master,Canada,Fine Arts
-Scholarship230,Merit-Based,3.0,4500.0,Bachelor,UK,Chemistry
-Scholarship231,Need-Based,2.0,1500.0,Bachelor,Australia,Business Administration
-Scholarship232,Merit-Based,2.0,9500.0,Bachelor,UK,Electrical Engineering
-Scholarship233,Need-Based,3.0,8000.0,Bachelor,Australia,Chemistry
-Scholarship234,Merit-Based,2.0,3000.0,PhD,Australia,Fine Arts
-Scholarship235,Need-Based,3.0,4000.0,Bachelor,Australia,Business Administration
-Scholarship236,Need-Based,2.0,9500.0,Bachelor,UK,Chemistry
-Scholarship237,Need-Based,3.0,8500.0,Bachelor,USA,Fine Arts
-Scholarship238,Need-Based,3.0,500.0,Bachelor,UK,Computer Science
-Scholarship239,Merit-Based,3.0,3000.0,Master,Canada,Fine Arts
-Scholarship240,Need-Based,3.0,1000.0,Master,UK,Computer Science
-Scholarship241,Need-Based,3.0,5500.0,PhD,UK,Fine Arts
-Scholarship242,Merit-Based,2.0,2000.0,Master,Canada,Chemistry
-Scholarship243,Merit-Based,2.5,2000.0,Bachelor,USA,Medical Research
-Scholarship244,Need-Based,2.0,7000.0,PhD,Canada,Medical Science
-Scholarship245,Merit-Based,2.0,4500.0,Bachelor,USA,Fine Arts
-Scholarship246,Merit-Based,3.0,4500.0,Master,UK,Computer Science
-Scholarship247,Merit-Based,2.5,5500.0,Bachelor,UK,Business Administration
-Scholarship248,Need-Based,3.0,1500.0,PhD,Australia,Medical Science
-Scholarship249,Merit-Based,3.0,9500.0,Master,Australia,Medical Science
-Scholarship250,Merit-Based,3.0,4000.0,PhD,USA,Physics
-Scholarship251,Merit-Based,2.5,7000.0,Master,USA,Fine Arts
-Scholarship252,Need-Based,2.0,3500.0,PhD,Australia,Computer Science
-Scholarship253,Need-Based,2.0,500.0,Master,USA,Business Administration
-Scholarship254,Need-Based,2.5,500.0,PhD,USA,Physics
-Scholarship255,Merit-Based,2.0,1500.0,Master,USA,Medical Research
-Scholarship256,Need-Based,2.0,4500.0,Master,Canada,Fine Arts
-Scholarship257,Need-Based,2.0,8500.0,Bachelor,Canada,Fine Arts
-Scholarship258,Merit-Based,3.0,1500.0,PhD,UK,Physics
-Scholarship259,Merit-Based,2.5,4500.0,Master,USA,Computer Science
-Scholarship260,Need-Based,3.0,8500.0,Master,USA,Finance
-Scholarship261,Need-Based,2.5,6000.0,Master,UK,Business Administration
-Scholarship262,Need-Based,2.5,1000.0,Master,Australia,Medical Science
-Scholarship263,Merit-Based,2.5,500.0,Master,Canada,History
-Scholarship264,Merit-Based,2.5,5500.0,Master,Australia,Fine Arts
-Scholarship265,Merit-Based,3.0,2500.0,Master,UK,Physics
-Scholarship266,Merit-Based,2.0,2000.0,Master,Australia,Medical Research
-Scholarship267,Need-Based,2.0,500.0,Master,Canada,History
-Scholarship268,Need-Based,3.0,6500.0,Master,UK,Medical Science
-Scholarship269,Merit-Based,2.0,9500.0,PhD,Canada,Medical Science
-Scholarship270,Need-Based,2.0,8000.0,Master,Australia,Finance
-Scholarship271,Merit-Based,2.0,6500.0,Master,USA,Medical Research
-Scholarship272,Need-Based,2.5,1000.0,Master,USA,Chemistry
-Scholarship273,Need-Based,2.5,7000.0,Master,UK,Finance
-Scholarship274,Merit-Based,2.5,3500.0,Bachelor,USA,Computer Science
-Scholarship275,Need-Based,2.5,3500.0,Master,Australia,Electrical Engineering
-Scholarship276,Merit-Based,2.0,8500.0,Bachelor,USA,Fine Arts
-Scholarship277,Need-Based,3.0,5000.0,Master,USA,Computer Science
-Scholarship278,Merit-Based,2.0,7000.0,Bachelor,UK,Chemistry
-Scholarship279,Merit-Based,3.0,9000.0,PhD,UK,Chemistry
-Scholarship280,Merit-Based,2.0,3500.0,PhD,UK,Electrical Engineering
-Scholarship281,Need-Based,2.0,8500.0,Master,Australia,Medical Research
-Scholarship282,Need-Based,2.5,8000.0,PhD,USA,Computer Science
-Scholarship283,Need-Based,2.5,5500.0,PhD,Australia,Fine Arts
-Scholarship284,Merit-Based,2.5,8000.0,PhD,Canada,Finance
-Scholarship285,Merit-Based,3.0,500.0,Master,UK,Computer Science
-Scholarship286,Need-Based,2.5,5500.0,Bachelor,Australia,Business Administration
-Scholarship287,Need-Based,2.5,2000.0,PhD,USA,Fine Arts
-Scholarship288,Merit-Based,3.0,9500.0,Master,Canada,Physics
-Scholarship289,Need-Based,3.0,9000.0,Bachelor,UK,Medical Science
-Scholarship290,Merit-Based,3.0,9000.0,PhD,UK,Finance
-Scholarship291,Need-Based,3.0,6500.0,Master,UK,Finance
-Scholarship292,Need-Based,3.0,5000.0,Master,USA,Finance
-Scholarship293,Merit-Based,2.5,2500.0,Bachelor,USA,Chemistry
-Scholarship294,Need-Based,2.5,9000.0,Master,Canada,Chemistry
-Scholarship295,Need-Based,2.0,500.0,Master,UK,Business Administration
-Scholarship296,Merit-Based,3.0,4000.0,PhD,Australia,Medical Science
-Scholarship297,Need-Based,2.5,5500.0,Bachelor,Australia,Fine Arts
-Scholarship298,Need-Based,3.0,8500.0,PhD,USA,Fine Arts
-Scholarship299,Need-Based,3.0,7500.0,Master,USA,Business Administration
-Scholarship300,Merit-Based,2.5,6500.0,PhD,UK,Physics
-Scholarship301,Need-Based,3.0,7000.0,Master,Australia,Medical Science
-Scholarship302,Need-Based,2.5,2000.0,Master,Australia,History
-Scholarship303,Need-Based,3.0,8000.0,PhD,Canada,Computer Science
-Scholarship304,Need-Based,2.0,3500.0,Bachelor,Australia,Physics
-Scholarship305,Need-Based,2.5,9500.0,Master,UK,Finance
-Scholarship306,Need-Based,2.5,8000.0,Bachelor,USA,Electrical Engineering
-Scholarship307,Merit-Based,2.5,4500.0,Bachelor,Australia,Medical Research
-Scholarship308,Merit-Based,3.0,9500.0,PhD,USA,Business Administration
-Scholarship309,Need-Based,2.0,7500.0,PhD,Canada,Computer Science
-Scholarship310,Merit-Based,3.0,7000.0,PhD,USA,History
-Scholarship311,Merit-Based,2.0,4000.0,Master,USA,History
-Scholarship312,Merit-Based,2.5,8000.0,PhD,Australia,Finance
-Scholarship313,Merit-Based,2.5,4500.0,Bachelor,Australia,Computer Science
-Scholarship314,Merit-Based,2.0,2500.0,Bachelor,UK,Chemistry
-Scholarship315,Merit-Based,2.5,1500.0,Master,Canada,History
-Scholarship316,Merit-Based,2.5,3500.0,PhD,UK,Computer Science
-Scholarship317,Need-Based,3.0,1000.0,Bachelor,UK,Computer Science
-Scholarship318,Need-Based,3.0,8500.0,Master,UK,Business Administration
-Scholarship319,Merit-Based,3.0,6000.0,Bachelor,Australia,History
-Scholarship320,Merit-Based,2.5,6500.0,PhD,USA,Medical Research
-Scholarship321,Merit-Based,2.5,2500.0,Master,UK,Business Administration
-Scholarship322,Need-Based,2.5,7000.0,Master,Canada,Electrical Engineering
-Scholarship323,Need-Based,3.0,6500.0,Master,Australia,Business Administration
-Scholarship324,Need-Based,3.0,8500.0,Bachelor,USA,Chemistry
-Scholarship325,Merit-Based,2.0,7500.0,Master,Australia,History
-Scholarship326,Merit-Based,2.0,8500.0,PhD,Australia,Medical Science
-Scholarship327,Merit-Based,2.0,6000.0,Bachelor,UK,Electrical Engineering
-Scholarship328,Need-Based,2.5,4500.0,Bachelor,Australia,Electrical Engineering
-Scholarship329,Need-Based,2.0,6500.0,Bachelor,USA,Fine Arts
-Scholarship330,Need-Based,2.5,6500.0,PhD,UK,Electrical Engineering
-Scholarship331,Merit-Based,3.0,9500.0,PhD,Canada,Chemistry
-Scholarship332,Merit-Based,2.5,8000.0,PhD,Australia,Chemistry
-Scholarship333,Need-Based,2.0,500.0,Bachelor,Canada,Chemistry
-Scholarship334,Need-Based,3.0,6500.0,Bachelor,Canada,Physics
-Scholarship335,Need-Based,2.0,5000.0,Bachelor,UK,Electrical Engineering
-Scholarship336,Need-Based,2.5,6500.0,Bachelor,Canada,Chemistry
-Scholarship337,Need-Based,2.0,6500.0,PhD,USA,Chemistry
-Scholarship338,Need-Based,2.5,3500.0,Bachelor,USA,Medical Research
-Scholarship339,Need-Based,2.0,500.0,Master,Canada,Medical Research
-Scholarship340,Merit-Based,2.0,3500.0,Master,Australia,Chemistry
-Scholarship341,Need-Based,2.0,1500.0,Master,UK,Medical Science
-Scholarship342,Merit-Based,3.0,8000.0,Bachelor,UK,Computer Science
-Scholarship343,Merit-Based,3.0,1500.0,Master,UK,Chemistry
-Scholarship344,Merit-Based,2.0,4000.0,PhD,USA,Medical Science
-Scholarship345,Merit-Based,2.0,1500.0,Master,USA,Medical Science
-Scholarship346,Merit-Based,3.0,7000.0,Bachelor,USA,Medical Science
-Scholarship347,Need-Based,2.0,8500.0,Master,UK,Finance
-Scholarship348,Need-Based,2.0,7500.0,PhD,Canada,Medical Research
-Scholarship349,Need-Based,3.0,7000.0,Bachelor,Canada,Medical Research
-Scholarship350,Merit-Based,2.0,1000.0,Bachelor,USA,Business Administration
-Scholarship351,Need-Based,3.0,8500.0,Bachelor,Australia,Chemistry
-Scholarship352,Merit-Based,2.5,5500.0,Master,USA,History
-Scholarship353,Need-Based,3.0,7000.0,PhD,USA,Physics
-Scholarship354,Merit-Based,3.0,8000.0,Master,UK,Medical Science
-Scholarship355,Need-Based,2.5,5000.0,PhD,UK,Fine Arts
-Scholarship356,Merit-Based,2.5,9000.0,Bachelor,UK,Chemistry
-Scholarship357,Merit-Based,2.5,5000.0,PhD,USA,Fine Arts
-Scholarship358,Need-Based,2.0,6000.0,Master,Canada,Fine Arts
-Scholarship359,Merit-Based,2.5,5000.0,Bachelor,USA,Computer Science
-Scholarship360,Merit-Based,3.0,2000.0,PhD,Canada,Chemistry
-Scholarship361,Need-Based,2.5,6000.0,PhD,USA,Medical Science
-Scholarship362,Merit-Based,2.0,1500.0,PhD,Canada,Physics
-Scholarship363,Merit-Based,2.0,5500.0,PhD,UK,Medical Science
-Scholarship364,Need-Based,3.0,1500.0,Master,Canada,Medical Research
-Scholarship365,Need-Based,2.5,4000.0,PhD,Canada,Chemistry
-Scholarship366,Need-Based,3.0,6500.0,Bachelor,Australia,Electrical Engineering
-Scholarship367,Merit-Based,2.0,2500.0,Master,UK,Electrical Engineering
-Scholarship368,Merit-Based,2.5,7000.0,Master,UK,Finance
-Scholarship369,Need-Based,2.0,7000.0,Master,Australia,Physics
-Scholarship370,Need-Based,3.0,3500.0,Master,USA,Medical Science
-Scholarship371,Merit-Based,3.0,8000.0,Bachelor,UK,Fine Arts
-Scholarship372,Need-Based,3.0,9000.0,Bachelor,Canada,Finance
-Scholarship373,Merit-Based,2.5,1500.0,PhD,Canada,History
-Scholarship374,Merit-Based,2.5,1000.0,Master,UK,Chemistry
-Scholarship375,Merit-Based,3.0,7500.0,Bachelor,Australia,Physics
-Scholarship376,Merit-Based,2.0,1000.0,PhD,Canada,Medical Research
-Scholarship377,Merit-Based,3.0,5000.0,Bachelor,UK,Chemistry
-Scholarship378,Merit-Based,2.0,6000.0,PhD,Canada,Computer Science
-Scholarship379,Merit-Based,3.0,3500.0,PhD,Australia,Physics
-Scholarship380,Merit-Based,2.0,1500.0,Bachelor,UK,History
-Scholarship381,Need-Based,2.0,5000.0,Bachelor,Canada,Chemistry
-Scholarship382,Need-Based,3.0,9500.0,PhD,Australia,History
-Scholarship383,Merit-Based,2.0,2000.0,Bachelor,Australia,Electrical Engineering
-Scholarship384,Merit-Based,3.0,3500.0,Bachelor,USA,Chemistry
-Scholarship385,Need-Based,2.5,500.0,Master,USA,Electrical Engineering
-Scholarship386,Need-Based,2.5,9000.0,PhD,USA,History
-Scholarship387,Merit-Based,3.0,5500.0,PhD,USA,Medical Research
-Scholarship388,Need-Based,2.0,5500.0,Master,UK,Fine Arts
-Scholarship389,Merit-Based,2.5,3000.0,Bachelor,UK,Finance
-Scholarship390,Need-Based,2.0,6500.0,PhD,Australia,Finance
-Scholarship391,Merit-Based,2.0,5500.0,Bachelor,UK,Electrical Engineering
-Scholarship392,Merit-Based,2.0,9500.0,Master,Canada,Business Administration
-Scholarship393,Merit-Based,2.5,5500.0,Bachelor,USA,Computer Science
-Scholarship394,Need-Based,2.0,4500.0,Bachelor,Australia,History
-Scholarship395,Need-Based,2.5,3500.0,Master,Canada,Business Administration
-Scholarship396,Need-Based,2.5,1000.0,Master,Australia,Chemistry
-Scholarship397,Need-Based,2.0,1500.0,Bachelor,Canada,Business Administration
-Scholarship398,Need-Based,3.0,7500.0,Bachelor,Canada,Chemistry
-Scholarship399,Merit-Based,2.0,9000.0,Bachelor,Australia,Fine Arts
-Scholarship400,Merit-Based,3.0,1500.0,Bachelor,Australia,Medical Research
-Scholarship401,Need-Based,2.5,3000.0,PhD,Canada,Electrical Engineering
-Scholarship402,Need-Based,2.5,4500.0,Bachelor,UK,Physics
-Scholarship403,Merit-Based,2.0,4500.0,PhD,UK,Electrical Engineering
-Scholarship404,Merit-Based,2.5,1000.0,Master,USA,Electrical Engineering
-Scholarship405,Need-Based,2.0,6000.0,PhD,USA,Medical Science
-Scholarship406,Merit-Based,2.5,1000.0,Bachelor,Canada,Business Administration
-Scholarship407,Merit-Based,2.5,1500.0,Bachelor,USA,Finance
-Scholarship408,Need-Based,2.0,6000.0,PhD,USA,Medical Research
-Scholarship409,Need-Based,3.0,5500.0,PhD,Australia,Physics
-Scholarship410,Need-Based,2.0,9000.0,Master,Canada,Medical Science
-Scholarship411,Need-Based,2.0,2500.0,Bachelor,Canada,History
-Scholarship412,Merit-Based,2.5,500.0,Bachelor,Canada,Fine Arts
-Scholarship413,Need-Based,2.0,2500.0,Master,USA,Business Administration
-Scholarship414,Need-Based,3.0,8500.0,Master,UK,Chemistry
-Scholarship415,Need-Based,2.0,2500.0,Bachelor,Canada,Physics
-Scholarship416,Merit-Based,3.0,4000.0,PhD,Australia,Medical Science
-Scholarship417,Need-Based,3.0,7000.0,Master,UK,Chemistry
-Scholarship418,Merit-Based,2.5,1500.0,PhD,Canada,Business Administration
-Scholarship419,Need-Based,2.5,1000.0,PhD,Canada,Finance
-Scholarship420,Merit-Based,2.0,6500.0,Bachelor,UK,Medical Science
-Scholarship421,Merit-Based,2.0,1000.0,Master,USA,Fine Arts
-Scholarship422,Need-Based,2.0,2500.0,Master,USA,Medical Science
-Scholarship423,Need-Based,3.0,3000.0,PhD,Canada,Physics
-Scholarship424,Need-Based,2.5,2500.0,Master,UK,Electrical Engineering
-Scholarship425,Need-Based,3.0,5500.0,PhD,USA,Fine Arts
-Scholarship426,Merit-Based,2.5,4500.0,Bachelor,Canada,Finance
-Scholarship427,Need-Based,2.0,7500.0,Master,UK,Physics
-Scholarship428,Need-Based,2.0,2000.0,Bachelor,Canada,Business Administration
-Scholarship429,Merit-Based,2.0,9500.0,Bachelor,Canada,Finance
-Scholarship430,Merit-Based,2.5,2500.0,PhD,Canada,Chemistry
-Scholarship431,Merit-Based,2.5,7500.0,Bachelor,Canada,Computer Science
-Scholarship432,Merit-Based,3.0,8000.0,PhD,USA,Electrical Engineering
-Scholarship433,Merit-Based,3.0,1500.0,PhD,Canada,Fine Arts
-Scholarship434,Need-Based,3.0,1500.0,PhD,UK,Chemistry
-Scholarship435,Need-Based,3.0,4500.0,PhD,Australia,Business Administration
-Scholarship436,Merit-Based,2.5,8500.0,PhD,USA,Medical Research
-Scholarship437,Merit-Based,3.0,5000.0,Master,Canada,Medical Research
-Scholarship438,Need-Based,3.0,500.0,Master,USA,History
-Scholarship439,Merit-Based,2.5,9000.0,Master,UK,Electrical Engineering
-Scholarship440,Merit-Based,2.5,5500.0,Bachelor,USA,Chemistry
-Scholarship441,Need-Based,3.0,8000.0,Master,Australia,Computer Science
-Scholarship442,Need-Based,2.0,3000.0,PhD,Canada,Physics
-Scholarship443,Need-Based,2.0,4500.0,PhD,Australia,Electrical Engineering
-Scholarship444,Need-Based,3.0,7500.0,Bachelor,USA,Business Administration
-Scholarship445,Merit-Based,2.0,6000.0,PhD,Australia,Fine Arts
-Scholarship446,Merit-Based,2.5,9000.0,Master,Canada,Electrical Engineering
-Scholarship447,Merit-Based,2.5,9000.0,Master,USA,Business Administration
-Scholarship448,Need-Based,2.0,2500.0,Bachelor,UK,Physics
-Scholarship449,Need-Based,2.5,2500.0,Bachelor,UK,Medical Research
-Scholarship450,Merit-Based,2.5,5000.0,PhD,Australia,Business Administration
-Scholarship451,Merit-Based,3.0,3500.0,Master,Australia,Medical Science
-Scholarship452,Need-Based,3.0,7500.0,Bachelor,Canada,Medical Research
-Scholarship453,Need-Based,3.0,2000.0,Master,Canada,Medical Research
-Scholarship454,Merit-Based,3.0,6000.0,PhD,Canada,Chemistry
-Scholarship455,Merit-Based,2.5,9000.0,Bachelor,UK,History
-Scholarship456,Need-Based,3.0,2000.0,Bachelor,Canada,Medical Science
-Scholarship457,Merit-Based,3.0,2000.0,Bachelor,UK,Medical Science
-Scholarship458,Merit-Based,2.5,9500.0,Bachelor,USA,Business Administration
-Scholarship459,Merit-Based,2.5,8500.0,PhD,UK,Physics
-Scholarship460,Merit-Based,2.5,9500.0,Bachelor,UK,Electrical Engineering
-Scholarship461,Need-Based,2.5,7000.0,PhD,USA,Business Administration
-Scholarship462,Need-Based,3.0,6000.0,PhD,USA,Business Administration
-Scholarship463,Need-Based,2.0,2000.0,Master,Australia,Medical Research
-Scholarship464,Need-Based,2.0,1500.0,Bachelor,USA,Chemistry
-Scholarship465,Merit-Based,3.0,1000.0,Bachelor,Canada,Finance
-Scholarship466,Need-Based,3.0,2000.0,Bachelor,USA,Fine Arts
-Scholarship467,Merit-Based,3.0,2000.0,Bachelor,Canada,Computer Science
-Scholarship468,Need-Based,2.5,5500.0,PhD,Australia,Medical Research
-Scholarship469,Need-Based,3.0,1000.0,PhD,USA,Electrical Engineering
-Scholarship470,Need-Based,2.5,5500.0,Bachelor,UK,Computer Science
-Scholarship471,Merit-Based,2.0,1500.0,Bachelor,Canada,Chemistry
-Scholarship472,Need-Based,2.5,7500.0,Bachelor,Australia,Finance
-Scholarship473,Need-Based,2.0,4500.0,Master,USA,Business Administration
-Scholarship474,Need-Based,2.0,8000.0,PhD,USA,Fine Arts
-Scholarship475,Merit-Based,3.0,500.0,Master,USA,Chemistry
-Scholarship476,Merit-Based,3.0,8500.0,Master,USA,Business Administration
-Scholarship477,Merit-Based,3.0,6500.0,Master,Canada,Medical Research
-Scholarship478,Merit-Based,2.0,1500.0,Master,UK,Physics
-Scholarship479,Merit-Based,2.0,4000.0,Bachelor,USA,Fine Arts
-Scholarship480,Need-Based,3.0,4500.0,Bachelor,Australia,Medical Science
-Scholarship481,Need-Based,3.0,5000.0,PhD,USA,Chemistry
-Scholarship482,Need-Based,2.5,1500.0,Bachelor,UK,Finance
-Scholarship483,Need-Based,2.0,9500.0,Master,UK,Chemistry
-Scholarship484,Need-Based,3.0,7000.0,Master,UK,Physics
-Scholarship485,Merit-Based,2.0,8000.0,Master,UK,Chemistry
-Scholarship486,Need-Based,3.0,4000.0,PhD,UK,Finance
-Scholarship487,Merit-Based,3.0,500.0,Master,Australia,Medical Science
-Scholarship488,Need-Based,2.5,6000.0,PhD,Canada,Physics
-Scholarship489,Need-Based,2.0,5000.0,PhD,Australia,Fine Arts
-Scholarship490,Merit-Based,2.0,5000.0,Master,Australia,Chemistry
-Scholarship491,Merit-Based,3.0,7000.0,Master,Canada,Business Administration
-Scholarship492,Need-Based,2.5,8000.0,PhD,Canada,Computer Science
-Scholarship493,Need-Based,2.5,7000.0,Master,USA,Fine Arts
-Scholarship494,Need-Based,2.0,500.0,Master,USA,Medical Research
-Scholarship495,Need-Based,3.0,4500.0,Master,USA,Medical Research
-Scholarship496,Need-Based,2.0,8000.0,PhD,USA,Chemistry
-Scholarship497,Need-Based,2.0,4500.0,Bachelor,Australia,Physics
-Scholarship498,Need-Based,2.0,1500.0,Bachelor,USA,Medical Research
-Scholarship499,Merit-Based,3.0,2000.0,Bachelor,USA,History
+Scholarship0,Need-Based,2.0,9500.0,PhD,UK,Chemistry
+Scholarship1,Merit-Based,2.0,9000.0,PhD,USA,Fine Arts
+Scholarship2,Need-Based,3.0,3500.0,BS,USA,Business Administration
+Scholarship3,Merit-Based,3.0,4500.0,Masters,Australia,Finance
+Scholarship4,Need-Based,2.5,7000.0,Masters,UK,Finance
+Scholarship5,Merit-Based,2.5,9000.0,Masters,Canada,History
+Scholarship6,Need-Based,3.0,8500.0,PhD,UK,Physics
+Scholarship7,Need-Based,2.5,500.0,Masters,UK,Electrical Engineering
+Scholarship8,Merit-Based,2.5,3000.0,Masters,UK,Physics
+Scholarship9,Need-Based,2.0,2000.0,PhD,Australia,Fine Arts
+Scholarship10,Need-Based,3.0,4000.0,BS,UK,History
+Scholarship11,Merit-Based,2.0,4500.0,BS,Canada,Finance
+Scholarship12,Merit-Based,2.0,3500.0,Masters,USA,Computer Science
+Scholarship13,Need-Based,2.5,8500.0,BS,Australia,Business Administration
+Scholarship14,Merit-Based,3.0,2000.0,PhD,UK,Physics
+Scholarship15,Need-Based,2.0,5000.0,Masters,Canada,Physics
+Scholarship16,Need-Based,3.0,1000.0,BS,Australia,Physics
+Scholarship17,Need-Based,2.0,8000.0,BS,Australia,Medical Science
+Scholarship18,Need-Based,2.0,8500.0,BS,Australia,Fine Arts
+Scholarship19,Need-Based,2.0,2000.0,BS,UK,Chemistry
+Scholarship20,Merit-Based,3.0,2000.0,Masters,Australia,Business Administration
+Scholarship21,Need-Based,3.0,5500.0,PhD,Canada,Chemistry
+Scholarship22,Need-Based,3.0,6000.0,PhD,USA,Computer Science
+Scholarship23,Merit-Based,3.0,7500.0,BS,Canada,Medical Research
+Scholarship24,Merit-Based,2.0,7000.0,Masters,Canada,Fine Arts
+Scholarship25,Need-Based,3.0,6000.0,Masters,Canada,Business Administration
+Scholarship26,Merit-Based,2.0,5000.0,PhD,USA,Chemistry
+Scholarship27,Merit-Based,2.0,6500.0,BS,Australia,Computer Science
+Scholarship28,Need-Based,2.5,3000.0,PhD,UK,Business Administration
+Scholarship29,Merit-Based,2.5,3500.0,BS,Canada,History
+Scholarship30,Need-Based,3.0,9000.0,BS,USA,Fine Arts
+Scholarship31,Need-Based,2.5,4000.0,Masters,UK,Finance
+Scholarship32,Merit-Based,3.0,5000.0,PhD,UK,Physics
+Scholarship33,Need-Based,3.0,2500.0,Masters,USA,Chemistry
+Scholarship34,Merit-Based,3.0,9500.0,BS,UK,Computer Science
+Scholarship35,Need-Based,2.0,4000.0,PhD,Australia,Fine Arts
+Scholarship36,Merit-Based,2.5,2500.0,Masters,Australia,Medical Science
+Scholarship37,Need-Based,2.0,7500.0,BS,Australia,Electrical Engineering
+Scholarship38,Merit-Based,2.5,2500.0,PhD,UK,Computer Science
+Scholarship39,Merit-Based,2.5,3000.0,Masters,UK,History
+Scholarship40,Need-Based,2.5,9500.0,BS,Canada,Fine Arts
+Scholarship41,Need-Based,2.0,4000.0,BS,UK,History
+Scholarship42,Need-Based,2.5,1500.0,PhD,UK,Computer Science
+Scholarship43,Merit-Based,3.0,500.0,PhD,Australia,Physics
+Scholarship44,Merit-Based,3.0,2500.0,PhD,UK,History
+Scholarship45,Merit-Based,2.0,5500.0,BS,UK,Medical Research
+Scholarship46,Need-Based,2.0,1000.0,BS,USA,History
+Scholarship47,Need-Based,2.5,5500.0,Masters,Australia,Business Administration
+Scholarship48,Merit-Based,2.5,6500.0,BS,Australia,Finance
+Scholarship49,Merit-Based,2.5,1500.0,PhD,Canada,Finance
+Scholarship50,Need-Based,2.0,8500.0,PhD,UK,Medical Research
+Scholarship51,Merit-Based,3.0,3000.0,BS,UK,Electrical Engineering
+Scholarship52,Merit-Based,2.0,9000.0,PhD,USA,Medical Research
+Scholarship53,Merit-Based,2.0,5000.0,BS,UK,Chemistry
+Scholarship54,Merit-Based,2.5,6000.0,BS,UK,Medical Research
+Scholarship55,Merit-Based,2.5,500.0,Masters,Australia,Medical Science
+Scholarship56,Merit-Based,3.0,6500.0,BS,UK,History
+Scholarship57,Need-Based,2.0,8000.0,PhD,Australia,Business Administration
+Scholarship58,Merit-Based,2.0,3000.0,Masters,Canada,History
+Scholarship59,Merit-Based,2.5,3500.0,PhD,Canada,Chemistry
+Scholarship60,Merit-Based,2.0,4000.0,PhD,Canada,Electrical Engineering
+Scholarship61,Merit-Based,2.0,6500.0,Masters,Australia,Chemistry
+Scholarship62,Merit-Based,2.5,8500.0,PhD,UK,Medical Research
+Scholarship63,Need-Based,3.0,9500.0,BS,Canada,Computer Science
+Scholarship64,Merit-Based,2.0,2000.0,BS,Canada,Physics
+Scholarship65,Need-Based,3.0,8500.0,BS,UK,Chemistry
+Scholarship66,Merit-Based,2.0,4500.0,BS,Canada,Business Administration
+Scholarship67,Need-Based,2.0,6500.0,PhD,Australia,Chemistry
+Scholarship68,Need-Based,3.0,3000.0,PhD,UK,Fine Arts
+Scholarship69,Need-Based,2.0,6500.0,Masters,USA,Chemistry
+Scholarship70,Merit-Based,3.0,5500.0,Masters,UK,Finance
+Scholarship71,Merit-Based,3.0,8000.0,PhD,USA,History
+Scholarship72,Merit-Based,3.0,9000.0,BS,Australia,Fine Arts
+Scholarship73,Need-Based,2.0,7500.0,Masters,Canada,Medical Science
+Scholarship74,Need-Based,2.5,1000.0,BS,UK,Fine Arts
+Scholarship75,Need-Based,3.0,5500.0,BS,Canada,Medical Research
+Scholarship76,Need-Based,2.0,9000.0,BS,UK,Business Administration
+Scholarship77,Merit-Based,3.0,3500.0,BS,Australia,Medical Research
+Scholarship78,Merit-Based,2.5,7500.0,BS,Canada,Physics
+Scholarship79,Need-Based,2.5,3500.0,Masters,UK,Medical Research
+Scholarship80,Merit-Based,2.0,4500.0,BS,Canada,Computer Science
+Scholarship81,Merit-Based,2.0,6000.0,BS,Australia,Computer Science
+Scholarship82,Need-Based,3.0,2500.0,PhD,Canada,Medical Science
+Scholarship83,Need-Based,3.0,3500.0,BS,UK,Finance
+Scholarship84,Merit-Based,2.0,4000.0,PhD,Canada,Computer Science
+Scholarship85,Need-Based,2.0,3500.0,BS,UK,Fine Arts
+Scholarship86,Merit-Based,3.0,4500.0,Masters,UK,Chemistry
+Scholarship87,Merit-Based,3.0,4000.0,PhD,UK,Medical Science
+Scholarship88,Need-Based,3.0,5500.0,Masters,Canada,Chemistry
+Scholarship89,Need-Based,2.0,4000.0,Masters,Canada,Finance
+Scholarship90,Need-Based,2.0,9500.0,Masters,USA,Electrical Engineering
+Scholarship91,Merit-Based,2.0,1500.0,BS,UK,Medical Science
+Scholarship92,Need-Based,3.0,6000.0,Masters,Canada,Computer Science
+Scholarship93,Need-Based,2.5,2500.0,Masters,UK,Chemistry
+Scholarship94,Merit-Based,2.5,3000.0,BS,UK,Computer Science
+Scholarship95,Merit-Based,2.0,5500.0,PhD,UK,Chemistry
+Scholarship96,Merit-Based,3.0,8000.0,PhD,Australia,Electrical Engineering
+Scholarship97,Need-Based,2.5,2000.0,BS,Canada,History
+Scholarship98,Merit-Based,2.5,2000.0,Masters,UK,Business Administration
+Scholarship99,Merit-Based,2.5,9000.0,BS,UK,Business Administration
+Scholarship100,Merit-Based,3.0,4500.0,Masters,USA,Medical Research
+Scholarship101,Need-Based,2.0,6000.0,BS,Canada,Electrical Engineering
+Scholarship102,Merit-Based,2.0,9500.0,PhD,USA,Chemistry
+Scholarship103,Merit-Based,2.0,7000.0,Masters,Australia,Computer Science
+Scholarship104,Need-Based,2.5,3000.0,Masters,Australia,Finance
+Scholarship105,Need-Based,2.0,2500.0,PhD,Canada,Physics
+Scholarship106,Merit-Based,3.0,2000.0,PhD,USA,Medical Science
+Scholarship107,Merit-Based,3.0,4500.0,Masters,Australia,Physics
+Scholarship108,Merit-Based,2.0,3500.0,Masters,Australia,Computer Science
+Scholarship109,Merit-Based,2.0,5000.0,BS,UK,Medical Science
+Scholarship110,Merit-Based,2.0,4500.0,PhD,Australia,Fine Arts
+Scholarship111,Merit-Based,3.0,3000.0,BS,UK,Medical Science
+Scholarship112,Need-Based,2.5,3000.0,PhD,Canada,Medical Research
+Scholarship113,Merit-Based,3.0,6000.0,Masters,Australia,Business Administration
+Scholarship114,Need-Based,2.5,1500.0,BS,UK,Finance
+Scholarship115,Merit-Based,2.0,4500.0,PhD,USA,Chemistry
+Scholarship116,Need-Based,3.0,500.0,Masters,Canada,Electrical Engineering
+Scholarship117,Merit-Based,3.0,8000.0,PhD,USA,History
+Scholarship118,Need-Based,3.0,3500.0,PhD,Canada,Fine Arts
+Scholarship119,Need-Based,3.0,500.0,Masters,USA,Physics
+Scholarship120,Merit-Based,2.5,1500.0,BS,UK,Physics
+Scholarship121,Merit-Based,2.0,5000.0,PhD,Australia,Electrical Engineering
+Scholarship122,Merit-Based,2.0,4500.0,BS,USA,Finance
+Scholarship123,Need-Based,3.0,6500.0,PhD,UK,Physics
+Scholarship124,Need-Based,2.5,2000.0,BS,Canada,Electrical Engineering
+Scholarship125,Merit-Based,2.0,6500.0,PhD,Australia,History
+Scholarship126,Merit-Based,3.0,4000.0,Masters,Canada,Computer Science
+Scholarship127,Need-Based,2.0,2500.0,BS,UK,Physics
+Scholarship128,Merit-Based,3.0,7500.0,Masters,USA,Physics
+Scholarship129,Merit-Based,3.0,5000.0,Masters,UK,Business Administration
+Scholarship130,Merit-Based,2.0,5000.0,Masters,UK,Finance
+Scholarship131,Need-Based,2.5,5000.0,Masters,Australia,Finance
+Scholarship132,Merit-Based,3.0,3500.0,PhD,UK,Fine Arts
+Scholarship133,Merit-Based,2.5,3000.0,BS,UK,Computer Science
+Scholarship134,Merit-Based,2.5,3000.0,BS,Australia,Medical Research
+Scholarship135,Need-Based,3.0,4000.0,BS,Australia,Computer Science
+Scholarship136,Need-Based,3.0,9500.0,Masters,Australia,Chemistry
+Scholarship137,Merit-Based,2.5,2000.0,PhD,USA,Physics
+Scholarship138,Need-Based,2.5,7500.0,BS,USA,Computer Science
+Scholarship139,Merit-Based,2.5,9000.0,Masters,Canada,Finance
+Scholarship140,Need-Based,3.0,6500.0,BS,Canada,Physics
+Scholarship141,Need-Based,3.0,8500.0,PhD,Canada,Physics
+Scholarship142,Merit-Based,2.5,1500.0,Masters,UK,Business Administration
+Scholarship143,Need-Based,2.0,9000.0,Masters,Australia,Computer Science
+Scholarship144,Need-Based,3.0,6500.0,Masters,Australia,Medical Science
+Scholarship145,Merit-Based,2.5,4500.0,BS,UK,Physics
+Scholarship146,Need-Based,3.0,5000.0,Masters,Canada,Electrical Engineering
+Scholarship147,Need-Based,2.5,1500.0,BS,USA,Computer Science
+Scholarship148,Merit-Based,2.5,8500.0,PhD,USA,Fine Arts
+Scholarship149,Need-Based,3.0,6000.0,Masters,UK,History
+Scholarship150,Merit-Based,2.0,1500.0,BS,Australia,Electrical Engineering
+Scholarship151,Merit-Based,3.0,8500.0,PhD,Australia,Finance
+Scholarship152,Need-Based,3.0,8500.0,Masters,USA,Physics
+Scholarship153,Merit-Based,2.5,7000.0,PhD,Australia,Medical Research
+Scholarship154,Need-Based,2.5,2500.0,PhD,Canada,Physics
+Scholarship155,Merit-Based,2.5,6500.0,Masters,Canada,Computer Science
+Scholarship156,Merit-Based,2.0,4500.0,Masters,USA,Computer Science
+Scholarship157,Need-Based,3.0,9000.0,BS,Canada,Medical Science
+Scholarship158,Merit-Based,3.0,9500.0,PhD,UK,Computer Science
+Scholarship159,Merit-Based,2.5,8000.0,PhD,Australia,Physics
+Scholarship160,Merit-Based,3.0,4500.0,BS,Australia,Computer Science
+Scholarship161,Merit-Based,2.5,7000.0,BS,Australia,Medical Research
+Scholarship162,Merit-Based,2.5,3000.0,PhD,Canada,Medical Research
+Scholarship163,Need-Based,3.0,1000.0,BS,UK,Computer Science
+Scholarship164,Need-Based,3.0,4000.0,Masters,USA,Finance
+Scholarship165,Need-Based,2.5,3500.0,BS,Australia,Fine Arts
+Scholarship166,Need-Based,2.5,500.0,PhD,Australia,Business Administration
+Scholarship167,Need-Based,2.0,7500.0,Masters,UK,Electrical Engineering
+Scholarship168,Need-Based,2.0,2000.0,PhD,UK,Electrical Engineering
+Scholarship169,Need-Based,3.0,1000.0,BS,UK,Physics
+Scholarship170,Merit-Based,2.0,6500.0,Masters,Australia,Physics
+Scholarship171,Need-Based,2.5,2000.0,Masters,USA,Fine Arts
+Scholarship172,Merit-Based,2.5,2500.0,BS,Canada,Physics
+Scholarship173,Merit-Based,2.5,3500.0,BS,USA,Fine Arts
+Scholarship174,Merit-Based,2.0,5000.0,Masters,Canada,History
+Scholarship175,Need-Based,3.0,4500.0,BS,Australia,Medical Research
+Scholarship176,Need-Based,2.5,4500.0,Masters,UK,Chemistry
+Scholarship177,Merit-Based,3.0,9500.0,Masters,UK,History
+Scholarship178,Need-Based,3.0,2500.0,BS,Australia,Medical Science
+Scholarship179,Need-Based,2.0,5500.0,Masters,USA,Physics
+Scholarship180,Merit-Based,2.5,3000.0,PhD,Australia,Business Administration
+Scholarship181,Merit-Based,2.5,3500.0,Masters,Australia,Medical Research
+Scholarship182,Merit-Based,2.5,7500.0,Masters,Canada,Physics
+Scholarship183,Merit-Based,3.0,1000.0,PhD,UK,Business Administration
+Scholarship184,Merit-Based,3.0,4000.0,PhD,Canada,History
+Scholarship185,Merit-Based,2.0,6500.0,Masters,Australia,Medical Science
+Scholarship186,Merit-Based,2.5,2500.0,PhD,UK,Medical Research
+Scholarship187,Need-Based,2.5,1500.0,Masters,Canada,Medical Research
+Scholarship188,Merit-Based,2.0,500.0,BS,Australia,Medical Research
+Scholarship189,Merit-Based,3.0,4000.0,PhD,Canada,Fine Arts
+Scholarship190,Need-Based,3.0,4000.0,BS,UK,Medical Science
+Scholarship191,Need-Based,2.5,8500.0,BS,Australia,Finance
+Scholarship192,Need-Based,3.0,8500.0,Masters,Canada,Medical Research
+Scholarship193,Merit-Based,2.5,3000.0,BS,Australia,Medical Research
+Scholarship194,Merit-Based,2.0,6500.0,PhD,UK,Electrical Engineering
+Scholarship195,Need-Based,3.0,1500.0,BS,Australia,Finance
+Scholarship196,Need-Based,2.5,2500.0,BS,Canada,Medical Research
+Scholarship197,Merit-Based,2.0,4500.0,Masters,Canada,Medical Science
+Scholarship198,Need-Based,2.5,7500.0,BS,USA,Medical Research
+Scholarship199,Need-Based,2.0,1500.0,BS,Canada,Medical Science
+Scholarship200,Need-Based,2.0,9500.0,Masters,USA,Medical Science
+Scholarship201,Merit-Based,3.0,4000.0,BS,Canada,Finance
+Scholarship202,Need-Based,2.0,6000.0,Masters,Canada,Medical Research
+Scholarship203,Need-Based,2.0,2500.0,Masters,UK,Chemistry
+Scholarship204,Merit-Based,2.0,6000.0,PhD,USA,Computer Science
+Scholarship205,Merit-Based,2.5,2500.0,BS,Australia,Fine Arts
+Scholarship206,Need-Based,2.5,9500.0,PhD,UK,Medical Research
+Scholarship207,Need-Based,2.0,1000.0,BS,Canada,Medical Science
+Scholarship208,Merit-Based,2.5,500.0,Masters,UK,Medical Science
+Scholarship209,Need-Based,2.5,9000.0,Masters,Canada,Physics
+Scholarship210,Merit-Based,2.0,1500.0,Masters,Canada,Computer Science
+Scholarship211,Merit-Based,2.0,2000.0,PhD,UK,Chemistry
+Scholarship212,Need-Based,2.0,7000.0,BS,USA,Medical Science
+Scholarship213,Merit-Based,3.0,9000.0,Masters,Australia,Electrical Engineering
+Scholarship214,Merit-Based,2.0,8500.0,BS,UK,Medical Science
+Scholarship215,Merit-Based,2.0,3500.0,Masters,USA,Chemistry
+Scholarship216,Need-Based,2.0,1000.0,PhD,UK,Medical Research
+Scholarship217,Merit-Based,2.0,8500.0,BS,Canada,Fine Arts
+Scholarship218,Need-Based,3.0,1500.0,Masters,Australia,Fine Arts
+Scholarship219,Need-Based,2.5,5000.0,BS,UK,Chemistry
+Scholarship220,Merit-Based,2.0,4000.0,Masters,USA,Fine Arts
+Scholarship221,Merit-Based,2.0,7500.0,Masters,Australia,Physics
+Scholarship222,Merit-Based,2.5,3500.0,Masters,UK,Medical Science
+Scholarship223,Merit-Based,2.5,7000.0,PhD,UK,Chemistry
+Scholarship224,Need-Based,3.0,6500.0,PhD,Australia,Chemistry
+Scholarship225,Need-Based,2.5,7000.0,BS,UK,History
+Scholarship226,Need-Based,3.0,3500.0,Masters,USA,Medical Research
+Scholarship227,Need-Based,2.5,1500.0,BS,Australia,Medical Science
+Scholarship228,Need-Based,2.5,9500.0,BS,USA,Computer Science
+Scholarship229,Need-Based,3.0,6500.0,PhD,Canada,Physics
+Scholarship230,Need-Based,3.0,3500.0,Masters,Canada,Finance
+Scholarship231,Merit-Based,3.0,8000.0,PhD,Canada,Fine Arts
+Scholarship232,Merit-Based,2.0,4500.0,BS,Australia,Physics
+Scholarship233,Merit-Based,2.5,9500.0,PhD,USA,Business Administration
+Scholarship234,Need-Based,2.0,7500.0,PhD,Australia,Business Administration
+Scholarship235,Merit-Based,3.0,2500.0,PhD,Canada,Finance
+Scholarship236,Need-Based,2.0,9000.0,PhD,UK,Finance
+Scholarship237,Merit-Based,3.0,5000.0,Masters,USA,Fine Arts
+Scholarship238,Need-Based,2.5,9000.0,PhD,UK,Medical Research
+Scholarship239,Need-Based,2.5,4500.0,BS,UK,Computer Science
+Scholarship240,Need-Based,2.5,3500.0,BS,UK,Physics
+Scholarship241,Need-Based,2.5,500.0,BS,USA,Medical Research
+Scholarship242,Need-Based,2.0,4000.0,Masters,UK,Finance
+Scholarship243,Need-Based,2.5,2000.0,BS,Canada,Medical Science
+Scholarship244,Merit-Based,3.0,6500.0,Masters,UK,Finance
+Scholarship245,Merit-Based,2.5,9500.0,PhD,UK,Business Administration
+Scholarship246,Merit-Based,2.0,1000.0,Masters,Canada,Medical Science
+Scholarship247,Merit-Based,3.0,9000.0,BS,Australia,Medical Science
+Scholarship248,Merit-Based,2.5,1500.0,Masters,USA,Business Administration
+Scholarship249,Merit-Based,2.0,3000.0,Masters,USA,Computer Science
+Scholarship250,Merit-Based,2.0,9000.0,BS,USA,Fine Arts
+Scholarship251,Merit-Based,3.0,1000.0,PhD,Australia,History
+Scholarship252,Need-Based,2.0,9500.0,BS,USA,History
+Scholarship253,Need-Based,2.5,6500.0,Masters,USA,Computer Science
+Scholarship254,Need-Based,2.0,3500.0,PhD,Australia,Chemistry
+Scholarship255,Need-Based,2.5,6500.0,Masters,USA,History
+Scholarship256,Need-Based,2.0,8000.0,Masters,Canada,Physics
+Scholarship257,Need-Based,2.0,8000.0,Masters,USA,Medical Research
+Scholarship258,Need-Based,2.0,8000.0,PhD,USA,Electrical Engineering
+Scholarship259,Merit-Based,3.0,5000.0,Masters,Australia,Medical Science
+Scholarship260,Need-Based,2.0,8000.0,Masters,UK,Computer Science
+Scholarship261,Merit-Based,2.5,5000.0,BS,UK,Computer Science
+Scholarship262,Need-Based,2.0,500.0,Masters,USA,History
+Scholarship263,Need-Based,2.5,3000.0,PhD,Canada,Business Administration
+Scholarship264,Need-Based,2.5,6500.0,Masters,Australia,Chemistry
+Scholarship265,Merit-Based,2.5,4000.0,BS,Canada,Medical Research
+Scholarship266,Need-Based,2.0,5000.0,PhD,Australia,Computer Science
+Scholarship267,Merit-Based,3.0,3500.0,PhD,USA,Business Administration
+Scholarship268,Need-Based,2.0,2500.0,Masters,Canada,Fine Arts
+Scholarship269,Need-Based,2.5,8000.0,BS,USA,Fine Arts
+Scholarship270,Need-Based,2.0,8000.0,BS,USA,Finance
+Scholarship271,Merit-Based,2.0,5000.0,BS,UK,Medical Research
+Scholarship272,Merit-Based,2.5,2500.0,BS,Canada,Chemistry
+Scholarship273,Need-Based,2.5,9500.0,BS,UK,Physics
+Scholarship274,Need-Based,2.5,6000.0,Masters,Australia,Computer Science
+Scholarship275,Merit-Based,3.0,3000.0,BS,USA,Fine Arts
+Scholarship276,Merit-Based,2.5,7000.0,Masters,UK,Finance
+Scholarship277,Merit-Based,2.5,8500.0,BS,USA,Medical Research
+Scholarship278,Merit-Based,2.0,2000.0,Masters,Canada,Chemistry
+Scholarship279,Need-Based,2.5,9000.0,BS,USA,Computer Science
+Scholarship280,Merit-Based,2.5,6500.0,PhD,Australia,Business Administration
+Scholarship281,Merit-Based,2.0,5500.0,Masters,Australia,Fine Arts
+Scholarship282,Need-Based,2.0,1000.0,Masters,Australia,Medical Research
+Scholarship283,Merit-Based,2.5,6000.0,PhD,UK,Fine Arts
+Scholarship284,Merit-Based,3.0,6500.0,PhD,Canada,Electrical Engineering
+Scholarship285,Need-Based,2.0,6500.0,PhD,USA,Computer Science
+Scholarship286,Need-Based,2.0,7500.0,PhD,Canada,Physics
+Scholarship287,Need-Based,3.0,8000.0,PhD,Australia,Physics
+Scholarship288,Merit-Based,2.5,9000.0,BS,Canada,Electrical Engineering
+Scholarship289,Need-Based,3.0,2500.0,BS,Australia,Electrical Engineering
+Scholarship290,Merit-Based,2.0,4500.0,Masters,Canada,History
+Scholarship291,Need-Based,3.0,8000.0,PhD,USA,Medical Research
+Scholarship292,Need-Based,2.0,6000.0,PhD,UK,Computer Science
+Scholarship293,Need-Based,2.5,3500.0,PhD,Canada,Computer Science
+Scholarship294,Need-Based,2.0,9500.0,BS,UK,Electrical Engineering
+Scholarship295,Merit-Based,3.0,2000.0,PhD,UK,Business Administration
+Scholarship296,Need-Based,3.0,5000.0,PhD,Canada,Fine Arts
+Scholarship297,Merit-Based,2.0,9500.0,Masters,USA,Medical Research
+Scholarship298,Need-Based,2.0,1500.0,BS,Canada,Finance
+Scholarship299,Need-Based,2.0,1000.0,Masters,Canada,Electrical Engineering
+Scholarship300,Merit-Based,2.5,3500.0,BS,UK,Finance
+Scholarship301,Need-Based,2.0,9000.0,PhD,USA,Electrical Engineering
+Scholarship302,Merit-Based,3.0,7000.0,PhD,UK,Medical Science
+Scholarship303,Merit-Based,2.5,4000.0,BS,Canada,Electrical Engineering
+Scholarship304,Merit-Based,3.0,5500.0,BS,Canada,Medical Science
+Scholarship305,Merit-Based,2.5,6000.0,BS,UK,Chemistry
+Scholarship306,Need-Based,2.0,4000.0,BS,UK,Finance
+Scholarship307,Merit-Based,2.0,1000.0,Masters,USA,Medical Research
+Scholarship308,Need-Based,2.0,8500.0,Masters,USA,Computer Science
+Scholarship309,Need-Based,3.0,9500.0,Masters,Canada,Finance
+Scholarship310,Need-Based,3.0,6500.0,BS,Australia,Business Administration
+Scholarship311,Merit-Based,3.0,500.0,BS,UK,Computer Science
+Scholarship312,Need-Based,2.5,4000.0,BS,USA,History
+Scholarship313,Merit-Based,3.0,7500.0,PhD,Australia,Finance
+Scholarship314,Need-Based,3.0,500.0,BS,UK,Physics
+Scholarship315,Merit-Based,3.0,3000.0,Masters,Australia,Physics
+Scholarship316,Merit-Based,3.0,500.0,BS,UK,Fine Arts
+Scholarship317,Need-Based,3.0,500.0,Masters,Australia,Chemistry
+Scholarship318,Need-Based,3.0,5000.0,BS,UK,Electrical Engineering
+Scholarship319,Need-Based,3.0,7500.0,BS,USA,Medical Research
+Scholarship320,Merit-Based,2.0,6500.0,Masters,Australia,Physics
+Scholarship321,Merit-Based,2.5,9500.0,PhD,UK,Computer Science
+Scholarship322,Merit-Based,3.0,2500.0,Masters,Australia,Finance
+Scholarship323,Merit-Based,3.0,500.0,Masters,USA,Finance
+Scholarship324,Need-Based,2.5,5500.0,Masters,Australia,Chemistry
+Scholarship325,Merit-Based,3.0,3000.0,Masters,UK,Medical Science
+Scholarship326,Need-Based,2.0,5000.0,PhD,UK,Electrical Engineering
+Scholarship327,Merit-Based,3.0,1000.0,PhD,Canada,Finance
+Scholarship328,Merit-Based,3.0,4500.0,PhD,UK,Physics
+Scholarship329,Need-Based,2.5,4500.0,PhD,UK,History
+Scholarship330,Merit-Based,3.0,9500.0,PhD,Canada,Computer Science
+Scholarship331,Need-Based,3.0,9000.0,BS,UK,History
+Scholarship332,Need-Based,3.0,5000.0,BS,Australia,Finance
+Scholarship333,Need-Based,3.0,3500.0,PhD,Australia,History
+Scholarship334,Merit-Based,3.0,2000.0,PhD,Australia,Medical Research
+Scholarship335,Need-Based,2.0,3000.0,BS,USA,Chemistry
+Scholarship336,Need-Based,3.0,9000.0,PhD,USA,Medical Science
+Scholarship337,Need-Based,2.5,4500.0,Masters,Canada,Business Administration
+Scholarship338,Need-Based,2.0,6500.0,BS,Australia,Physics
+Scholarship339,Merit-Based,2.5,500.0,BS,Canada,Medical Science
+Scholarship340,Need-Based,3.0,1500.0,BS,Australia,Physics
+Scholarship341,Merit-Based,2.0,1000.0,BS,Canada,Chemistry
+Scholarship342,Need-Based,2.0,2500.0,BS,USA,Medical Science
+Scholarship343,Merit-Based,2.0,2500.0,PhD,Canada,Electrical Engineering
+Scholarship344,Merit-Based,3.0,3000.0,Masters,UK,Medical Research
+Scholarship345,Need-Based,2.0,9000.0,Masters,UK,Chemistry
+Scholarship346,Merit-Based,2.0,3000.0,BS,Australia,Electrical Engineering
+Scholarship347,Need-Based,3.0,2000.0,PhD,USA,Computer Science
+Scholarship348,Merit-Based,2.5,5500.0,Masters,UK,Fine Arts
+Scholarship349,Need-Based,3.0,2000.0,BS,Canada,Physics
+Scholarship350,Need-Based,3.0,7500.0,Masters,USA,Business Administration
+Scholarship351,Need-Based,2.0,9500.0,BS,UK,Physics
+Scholarship352,Need-Based,2.0,9000.0,Masters,Canada,Finance
+Scholarship353,Need-Based,2.0,8000.0,BS,UK,History
+Scholarship354,Merit-Based,2.5,1500.0,PhD,USA,Fine Arts
+Scholarship355,Merit-Based,2.0,1500.0,BS,UK,Finance
+Scholarship356,Merit-Based,2.0,5500.0,PhD,Canada,Computer Science
+Scholarship357,Need-Based,2.0,500.0,BS,Australia,Medical Science
+Scholarship358,Merit-Based,3.0,8500.0,BS,Australia,Fine Arts
+Scholarship359,Need-Based,3.0,1000.0,BS,Australia,Medical Research
+Scholarship360,Need-Based,2.5,3000.0,BS,UK,Business Administration
+Scholarship361,Need-Based,2.0,7000.0,PhD,UK,Medical Science
+Scholarship362,Merit-Based,3.0,8500.0,PhD,Canada,Finance
+Scholarship363,Need-Based,2.5,8500.0,BS,USA,Medical Research
+Scholarship364,Need-Based,2.0,5500.0,Masters,Australia,Electrical Engineering
+Scholarship365,Merit-Based,3.0,5000.0,Masters,Australia,Physics
+Scholarship366,Need-Based,3.0,6000.0,PhD,Canada,Medical Science
+Scholarship367,Need-Based,2.0,8500.0,BS,UK,Business Administration
+Scholarship368,Merit-Based,2.5,5000.0,Masters,UK,History
+Scholarship369,Merit-Based,2.5,1000.0,Masters,Canada,Medical Science
+Scholarship370,Merit-Based,2.0,3500.0,Masters,USA,Medical Science
+Scholarship371,Merit-Based,3.0,3000.0,PhD,USA,Business Administration
+Scholarship372,Need-Based,2.0,9500.0,PhD,USA,Chemistry
+Scholarship373,Merit-Based,2.0,9000.0,PhD,Australia,Electrical Engineering
+Scholarship374,Merit-Based,2.0,4500.0,PhD,UK,Finance
+Scholarship375,Merit-Based,2.5,8000.0,Masters,Canada,Physics
+Scholarship376,Merit-Based,2.0,2500.0,Masters,Canada,Computer Science
+Scholarship377,Need-Based,2.5,4500.0,PhD,Australia,Electrical Engineering
+Scholarship378,Need-Based,2.5,7500.0,BS,USA,Computer Science
+Scholarship379,Merit-Based,2.5,3500.0,PhD,Australia,Medical Science
+Scholarship380,Merit-Based,3.0,3000.0,Masters,Canada,Chemistry
+Scholarship381,Merit-Based,2.0,3500.0,PhD,Canada,Fine Arts
+Scholarship382,Merit-Based,2.0,4000.0,BS,USA,Physics
+Scholarship383,Need-Based,3.0,8500.0,PhD,USA,Fine Arts
+Scholarship384,Need-Based,2.5,500.0,PhD,USA,Physics
+Scholarship385,Merit-Based,3.0,2000.0,Masters,USA,Medical Science
+Scholarship386,Need-Based,2.0,2000.0,Masters,Australia,Medical Science
+Scholarship387,Need-Based,2.5,1500.0,PhD,Canada,Business Administration
+Scholarship388,Need-Based,3.0,7000.0,PhD,UK,Finance
+Scholarship389,Merit-Based,2.5,8500.0,BS,UK,Electrical Engineering
+Scholarship390,Need-Based,2.5,7000.0,Masters,Canada,Medical Research
+Scholarship391,Merit-Based,3.0,6500.0,PhD,Australia,Chemistry
+Scholarship392,Need-Based,2.5,2500.0,BS,USA,Fine Arts
+Scholarship393,Need-Based,2.0,2500.0,PhD,USA,Fine Arts
+Scholarship394,Need-Based,2.5,3000.0,Masters,Canada,Medical Science
+Scholarship395,Merit-Based,3.0,5500.0,BS,Australia,Finance
+Scholarship396,Merit-Based,3.0,1000.0,Masters,Canada,Computer Science
+Scholarship397,Need-Based,3.0,4000.0,BS,USA,Medical Science
+Scholarship398,Merit-Based,2.5,7000.0,BS,Australia,Computer Science
+Scholarship399,Merit-Based,2.5,1000.0,PhD,UK,Chemistry
+Scholarship400,Merit-Based,2.5,4000.0,PhD,Australia,Medical Science
+Scholarship401,Merit-Based,3.0,8000.0,BS,Australia,History
+Scholarship402,Merit-Based,3.0,6500.0,BS,Canada,Chemistry
+Scholarship403,Merit-Based,2.5,5500.0,PhD,Australia,Physics
+Scholarship404,Need-Based,2.5,4000.0,BS,USA,Computer Science
+Scholarship405,Merit-Based,3.0,4500.0,PhD,UK,Computer Science
+Scholarship406,Merit-Based,3.0,8500.0,PhD,UK,Computer Science
+Scholarship407,Merit-Based,3.0,9000.0,Masters,USA,Business Administration
+Scholarship408,Need-Based,2.5,5500.0,BS,Canada,Medical Science
+Scholarship409,Merit-Based,3.0,8500.0,PhD,Canada,Physics
+Scholarship410,Need-Based,2.5,1000.0,Masters,Australia,Medical Science
+Scholarship411,Need-Based,2.5,8000.0,PhD,Australia,Chemistry
+Scholarship412,Need-Based,2.0,6000.0,BS,USA,Business Administration
+Scholarship413,Merit-Based,2.0,2500.0,PhD,Canada,Fine Arts
+Scholarship414,Merit-Based,2.0,7000.0,PhD,UK,Medical Science
+Scholarship415,Merit-Based,2.0,5000.0,Masters,Canada,Electrical Engineering
+Scholarship416,Need-Based,2.0,1000.0,BS,Canada,Business Administration
+Scholarship417,Merit-Based,2.0,9000.0,PhD,Australia,Finance
+Scholarship418,Merit-Based,3.0,6000.0,BS,Canada,Physics
+Scholarship419,Need-Based,2.0,7000.0,PhD,USA,Medical Science
+Scholarship420,Merit-Based,2.5,500.0,BS,USA,Electrical Engineering
+Scholarship421,Merit-Based,2.0,2000.0,Masters,USA,History
+Scholarship422,Need-Based,2.0,8000.0,Masters,Canada,Electrical Engineering
+Scholarship423,Merit-Based,2.5,1500.0,PhD,UK,Chemistry
+Scholarship424,Need-Based,3.0,500.0,PhD,Canada,History
+Scholarship425,Need-Based,3.0,4500.0,Masters,USA,Computer Science
+Scholarship426,Merit-Based,3.0,9000.0,PhD,Australia,Medical Science
+Scholarship427,Merit-Based,3.0,1000.0,Masters,Canada,Computer Science
+Scholarship428,Need-Based,3.0,9500.0,PhD,USA,Computer Science
+Scholarship429,Need-Based,3.0,2000.0,Masters,USA,History
+Scholarship430,Merit-Based,2.5,1000.0,Masters,USA,Electrical Engineering
+Scholarship431,Merit-Based,2.5,3500.0,Masters,Australia,Fine Arts
+Scholarship432,Merit-Based,3.0,9500.0,Masters,UK,Physics
+Scholarship433,Need-Based,2.0,6000.0,BS,UK,Electrical Engineering
+Scholarship434,Merit-Based,2.5,1000.0,Masters,USA,Computer Science
+Scholarship435,Merit-Based,3.0,4000.0,BS,Australia,Chemistry
+Scholarship436,Need-Based,2.5,1500.0,PhD,UK,Computer Science
+Scholarship437,Need-Based,2.0,6500.0,Masters,UK,Finance
+Scholarship438,Merit-Based,2.0,1500.0,PhD,Canada,Fine Arts
+Scholarship439,Merit-Based,2.0,6500.0,Masters,UK,History
+Scholarship440,Merit-Based,3.0,3000.0,PhD,UK,Chemistry
+Scholarship441,Merit-Based,2.5,9000.0,Masters,USA,History
+Scholarship442,Need-Based,2.0,4500.0,BS,UK,Medical Research
+Scholarship443,Need-Based,2.5,7000.0,Masters,UK,Medical Research
+Scholarship444,Need-Based,2.0,8500.0,BS,USA,Medical Science
+Scholarship445,Need-Based,2.0,4500.0,PhD,Canada,Fine Arts
+Scholarship446,Merit-Based,2.0,1000.0,Masters,UK,Medical Science
+Scholarship447,Need-Based,2.0,2000.0,PhD,USA,Physics
+Scholarship448,Need-Based,2.5,4000.0,PhD,UK,Medical Science
+Scholarship449,Merit-Based,2.0,4500.0,Masters,Australia,Business Administration
+Scholarship450,Need-Based,2.0,5000.0,BS,UK,Chemistry
+Scholarship451,Need-Based,2.5,7500.0,PhD,USA,Electrical Engineering
+Scholarship452,Merit-Based,3.0,9000.0,PhD,Australia,Medical Research
+Scholarship453,Merit-Based,2.5,3500.0,Masters,Australia,Electrical Engineering
+Scholarship454,Merit-Based,3.0,4500.0,BS,USA,Chemistry
+Scholarship455,Merit-Based,3.0,3500.0,Masters,Canada,Chemistry
+Scholarship456,Merit-Based,2.5,7500.0,PhD,Canada,Fine Arts
+Scholarship457,Merit-Based,2.5,500.0,BS,UK,Chemistry
+Scholarship458,Merit-Based,2.5,500.0,PhD,Canada,Business Administration
+Scholarship459,Need-Based,3.0,8000.0,PhD,Canada,Finance
+Scholarship460,Merit-Based,2.5,6000.0,BS,Australia,Medical Research
+Scholarship461,Merit-Based,2.0,8000.0,Masters,USA,Chemistry
+Scholarship462,Need-Based,2.5,5000.0,BS,USA,History
+Scholarship463,Merit-Based,3.0,2500.0,PhD,UK,Business Administration
+Scholarship464,Need-Based,2.5,2000.0,PhD,USA,Computer Science
+Scholarship465,Merit-Based,2.0,3500.0,Masters,Australia,History
+Scholarship466,Merit-Based,3.0,4000.0,BS,UK,Electrical Engineering
+Scholarship467,Merit-Based,2.5,4500.0,BS,USA,Physics
+Scholarship468,Need-Based,3.0,3000.0,BS,UK,Finance
+Scholarship469,Merit-Based,2.0,4000.0,PhD,Canada,Electrical Engineering
+Scholarship470,Need-Based,2.0,4000.0,BS,UK,Finance
+Scholarship471,Merit-Based,2.5,1500.0,BS,USA,Physics
+Scholarship472,Need-Based,3.0,5000.0,PhD,USA,History
+Scholarship473,Merit-Based,2.0,7500.0,BS,UK,Electrical Engineering
+Scholarship474,Merit-Based,3.0,9500.0,BS,UK,History
+Scholarship475,Merit-Based,2.5,1500.0,PhD,USA,Medical Science
+Scholarship476,Merit-Based,2.5,3500.0,PhD,Australia,History
+Scholarship477,Need-Based,3.0,6000.0,BS,Australia,Finance
+Scholarship478,Merit-Based,2.0,1500.0,Masters,UK,Electrical Engineering
+Scholarship479,Merit-Based,2.0,3500.0,Masters,Australia,Electrical Engineering
+Scholarship480,Need-Based,2.5,8500.0,BS,UK,History
+Scholarship481,Merit-Based,2.5,4500.0,PhD,UK,Business Administration
+Scholarship482,Need-Based,3.0,6000.0,BS,Australia,Computer Science
+Scholarship483,Merit-Based,2.0,3000.0,PhD,Canada,Finance
+Scholarship484,Need-Based,3.0,5500.0,PhD,UK,Medical Research
+Scholarship485,Need-Based,3.0,500.0,BS,USA,History
+Scholarship486,Merit-Based,2.0,9500.0,BS,USA,Physics
+Scholarship487,Merit-Based,2.0,4500.0,PhD,UK,Electrical Engineering
+Scholarship488,Need-Based,2.5,1000.0,PhD,UK,Computer Science
+Scholarship489,Merit-Based,3.0,1000.0,PhD,Australia,Computer Science
+Scholarship490,Need-Based,2.5,1500.0,BS,Australia,Computer Science
+Scholarship491,Need-Based,3.0,3500.0,Masters,UK,Business Administration
+Scholarship492,Merit-Based,3.0,9000.0,BS,Canada,History
+Scholarship493,Merit-Based,2.5,5500.0,BS,Canada,Finance
+Scholarship494,Merit-Based,3.0,5000.0,PhD,UK,Chemistry
+Scholarship495,Merit-Based,2.0,8500.0,BS,UK,Chemistry
+Scholarship496,Merit-Based,3.0,7500.0,BS,USA,History
+Scholarship497,Need-Based,2.5,1000.0,BS,UK,Computer Science
+Scholarship498,Merit-Based,2.5,8000.0,Masters,Canada,Finance
+Scholarship499,Need-Based,3.0,5000.0,Masters,Canada,Chemistry

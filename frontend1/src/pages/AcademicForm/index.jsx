@@ -19,7 +19,7 @@ const AcademicForm = () => {
           country:country,
           university:university,
           GPA:GPA,
-          yearOfCompletion,yearOfCompletion,
+          yearOfCompletion,
         },
         {
           headers: {

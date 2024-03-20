@@ -60,6 +60,8 @@ async function signin(req, res) {
       const token = jwt.sign(
         {
           id: foundUser._id,
+          name: foundUser.username
+
           
         },
         process.env.SECRET_KEY,

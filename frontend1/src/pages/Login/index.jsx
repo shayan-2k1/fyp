@@ -29,7 +29,9 @@ const Login = () => {
           }
 
           console.log(response.data);
-          navigate("/Scholarships");
+          // navigate("/Scholarships");
+          // navigate("/uniPost");
+          navigate("/applyPost");
       } catch (error) {
           console.log(error);
           setError("Failed to sign in!");

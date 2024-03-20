@@ -19,7 +19,7 @@ def generate_unique_data(data):
         name_set.add(name)
         budget_set.add(budget_limit)
 
-        education_level = random.choice(["Bachelor", "Master", "PhD"])
+        education_level = random.choice(["BS", "Masters", "PhD"])
         required_gpa=random.choice([2.0,2.5,3.0])
         country = random.choice(["USA", "Canada", "UK", "Australia"])
         domain_area = random.choice(["Computer Science", "Medical Science", "Fine Arts", "Physics", "Business Administration", "Electrical Engineering", "Medical Research", "History", "Chemistry", "Finance"])

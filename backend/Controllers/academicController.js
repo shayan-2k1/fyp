@@ -3,29 +3,22 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 async function academicBackground(req, res) {
-
   try {
     const { authorization } = req.headers;
     if (!authorization) {
       return res.status(401).json({ error: "Unauthorized!" });
     }
-    let {
-      degree,
-      discipline,
-      country,
-      university,
-      GPA,
-      yearOfCompletion
-    } = req.body
-
-
+    let { degree, discipline, country, university, GPA, yearOfCompletion } =
+      req.body;
 
     const secretKey = process.env.SECRET_KEY;
     const token = authorization.split(" ")[1];
     const decodedToken = jwt.verify(token, secretKey);
     const userId = decodedToken.id;
 
-    const existingInfo = await academicBackgroundSchema.findOne({ user: userId });
+    const existingInfo = await academicBackgroundSchema.findOne({
+      user: userId,
+    });
 
     if (existingInfo) {
       // If information exists, update it
@@ -42,8 +35,9 @@ async function academicBackground(req, res) {
         { new: true }
       );
 
-
-      res.status(200).json({ message: "Academic Background updated successfully" });
+      res
+        .status(200)
+        .json({ message: "Academic Background updated successfully" });
     } else {
       // If no information exists, add academicbackground
       const academicBackground = new academicBackgroundSchema({
@@ -53,11 +47,13 @@ async function academicBackground(req, res) {
         country,
         university,
         GPA,
-        yearOfCompletion
+        yearOfCompletion,
       });
 
       await academicBackground.save();
-      res.status(201).json({ message: "Academic Background added successfully." });
+      res
+        .status(201)
+        .json({ message: "Academic Background added successfully." });
     }
   } catch (error) {
     res.status(500).json({ error: "Server Error" });
@@ -76,13 +72,18 @@ async function getAcademicBackground(req, res) {
     const decodedToken = jwt.verify(token, secretKey);
     const userId = decodedToken.id;
 
-    const academicBackground = await academicBackgroundSchema.findOne({ user: userId });
+    const academicBackground = await academicBackgroundSchema.findOne({
+      user: userId,
+    });
 
     if (!academicBackground) {
       return res.status(404).json({ error: "Academic background not found" });
     }
-
-    res.status(200).json(academicBackground);
+    const { degree, discipline, country, university, GPA, yearOfCompletion } =
+      academicBackground;
+    res
+      .status(200)
+      .json({ degree, discipline, country, university, GPA, yearOfCompletion });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server Error" });
