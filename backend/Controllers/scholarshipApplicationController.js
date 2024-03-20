@@ -130,7 +130,7 @@ async function ScholarshipApplicationController(req, res) {
     await scholarshipApplication.save();
 
     return res
-      .status(201)
+      .status(200)
       .json({ message: "Scholarship application created successfully" });
   } catch (error) {
     console.error(error);
