@@ -42,12 +42,27 @@
 // };
 // export default Home;
 import React from "react";
-import { useState } from "react";
+import { useState,useRef,useEffect } from "react";
 import { Img, List, Text } from "components";
 import { Link } from "react-router-dom";
+import lottie from 'lottie-web';
 const Home = () => {
   const [showAbout, setShowAbout] = useState(false);
   const [showContact, setContactUs] = useState(false);
+  const container = useRef(null)
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./home1.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
   const handleAboutUsClick = () => {
     setShowAbout(true);
     setContactUs(false); // Close contact info
@@ -65,6 +80,7 @@ const Home = () => {
               <div
                 className="absolute bg-cover bg-no-repeat flex flex-col h-max inset-[0] items-start justify-center m-auto p-[281px] md:px-10 sm:px-5 w-full"
                 style={{ backgroundImage: "url('images/img_group8.png')" }}
+                
               >
                 <div className="flex flex-col items-start justify-start mb-[252px] mt-[162px] p-0.5 w-[47%] md:w-full">
                   <Text
@@ -177,11 +193,14 @@ const Home = () => {
 </div>
 
             </div>
-            <Img
+            <div       className="absolute h-[550px] object-cover right-[3%] top-[22%] w-[44%]">
+                <div ref={container} className="absolute inset-0"></div>
+              </div>
+            {/* <Img
               className="absolute h-[550px] object-cover right-[3%] top-[22%] w-[44%]"
               src="images/img_rectangle9.png"
               alt="rectangleNine"
-            />
+            /> */}
           </div>
 
           <div className="font-lato h-[553px] md:h-[605px] max-w-[1030px] mt-[300px] mx-auto relative w-[45%]">

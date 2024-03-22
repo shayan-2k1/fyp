@@ -160,7 +160,7 @@ const Scholarships = () => {
             </div>
           </div>
         </div>
-        <Sidebar1 className="!sticky !w-[400px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
+        <Sidebar1 className="!sticky !w-[400px] bg-gradient3  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute flex flex-col font-nunito items-start justify-start left-[23%] md:px-5 top-[20%]">
           <div>
             {limitedData.map((sc) => (

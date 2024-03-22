@@ -1,9 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Cookies from 'js-cookie'; // Import js-cookie
-import { Button, Img, Input,  List, Text } from "components";
+import { Button, Img, Input, List, Text } from "components";
+import lottie from 'lottie-web';
 
 
 const MentorLogin = () => {
@@ -13,34 +14,50 @@ const MentorLogin = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false); // Change to false
 
+  const container = useRef(null)
+
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./mentor.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
   const handleChange = async (e) => {
-      e.preventDefault();
-      setError(null); // Clear any previous errors
+    e.preventDefault();
+    setError(null); // Clear any previous errors
 
-      try {
-          const response = await axios.post("http://localhost:3000/mentor/signin", {
-              email: email,
-              password: password
-          });
+    try {
+      const response = await axios.post("http://localhost:3000/mentor/signin", {
+        email: email,
+        password: password
+      });
 
-          // Save the authentication token to a cookie
-          if (response.data.token) {
-              Cookies.set('auth_token', response.data.token, { expires: 1 }); // Set the token in a cookie
-          }
-
-          console.log(response.data);
-          navigate("/MentorProfile");
-      } catch (error) {
-          console.log(error);
-          setError("Failed to sign in!");
+      // Save the authentication token to a cookie
+      if (response.data.token) {
+        Cookies.set('auth_token', response.data.token, { expires: 1 }); // Set the token in a cookie
       }
 
-      setLoading(false);
+      console.log(response.data);
+      navigate("/MentorProfile");
+    } catch (error) {
+      console.log(error);
+      setError("Failed to sign in!");
+    }
+
+    setLoading(false);
   };
 
   return (
-   
+
     <>
+
       <div className="bg-gray-300 flex flex-col font-nunito items-center justify-start mx-auto w-full">
         {/* to change navbar */}
         <div className="bg-white-A700 flex flex-col items-center justify-start pr-[1px] py-[1px] w-full">
@@ -142,9 +159,10 @@ const MentorLogin = () => {
                       <Input
                         name="email"
                         value={email}
-                        onChange={(e) =>{
-                          console.log('email: ',  e.target.value);
-                           setEmail(e.target.value)}}
+                        onChange={(e) => {
+                          console.log('email: ', e.target.value);
+                          setEmail(e.target.value)
+                        }}
                         placeholder="2023"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
                         wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
@@ -162,16 +180,17 @@ const MentorLogin = () => {
                       <Input
                         name="password"
                         value={password}
-                        onChange={(e) =>{
-                          console.log('password: ',  e.target.value);
-                           setPassword(e.target.value)}}
+                        onChange={(e) => {
+                          console.log('password: ', e.target.value);
+                          setPassword(e.target.value)
+                        }}
                         placeholder="xyz"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
                         wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
                         shape="round"
                         style={{ color: '#000000' }}
                       ></Input>
-                    </div> 
+                    </div>
                     <List
                       className="sm:flex-col flex-row md:gap-4 grid md:grid-cols-1 grid-cols-2 justify-between max-w-[700px] w-full"
                       orientation="horizontal"
@@ -196,7 +215,7 @@ const MentorLogin = () => {
                         </div>
                       </div>
                       <div className="flex sm:flex-1 sm:flex-col flex-row gap-4 items-start justify-start w-auto sm:w-full">
-                       
+
                         <div className="flex flex-col items-center justify-end py-2">
                           <button
                             className="mt-[3px] text-blue_gray-800 text-xl tracking-[2.00px]"
@@ -222,11 +241,9 @@ const MentorLogin = () => {
 
                 </div>
               </div>
-              <Img
-                className="md:flex-1 h-[500px] sm:h-auto md:mt-0 mt-[100px] object-cover rounded-bl-[10px] rounded-br-[150px] rounded-tl-[150px] rounded-tr-[30px] w-[50%] md:w-full"
-                src="images/sc2.png"
-                alt="rectangleThree"
-              />
+              <div className="md:flex-1 h-[500px] sm:h-auto md:mt-0 mt-[100px] object-cover rounded-bl-[10px] rounded-br-[150px] rounded-tl-[150px] rounded-tr-[30px] w-[50%] md:w-full relative">
+                <div ref={container} className="absolute inset-0"></div>
+              </div>
             </div>
           </div>
         </div>

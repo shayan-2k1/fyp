@@ -1,11 +1,45 @@
-import React from "react";
+import React,{useEffect,useRef} from "react";
 
 import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
 
 import { Img, Text } from "components";
 import { Link } from "react-router-dom";
+import lottie from 'lottie-web';
+
+
 const Sidebar2 = (props) => {
   const { collapseSidebar, collapsed } = useProSidebar();
+  const container = useRef(null)
+  const container1 = useRef(null)
+
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./profile.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+ 
+
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container1.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./form.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
 
   return (
     <>
@@ -23,14 +57,16 @@ const Sidebar2 = (props) => {
             <Menu
               menuItemStyles={{
                 button: {
-                  padding: "7px",
-                  gap: "67px",
+                  padding: "10px",
+                  gap: "50px",
                   color: "#000000",
                   fontWeight: 600,
-                  fontSize: "18px",
+                  fontSize: "20px",
                   fontFamily: "Cairo",
                   marginLeft: "auto",
                   marginRight: "auto",
+                  display: "flex", 
+                  alignItems: "center" ,
                   left: "0px",
                   right: "0px",
                   [`&:hover, &.ps-active`]: {
@@ -49,31 +85,17 @@ const Sidebar2 = (props) => {
 
              
               <Link to="/MentorProfile">
-              <MenuItem
-                icon={
-                  <Img
-                    className="h-[30px] w-11"
-                    src="images/men.jpg"
-                    alt="commentOne"
-                  />
-                }
-              >
-                <Text className="w-[49%] sm:w-full">Profile</Text>
+              <MenuItem >
+                 <div ref={container} className="h-[40px] w-30 "></div>
+                 <Text className="w-[70%] sm:w-full">Profile</Text>
                 
               </MenuItem>
               </Link>
 
               <Link to="/MentorForm">
-                <MenuItem
-                  icon={
-                    <Img
-                      className="h-[27px] w-10"
-                      src="images/form.png"
-                      alt="commentOne"
-                    />
-                  }
-                >
-                  <Text className="w-[49%] sm:w-full">Mentor Form</Text>
+                <MenuItem>
+                <div ref={container1} className="h-[40px] w-30 "></div>
+                  <Text className="w-[70%] sm:w-full">Mentor Form</Text>
                   
                 </MenuItem>
               </Link>
@@ -159,7 +181,7 @@ const Sidebar2 = (props) => {
             <div className="md:h-[202px] h-[209px] md:ml-[0] ml-[38px] relative w-[87%]">
               <div className="md:h-[202px] h-[209px] m-auto w-full">
                 <div className="absolute h-[202px] inset-[0] justify-center m-auto w-[97%]">
-                  <div className="bg-gradient1  h-[202px] m-auto rounded-[32px] shadow-bs1 w-[63%]"></div>
+                  <div className="bg-gradient2 h-[202px] m-auto rounded-[32px] shadow-bs1 w-[63%]"></div>
                   <div className="absolute bg-gradient1  flex flex-col h-full inset-[0] items-center justify-center m-auto rounded-[32px] w-full">
                     <div
                       className="bg-cover bg-no-repeat flex flex-col h-[202px] items-center justify-start p-[21px] sm:px-5 w-full"
