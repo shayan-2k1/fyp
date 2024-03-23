@@ -37,4 +37,46 @@
     font-family: "Outfit";
     font-weight: 500;
   }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/CairoSemiBold.ttf");
+    font-family: "Cairo";
+    font-weight: 600;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/NunitoRegular.ttf");
+    font-family: "Nunito";
+    font-weight: 400;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/CairoBold.ttf");
+    font-family: "Cairo";
+    font-weight: 700;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/OverpassExtraBold.ttf");
+    font-family: "Overpass";
+    font-weight: 800;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/PoppinsSemiBold.ttf");
+    font-family: "Poppins";
+    font-weight: 600;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/PoppinsMedium.ttf");
+    font-family: "Poppins";
+    font-weight: 500;
+  }
   

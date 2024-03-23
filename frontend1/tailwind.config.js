@@ -33,6 +33,11 @@ module.exports = {
         white: { A700: "#ffffff" },
         yellow: { 800: "#e0b416" },
       },
+      boxShadow: {
+        xs: "0px 4px  4px 0px #0000003f",
+        sm: "18px 4px  35px 0px #00000005",
+        md: "0px 14px  28px 0px #5dceff4f",
+      },
       fontFamily: {
         roboto: "Roboto",
         overpass: "Overpass",
@@ -52,6 +57,9 @@ module.exports = {
         gradient3: "linear-gradient(180deg ,#e3e9eaff,#e3e9ea00)",
         gradient4: "linear-gradient(149deg ,#1bbaff,#4ff3fd)",
         gradient5: "linear-gradient(149deg ,#1bbaff,#058b9e)",
+        gradient6: "linear-gradient(90deg, #3995a2,#3c1536)",
+        gradient7: "linear-gradient(180deg, #e3e9ea,#e3e9ea00)",
+        gradient8: "linear-gradient(149deg, #1bbaff,#058b9e)",
       },
       boxShadow: {
         bs1: "0px 14px  28px 0px #5dceff4f",
@@ -59,6 +67,7 @@ module.exports = {
         bs3: "0px 4px  4px 0px #0000003f",
         bs: "18px 4px  35px 0px #00000005",
       },
+      opacity: { 0.5: 0.5 },
     },
   },
   plugins: [require("@tailwindcss/forms")],
