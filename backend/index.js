@@ -38,8 +38,8 @@ app.use("/studyInterest", academicPrefRoute);
 app.use("/user", projectRouter)
 app.use("/certificate", certificateRoute)
 app.use("/scholarship", scholarshipRouter)
-
-
+app.use("/mentor", mentorRoute)
+app.use("/university", universityRoute)
 const httpServer = require('http').createServer(app); // Create an HTTP server
 const io = new Server(httpServer, {
     cors: {

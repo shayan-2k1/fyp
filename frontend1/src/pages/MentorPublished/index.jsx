@@ -95,7 +95,7 @@ const MentorPublished = () => {
                                     className="md:mt-0 mt-[147px] text-gray-500_01 text-lg"
                                     size="txtCairoSemiBold18"
                                 >
-                                    l
+                                    .
                                 </Text>
                                 <div className="absolute flex flex-col font-nunito items-start justify-start left-[23%] md:px-5 top-[20%]">
                                     <div className=" absolute bg-white-A700 flex flex-col items-center justify-end p-1 shadow-bs3 w-[1300px] ">
@@ -160,7 +160,7 @@ const MentorPublished = () => {
                         </div>
                     </div>
                 </div>
-                <Sidebar3 className="!sticky !w-[346px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
+                <Sidebar3 className="!sticky !w-[346px] bg-gradient3  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
 
                 <div className="absolute overflow-x-auto right-[0] top-[2%] w-[14%]">
                     <div className="flex flex-row  items-center justify-between w-full">

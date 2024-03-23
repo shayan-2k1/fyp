@@ -110,7 +110,7 @@ const StudyInterest = () => {
                   className="md:mt-0 mt-[147px] text-gray-500_01 text-lg"
                   size="txtCairoSemiBold18"
                 >
-                  l
+                  .
                 </Text>
                 <div className="flex font-nunito relative w-4/5 md:w-full">
                   <div className="flex flex-col gap-8 h-[564px] md:h-auto items-start justify-start my-auto w-[514px] sm:w-full">
@@ -221,7 +221,7 @@ const StudyInterest = () => {
             </div>
           </div>
         </div>
-        <Sidebar1 className="!sticky !w-[346px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
+        <Sidebar1 className="!sticky !w-[346px] bg-gradient3 flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute overflow-x-auto right-[0] top-[2%] w-[14%]">
           <div className="flex flex-row  items-center justify-between w-full">
 

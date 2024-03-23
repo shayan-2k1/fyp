@@ -90,7 +90,7 @@ export default function MentorProfile() {
             <div className="flex flex-col items-end justify-start w-[94%] mt-[0px] ml-[105px] ">
               <div className="flex flex-row justify-between items-center w-full gap-1.5">
                 <Heading size="xs" as="h1" className="w-[6%] !text-gray-500 !font-cairo">
-                  l
+                  .
                 </Heading>
                 <div className="h-[364px] w-[86%] relative">
                   <Img
@@ -173,7 +173,7 @@ export default function MentorProfile() {
                 </Text>
               </div>
             </div>
-        <Sidebar2 className="!sticky !w-[346px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
+        <Sidebar2 className="!sticky !w-[346px] bg-gradient3  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute overflow-x-auto right-[0] top-[2%] w-[14%]">
           <div className="flex flex-row  items-center justify-between w-full">
 

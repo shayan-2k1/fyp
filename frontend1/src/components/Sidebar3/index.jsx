@@ -1,12 +1,58 @@
-import React from "react";
+import React,{useRef,useEffect} from "react";
 
 import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
 
 import { Img, Text } from "components";
 import { Link } from "react-router-dom";
+import lottie from 'lottie-web';
 const Sidebar3 = (props) => {
   const { collapseSidebar, collapsed } = useProSidebar();
+  const container1 = useRef(null)
+  const container2 = useRef(null)
+  const container3 = useRef(null)
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container1.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./post.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+ 
 
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container2.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./mentor.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container3.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./publish.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+  
   return (
     <>
       <Sidebar
@@ -50,44 +96,29 @@ const Sidebar3 = (props) => {
              
               <Link to="">
               <MenuItem
-                icon={
-                  <Img
-                    className="h-[40px] w-15"
-                    src="images/post.png"
-                    alt="commentOne"
-                  />
-                }
+               
               >
-                <Text className="w-[49%] sm:w-full">Post management </Text>
+                 <div ref={container1} className="h-[40px] w-30 "></div>
+                <Text className="w-[70%] sm:w-full">Post management </Text>
                 
               </MenuItem>
               </Link>
 
               <Link to="/MentorRequest">
                 <MenuItem
-                  icon={
-                    <Img
-                      className="h-[40px] w-15"
-                      src="images/mentoruni.png"
-                      alt="commentOne"
-                    />
-                  }
+                 
                 >
-                  <Text className="w-[49%] sm:w-full">Mentor Mangement</Text>
+                   <div ref={container2} className="h-[40px] w-30 "></div>
+                  <Text className="w-[70%] sm:w-full">Mentor Mangement</Text>
                   
                 </MenuItem>
               </Link>
               <Link to="/MentorPublished">
               <MenuItem
-                icon={
-                  <Img
-                    className="h-[27px] w-10"
-                    src="images/pmentor.png"
-                    alt="commentOne"
-                  />
-                }
+               
               >
-                <Text className="w-[49%] sm:w-full">Published Mentors</Text>
+                 <div ref={container3} className="h-[40px] w-30 "></div>
+                <Text className="w-[70%] sm:w-full">Published Mentors</Text>
                
               </MenuItem>
                </Link>  
