@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import axios from "axios";
 import { Img, Input, Line, Text, Button } from "components";
 import Sidebar1 from "components/Sidebar1";
@@ -10,40 +10,51 @@ const DocWallet = () => {
   const [userDocuments, setUserDocuments] = useState([]);
   const [viewDocumentUrl, setViewDocumentUrl] = useState("");
   const authToken = Cookies.get("auth_token");
+ 
+  const [fileSelected, setFileSelected] = useState(false); // Add state for file selection
+ const fileInputRef = useRef(null); 
+const handleFileChange = (event) => {
+  setSelectedFile(event.target.files[0]);
+  setFileSelected(true); // Set the flag to indicate a file has been selected
+};
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-
-  const handleUpload = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("file", selectedFile);
-
-      const response = await axios.post(
-        "http://127.0.0.1:3000/document/upload",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        console.log("Document uploaded successfully.");
-        alert("Document added!");
-        // Add logic for UI update or success message
-      } else {
-        console.error("Failed to upload the document.");
-        alert("Document failed to upload!");
-        // Handle failure - show error message or take appropriate action
-      }
-    } catch (error) {
-      console.error("Error uploading the document:", error);
-      // Handle error scenario - show error message or take appropriate action
+const handleUpload = async () => {
+  try {
+    if (!selectedFile) {
+      console.error("No file selected.");
+      alert("Please select a file.");
+      return; // Exit the function if no file is selected
     }
-  };
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+
+    const response = await axios.post(
+      "http://127.0.0.1:3000/document/upload",
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
+    );
+
+    if (response.status === 200) {
+      console.log("Document uploaded successfully.");
+      alert("Document added!");
+      // Add logic for UI update or success message
+    } else {
+      console.error("Failed to upload the document.");
+      alert("Document failed to upload!");
+      // Handle failure - show error message or take appropriate action
+    }
+  } catch (error) {
+    console.error("Error uploading the document:", error);
+    // Handle error scenario - show error message or take appropriate action
+  }
+};
+  
+
   return (
     <>
       <div className="bg-gray-300 font-cairo h-[1210px] mx-auto overflow-auto relative w-full">
@@ -139,33 +150,39 @@ const DocWallet = () => {
                     <div className="absolute bg-gray-100 border border-solid border-white-A700 bottom-[24%] flex flex-col font-sairacondensed items-center justify-start p-[20px] md:px-5 right-[30%] w-[45%]">
                       <div className="border border-black-900 border-dashed flex flex-col gap-8 items-center justify-start mb-[22px] p-6 sm:px-5 rounded-[7px] w-[95%] md:w-full">
                         <label className="custom-file-upload">
-                          <input
-                            type="file"
-                            onChange={handleFileChange}
-                            style={{ display: "none" }}
-                          />
-                          <img
-                            className="h-[72px] md:h-auto object-cover"
-                            src="images/img_icons8files1.png"
-                            alt="icons8filesOne"
-                            onClick={handleUpload}
-                          />
+                        <input
+  type="file"
+  onChange={handleFileChange}
+  style={{ display: "none" }}
+/>
+
+<img
+  className="h-[72px] md:h-auto object-cover cursor-pointer"
+  src="images/img_icons8files1.png"
+  alt="icons8filesOne"
+  onClick={() => fileInputRef.current}
+/>
+
+
                         </label>
                         <div style={{ marginTop: "10px" }}>
-                          <button
-                            onClick={handleUpload}
-                            style={{
-                              padding: "10px 20px",
-                              backgroundColor: "#058B9E",
-                              color: "white",
-                              border: "none",
-                              borderRadius: "5px",
-                              cursor: "pointer",
-                              fontSize: "16px",
-                            }}
-                          >
-                            Upload File
-                          </button>
+                        
+                        <button
+  onClick={handleUpload}
+  style={{
+    padding: "10px 20px",
+    backgroundColor: "#058B9E",
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    fontSize: "16px",
+    marginTop: "10px", // Add margin top for spacing
+    display: fileSelected ? 'block' : 'none' // Show the button only if a file is selected
+  }}
+>
+  Upload File
+</button>
                         </div>
                         <Text
                           className="mb-12 md:text-3xl sm:text-[20px] text-[28px] text-black-900_7f"

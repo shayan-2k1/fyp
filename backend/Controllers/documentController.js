@@ -70,7 +70,7 @@ async function documentUpload(req, res) {
     const secretKey = process.env.SECRET_KEY;
     const token = authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, secretKey);
-    // console.log(req.file);
+    console.log(req.file);
     const fileData = req.file.buffer; // Assuming file buffer is in req.file.buffer
     const fileName = req.file.originalname; // Assuming original filename is in req.file.originalname
 
@@ -205,7 +205,7 @@ async function delDocument(req, res) {
 
     // Check if the document ID is present in the files array
     const fileIndex = document.files.findIndex((file) => String(file._id) === String(documentId));
-    console.log("file id " , file._id)
+    // console.log("file id " , file._id)
     if (fileIndex === -1) {
       console.log('Document ID not found in files array');
       return res.status(404).json({ error: 'Document ID not found in files array.' });

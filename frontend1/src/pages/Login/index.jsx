@@ -45,7 +45,7 @@ const Login = () => {
 
           console.log(response.data);
           // navigate("/Scholarships");
-          navigate("/uniPost");
+          navigate("/Scholarships");
           // navigate("/applyPost");
       } catch (error) {
           console.log(error);
