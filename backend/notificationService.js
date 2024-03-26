@@ -1,7 +1,8 @@
-
 const sendNotification = async (userId, message, io) => {
-    io.to(userId).emit('notification', { message });
-  };
-  
-  module.exports = sendNotification;
-  
+  console.log("Alina is Alina");
+  io.to(userId).emit('notification', { message });
+};
+
+module.exports = {
+  sendNotification,
+};

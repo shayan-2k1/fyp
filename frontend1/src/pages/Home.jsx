@@ -42,12 +42,41 @@
 // };
 // export default Home;
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Img, List, Text } from "components";
 import { Link } from "react-router-dom";
+import lottie from 'lottie-web';
 const Home = () => {
   const [showAbout, setShowAbout] = useState(false);
   const [showContact, setContactUs] = useState(false);
+  const container = useRef(null)
+  const container1 = useRef(null)
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./home1.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container1.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./button.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
   const handleAboutUsClick = () => {
     setShowAbout(true);
     setContactUs(false); // Close contact info
@@ -65,6 +94,7 @@ const Home = () => {
               <div
                 className="absolute bg-cover bg-no-repeat flex flex-col h-max inset-[0] items-start justify-center m-auto p-[281px] md:px-10 sm:px-5 w-full"
                 style={{ backgroundImage: "url('images/img_group8.png')" }}
+
               >
                 <div className="flex flex-col items-start justify-start mb-[252px] mt-[162px] p-0.5 w-[47%] md:w-full">
                   <Text
@@ -91,17 +121,21 @@ const Home = () => {
 
                     <div className="flex flex-col items-center justify-center">
                       <Link to="/desktopone">
-                        <a
+                      <a
                           href="javascript:"
                           className="absolute inset-x-[0] mx-auto text-base text-center text-white-A700 top-[32%] w-max"
-                        >
-                          <Text size="txtAlfaSlabOneRegular16">
+                        > 
+                           <Text size="txtAlfaSlabOneRegular16">
                             Login as a Student
-                          </Text>
+                          </Text> 
+                           {/*  */}
+                              
+
                         </a>
                       </Link>
                     </div>
                   </div>
+                  
 
                   <div className="font-alfaslabone md:h-[113px] h-[72px] mb-2 ml-9 md:ml-[0] mt-[34px] relative w-[65%]">
                     <div className="bg-black-900 h-[71px] m-auto rounded-[35px] shadow-bs w-full"></div>
@@ -119,53 +153,72 @@ const Home = () => {
                       </Link>
                     </div>
                   </div>
+                  <div className="font-alfaslabone md:h-[113px] h-[72px] mb-2 ml-9 md:ml-[0] mt-[34px] relative w-[65%]">
+                    <div className="bg-black-900 h-[71px] m-auto rounded-[35px] shadow-bs w-full"></div>
+
+                    <div className="flex flex-col items-center justify-center">
+                      <Link to="/MentorLogin">
+                        <a
+                          href="javascript:"
+                          className="absolute inset-x-[0] mx-auto text-base text-center text-white-A700 top-[32%] w-max"
+                        >
+                          <Text size="txtAlfaSlabOneRegular16">
+                            Login as a Mentor
+                          </Text>
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div
-  className="absolute bg-cover bg-no-repeat flex flex-col font-lato h-[498px] items-start justify-start p-[21px] sm:px-5 right-[0] top-[0]"
-  style={{ backgroundImage: "url('images/img_group9.png')" }}
->
-  <div className="flex">
-    <button
-      className="mb-[414px] mt-[17px] mr-4 text-white-A700 text-xl tracking-[0.08px] bg-transparent border-none cursor-pointer"
-      onClick={() => handleAboutUsClick()}
-    >
-      About Us
-    </button>
+                className="absolute bg-cover bg-no-repeat flex flex-col font-lato h-[498px] items-start justify-start p-[21px] sm:px-5 right-[0] top-[0]"
+                style={{ backgroundImage: "url('images/img_group9.png')" }}
+              >
+                <div className="flex">
+                  <button
+                    className="mb-[414px] mt-[17px] mr-4 text-white-A700 text-xl tracking-[0.08px] bg-transparent border-none cursor-pointer"
+                    onClick={() => handleAboutUsClick()}
+                  >
+                    About Us
+                  </button>
 
-    <button
-      className="mb-[414px] mt-[17px] text-white-A700 text-xl tracking-[0.08px] bg-transparent border-none cursor-pointer"
-      onClick={() => handleContactUsClick()}
-    >
-      Contact Us
-    </button>
-  </div>
-  {showAbout && (
-        <div className="absolute top-[77px] right-[21px]">
-          <p className="text-white-A700 text-base">
-          A passionate community committed to empowering the next generation through 
-          education and opportunities. At EaseAssist we firmly believe that every 
-          student deserves the chance to fulfill their academic dreams and contribute 
-          meaningfully to society.
-          </p>
-        </div>
-      )}
-       {showContact && (
-        <div className="absolute top-[77px] right-[21px]">
-          <p className="text-white-A700 text-base">
-            gmail: easeassist24@gmail.com
-            contact: 0311-1234120
-          </p>
-        </div>
-      )}
-</div>
+                  <button
+                    className="mb-[414px] mt-[17px] text-white-A700 text-xl tracking-[0.08px] bg-transparent border-none cursor-pointer"
+                    onClick={() => handleContactUsClick()}
+                  >
+                    Contact Us
+                  </button>
+                </div>
+                {showAbout && (
+                  <div className="absolute top-[77px] right-[21px]">
+                    <p className="text-white-A700 text-base">
+                      A passionate community committed to empowering the next generation through
+                      education and opportunities. At EaseAssist we firmly believe that every
+                      student deserves the chance to fulfill their academic dreams and contribute
+                      meaningfully to society.
+                    </p>
+                  </div>
+                )}
+                {showContact && (
+                  <div className="absolute top-[77px] right-[21px]">
+                    <p className="text-white-A700 text-base">
+                      gmail: easeassist24@gmail.com
+                      contact: 0311-1234120
+                    </p>
+                  </div>
+                )}
+              </div>
 
             </div>
-            <Img
+            <div className="absolute h-[550px] object-cover right-[3%] top-[22%] w-[44%]">
+              <div ref={container} className="absolute inset-0"></div>
+            </div>
+            {/* <Img
               className="absolute h-[550px] object-cover right-[3%] top-[22%] w-[44%]"
               src="images/img_rectangle9.png"
               alt="rectangleNine"
-            />
+            /> */}
           </div>
 
           <div className="font-lato h-[553px] md:h-[605px] max-w-[1030px] mt-[300px] mx-auto relative w-[45%]">

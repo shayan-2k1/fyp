@@ -1,12 +1,116 @@
-import React from "react";
+import React,{useEffect,useRef} from "react";
 
 import { Menu, MenuItem, Sidebar, useProSidebar } from "react-pro-sidebar";
 
-import { Img, Line, Text } from "components";
+import { Img, Text } from "components";
 import { Link } from "react-router-dom";
+import lottie from 'lottie-web';
 const Sidebar1 = (props) => {
   const { collapseSidebar, collapsed } = useProSidebar();
+  const container = useRef(null)
+  const container1 = useRef(null)
+  const container2 = useRef(null)
+  const container3 = useRef(null)
+  const container4 = useRef(null)
+  const container5 = useRef(null)
+  const container6 = useRef(null)
+  
 
+
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./profile.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+ 
+
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container1.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./wallet.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container2.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./save.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container3.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./Explore.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container4.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./track.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container5.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./group.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container6.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./mentor.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
   return (
     <>
       <Sidebar
@@ -47,73 +151,40 @@ const Sidebar1 = (props) => {
               className="md:h-[1379px] sm:h-[1436px] h-[416px] mb-[9px] mt-[67px] pt-[7px] relative w-full"
             >
 
-              {/* Third Menu Item */}
+             
               <Link to="/Profile">
               <MenuItem
-                icon={
-                  <Img
-                    className="h-[30px] w-11"
-                    src="images/profile.png"
-                    alt="commentOne"
-                  />
-                }
+               
               >
-                <Text className="w-[49%] sm:w-full">Profile</Text>
-                <Img
-                  className="h-[23px] w-[345px]"
-                  src="images/img_arrowright.svg"
-                  alt="arrowright"
-                />
+                 <div ref={container} className="h-[40px] w-30 "></div>
+                <Text className="w-[70%] sm:w-full">Profile</Text>
+                
               </MenuItem>
               </Link>
 
               <Link to="/DocWallet">
                 <MenuItem
-                  icon={
-                    <Img
-                      className="h-[27px] w-10"
-                      src="images/wallet.png"
-                      alt="commentOne"
-                    />
-                  }
+                 
                 >
-                  <Text className="w-[49%] sm:w-full">Doc-wallet</Text>
-                  <Img
-                    className="h-[23px] w-[345px]"
-                    src="images/img_arrowright.svg"
-                    alt="arrowright"
-                  />
+                   <div ref={container1} className="h-[40px] w-30 "></div>
+                  <Text className="w-[70%] sm:w-full">Doc-wallet</Text>
+                  
                 </MenuItem>
               </Link>
               <Link to="/SaveScholarships">
               <MenuItem
-                icon={
-                  <Img
-                    className="h-[27px] w-10"
-                    src="images/email.png"
-                    alt="commentOne"
-                  />
-                }
+               
               >
-                
-                <Text className="w-[49%] sm:w-full">Save Scholarships</Text>
-                <Img
-                  className="h-[23px] w-[345px]"
-                  src="images/img_arrowright.svg"
-                  alt="arrowright"
-                />
+                 <div ref={container2} className="h-[40px] w-30 "></div>
+                <Text className="w-[70%] sm:w-full">Save Scholarships</Text>
+               
               </MenuItem>
               </Link>
               <Link to="/Scholarships">
               <MenuItem
-                icon={
-                  <Img
-                    className="h-[27px] w-6"
-                    src="images/explore.png"
-                    alt="rectangleSeventy"
-                  />
-                }
+               
               >
+                 <div ref={container3} className="h-[40px] w-30 "></div>
                 <Text className="my-1 w-2/5 sm:w-full">Explore</Text>
                 <div className="bg-pink-50 flex flex-col items-center justify-start mb-2 p-[3px] rounded-[17px]">
                   <Text className="font-bold font-cairo text-pink-400 text-sm w-[30px]">
@@ -122,42 +193,34 @@ const Sidebar1 = (props) => {
                 </div>
               </MenuItem>
               </Link>
-              <Link to="/Notification">
+            {/*  change to track  */}
+              <Link to="/Notification">   
               <MenuItem
-                icon={
-                  <Img
-                    className="h-[27px] w-10"
-                    src="images/track.png"
-                    alt="commentOne"
-                  />
-                }
-              > 
-                <Text className="w-[49%] sm:w-full">Track Application </Text>
-                <Img
-                  className="h-[23px] w-[345px]"
-                  src="images/img_arrowright.svg"
-                  alt="arrowright"
-                />
+              
+              >  
+                <div ref={container4} className="h-[40px] w-30 "></div>
+                <Text className="w-[70%] sm:w-full">Track Application </Text>
+                
               </MenuItem>
               </Link>
              
               <MenuItem
-                icon={
-                  <Img
-                    className="h-[27px] w-10"
-                    src="images/img_comment1.svg"
-                    alt="commentOne"
-                  />
-                }
+                
               >
-                <Text className="w-[49%] sm:w-full">Group</Text>
-                <Img
-                  className="h-[23px] w-[345px]"
-                  src="images/img_arrowright.svg"
-                  alt="arrowright"
-                />
+                 
+                 <div ref={container5} className="h-[40px] w-30 "></div>
+                <Text className="w-[70%] sm:w-full">Group</Text>
+                
               </MenuItem>
-
+              <Link to="/MentorRequest">
+              <MenuItem
+               
+              >
+                 <div ref={container6} className="h-[40px] w-30 "></div>
+                <Text className="w-[70%] sm:w-full">mentors</Text>
+               
+              </MenuItem>
+              </Link>
 
             </Menu>
 

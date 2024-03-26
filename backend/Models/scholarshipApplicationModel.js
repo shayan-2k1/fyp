@@ -20,13 +20,30 @@ const scholarshipApplicationSchema = new mongoose.Schema({
         ref: 'studentModel',
         required: true,
       },
+
+      scholarshipId: {
+        type: mongoose.Schema.Types.ObjectId,
+        // ref: 'scholarshipPostModel', // Reference to the scholarship model
+        required: true,
+      },
+      scholarshipName
+: {
+        type: String,
+        // ref: 'scholarshipPostModel',
+        required: true,
+      },
+      universityName: {
+        type: String,
+        // ref: 'scholarshipPostModel',
+        required: true,
+      },
   personalInfo: {
     contactNo: {
       type: String
     },
     gender: {
       type: String,
-      enum: ['Male', 'Female', 'Other'] // You can adjust the options as needed
+      enum: ['Male', 'Female', 'Other', 'male' , 'female' , 'other'] // You can adjust the options as needed
     },
     nationality: {
       type: String

@@ -7,6 +7,8 @@ const monthNames = [
   'September', 'October', 'November', 'December'
 ];
 
+
+
 const personalInfoSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -27,7 +29,7 @@ const personalInfoSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    // required: true,
+    
   },
   nationality: {
     type: String,
@@ -59,4 +61,4 @@ const personalInfoSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('PersonalInfo', personalInfoSchema);
+module.exports = mongoose.model('PersonalInfoStudent', personalInfoSchema);

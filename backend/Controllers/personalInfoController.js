@@ -10,19 +10,19 @@ dotenv.config();
 // });
 
 async function personalInfo(req, res) {
- 
- try {
+  try {
     const { authorization } = req.headers;
-   
+
     if (!authorization) {
       return res.status(401).json({ error: "Unauthorized!" });
     }
+
     const secretKey = process.env.SECRET_KEY;
-    const token = authorization.split(' ')[1];
+    const token = authorization.split(" ")[1];
     const decodedToken = jwt.verify(token, secretKey);
     const userId = decodedToken.id;
+
     let {
-      
       firstName,
       lastName,
       contactNo,
@@ -31,25 +31,42 @@ async function personalInfo(req, res) {
       countryOfResidence,
       dob,
     } = req.body;
-     
-    const profile = new personalInfoSchema({
-      user: userId ,
-      firstName:firstName,
-      lastName:lastName,
-      contactNo,
-      gender,
-      nationality,
-      countryOfResidence,
-      dob,
-    });
+
+    // Check if personal information already exists for the user
+    let profile = await personalInfoSchema.findOne({ user: userId });
+
+    if (!profile) {
+      // If personal information doesn't exist, create a new one
+      profile = new personalInfoSchema({
+        user: userId,
+        firstName,
+        lastName,
+        contactNo,
+        gender,
+        nationality,
+        countryOfResidence,
+        dob,
+      });
+    } else {
+      // If personal information already exists, update it
+      profile.firstName = firstName;
+      profile.lastName = lastName;
+      profile.contactNo = contactNo;
+      profile.gender = gender;
+      profile.nationality = nationality;
+      profile.countryOfResidence = countryOfResidence;
+      profile.dob = dob;
+    }
+
     await profile.save();
 
     res.status(201).json(profile);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error"});
+    res.status(500).json({ error: "Server Error" });
   }
 }
+
 
 async function getPersonalInfo(req, res) {
   console.log("alinaaaa")

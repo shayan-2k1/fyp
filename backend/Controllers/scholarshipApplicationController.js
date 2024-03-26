@@ -1,19 +1,30 @@
 const ScholarshipApplication = require("../Models/scholarshipApplicationModel");
 const AcademicBackground = require("../Models/academicModel"); // Assuming you have this model
 const PersonalInfo = require("../Models/personalInfoModel"); // Assuming you have this model
+// const { createServerWithCookieHandling } = require('./index');
 const certificates = require("../Models/certificateModel.js");
 const documents = require("../Models/documentModel");
 const jwt = require("jsonwebtoken");
+const cookieParser = require('cookie-parser');
+// app.use(cookieParser());
 const dotenv = require("dotenv");
 dotenv.config();
 
-async function ScholarshipApplicationController(req, res) {
+// app.get('/getcookie', function (req, res) {
+//   res.send(req.cookies);
+// })
+
+async function ScholarshipApplicationController( req, res) {
   try {
     const { authorization } = req.headers;
     if (!authorization) {
       return res.status(401).json({ error: "Unauthorized" });
     }
+    console.log("nhhjhnh")
+    // console.log(cookies)
+    // const { scholarshipId, universityName, scholarshipName } = req.cookies;
 
+    
     const secretKey = process.env.SECRET_KEY;
     // console.log(secretKey)
     const token = authorization.split(" ")[1];
@@ -24,6 +35,7 @@ async function ScholarshipApplicationController(req, res) {
     const username = decodedToken.name;
     console.log(username);
     const {
+      scholarshipId, universityName, scholarshipName,
       ielts,
       toefl,
       linkedIn,
@@ -31,6 +43,9 @@ async function ScholarshipApplicationController(req, res) {
       fieldOfInterest,
       participationYear,
       achievements,
+      
+     
+
     } = req.body;
 
     // Check if the user meets the admission requirements
@@ -60,7 +75,7 @@ async function ScholarshipApplicationController(req, res) {
       fileUrl: document.fileUrl, // Assuming you have a fileUrl field in the Certificate model
     }));
     const selectedDocumentIds = req.body.selectedDocuments;
-
+    console.log(selectedDocumentIds) //in frontend these are certificates
     // Filter the document options based on the selected document IDs
     const selectedDocuments = documentOptions.filter((option) =>
       selectedDocumentIds.includes(option.value)
@@ -82,17 +97,22 @@ async function ScholarshipApplicationController(req, res) {
     // }
 
     // Filter the certificateOptions based on the selectedCertificateIds
+    console.log(selectedCertificateIds)
     const selectedCertificate = certificateOptions.filter((option) =>
       selectedCertificateIds.includes(option.value)
     );
     console.log(certificateOptions);
     const personalInfo = await PersonalInfo.findOne({ user: userId }); // Assuming you have a userId field in PersonalInfo model
-
+    console.log(personalInfo.gender)
     // Populate the fields in the scholarship application form
     const scholarshipApplication = new ScholarshipApplication({
       userId: userId,
       username: decodedToken.name,
-
+      scholarshipId : scholarshipId,
+      
+      universityName: universityName ,
+      scholarshipName: scholarshipName
+,
       personalInfo: {
         contactNo: personalInfo.contactNo,
         gender: personalInfo.gender,
@@ -130,7 +150,7 @@ async function ScholarshipApplicationController(req, res) {
     await scholarshipApplication.save();
 
     return res
-      .status(201)
+      .status(200)
       .json({ message: "Scholarship application created successfully" });
   } catch (error) {
     console.error(error);

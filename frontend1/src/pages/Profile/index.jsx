@@ -991,7 +991,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <Sidebar1 className="!sticky !w-[346px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
+        <Sidebar1 className="!sticky !w-[346px] bg-gradient3  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
 
         <div className="absolute font-cairo overflow-x-auto right-[0] top-[2%] w-[14%]">
           <div className="flex flex-row gap-6 items-center justify-between w-full">
