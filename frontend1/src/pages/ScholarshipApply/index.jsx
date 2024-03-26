@@ -4,10 +4,11 @@ import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import Select from "react-select";
 
 function ScholarshipApplicationForm() {
   const [githubRepos, setGithubRepos] = useState([]);
-  const [documentUrls, setDocumentUrls] = useState([]);
+
   const [errorMessage, setErrorMessage] = useState("");
   // const [contactNo, setContactNo] = useState("");
   // const [gender, setGender] = useState("");
@@ -23,12 +24,13 @@ function ScholarshipApplicationForm() {
   const [participationYear, setParticipationYear] = useState("");
   const [achievements, setAchievements] = useState("");
   const [selectedCertificates, setSelectedCertificates] = useState([]);
-  const [selectedDocuments, setSelectedDocuments] = useState([]);
+
   const authToken = Cookies.get("auth_token");
   // const [academicBackground, setAcademicBackground] = useState({});
   const [personalInfo, setPersonalInfo] = useState({});
   const [certificates, setCertificates] = useState([]);
-  const [documents, setDocuments] = useState([]);
+  const [documentUrls, setDocumentUrls] = useState([]);
+  const [selectedDocuments, setSelectedDocuments] = useState([]);
   const [formState, setFormState] = useState({
     ielts: "",
     toefl: "",
@@ -80,10 +82,8 @@ function ScholarshipApplicationForm() {
   useEffect(() => {
     const fetchDocuments = async () => {
       try {
-        // const authToken = 'YOUR_AUTH_TOKEN_HERE'; // Replace with your authentication token logic
-
         const response = await axios.get(
-          "http://127.0.0.1:3000/certificate/get", // Replace with your backend endpoint
+          "http://127.0.0.1:3000/certificate/get",
           {
             headers: {
               Authorization: `Bearer ${authToken}`,
@@ -136,6 +136,10 @@ function ScholarshipApplicationForm() {
     };
     fetchPersonalInfo();
   }, [authToken]);
+
+  const handleChange = (selectedOptions) => {
+    setSelectedDocuments(selectedOptions);
+  };
 
   useEffect(() => {
     const fetchAcademicInfo = async () => {
@@ -265,6 +269,13 @@ function ScholarshipApplicationForm() {
               >
                 Application Form{" "}
               </Text>
+
+              <Text
+                className="md:ml-[0] ml-[272px] mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px]"
+                size="txtOverpassExtraBold36"
+              >
+                Personal Infromation{" "}
+              </Text>
               <div className="flex md:flex-col flex-row font-cairo md:gap-7 items-start justify-between mr-[62px] mt-[42px] w-[96%] md:w-full">
                 <Text
                   className="md:mt-0 mt-[147px] text-gray-500_01 text-lg"
@@ -329,6 +340,61 @@ function ScholarshipApplicationForm() {
                       />
                     </div>
 
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        Nationality
+                      </Text>
+
+                      <Input
+                        name="nationality"
+                        value={formState.personalInfo.nationality}
+                        onChange={(e) => {
+                          setFormState((prevState) => ({
+                            ...prevState,
+                            personalInfo: {
+                              ...prevState.personalInfo,
+                              nationality: e.target.value,
+                            },
+                          }));
+                        }}
+                        // placeholder="Software Engineering"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-full"
+                        shape="round"
+                        style={{ color: "#000000" }} // Set the color to a darker shade, you can adjust the color code as needed
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        Country Of Residence
+                      </Text>
+
+                      <Input
+                        name="country of residence"
+                        value={formState.personalInfo.countryOfResidence}
+                        onChange={(e) => {
+                          setFormState((prevState) => ({
+                            ...prevState,
+                            personalInfo: {
+                              ...prevState.personalInfo,
+                              countryOfResidence: e.target.value,
+                            },
+                          }));
+                        }}
+                        // placeholder="Software Engineering"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-full"
+                        shape="round"
+                        style={{ color: "#000000" }} // Set the color to a darker shade, you can adjust the color code as needed
+                      />
+                    </div>
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <Text
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
@@ -406,6 +472,13 @@ function ScholarshipApplicationForm() {
                       </div>
                     </div>
 
+                    <Text
+                      className="mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px] text-left"
+                      size="txtOverpassExtraBold36"
+                    >
+                      Academic Background
+                    </Text>
+
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <Text
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
@@ -433,8 +506,6 @@ function ScholarshipApplicationForm() {
                         style={{ color: "#000000" }} // Set the color to a darker shade, you can adjust the color code as needed
                       />
                     </div>
-
-                    
 
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <Text
@@ -571,7 +642,12 @@ function ScholarshipApplicationForm() {
                         style={{ color: "#000000" }} // Set the color to a darker shade, you can adjust the color code as needed
                       />
                     </div>
-
+                    <Text
+                      className="mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px] text-left"
+                      size="txtOverpassExtraBold36"
+                    >
+                      Language
+                    </Text>
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <Text
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
@@ -583,14 +659,15 @@ function ScholarshipApplicationForm() {
                       <Input
                         name="ielts"
                         value={ielts}
-                        onChange={(e) =>{
+                        onChange={(e) => {
                           // console.log('email: ',  e.target.value);
-                           setIelts(e.target.value)}}
+                          setIelts(e.target.value);
+                        }}
                         placeholder="2023"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
                         wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
                         shape="round"
-                        style={{ color: '#000000' }}
+                        style={{ color: "#000000" }}
                       ></Input>
                     </div>
 
@@ -605,18 +682,158 @@ function ScholarshipApplicationForm() {
                       <Input
                         name="toefl"
                         value={toefl}
-                        onChange={(e) =>{
+                        onChange={(e) => {
                           // console.log('email: ',  e.target.value);
-                           setToefl(e.target.value)}}
+                          setToefl(e.target.value);
+                        }}
                         placeholder="2023"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
                         wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
                         shape="round"
-                        style={{ color: '#000000' }}
+                        style={{ color: "#000000" }}
+                      ></Input>
+                    </div>
+                    <Text
+                      className="mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px] text-left"
+                      size="txtOverpassExtraBold36"
+                    >
+                      Other Activities
+                    </Text>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        Field Of Interest
+                      </Text>
+
+                      <Input
+                        name="fieldOfInterest"
+                        value={fieldOfInterest}
+                        onChange={(e) => {
+                          // console.log('email: ',  e.target.value);
+                          setFieldOfInterest(e.target.value);
+                        }}
+                        placeholder="Sports"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
+                      ></Input>
+                    </div>
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        Participation Year
+                      </Text>
+
+                      <Input
+                        name="participationYear"
+                        value={participationYear}
+                        onChange={(e) => {
+                          const inputValue = e.target.value;
+                          // Check if the input value is numerical
+                          if (/^\d*$/.test(inputValue) || inputValue === "") {
+                            // If the input value is numerical or empty, update the state
+                            setParticipationYear(inputValue);
+                          }
+                        }}
+                        placeholder="2023"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
                       ></Input>
                     </div>
 
-                    
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        Achievements
+                      </Text>
+
+                      <Input
+                        name="achievements"
+                        value={achievements}
+                        onChange={(e) => {
+                          const inputValue = e.target.value;
+                          const words = inputValue.trim().split(/\s+/);
+                          // Limit to 50 words
+                          if (words.length <= 50) {
+                            setAchievements(inputValue);
+                          }
+                        }}
+                        placeholder="0-50 words"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
+                      ></Input>
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        Certificates
+                      </Text>
+
+                      <Select
+                        value={selectedDocuments}
+                        onChange={(selectedOptions) => {
+                          // Handle selected options
+                          setSelectedDocuments(selectedOptions);
+                        }}
+                        options={documentUrls.map((doc) => ({
+                          value: doc._id,
+                          label: doc.fileName, // Render fileName property
+                        }))}
+                        isMulti
+                        styles={{
+                          placeholder: (provided) => ({
+                            ...provided,
+                            color: '#6c5ce7', // Placeholder color
+                          }),
+                          control: (provided) => ({
+                            ...provided,
+                            border: '2px solid #0097a7', // Adjusted border color
+                            borderRadius: '40px', // Border radius for rounded edges
+                            width: '360px', // Width
+                            height: '60px',
+                          }),
+                          
+                          indicatorSeparator: (provided) => ({
+                            ...provided,
+                            display: 'none', // Hide indicator separator
+                          }),
+                          multiValue: (provided) => ({
+                            ...provided,
+                            color: '#000', // Multi-value color
+                            background: '#0097a7', // Multi-value background color
+                          }),
+                          multiValueLabel: (provided) => ({
+                            ...provided,
+                            color: '#fff', // Multi-value label color
+                          }),
+                          multiValueRemove: (provided) => ({
+                            ...provided,
+                            color: '#fff', // Multi-value remove color
+                            ':hover': {
+                              background: '#0097a7', // Multi-value remove hover background color
+                              color: '#fff', // Multi-value remove hover color
+                            },
+                          }),
+                          // Add more custom styles as needed
+                        }}
+                      />
+                    </div>
+
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <div className="flex items-center justify-center mt-6">
                         <Button
