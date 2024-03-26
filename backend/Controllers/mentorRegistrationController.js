@@ -128,71 +128,71 @@ async function update(req, res) {
     return res.status(500).send({ message: 'Internal server error' });
   }
 }
-async function mentorset(req, res) {
+// async function mentorset(req, res) {
 
-  try {
-    const { authorization } = req.headers;
-    if (!authorization) {
-      return res.status(401).json({ error: "Unauthorized!" });
-    }
-    let {
-      name , 
-      title,
-      email,
-      tel,
-      skills,
-      about,
-      universityname
-    } = req.body
-
-
-
-    const secretKey = process.env.SECRET_KEY;
-    const token = authorization.split(" ")[1];
-    const decodedToken = jwt.verify(token, secretKey);
-    const userId = decodedToken.id;
-console.log(userId);
-    const existingInfo = await MentorProfileModel.findOne({ user: userId });
-
-    if (existingInfo) {
-      // If information exists, update it
-      await MentorProfileModel.findOneAndUpdate(
-        { userid: userId },
-        {
-          name: req.body.name,
-          title: req.body.title,
-          email: req.body.email,
-          tel: req.body.tel,
-          skills: req.body.skills,
-          about: req.body.about,
-          universityname: req.body.universityname,
-        },
-        { new: true }
-      );
+//   try {
+//     const { authorization } = req.headers;
+//     if (!authorization) {
+//       return res.status(401).json({ error: "Unauthorized!" });
+//     }
+//     let {
+//       name , 
+//       title,
+//       email,
+//       tel,
+//       skills,
+//       about,
+//       universityname
+//     } = req.body
 
 
-      res.status(200).json({ message: "Mentor updated successfully" });
-    } else {
-      // If no information exists, add academicbackground
-      const mentorProfile = new MentorProfileModel({
-        userid: userId,
-        name,
-        title,
-        email,
-        tel,
-        skills,
-        about,
-        universityname
-      });
 
-      await mentorProfile.save();
-      res.status(201).json({ message: "Mentor added successfully." });
-    }
-  } catch (error) {
-    res.status(500).json({ error: "Server Error" });
-    console.log(error);
-  }
-}
+//     const secretKey = process.env.SECRET_KEY;
+//     const token = authorization.split(" ")[1];
+//     const decodedToken = jwt.verify(token, secretKey);
+//     const userId = decodedToken.id;
+//     console.log(userId);
+//     const existingInfo = await MentorProfileModel.findOne({ user: userId });
+
+//     if (existingInfo) {
+//       // If information exists, update it
+//       await MentorProfileModel.findOneAndUpdate(
+//         { userid: userId },
+//         {
+//           name: req.body.name,
+//           title: req.body.title,
+//           email: req.body.email,
+//           tel: req.body.tel,
+//           skills: req.body.skills,
+//           about: req.body.about,
+//           universityname: req.body.universityname,
+//         },
+//         { new: true }
+//       );
+
+
+//       res.status(200).json({ message: "Mentor updated successfully" });
+//     } else {
+//       // If no information exists, add academicbackground
+//       const mentorProfile = new MentorProfileModel({
+//         userid: userId,
+//         name,
+//         title,
+//         email,
+//         tel,
+//         skills,
+//         about,
+//         universityname
+//       });
+
+//       await mentorProfile.save();
+//       res.status(201).json({ message: "Mentor added successfully." });
+//     }
+//   } catch (error) {
+//     res.status(500).json({ error: "Server Error" });
+//     console.log(error);
+//   }
+// }
 async function getmentor(req, res) {
   
   try {
@@ -216,6 +216,68 @@ async function getmentor(req, res) {
     res.status(200).json(mentorProfile);
   } catch (error) {
     console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
+}
+async function mentorset(req, res) {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: "Unauthorized!" });
+    }
+
+    const {
+      name,
+      title,
+      email,
+      tel,
+      skills,
+      about,
+      universityname
+    } = req.body;
+
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, secretKey);
+    const userId = decodedToken.id;
+
+    const existingInfo = await MentorProfileModel.findOne({ userid: userId });
+
+    if (existingInfo) {
+      // If information exists, update it
+      await MentorProfileModel.findOneAndUpdate(
+        { userid: userId },
+        {
+          name,
+          title,
+          email,
+          tel,
+          skills,
+          about,
+          universityname,
+        },
+        { new: true }
+      );
+
+      res.status(200).json({ message: "Mentor updated successfully" });
+    } else {
+      // If no information exists, add mentor profile
+      const mentorProfile = new MentorProfileModel({
+        userid: userId,
+        name,
+        title,
+        email,
+        tel,
+        skills,
+        about,
+        universityname,
+      });
+
+      await mentorProfile.save();
+      res.status(201).json({ message: "Mentor added successfully." });
+    }
+  } catch (error) {
+    console.error('Server Error:', error);
     res.status(500).json({ error: "Server Error" });
   }
 }

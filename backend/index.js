@@ -40,6 +40,7 @@ app.use("/certificate", certificateRoute)
 app.use("/scholarship", scholarshipRouter)
 app.use("/mentor", mentorRoute)
 app.use("/university", universityRoute)
+app.use("/universityP",scholarshipPostRoute)
 const httpServer = require('http').createServer(app); // Create an HTTP server
 const io = new Server(httpServer, {
     cors: {

@@ -1,16 +1,78 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Cookies from 'js-cookie'; // Import js-cookie
 import { Img, Input, Text } from "components";
 import Sidebar3 from "components/Sidebar3";
+import lottie from 'lottie-web';
 
 
 
 const MentorPublished = () => {
     const [mentorDetails, setMentorDetails] = useState([])
+    const animationContainersRefs = useRef([
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null)
+    ]);
+
     const authToken = Cookies.get("auth_token");
+    useEffect(() => {
+        if (mentorDetails.length > 0) {
+            mentorDetails.slice(0, 4).forEach((mentorDetails, index) => {
+                try {
+                    const containerRef = animationContainersRefs.current[index];
+                    if (containerRef && containerRef.current) {
+                        // Clear previous animation
+                        containerRef.current.innerHTML = '';
+                        // Load new animation
+                        lottie.loadAnimation({
+                            container: containerRef.current,
+                            renderer: 'svg',
+                            loop: true,
+                            autoplay: true,
+                            animationData: require('./published.json')
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading animation:', error);
+                }
+            });
+        }
+    }, [mentorDetails]);
+    const animationContainersRefs1 = useRef([
+        useRef(null),
+        useRef(null),
+        useRef(null),
+        useRef(null)
+    ]);
+
+
+    useEffect(() => {
+        if (mentorDetails.length > 0) {
+            mentorDetails.slice(0, 4).forEach((mentorDetails, index) => {
+                try {
+                    const containerRef = animationContainersRefs1.current[index];
+                    if (containerRef && containerRef.current) {
+                        // Clear previous animation
+                        containerRef.current.innerHTML = '';
+                        // Load new animation
+                        lottie.loadAnimation({
+                            container: containerRef.current,
+                            renderer: 'svg',
+                            loop: true,
+                            autoplay: true,
+                            animationData: require('./delete.json')
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error loading animation:', error);
+                }
+            });
+        }
+    }, [mentorDetails]);
     useEffect(() => {
         const getinfo = async () => {
             try {
@@ -29,6 +91,9 @@ const MentorPublished = () => {
         };
         getinfo();
     }, [authToken]);
+
+
+
 
     return (
         <>
@@ -88,7 +153,7 @@ const MentorPublished = () => {
                                 className="md:ml-[0] ml-[290px] mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px]"
                                 size="txtOverpassExtraBold36"
                             >
-                                Seekh help from mentors around the world!{" "}
+                                PUBLISHED MENTORS{" "}
                             </Text>
                             <div className="flex md:flex-col flex-row font-cairo md:gap-7 items-start justify-between mr-[62px] mt-[42px] w-[96%] md:w-full">
                                 <Text
@@ -100,7 +165,11 @@ const MentorPublished = () => {
                                 <div className="absolute flex flex-col font-nunito items-start justify-start left-[23%] md:px-5 top-[20%]">
                                     <div className=" absolute bg-white-A700 flex flex-col items-center justify-end p-1 shadow-bs3 w-[1300px] ">
                                         {mentorDetails.map((mentor, index) => (
-                                            <div key={index} className="flex flex-col items-center justify-start mt-[21px] w-[99%] md:w-full">
+                                            <div key={index} className="flex flex-col items-center justify-start mt-[-10px] w-[99%] md:w-full">
+                                                
+                                                        {/* Add delete icon */}
+                                                        <div ref={animationContainersRefs.current[index]} style={{ width: '10%', height: '20%' }}></div>
+                                                    
                                                 <Text
                                                     className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-yellow-700 text-right tracking-[2.50px]"
                                                     size="txtOverpassExtraBold36"
@@ -125,33 +194,22 @@ const MentorPublished = () => {
                                                 >
                                                     {mentor.skills}
                                                 </Text>
+                                                <div className="flex md:flex-col flex-row  items-end justify-start mr-[400px] mt-[50px] ">
+                                                    
+                                                    <div className=" text-blue_gray-800 text-xl ">
+                                                        {/* <div ref={animationContainersRefs1.current[index]} style={{ width: '20%', height: '30%' }}></div> */}
+                                                    </div>
+
+                                                    
+                                                </div>
                                             </div>
+
+
+
+
+
                                         ))}
-                                        <div className="flex md:flex-col flex-row md:gap-5 items-end justify-start mt-[7px] w-full">
 
-                                            <div className="flex flex-col items-start justify-start md:mt-0 mt-[9px]">
-                                                <Text
-                                                    className="text-blue-600 text-center text-lg tracking-[1.80px]"
-                                                    size="txtNunitoRegular18"
-                                                >
-                                                    Read more about
-                                                </Text>
-                                                <Img
-                                                    className="h-[40px] mb-[11px] ml-[40px]"
-                                                    src="images/readmore.png"
-                                                    alt="bookmark"
-                                                    onClick={() => {
-
-
-                                                    }}
-                                                />
-
-
-
-
-                                            </div>
-
-                                        </div>
 
                                     </div>
 

@@ -1,5 +1,5 @@
-import React,{ useState }  from "react";
-import {Button, Img, Input, Text } from "components";
+import React, { useState, useEffect } from "react";
+import { Button, Img, Input, Text } from "components";
 import Sidebar2 from "components/Sidebar2";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -8,20 +8,49 @@ import { useNavigate } from "react-router-dom";
 const MentorForm = () => {
   const navigate = useNavigate();
   const authToken = Cookies.get("auth_token");
+
+  const [mentorDetails, setMentorDetails] = useState({
+    name: "",
+    title: "",
+    email: "",
+    tel: "",
+    skills: "",
+    about: "",
+    universityname: ""
+  });
+
+  useEffect(() => {
+    const getMentorInfo = async () => {
+      try {
+        const response = await axios.get(
+          'http://localhost:3000/mentor/getmentor',
+          {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          }
+        );
+        setMentorDetails(response.data);
+      } catch (error) {
+        console.error('Error fetching mentor details:', error);
+      }
+    };
+    getMentorInfo();
+  }, [authToken]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setMentorDetails(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   const handleSubmit = async () => {
     try {
-      setLoading(true); // Set loading state to true
       const response = await axios.post(
         "http://localhost:3000/mentor/mentorset",
-        {
-          name:name,
-          title:title,
-          email:email,
-          tel:tel,
-          skills:skills,
-          about:about,
-          universityname:universityname,
-        },
+        mentorDetails,
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
@@ -29,24 +58,11 @@ const MentorForm = () => {
         }
       );
       console.log(response.data);
-     
     } catch (error) {
-      console.error(error);
-      setError(error); // Set error state if there's an error
-    } finally {
-      setLoading(false); // Set loading state to false after request completion (whether successful or not)
+      console.error('Error updating mentor details:', error);
     }
   };
 
-  const [name, setName] = useState('');
-  const [title, setTitle] = useState('');
-  const [email, setEmail] = useState('');
-  const [tel, setTel] = useState('');
-  const [skills, setSkills] = useState('');
-  const [about, setAbout] = useState('');
-  const [universityname, setUniversityName] = useState('');
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState('');
   return (
     <>
       <div className="bg-gray-300 font-cairo h-[1210px] mx-auto overflow-auto relative w-full">
@@ -130,14 +146,17 @@ const MentorForm = () => {
 
                       <Input
                         name="name"
-                        value={name}
-                        onChange={(e) =>{
-                        setName(e.target.value)}}
+                        value={mentorDetails.name}
+                        onChange={(e) => {
+                          handleChange(e);
+                          // setName(e.target.value);
+                        }}
                         placeholder="xyz"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
-                        style={{ color: '#000000' }} // Set the color to a darker shade, you can adjust the color code as needed
+                        style={{ color: '#000000' }
+                        } // Set the color to a darker shade, you can adjust the color code as needed
                       ></Input>
 
                     </div>
@@ -151,9 +170,11 @@ const MentorForm = () => {
 
                       <Input
                         name="title"
-                        value={title}
-                        onChange={(e) =>{
-                        setTitle(e.target.value)}}
+                        value={mentorDetails.title}
+                        onChange={(e) => {
+                          handleChange(e);
+                          
+                        }}
                         placeholder="Software Engineer"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -174,14 +195,17 @@ const MentorForm = () => {
 
                       <Input
                         name="email"
-                        value={email}
-                        onChange={(e) =>{
-                        setEmail(e.target.value)}}
+                        value={mentorDetails.email}
+                        onChange={(e) => {
+                          handleChange(e);
+                      
+                        }}
                         placeholder="xyz@gmail.com"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
                         style={{ color: '#000000' }} // Set the color to a darker shade, you can adjust the color code as needed
+
                       ></Input>
 
                     </div>
@@ -195,10 +219,12 @@ const MentorForm = () => {
 
                       <Input
                         name="tel"
-                        value={tel}
-                        onChange={(e) =>{
-                        setTel(e.target.value)}}
-                        placeholder="university"
+                        value={mentorDetails.tel}
+                        onChange={(e) => {
+                          handleChange(e);
+                          // setTel(e.target.value)
+                        }}
+                        placeholder="03245677"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
@@ -215,10 +241,12 @@ const MentorForm = () => {
                       </Text>
 
                       <Input
-                        name="un"
-                        value={universityname}
-                        onChange={(e) =>{
-                        setUniversityName(e.target.value)}}
+                        name="universityname"
+                        value={mentorDetails.universityname}
+                        onChange={(e) => {
+                          handleChange(e);
+                          
+                        }}
                         placeholder="university"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -228,21 +256,23 @@ const MentorForm = () => {
 
                     </div>
                   </div>
-                
+
                   <div className="flex flex-col pl-8 gap-9 h-[369px] md:h-auto items-center justify-start ml-[undefinedpx] w-[400px] md:w-full z-[1] ">
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <Text
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
                         size="txtNunitoSemiBold28"
                       >
-                        Define your expertise 
+                        Define your expertise
                       </Text>
                       <Input
-                        name="skill"
-                        value={skills}
-                        onChange={(e) =>{
-                        setSkills(e.target.value)}}
-                        placeholder=""
+                        name="skills"
+                        value={mentorDetails.skills}
+                        onChange={(e) => {
+                          handleChange(e);
+                          // setAbout(e.target.value)
+                        }}
+                        placeholder="skills"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
@@ -258,9 +288,11 @@ const MentorForm = () => {
                       </Text>
                       <Input
                         name="about"
-                        value={about}
-                        onChange={(e) =>{
-                        setAbout(e.target.value)}}
+                        value={mentorDetails.about}
+                        onChange={(e) => {
+                          handleChange(e);
+                          // setAbout(e.target.value)
+                        }}
                         placeholder=""
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -270,26 +302,26 @@ const MentorForm = () => {
                     </div>
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <div className="flex items-center justify-center mt-6">
-                      <Button
-                      className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[300px] sm:min-w-full ml-20 mt-[25px] text-0xl md:text-[10px] text-center sm:text-xl tracking-[1.60px] uppercase"
-                      shape="round"
-                      onClick={handleSubmit}
-                    >
-                      Save
-                    </Button>
+                        <Button
+                          className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[300px] sm:min-w-full ml-20 mt-[25px] text-0xl md:text-[10px] text-center sm:text-xl tracking-[1.60px] uppercase"
+                          shape="round"
+                          onClick={handleSubmit}
+                        >
+                          Save
+                        </Button>
                       </div>
                     </div>
                   </div>
-                  
+
 
                 </div>
-                
+
               </div>
-              
+
             </div>
-            
+
           </div>
-          
+
         </div>
         <Sidebar2 className="!sticky !w-[346px] bg-gradient3  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute overflow-x-auto right-[0] top-[2%] w-[14%]">
@@ -309,8 +341,8 @@ const MentorForm = () => {
           </div>
         </div>
 
-      </div>
-     
+      </div >
+
     </>
   );
 };
