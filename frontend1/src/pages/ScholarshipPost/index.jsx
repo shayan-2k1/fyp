@@ -11,7 +11,8 @@ const ScholarshipPost = () => {
   const [scholarshipName, setscholarshipName] = useState('');
   const [scholarshipType, setscholarshipType] = useState('');
   const [deadlinedate, setdeadlinedate] = useState('');
-  const [scholarshipBudget, setscholarshipBudget] = useState('');
+  const [scholarshipBudget, setscholarshipBudget] = useState(0);
+  const [requiredCGPA, setrequiredCGPA]=useState(0);
   const [educationPreference, seteducationPreference] = useState('');
   const [countryOfScholarship, setcountryOfScholarship] = useState('');
   const [eligibleDomain, seteligibleDomain] = useState('');
@@ -41,6 +42,7 @@ const ScholarshipPost = () => {
           description: description,
           deadlinedate: deadlinedate,
           scholarshipBudget: scholarshipBudget,
+          requiredCGPA: requiredCGPA,
         },
         {
           headers: {
@@ -51,12 +53,13 @@ const ScholarshipPost = () => {
       alert("Scholarship Posted!");
       setscholarshipName('');
       setscholarshipType('');
-      setscholarshipBudget('');
+      setscholarshipBudget(0);
       seteducationPreference('');
       setcountryOfScholarship('');
       seteligibleDomain('');
       setdescription('');
       setdeadlinedate('');
+      setrequiredCGPA(0);
       console.log(response.data);
       }
       // navigate('/Profile');
@@ -260,6 +263,30 @@ const ScholarshipPost = () => {
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
                         size="txtNunitoSemiBold28"
                       >
+                        Required CGPA
+                      </Text>
+
+                      <Input
+                        name="Field"
+                        value={requiredCGPA}
+                        type="Text"
+                        onChange={(e) =>{
+                        setrequiredCGPA(e.target.value)}}
+                        placeholder="2-4"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-full"
+                        shape="round"
+                        style={{ color: '#000000' }} // Set the color to a darker shade, you can adjust the color code as needed
+                      ></Input>
+
+                    </div>
+
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
                         Country of Scholarship
                       </Text>
 
@@ -317,7 +344,7 @@ const ScholarshipPost = () => {
                         type="Text"
                         onChange={(e) =>{
                         seteligibleDomain(e.target.value)}}
-                        placeholder="50,000 PKR "
+                        placeholder="Computer Science"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"

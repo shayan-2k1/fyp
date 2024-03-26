@@ -20,6 +20,7 @@ const createScholarship = async (req, res) => {
         eligibleDomain,
         description,
         deadlinedate,
+        requiredCGPA,
       } = req.body;
   
       // Validate budget constraint
@@ -65,6 +66,7 @@ const createScholarship = async (req, res) => {
         eligibleDomain,
         description,
         deadlinedate,
+        requiredCGPA,
       });
   
       // Save the scholarship to the database
