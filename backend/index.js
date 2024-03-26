@@ -62,6 +62,7 @@ app.use("/certificate", certificateRoute)
 app.use("/scholarship", scholarshipRouter)
 app.use("/mentor", mentorRoute)
 app.use("/university", universityRoute)
+app.use("/universityP",scholarshipPostRoute)
 app.use("/scholarship", scholarshipApply)
 app.use("/universityP" , scholarshipPostRoute)
 

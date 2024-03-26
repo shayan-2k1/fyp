@@ -1,10 +1,11 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Text, Button, Heading, Ratingbar1, Img, Input } from "../../components";
+import { Link } from 'react-router-dom';
 import Sidebar2 from "components/Sidebar2";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-
+import lottie from 'lottie-web';
 export default function MentorProfile() {
   const authToken = Cookies.get("auth_token");
   const [mentorDetails, setMentorDetails] = useState({
@@ -15,6 +16,22 @@ export default function MentorProfile() {
     about: "",
     skills: "",
   });
+  const container = useRef(null)
+
+
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./chat.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
   useEffect(() => {
     const getinfo = async () => {
       try {
@@ -34,6 +51,7 @@ export default function MentorProfile() {
     getinfo();
   }, [authToken]);
   
+
   return (
     <>
 
@@ -86,8 +104,151 @@ export default function MentorProfile() {
                 </div>
               </div>
             </div>
+            <div className="flex md:flex-col items-start w-full">
+              <div className="w-[20%]  md:w-full">
+             
+              </div>
+              <div className="flex flex-col items-start md:self-stretch mt-[-20px] flex-1">
 
-            <div className="flex flex-col items-end justify-start w-[94%] mt-[0px] ml-[105px] ">
+
+                <div className="self-stretch h-[360px] relative">
+
+                  <div className="flex flex-col items-start w-full top-[0.00px]  right-0 left-0 m-auto relative">
+                    <div className="self-stretch  z-[1] bg-gradient">
+                      <div className="flex self-end justify-end p-4">
+                        <div className="flex flex-col items-start w-[70%] md:w-full mt-[3px] mb-[15px]">
+                        <Link to="/Mentorform">
+                          <Button
+                            color="black"
+                            size="sm"
+                            shape="round"
+
+                            className="sm:px-5 ml-[850px] font-quicksand capitalize font-bold min-w-[100px] !rounded-[14px]"
+                          >
+                            Edit Profile
+                          </Button>
+                          </Link>
+
+                          <div className="flex items-start mt-[-1px] ml-[17px] gap-5 md:ml-0">
+
+                          </div>
+                          <div className="flex items-start mt-[-1px] ml-[17px] gap-2 md:ml-0">
+                            <Img src="images/email1.png" alt="vector_one" className="h-[24px]" />
+                            <Heading as="h3">Email: {mentorDetails.email}</Heading>
+                          </div>
+                          <div className="flex items-start mt-[10px] ml-[17px] gap-2 md:ml-0">
+                            <Img src="images/tek.png" alt="vector_one" className="h-[24px]" />
+                            <Heading as="h3">Tel : {mentorDetails.tel}</Heading>
+                          </div>
+
+
+                          <div className="flex sm:flex-col justify-between items-center w-[80%] md:w-full mt-[2px] ml-[20px] gap-2 md:ml-0">
+                            <div className="flex sm:flex-col justify-between items-center  mt-[-1px] ml-[0] gap-2 md:ml-0">
+                              <div ref={container} style={{ width: '170px', height: '170px' }}></div>
+                            </div>
+
+                            <div className="flex justify-center items-end w-[41%] sm:w-full gap-[12px]">
+                              <div className="h-[34px] mb-0.5" />
+                              <div className="w-[39px] mb-0.5 object-cover" />
+                              <div className="h-[39px] mb-0.5" />
+                              <dix className="h-[36px]" />
+                              <div className="h-[34px] mb-0.5" />
+                              <div className="w-[39px] mb-0.5 object-cover" />
+                              <div className="h-[39px] mb-0.5" />
+                              <dix className="h-[36px]" />
+                              <div className="h-[34px] mb-0.5" />
+                              <div className="w-[39px] mb-0.5 object-cover" />
+                              <div className="h-[39px] mb-0.5" />
+                              <dix className="h-[36px]" />
+                              <div className="h-[39px] mb-0.5" />
+                              <dix className="h-[36px]" />
+                              <div className="h-[34px] mb-0.5" />
+                              <div className="w-[39px] mb-0.5 object-cover" />
+                              <div className="h-[39px] mb-0.5" />
+                              <dix className="h-[36px]" />
+                              <dix className="h-[36px]" />
+                              <div className="h-[34px] mb-0.5" />
+                              <div className="w-[39px] mb-0.5 object-cover" />
+                              <div className="h-[39px] mb-0.5" />
+                              <dix className="h-[36px]" />
+                              <div className="h-[39px] mb-0.5" />
+                              <dix className="h-[36px]" />
+                              <div className="h-[34px] mb-0.5" />
+                              <div className="w-[39px] mb-0.5 object-cover" />
+                              <div className="h-[39px] mb-0.5" />
+                              <dix className="h-[36px]" />
+                              <Img src="images/img_vector_blue_800.svg" alt="vector_five" className="h-[34px] mb-0.5" />
+                              <Img src="images/img_ig_link.png" alt="iglink_one" className="w-[39px] mb-0.5 object-cover" />
+                              <Img src="images/img_facebook_link.svg" alt="facebooklink" className="h-[39px] mb-0.5" />
+                              <Img src="images/img_twitter_logo.svg" alt="twitterlogo_one" className="h-[36px]" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div className="h-[290px] w-[26%] bottom-[0.00px] left-[26.00px] m-auto bg-gray-400 absolute rounded-[159px]" />
+                </div>
+                <div className="flex mt-3 ml-[110px] md:ml-0">
+                  <div className="flex flex-col items-center">
+                    <div className="flex">
+                      <Heading size="lg" as="h4" className="!text-cyan-800 !font-quicksand uppercase">
+                        <span className="text-cyan-800 font-poppins text-2xl"> {mentorDetails.name}</span>
+                        <span className="text-cyan-800 font-poppins">&nbsp;</span>
+                       
+                      </Heading>
+                    </div>
+                    <Text as="p" className="mt-[-1px] !text-blue_gray-400 capitalize">
+                    {mentorDetails.title}
+                    </Text>
+                  </div>
+                </div>
+                <Ratingbar1
+                  value={4}
+                  isEditable={true}
+                  color="#e13333"
+                  activeColor="#e0b416"
+                  size={29}
+                  className="flex justify-between ml-[130px] md:ml-0"
+                />
+                <div className="flex mt-[20px] ml-[41px] md:ml-0">
+                  <Heading
+                    size="xl"
+                    as="h2"
+                    className="!text-cyan-700  !font-overpass"
+                  >
+                    Skills
+                  </Heading>
+                </div>
+                <Text
+                  size="s"
+                  as="p"
+                  className="w-[93%] md:w-full mt-[15px] ml-[51px] md:ml-0 !text-gray-900_03 capitalize text-justify leading-[132.5%]"
+                >
+                   {mentorDetails.skills}
+                </Text>
+                <div className="flex mt-[50px] ml-[41px] md:ml-0">
+                  <Heading
+                    size="xl"
+                    as="h2"
+                    className="!text-cyan-700  !font-overpass"
+                  >
+                    About you
+                  </Heading>
+                </div>
+                <Text
+                  size="s"
+                  as="p"
+                  className="w-[93%] md:w-full mt-[21px] ml-[51px] md:ml-0 !text-gray-900_03 capitalize text-justify leading-[132.5%]"
+                >
+                 {mentorDetails.about}
+                </Text>
+              </div>
+
+            </div>
+
+            {/* <div className="flex flex-col items-end justify-start w-[94%] mt-[0px] ml-[105px] ">
               <div className="flex flex-row justify-between items-center w-full gap-1.5">
                 <Heading size="xs" as="h1" className="w-[6%] !text-gray-500 !font-cairo">
                   .
@@ -172,29 +333,31 @@ export default function MentorProfile() {
                 {mentorDetails.about}
                 </Text>
               </div>
-            </div>
-        <Sidebar2 className="!sticky !w-[346px] bg-gradient3  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
-        <div className="absolute overflow-x-auto right-[0] top-[2%] w-[14%]">
-          <div className="flex flex-row  items-center justify-between w-full">
+            </div> */}
+            <Sidebar2 className="!sticky !w-[346px] bg-gradient3  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
+            <div className="absolute overflow-x-auto right-[0] top-[2%] w-[14%]">
+              <div className="flex flex-row  items-center justify-between w-full">
 
-            <div className="flex flex-col items-center justify-start md:px-0">
-              <Img
-                className="h-[57px] md:h-auto object-cover rounded-bl-[10px] rounded-br-[14px] w-[57px]"
-                src="images/img_placeholder.png"
-                alt="placeholder"
-              />
-              <Text className="text-base text-black-900" size="txtCairoBold16">
-                Franklin Jr.
-              </Text>
+                <div className="flex flex-col items-center justify-start md:px-0">
+                  <Img
+                    className="h-[57px] md:h-auto object-cover rounded-bl-[10px] rounded-br-[14px] w-[57px]"
+                    src="images/img_placeholder.png"
+                    alt="placeholder"
+                  />
+                  <Text className="text-base text-black-900" size="txtCairoBold16">
+                    Franklin Jr.
+                  </Text>
 
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
-          </div>
-          
-        </div>
-       
+
       </div>
+
+
     </>
   );
 }
