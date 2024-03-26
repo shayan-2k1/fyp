@@ -20,15 +20,10 @@ const ScholarshipUniPost = () => {
 
 
   
-
-
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3000/universityP/getS"
-        );
+        const response = await axios.get("http://localhost:3000/universityP/getS");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching scholarships:", error);
@@ -42,8 +37,7 @@ const ScholarshipUniPost = () => {
 
   const handleClick = () => {
     // Navigate to the next page
-    // navigate('/next-page');
-    navigate("/applyPost");
+    navigate('/next-page');
   };
   return (
     <>
@@ -179,21 +173,11 @@ const ScholarshipUniPost = () => {
               
             </>
             
-
-                </div>
-              ))}
-              
-            </>
-            
           </div>
          
 
 
-         
-
-
         </div>
-        <Sidebar3 className="!fixed !w-[346px] bg-gradient3 flex f-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-10 shadow-bs" />
         <Sidebar3 className="!fixed !w-[346px] bg-gradient3 flex f-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-10 shadow-bs" />
       </div>
     </>
