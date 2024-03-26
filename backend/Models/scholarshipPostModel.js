@@ -24,6 +24,10 @@ const scholarshipPostSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    requiredCGPA:{
+        type:Number,
+        required: true
+    },
     educationPreference: {
         type: String,
         required: true

@@ -26,3 +26,4 @@ scrapy-project/venv/
 confidential/
 recommender-system/myenv/
 shortlisting-module/env/
+flask-application/newenv/
