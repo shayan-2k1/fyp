@@ -23,12 +23,15 @@ function ScholarshipApplicationForm() {
   const [fieldOfInterest, setFieldOfInterest] = useState("");
   const [participationYear, setParticipationYear] = useState("");
   const [achievements, setAchievements] = useState("");
-  const [selectedCertificates, setSelectedCertificates] = useState([]);
-
+  const [selectedCertificate, setSelectedCertificate] = useState([]);
+  const [scholarshipId, setScholarshipId] = useState('');
+  const [scholarshipName, setscholarshipName ] = useState('');
+  const [universityName, setUniversityName] = useState('');
   const authToken = Cookies.get("auth_token");
   // const [academicBackground, setAcademicBackground] = useState({});
   const [personalInfo, setPersonalInfo] = useState({});
   const [certificates, setCertificates] = useState([]);
+  const [certificateUrls, setCertificatesUrls] = useState([]);
   const [documentUrls, setDocumentUrls] = useState([]);
   const [selectedDocuments, setSelectedDocuments] = useState([]);
   const [formState, setFormState] = useState({
@@ -58,11 +61,23 @@ function ScholarshipApplicationForm() {
     },
   });
   useEffect(() => {
-    const fetchData = async () => {
+    // Retrieve scholarship data from cookies
+    const scholarshipId = Cookies.get('scholarshipId');
+    const universityName = Cookies.get('universityName');
+    const scholarshipName= Cookies.get('scholarshipName');
+
+    // Set scholarship data in state
+    setScholarshipId(scholarshipId);
+    setscholarshipName
+    (scholarshipName
+      );
+    setUniversityName(universityName);
+  }, []);
+  useEffect(() => { //transcript
+    const fetchProjects = async () => {
       try {
-        // const token = localStorage.getItem('token'); // Get the user's token from localStorage or context
         const response = await axios.get(
-          "http://127.0.0.1:3000/user/getproject",
+          "http://127.0.0.1:3000/document/get",
           {
             headers: {
               Authorization: `Bearer ${authToken}`,
@@ -70,16 +85,19 @@ function ScholarshipApplicationForm() {
           }
         );
 
-        setGithubRepos(response.data.githubRepos);
+        if (response.status === 200) {
+          setCertificatesUrls(response.data);
+          setErrorMessage("");
+        }
       } catch (error) {
-        console.error("Error fetching GitHub repos:", error);
+        setErrorMessage("Failed to fetch document URLs");
+        console.error("Error fetching document URLs:", error);
       }
     };
 
-    fetchData();
-  }, [authToken]);
+    fetchProjects();}, [authToken]);
 
-  useEffect(() => {
+  useEffect(() => { //certificate information
     const fetchDocuments = async () => {
       try {
         const response = await axios.get(
@@ -141,6 +159,11 @@ function ScholarshipApplicationForm() {
     setSelectedDocuments(selectedOptions);
   };
 
+  const handle_Change = (selectedTranscript) => {
+    setSelectedCertificate(selectedTranscript);
+  };
+
+
   useEffect(() => {
     const fetchAcademicInfo = async () => {
       try {
@@ -195,18 +218,31 @@ function ScholarshipApplicationForm() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://3000/scholarship/applyS", {
-        ielts,
+      const response = await axios.post("http://localhost:3000/scholarship/applyS", {
+      universityName,
+      scholarshipId,
+      scholarshipName
+,  
+      ielts,
         toefl,
         linkedIn,
         github,
         fieldOfInterest,
         participationYear,
         achievements,
-        selectedCertificates,
+        selectedCertificate,
         selectedDocuments,
-      });
+  }, {
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
       console.log("Application submitted successfully:", response.data);
+      alert("Application Submitted Successfully!")
+      // setAcademicInfo('')
+      // setAchievements('')
+      // setFieldOfInterest('')
+      // setIelts
       // Optionally, you can show a success message or redirect the user to another page
     } catch (error) {
       console.error("Error submitting application:", error);
@@ -321,7 +357,7 @@ function ScholarshipApplicationForm() {
                       </Text>
 
                       <Input
-                        name="study"
+                        name="gender"
                         value={formState.personalInfo.gender}
                         onChange={(e) => {
                           setFormState((prevState) => ({
@@ -663,7 +699,7 @@ function ScholarshipApplicationForm() {
                           // console.log('email: ',  e.target.value);
                           setIelts(e.target.value);
                         }}
-                        placeholder="2023"
+                        placeholder="8.5"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
                         wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
                         shape="round"
@@ -686,7 +722,7 @@ function ScholarshipApplicationForm() {
                           // console.log('email: ',  e.target.value);
                           setToefl(e.target.value);
                         }}
-                        placeholder="2023"
+                        placeholder="7"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
                         wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
                         shape="round"
@@ -798,7 +834,7 @@ function ScholarshipApplicationForm() {
                         styles={{
                           placeholder: (provided) => ({
                             ...provided,
-                            color: '#6c5ce7', // Placeholder color
+                            // color: '#6c5ce7', // Placeholder color
                           }),
                           control: (provided) => ({
                             ...provided,
@@ -832,6 +868,185 @@ function ScholarshipApplicationForm() {
                           // Add more custom styles as needed
                         }}
                       />
+                    </div>
+
+                    <Text
+                      className="mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px] text-left"
+                      size="txtOverpassExtraBold36"
+                    >
+                      Documents
+                    </Text>
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        Transcript
+                      </Text>
+
+                      <Select
+                        value={selectedCertificate}
+                        onChange={(selectedTranscript) => {
+                          // Handle selected options
+                          setSelectedCertificate(selectedTranscript);
+                        }}
+                        options={certificateUrls.map((doc) => ({
+                          value: doc._id,
+                          label: doc.fileName, // Render fileName property
+                        }))}
+                        isMulti
+                        styles={{
+                          placeholder: (provided) => ({
+                            ...provided,
+                            // color: '#6c5ce7', // Placeholder color
+                          }),
+                          control: (provided) => ({
+                            ...provided,
+                            border: '2px solid #0097a7', // Adjusted border color
+                            borderRadius: '40px', // Border radius for rounded edges
+                            width: '360px', // Width
+                            height: '60px',
+                          }),
+                          
+                          indicatorSeparator: (provided) => ({
+                            ...provided,
+                            display: 'none', // Hide indicator separator
+                          }),
+                          multiValue: (provided) => ({
+                            ...provided,
+                            color: '#000', // Multi-value color
+                            background: '#0097a7', // Multi-value background color
+                          }),
+                          multiValueLabel: (provided) => ({
+                            ...provided,
+                            color: '#fff', // Multi-value label color
+                          }),
+                          multiValueRemove: (provided) => ({
+                            ...provided,
+                            color: '#fff', // Multi-value remove color
+                            ':hover': {
+                              background: '#0097a7', // Multi-value remove hover background color
+                              color: '#fff', // Multi-value remove hover color
+                            },
+                          }),
+                          // Add more custom styles as needed
+                        }}
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        GithubLink
+                      </Text>
+
+                      <Input
+                        name="githublink"
+                        value={github}
+                        onChange={(e) => {
+                          // console.log('email: ',  e.target.value);
+                          setGithub(e.target.value);
+                        }}
+                        placeholder="github.com"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
+                      ></Input>
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        LinkedIn Link
+                      </Text>
+
+                      <Input
+                        name="linkedIn"
+                        value={linkedIn}
+                        onChange={(e) => {
+                          // console.log('email: ',  e.target.value);
+                          setLinkedIn(e.target.value);
+                        }}
+                        placeholder="linkedIn.com"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
+                      ></Input>
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        Scholarship Name
+                      </Text>
+
+                      <Input
+                        name="scholarship"
+                        value={scholarshipName}
+                        onChange={(e) => {
+                          // console.log('email: ',  e.target.value);
+                          setscholarshipName(e.target.value);
+                        }}
+                        placeholder="8.5"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
+                      ></Input>
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        University Name
+                      </Text>
+
+                      <Input
+                        name="university"
+                        value={universityName}
+                        onChange={(e) => {
+                          // console.log('email: ',  e.target.value);
+                          setUniversityName(e.target.value);
+                        }}
+                        placeholder="8.5"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
+                      ></Input>
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        Scholarship Id
+                      </Text>
+
+                      <Input
+                        name="scholarshipId"
+                        value={scholarshipId}
+                        onChange={(e) => {
+                          // console.log('email: ',  e.target.value);
+                          setScholarshipId(e.target.value);
+                        }}
+                        placeholder="8.5"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
+                      ></Input>
                     </div>
 
                     <div className="flex flex-col gap-2 items-start justify-start w-full">

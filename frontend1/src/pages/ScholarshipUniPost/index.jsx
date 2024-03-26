@@ -1,13 +1,13 @@
 import React from "react";
-import { database } from '../../utils/configFirebase'
-import { get, ref } from 'firebase/database'
+import { database } from "../../utils/configFirebase";
+import { get, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { Link } from 'react-router-dom';
 import { Button, Img, Line, List, Text, Input } from "components";
 import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 
 const Scholarships = () => {
   const navigate = useNavigate();
@@ -22,7 +22,9 @@ const Scholarships = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/universityP/getS");
+        const response = await axios.get(
+          "http://localhost:3000/universityP/getS"
+        );
         setData(response.data);
       } catch (error) {
         console.error("Error fetching scholarships:", error);
@@ -31,14 +33,13 @@ const Scholarships = () => {
 
     fetchData();
   }, []);
-  
+
   const handleSave = async () => {
-   
     try {
-      console.log("in save")
-      console.log(scholarshipName)
-      console.log(deadlineDate)
-      console.log(scholarshipBudget)
+      console.log("in save");
+      console.log(scholarshipName);
+      console.log(deadlineDate);
+      console.log(scholarshipBudget);
       const response = await axios.post(
         "http://localhost:3000/scholarship/save",
         {
@@ -63,7 +64,8 @@ const Scholarships = () => {
 
   const handleClick = () => {
     // Navigate to the next page
-    navigate('/next-page');
+    // navigate('/next-page');
+    navigate("/applyPost");
   };
   return (
     <>
@@ -79,20 +81,16 @@ const Scholarships = () => {
                 >
                   Scholarships{" "}
                 </Text>
-
                 {/* <Text
                 className="md:ml-[0] ml-[45px] mt-[3px] sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 tracking-[2.50px] text-center" // Aligns text to the center
                 size="txtOverpassExtraBold25"
               >
                 Master’s degrees from all around the world
               </Text> */}
-
               </div>
             </div>
-
           </div>
           <div className="absolute bg-white-A700 flex md:flex-col flex-row gap-[53px] items-center justify-center p-1.5 right-[0] shadow-bs top-[0] w-[80%]">
-
             <Input
               name="searchbox"
               placeholder="Search here"
@@ -113,7 +111,7 @@ const Scholarships = () => {
               <button
                 className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
                 size="txtNunitoRegular20"
-              // onClick={handleSave}
+                // onClick={handleSave}
               >
                 Save
               </button>
@@ -155,27 +153,21 @@ const Scholarships = () => {
         />
         <div className="absolute font-cairo overflow-x-auto right-[0] top-[1%] w-[14%]">
           <div className="flex flex-row gap-6 items-center justify-between w-full">
-            <div className="flex flex-col h-[57px] items-center justify-start md:px-5 w-[57px]">
-
-            </div>
-            <div className="flex flex-col items-center justify-start md:px-5">
-
-            </div>
+            <div className="flex flex-col h-[57px] items-center justify-start md:px-5 w-[57px]"></div>
+            <div className="flex flex-col items-center justify-start md:px-5"></div>
           </div>
         </div>
         <Sidebar1 className="!sticky !w-[400px] bg-gradient3 flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute flex flex-col font-nunito items-start justify-start left-[23%] md:px-5 top-[20%]">
           <div>
-          {data.map((scholarship)=>(
+            {data.map((scholarship) => (
               <div key={scholarship.scholarshipName} className="card">
-
-
                 <div className="bg-white-A700 flex flex-col items-center justify-end p-1 shadow-bs w-full">
                   <div className="flex flex-col items-center justify-start mt-[21px] w-[99%] md:w-full">
-
-                    <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full" onChange={(e) => {
-
-                    }}>
+                    <div
+                      className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full"
+                      onChange={(e) => {}}
+                    >
                       <Text
                         className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
                         size="txtNunitoBold25"
@@ -189,22 +181,15 @@ const Scholarships = () => {
                         {scholarship.scholarshipBudget} USD/YEAR
                       </Text>
                     </div>
-                    <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full" >
+                    <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full">
                       <Text
                         className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
                         size="txtNunitoRegular20"
                       >
                         {scholarship.description}
                       </Text>
-                      <Text
-                        className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                        size="txtNunitoBold25Bluegray800"
-                      >
-                        {scholarship.deadlineDate}
-                      </Text>
                     </div>
                     <div className="flex md:flex-col flex-row md:gap-5 items-end justify-start mt-[7px] w-full">
-
                       <div className="flex flex-col items-start justify-start md:mt-0 mt-[9px]">
                         <Text
                           className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
@@ -216,11 +201,16 @@ const Scholarships = () => {
                           className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
                           size="txtNunitoRegular18"
                         >
-                          {scholarship.eligibleDomain
-}
+                          {scholarship.eligibleDomain}
+                        </Text>
+                        <Text
+                          className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
+                          size="txtNunitoBold25Bluegray800"
+                        >
+                          {scholarship.deadlinedate}
                         </Text>
                       </div>
-                      
+
                       <Img
                         className="h-[52px] mb-[11px]"
                         src="images/img_bookmark.svg"
@@ -230,16 +220,24 @@ const Scholarships = () => {
                           setdeadlineDate(scholarship.deadlineDate);
                           setscholarshipBudget(scholarship.scholarshipBudget);
                           handleSave();
-                      }}
-                      
+                        }}
                       />
                       <Button
-      className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[150px] sm:min-w-full ml-20 mt-[25px] text-[10px] sm:text-xl tracking-[1.60px] uppercase"
-      shape="round"
-      onClick={handleClick} // Call handleClick when the button is clicked
-    >
-      Apply
-    </Button>
+  className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto min-w-[150px] sm:min-w-full ml-20 mt-[25px] text-[10px] sm:text-xl tracking-[1.60px] uppercase"
+  shape="round"
+  onClick={() => {
+    // Set scholarship data in cookies
+    Cookies.set('scholarshipId', scholarship._id);
+    // Cookies.set('scholarshipName', scholarship.scholarshipName);
+    Cookies.set('universityName', scholarship.uniname);
+    Cookies.set('scholarshipName' , scholarship.scholarshipName
+    )
+    // Redirect to apply page
+    window.location.href = '/applyPost';
+  }}
+>
+  Apply
+</Button>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {Button , Img, Input, Line, Text } from "components";
-import Sidebar1 from "components/Sidebar1";
+import Sidebar3 from "components/Sidebar3";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -343,7 +343,7 @@ const ScholarshipPost = () => {
             </div>
           </div>
         </div>
-        <Sidebar1 className="!sticky !w-[346px] bg-gradient3  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
+        <Sidebar3 className="!sticky !w-[346px] bg-gradient3  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute overflow-x-auto right-[0] top-[2%] w-[14%]">
           <div className="flex flex-row  items-center justify-between w-full">
 

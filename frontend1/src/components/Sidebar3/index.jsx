@@ -94,7 +94,7 @@ const Sidebar3 = (props) => {
             >
 
              
-              <Link to="">
+              <Link to="/uniPost">
               <MenuItem
                
               >

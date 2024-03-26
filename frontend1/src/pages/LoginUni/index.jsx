@@ -48,7 +48,8 @@ const Login = () => {
           }
           alert("Signin successful");
           console.log(response.data);
-          navigate("/MentorRequestPage");
+          // navigate("/MentorRequestPage");
+          navigate("/ScholarshipPost")
       } catch (error) {
           console.log(error);
           setError("Failed to sign in!");

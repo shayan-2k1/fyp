@@ -6,6 +6,7 @@ const { sendNotification } = require('./notificationService.js');
 const socketIo = require('socket.io');
 const http = require('http');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
 const Student = require('./Models/studentModel');
 const studentRoute = require("./Routes/RegistrationRoutes.js")
@@ -21,14 +22,35 @@ const universityRoute = require("./Routes/universityRegistrationRouter.js")
 const scholarshipPostRoute = require("./Routes/scholarshipPostRouter.js")
 const scholarshipApply = require ("./Routes/scholarshipApplyRoutes.js")
 const mentorRoute=require("./Routes/mentorRoutes.js")
+const { ScholarshipApplicationController } = require('./Controllers/scholarshipApplicationController');
+
 const cors = require('cors');
 require("dotenv").config();
 const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
-
-
+app.use(cookieParser());
+app.get('/getcookies', function (req, res) {
+    const cookies = req.cookies;
+    res.send(req.cookies)
+    console.log(req.cookies)
+    // res.status(200).json({
+    //     your_cookie:cookies,
+    // });
+  })
+  const cookie = require('cookie');
+  
+  http.createServer((req, res) => {
+    if (req.headers.cookie) {
+      const cookies = cookie.parse(req.headers.cookie);
+    //   console.log(cookies);
+    // ScholarshipApplicationController( { req, res, cookies });
+    }
+  
+    console.log('Hello World');
+  }).listen(3001);
+  
 app.use("/student", studentRoute);
 app.use("/document", documentRoute);
 app.use("/students", infoRoute);
@@ -40,6 +62,9 @@ app.use("/certificate", certificateRoute)
 app.use("/scholarship", scholarshipRouter)
 app.use("/mentor", mentorRoute)
 app.use("/university", universityRoute)
+app.use("/scholarship", scholarshipApply)
+app.use("/universityP" , scholarshipPostRoute)
+
 const httpServer = require('http').createServer(app); // Create an HTTP server
 const io = new Server(httpServer, {
     cors: {
