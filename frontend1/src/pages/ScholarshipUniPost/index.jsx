@@ -11,21 +11,33 @@ import lottie from 'lottie-web';
 
 const Scholarships = () => {
   const navigate = useNavigate();
+  
   // const { collapseSidebar, collapsed } = useProSidebar();
   const [data, setData] = useState([]);
   const [scholarshipName, setscholarshipName] = useState("");
   const [deadlineDate, setdeadlineDate] = useState("");
   const [scholarshipBudget, setscholarshipBudget] = useState("");
-  const authToken = Cookies.get("auth_token");
+  const token = Cookies.get("auth_token");
 
 
   
   useEffect(() => {
     const fetchData = async () => {
       try {
+<<<<<<< HEAD
         const response = await axios.get("http://localhost:3000/universityP/getS");
         setData(response.data);
       } catch (error) {
+=======
+        const response = await axios.get("http://127.0.0.1:3000/scholarship/get", {
+          headers: {
+            Authorization: `Bearer ${token}`, // Assuming token is in the format "Bearer <token>"
+          },
+        });
+        setData(response.data.scholarships);
+      }
+        catch (error) {
+>>>>>>> 267578c558322a611add116a794b2ee05ba8dadb
         console.error("Error fetching scholarships:", error);
       }
     };

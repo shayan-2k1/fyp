@@ -52,6 +52,31 @@ async function studyPrefrences(req, res) {
   }
 }
 
+async function getInterest(req,res){
+  try {
+    const { authorization } = req.headers;
+
+    if (!authorization) {
+      return res.status(401).json({ error: "Unauthorized!" });
+    }
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, secretKey);
+    const userId = decodedToken.id;
+
+    const existingInfo = await studyInterestSchema.findOne({ user: userId });
+
+    if(existingInfo){ 
+      res.send(existingInfo.data);
+    }
+  }
+  catch(error){
+    res.status(500).json({ error: "Server Error" });
+    console.log(error);
+  }
+}
+
 module.exports = {
   studyPrefrences,
+  getInterest,
 };

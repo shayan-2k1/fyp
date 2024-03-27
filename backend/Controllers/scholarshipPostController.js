@@ -4,6 +4,80 @@ const axios = require("axios");
 const jwt = require("jsonwebtoken");
 // Controller to create a new scholarship
 const createScholarship = async (req, res) => {
+<<<<<<< HEAD
+    try {
+      // Verify JWT token and extract user ID
+      const token = req.headers.authorization.split(" ")[1]; // Assuming token is sent in the Authorization header
+      const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+      const uniId = decodedToken.id;
+      const uniname = decodedToken.uniname;
+      // Retrieve scholarship data from request body
+      const {
+        scholarshipName,
+        scholarshipType,
+        scholarshipBudget,
+        educationPreference,
+        countryOfScholarship,
+        eligibleDomain,
+        description,
+        deadlinedate,
+        requiredCGPA,
+      } = req.body;
+  
+      // Validate budget constraint
+      if (scholarshipBudget <= 30000) {
+        return res
+          .status(400)
+          .json({ error: "Scholarship budget must be greater than 30,000" });
+      }
+  
+      // Validate date
+      const currentDate = new Date();
+      const oneYearFromNow = new Date(currentDate);
+      oneYearFromNow.setFullYear(currentDate.getFullYear() + 1);
+  
+      const userDeadlineDate = new Date(deadlinedate);
+      const userYear = userDeadlineDate.getFullYear();
+      const userTimestamp = userDeadlineDate.getTime();
+  
+      if (
+        userYear < oneYearFromNow.getFullYear() ||
+        userTimestamp < oneYearFromNow.getTime()
+      ) {
+        return res
+          .status(400)
+          .json({ error: "Scholarship date must be within one year from today" });
+      }
+  
+      // Check if the country exists
+      const countryExists = await checkCountryExists(countryOfScholarship);
+      if (!countryExists) {
+        return res.status(400).json({ error: "Country does not exist" });
+      }
+  
+      // Create a new scholarship document
+      const scholarship = new Scholarship({
+        uniId:uniId, // Associate scholarship with user ID
+        uniname:uniname,
+        scholarshipName,
+        scholarshipType,
+        scholarshipBudget,
+        educationPreference,
+        countryOfScholarship,
+        eligibleDomain,
+        description,
+        deadlinedate,
+        requiredCGPA,
+      });
+  
+      // Save the scholarship to the database
+      const savedScholarship = await scholarship.save();
+  
+      res.status(201).json(savedScholarship);
+    } catch (error) {
+      console.error("Error creating scholarship:", error);
+      res.status(500).json({ error: "Internal server error" });
+=======
   try {
     // Verify JWT token and extract user ID
     const token = req.headers.authorization.split(" ")[1]; // Assuming token is sent in the Authorization header
@@ -27,6 +101,7 @@ const createScholarship = async (req, res) => {
       return res
         .status(400)
         .json({ error: "Scholarship budget must be greater than 30,000" });
+>>>>>>> a5ebcc347c2cfdea25130353abb9087aefefbd59
     }
 
     // Validate date

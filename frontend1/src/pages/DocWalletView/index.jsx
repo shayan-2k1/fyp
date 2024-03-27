@@ -31,9 +31,35 @@ const DocWalletView = () => {
     // setCurrentPage("viewDocuments");
     setViewDocumentUrl(url);
   };
+
+  const handleDeleteDocument = async (documentId) => {
+    try {
+      const response = await axios.delete(
+        `http://127.0.0.1:3000/document/delete/${documentId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Document deleted successfully.");
+        alert("Document Deleted Successfully")
+        // After successful deletion, refetch the user documents to update the UI
+        fetchUserDocuments();
+      } else {
+        console.error("Failed to delete the document.");
+        // Handle failure - show error message or take appropriate action
+      }
+    } catch (error) {
+      console.error("Error deleting the document:", error);
+      // Handle error scenario - show error message or take appropriate action
+    }
+  };
+
   return (
     <>
-
       <div className="bg-gray-300 font-cairo h-[1210px] mx-auto overflow-auto relative w-full">
         <div className="absolute sm:h-[1208px] h-[1213px] md:h-[1384px] inset-[0] justify-center m-auto md:px-5 w-full">
           <div className="absolute bg-white-A700 h-[109px] left-[0] top-[0] w-[40%]"></div>
@@ -76,10 +102,9 @@ const DocWalletView = () => {
                     >
                       Blogs
                     </button>
-
-
                   </div>
-                </div> {/*  added */}
+                </div>{" "}
+                {/*  added */}
               </div>
               <Text
                 className="md:ml-[10] ml-[272px] mt-[20px] text-4xl sm:text-[20px] md:text-[5px] text-cyan-700 tracking-[3.60px]"
@@ -98,7 +123,6 @@ const DocWalletView = () => {
                       >
                         Upload Documents
                       </button>
-                     
                     </Link>
 
                     {/* <div className="flex flex-col relative w-1/2"> */}
@@ -107,19 +131,13 @@ const DocWalletView = () => {
                         className="mx-auto text-blue_gray-800 text-xl tracking-[1.00px] flex items-center justify-left"
                         style={{ width: "200px", height: "40px" }}
                       >
-                         View Documents
+                        View Documents
                       </button>
                       <Line className="bg-cyan-700 h-[3px] mt-[-1.87px] mx-auto rounded-sm w-[90%] z-[1]" />
-                     
                     </div>
-
-                   
                   </div>
                 </div>
               </div>
-
-
-
 
               <div className="flex md:flex-col flex-row font-cairo md:gap-7 items-start justify-between mr-[62px] mt-[42px] w-[96%] md:w-full">
                 <Text
@@ -138,15 +156,32 @@ const DocWalletView = () => {
                         <table style={{ width: "100%" }}>
                           <thead>
                             <tr>
-                              <th style={{ fontSize: "30px", fontWeight: "bold" , display: "flex", justifyContent: "space-between", alignItems: "center" }}>Document Name</th>
-                             
+                              <th
+                                style={{
+                                  fontSize: "30px",
+                                  fontWeight: "bold",
+                                  display: "flex",
+                                  justifyContent: "space-between",
+                                  alignItems: "center",
+                                }}
+                              >
+                                Document Name
+                              </th>
                             </tr>
                           </thead>
                           <tbody>
                             {userDocuments.map((document, index) => (
                               <tr key={index} className="document-item">
-                                <td style={{ marginBottom: "15px" }}>{document.fileName}</td>
-                                <td style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                                <td style={{ marginBottom: "15px" }}>
+                                  {document.fileName}
+                                </td>
+                                <td
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                  }}
+                                >
                                   <button
                                     style={{
                                       padding: "12px 10px",
@@ -159,9 +194,30 @@ const DocWalletView = () => {
                                       fontWeight: "normal",
                                       marginLeft: "5px",
                                     }}
-                                    onClick={() => handleViewDocument(document.fileUrl)}
+                                    onClick={() =>
+                                      handleViewDocument(document.fileUrl)
+                                    }
                                   >
                                     View Document
+                                  </button>
+
+                                  <button
+                                    style={{
+                                      padding: "12px 10px",
+                                      backgroundColor: "#FF0000",
+                                      color: "white",
+                                      border: "none",
+                                      borderRadius: "4px",
+                                      cursor: "pointer",
+                                      fontSize: "14px",
+                                      fontWeight: "normal",
+                                      marginLeft: "5px",
+                                    }}
+                                    onClick={() =>
+                                      handleDeleteDocument(document._id)
+                                    } // Assuming _id is the document ID
+                                  >
+                                    Delete Document
                                   </button>
                                 </td>
                               </tr>
