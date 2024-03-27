@@ -101,7 +101,7 @@ io.on('connection', (socket) => {
         console.log('User disconnected:', socket.id);
     });
 });
-// cron.schedule('0 0 * * *', async () => {
+// cron.schedule('* * * * *', async () => {
 //     try {
 //         const studentsWithSavedScholarships = await Student.find({
 //             savedScholarships: { $exists: true, $not: { $size: 0 } },
@@ -125,16 +125,16 @@ io.on('connection', (socket) => {
 //         console.error('Error checking approaching deadlines', error);
 //     }
 // });
-const convertCustomDeadlineToCron = (customDeadline) => {
-    const [month, day] = customDeadline.split('-');
-    const monthIndex = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].indexOf(month);
+// const convertCustomDeadlineToCron = (customDeadline) => {
+//     const [month, day] = customDeadline.split('-');
+//     const monthIndex = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].indexOf(month);
 
-    if (monthIndex !== -1) {
-        return `${parseInt(day) - 1} 2 * ${monthIndex + 1}`;
-    }
+//     if (monthIndex !== -1) {
+//         return `${parseInt(day) - 1} 2 * ${monthIndex + 1}`;
+//     }
 
-    return null;
-};
+//     return null;
+// };
 
 cron.schedule('* * * * *', async () => {
     
