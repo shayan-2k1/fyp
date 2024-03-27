@@ -22,6 +22,7 @@ const universityRoute = require("./Routes/universityRegistrationRouter.js")
 const scholarshipPostRoute = require("./Routes/scholarshipPostRouter.js")
 const scholarshipApply = require ("./Routes/scholarshipApplyRoutes.js")
 const mentorRoute=require("./Routes/mentorRoutes.js")
+const shortlist = require ("./Routes/shortlistRoute.js")
 const { ScholarshipApplicationController } = require('./Controllers/scholarshipApplicationController');
 
 const cors = require('cors');
@@ -65,6 +66,7 @@ app.use("/university", universityRoute)
 app.use("/universityP",scholarshipPostRoute)
 app.use("/scholarship", scholarshipApply)
 app.use("/universityP" , scholarshipPostRoute)
+app.use("/shortlist" , shortlist)
 
 const httpServer = require('http').createServer(app); // Create an HTTP server
 const io = new Server(httpServer, {
@@ -125,16 +127,16 @@ io.on('connection', (socket) => {
 //         console.error('Error checking approaching deadlines', error);
 //     }
 // });
-// const convertCustomDeadlineToCron = (customDeadline) => {
-//     const [month, day] = customDeadline.split('-');
-//     const monthIndex = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].indexOf(month);
+const convertCustomDeadlineToCron = (customDeadline) => {
+    const [month, day] = customDeadline.split('-');
+    const monthIndex = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].indexOf(month);
 
-//     if (monthIndex !== -1) {
-//         return `${parseInt(day) - 1} 2 * ${monthIndex + 1}`;
-//     }
+    if (monthIndex !== -1) {
+        return `${parseInt(day) - 1} 2 * ${monthIndex + 1}`;
+    }
 
-//     return null;
-// };
+    return null;
+};
 
 cron.schedule('* * * * *', async () => {
     
