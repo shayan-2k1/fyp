@@ -7,7 +7,7 @@ const socketIo = require('socket.io');
 const http = require('http');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-
+const Messages = require('./Models/chatModel')
 const Student = require('./Models/studentModel');
 const studentRoute = require("./Routes/RegistrationRoutes.js")
 const documentRoute = require("./Routes/documentRoutes.js")
@@ -50,7 +50,7 @@ app.get('/getcookies', function (req, res) {
     }
   
     console.log('Hello World');
-  }).listen(3001);
+  }).listen(3002);
   
 app.use("/student", studentRoute);
 app.use("/document", documentRoute);
@@ -69,40 +69,19 @@ app.use("/universityP" , scholarshipPostRoute)
 app.use("/shortlist" , shortlist)
 
 const httpServer = require('http').createServer(app); // Create an HTTP server
+// const io = new Server(httpServer, {
+//     cors: {
+//         origin: "http://localhost:3001"
+//     }
+// });
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:3001"
+        origin: ["http://localhost:3001", "http://localhost:3003"],
+        methods: ["GET", "POST"],
+        credentials: true
     }
 });
 
-// WebSocket connection handling
-io.on('connection', (socket) => {
-    console.log('A user connected:', socket.id);
-  
-
-    // Handle storing socketId in the student schema
-    socket.on('storeSocketId', async ({ token }) => {
-        try {
-           
-            const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
-            const userId = decodedToken.id;
-
-            const student = await Student.findById(userId);
-            if (student) {
-                student.socketId = socket.id;
-                await student.save();
-                console.log(`SocketId stored for user ${userId}: ${socket.id}`);
-            }
-        } catch (error) {
-            console.error('Error storing socketId:', error);
-        }
-    });
-
-    // Handle disconnection if needed
-    socket.on('disconnect', () => {
-        console.log('User disconnected:', socket.id);
-    });
-});
 // cron.schedule('* * * * *', async () => {
 //     try {
 //         const studentsWithSavedScholarships = await Student.find({
@@ -138,38 +117,68 @@ const convertCustomDeadlineToCron = (customDeadline) => {
     return null;
 };
 
-cron.schedule('* * * * *', async () => {
-    
+cron.schedule('*/12 * * * *', async () => {
+    console.log("Checking for scholarships with deadlines approaching...");
+
     try {
+        const targetDate = "2024-05-29T00:00:00.000Z"; // The specific deadline date
+        const currentDate = new Date();
+
         const studentsWithSavedScholarships = await Student.find({
             savedScholarships: { $exists: true, $not: { $size: 0 } },
         });
 
         for (const student of studentsWithSavedScholarships) {
             const scholarship = student.savedScholarships.find(
-                (scholarship) => scholarship.deadline === "Apr-02"
+                (scholarship) => scholarship.deadline === targetDate
             );
 
-            if (scholarship) {
-               
-                const cronSchedule = convertCustomDeadlineToCron(scholarship.deadline);
+            if (scholarship && new Date(scholarship.deadline) > currentDate) {
+                // Only proceed if the scholarship deadline is still in the future
+                const userId = student.socketId; // Assuming socketId is stored in the student schema
+                const message = `The deadline i.e "${scholarship.deadline}"  for the scholarship "${scholarship.scholarshipName}" is approaching. Apply now!`;
 
-                if (cronSchedule) {
-                   
-                    
-
-                        const userId = student.socketId; // Assuming socketId is stored in the student schema
-                        const message = `The deadline for the scholarship "${scholarship.scholarshipName}" is approaching. Apply now!`;
-
-                        // Call the function from the notification service
-                        await sendNotification(userId, message, io);
-                
-                }
+                // Call the function from the notification service
+                // make sure that 'sendNotification' and 'io' are defined and imported correctly
+                await sendNotification(userId, message, io);
             }
         }
     } catch (error) {
-        console.error('Error checking approaching deadlines', error);
+        console.error('Error checking approaching deadlines:', error);
     }
+});
+
+let userSocketMap = {};
+
+io.on('connection', (socket) => {
+    console.log(`User connected: ${socket.id}`);
+
+    // When a user sends their info (upon connection or login)
+    socket.on('userInfo', (userInfo) => {
+        userSocketMap[socket.id] = userInfo;
+        console.log(`User Info received: ${JSON.stringify(userInfo)} for Socket ID: ${socket.id}`);
+    });
+    
+    // Handling incoming chat messages
+    socket.on('sendMessage', (msg) => {
+        console.log(`Message received: ${msg.text} from ${msg.senderId} to ${msg.recipientId}`);
+
+        // Find the socket ID of the recipient, regardless of whether they are a mentor or a student
+        const recipientSocketId = Object.keys(userSocketMap).find(key => userSocketMap[key].id === msg.recipientId);
+
+        console.log("Recipient socket ID: " + recipientSocketId);
+
+        if (recipientSocketId) {
+            io.to(recipientSocketId).emit('newMessage', msg);
+        } else {
+            console.log(`Recipient ${msg.recipientId} not found or not connected.`);
+        }
+    });
+
+    socket.on('disconnect', () => {
+        console.log(`User disconnected: ${socket.id}`);
+        delete userSocketMap[socket.id]; // Remove the user from the mapping
+    });
 });
 
 const PORT = process.env.PORT || 3000;

@@ -33,6 +33,9 @@ const TrackApplication = React.lazy(()=>import("pages/TrackApplication"))
 const MeetingLink = React.lazy(()=> import("pages/Meeting"))
 const UpadteLink = React.lazy(()=> import ("pages/UpdateLink"))
 const ShowShortlist = React.lazy(()=> import("pages/ShowShortListed"))
+const AllMentors=React.lazy(()=>import("pages/AllMentors"))
+const SChats=React.lazy(()=>import("pages/SChats"))
+const MChats=React.lazy(()=>import("pages/MChats"))
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<LoadingPage />}>
@@ -70,6 +73,9 @@ const ProjectRoutes = () => {
           <Route path="/link" element={<MeetingLink/>}/>
           <Route path="/linkupdate" element={<UpadteLink/>}/>
           <Route path="/shortlisted" element={<ShowShortlist/>}/>
+          <Route path="/AllMentors" element={<AllMentors/>} />
+          <Route path="/chats" element={<SChats/>} />
+          <Route path="/Mchats" element={<MChats/>} />
         </Routes>
       </Router>
     </React.Suspense>

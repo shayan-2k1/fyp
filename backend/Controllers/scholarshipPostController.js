@@ -79,6 +79,7 @@ const createScholarship = async (req, res) => {
     }
   }
    
+   
 
 async function checkCountryExists(countryName) {
   const url = `https://restcountries.com/v3.1/name/${encodeURIComponent(
@@ -125,10 +126,29 @@ async function getOneScholarship (req,res){
   }
 
 }
+async function getOneScholarship (req,res){
+
+  try {
+    const scholarshipId = req.params.scholarshipId; // Assuming the ID is passed as a URL parameter
+    const scholarship = await Scholarship.findById(scholarshipId);
+    console.log(scholarshipId)
+    if (!scholarship) {
+      return res.status(404).json({ error: 'Scholarship not found' });
+    }
+
+    // If scholarship is found, send it in the response
+    res.status(200).json({ scholarship });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+
+}
 // Export the controller functions
 module.exports = {
   createScholarship,
   getAllScholarships,
   checkCountryExists,
+  getOneScholarship
   getOneScholarship
 }

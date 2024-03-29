@@ -11,13 +11,13 @@ import lottie from 'lottie-web';
 
 const Scholarships = () => {
   const navigate = useNavigate();
-  
+  const authToken = Cookies.get("auth_token");
   // const { collapseSidebar, collapsed } = useProSidebar();
   const [data, setData] = useState([]);
   const [scholarshipName, setscholarshipName] = useState("");
   const [deadlineDate, setdeadlineDate] = useState("");
   const [scholarshipBudget, setscholarshipBudget] = useState("");
-  const token = Cookies.get("auth_token");
+  // const token = Cookies.get("auth_token");
 
 
   
@@ -26,7 +26,7 @@ const Scholarships = () => {
       try {
         const response = await axios.get("http://127.0.0.1:3000/scholarship/get", {
           headers: {
-            Authorization: `Bearer ${token}`, // Assuming token is in the format "Bearer <token>"
+            Authorization: `Bearer ${authToken}`,// Assuming token is in the format "Bearer <token>"
           },
         });
         setData(response.data.scholarships);

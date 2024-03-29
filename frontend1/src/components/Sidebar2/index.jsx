@@ -99,6 +99,13 @@ const Sidebar2 = (props) => {
                   
                 </MenuItem>
               </Link>
+              <Link to="/Mchats">
+                <MenuItem>
+                <div ref={container1} className="h-[40px] w-30 "></div>
+                  <Text className="w-[70%] sm:w-full">Chat Requests</Text>
+                  
+                </MenuItem>
+              </Link>
               {/* <Link to="/SaveScholarships">
               <MenuItem
                 icon={

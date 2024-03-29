@@ -214,7 +214,7 @@ const Sidebar1 = (props) => {
                 <Text className="w-[70%] sm:w-full">Group</Text>
                 
               </MenuItem>
-              <Link to="/MentorRequest">
+              <Link to="/AllMentors">
               <MenuItem
                
               >
