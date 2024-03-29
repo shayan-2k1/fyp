@@ -15,7 +15,7 @@ const createScholarship = async (req, res) => {
         scholarshipName,
         scholarshipType,
         scholarshipBudget,
-        educationPreference,
+        scholarshipLevel,
         countryOfScholarship,
         eligibleDomain,
         description,
@@ -61,7 +61,7 @@ const createScholarship = async (req, res) => {
         scholarshipName,
         scholarshipType,
         scholarshipBudget,
-        educationPreference,
+        scholarshipLevel,
         countryOfScholarship,
         eligibleDomain,
         description,
@@ -160,9 +160,27 @@ const getAllScholarships = async (req, res) => {
   }
 };
 
+const getOneScholarship = async (req, res) => {
+  try {
+    const scholarshipId = req.params.scholarshipId; // Assuming the ID is passed as a URL parameter
+    console.log(scholarshipId);
+    const scholarship = await Scholarship.findById(scholarshipId);
+    console.log(scholarshipId)
+    if (!scholarship) {
+      return res.status(404).json({ error: 'Scholarship not found' });
+    }
+
+    // If scholarship is found, send it in the response
+    res.status(200).json({ scholarship });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
 // Export the controller functions
 module.exports = {
   createScholarship,
   getAllScholarships,
   checkCountryExists,
+  getOneScholarship,
 }

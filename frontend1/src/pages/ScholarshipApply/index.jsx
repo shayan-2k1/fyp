@@ -5,6 +5,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
+// import jwt_decode from 'jwt-decode'
 
 function ScholarshipApplicationForm() {
   const [githubRepos, setGithubRepos] = useState([]);
@@ -27,9 +28,13 @@ function ScholarshipApplicationForm() {
   const [scholarshipId, setScholarshipId] = useState('');
   const [scholarshipName, setscholarshipName ] = useState('');
   const [universityName, setUniversityName] = useState('');
+  const [requiredCGPA,setRequiredCGPA]=useState(0);
+  const [scholarshipLevel,setScholarshipLevel]=useState('');
+  const [userID,setUserID]=useState('');
   const authToken = Cookies.get("auth_token");
   // const [academicBackground, setAcademicBackground] = useState({});
   const [personalInfo, setPersonalInfo] = useState({});
+  const [prediction, setPrediction]=useState(null)
   const [certificates, setCertificates] = useState([]);
   const [certificateUrls, setCertificatesUrls] = useState([]);
   const [documentUrls, setDocumentUrls] = useState([]);
@@ -60,6 +65,8 @@ function ScholarshipApplicationForm() {
       dob: "",
     },
   });
+
+
   useEffect(() => {
     // Retrieve scholarship data from cookies
     const scholarshipId = Cookies.get('scholarshipId');
@@ -68,9 +75,7 @@ function ScholarshipApplicationForm() {
 
     // Set scholarship data in state
     setScholarshipId(scholarshipId);
-    setscholarshipName
-    (scholarshipName
-      );
+    setscholarshipName(scholarshipName);
     setUniversityName(universityName);
   }, []);
   useEffect(() => { //transcript
@@ -155,6 +160,62 @@ function ScholarshipApplicationForm() {
     fetchPersonalInfo();
   }, [authToken]);
 
+  // useEffect(()=>{
+  //   const getSid =async ()=>{
+  //     try
+  //     {
+  //       const response=await axios.get("http://localhost:3000/scholarship/getID",
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${authToken}`
+  //         },
+  //       });
+  //       setScholarshipId(response.data);
+  //     }
+  //     catch(error)
+  //     {
+  //       console.log("Error fetching scholarship id",error);
+  //     }
+  //   };
+  //   getSid();
+  // },[])
+
+  console.log(scholarshipId);
+  // Set the cookie
+  Cookies.set("storing schId", scholarshipId);
+
+// Get the value of the cookie
+  var storedScholarshipId = Cookies.get("storing schId");
+  console.log("cookie value" , storedScholarshipId)
+  // console.log(scholarshipIdValue)
+  useEffect(() => {
+    const getScholarshipInfo = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/universityP/scholarships/${scholarshipId}`, {
+          headers: {
+            Authorization: `Bearer ${authToken}`
+          },
+        });
+    
+        if (response.status === 200) {
+          console.log('vvvv', response.data);
+          const scholarshipData = response.data.scholarship; // Access scholarship object
+          setScholarshipLevel(scholarshipData.scholarshipLevel);
+          console.log("lll",scholarshipLevel);
+          setRequiredCGPA(scholarshipData.requiredCGPA);
+          console.log("ccc",requiredCGPA);
+        }
+      } catch (error) {
+        console.log("Error fetching scholarship information", error);
+      }
+    };    
+    getScholarshipInfo();
+
+  
+    
+  }, [scholarshipId])
+  
+  console.log('Outside the function', scholarshipLevel, requiredCGPA);
   const handleChange = (selectedOptions) => {
     setSelectedDocuments(selectedOptions);
   };
@@ -218,12 +279,11 @@ function ScholarshipApplicationForm() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/scholarship/applyS", {
-      universityName,
-      scholarshipId,
-      scholarshipName
-,  
-      ielts,
+        const response = await axios.post("http://localhost:3000/scholarship/applyS", {
+        universityName,
+        scholarshipId,
+        scholarshipName,  
+        ielts,
         toefl,
         linkedIn,
         github,
@@ -232,23 +292,57 @@ function ScholarshipApplicationForm() {
         achievements,
         selectedCertificate,
         selectedDocuments,
-  }, {
-    headers: {
-      Authorization: `Bearer ${authToken}`,
-    },
-  });
-      console.log("Application submitted successfully:", response.data);
-      alert("Application Submitted Successfully!")
+        }, 
+        {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        }
+    });
+
+    console.log("Application submitted successfully:", response.data);
+    alert("Application Submitted Successfully!")
+  }
+
+  catch (error) {
+    console.error("Error submitting application:", error);
+      // Handle error, show error message to user, etc.
+  }
       // setAcademicInfo('')
       // setAchievements('')
       // setFieldOfInterest('')
       // setIelts
       // Optionally, you can show a success message or redirect the user to another page
-    } catch (error) {
-      console.error("Error submitting application:", error);
-      // Handle error, show error message to user, etc.
+    //   const prediction=await axios.post( "http://127.0.0.1:5000/shortlist",{
+    //     cgpa:academicInfo.GPA,
+    //     degree:academicInfo.degree,
+    //     r_gpa:requiredCGPA,
+    //     sc_level:scholarshipLevel,
+    // })
+    try {
+        console.log(academicInfo.GPA)
+        console.log(academicInfo.degree)
+        console.log(requiredCGPA)
+        console.log(scholarshipLevel)
+        console.log(scholarshipId)
+          if((academicInfo.GPA>=requiredCGPA)&&((academicInfo.degree==='BS' && scholarshipLevel==='Masters')|| (academicInfo.degree==='Masters' && scholarshipLevel==='PhD')||(academicInfo.degree==='PhD' && scholarshipLevel==='PhD'))){
+          const res=await axios.post("http://localhost:3000/shortlist/shortlistStudent",{scholarshipId},
+            {
+              headers:{
+                Authorization: `Bearer ${authToken}`,
+            }
+          })
+          if(res.status===200)
+          {
+              console.log("Successfully shortlisted!")
+          }
+      }
     }
-  };
+
+    catch(error){
+      console.log("Error posting shortlisted student",error);
+    }
+  }
+
   return (
     <>
       <div className="bg-gray-300 font-cairo h-[1210px] mx-auto overflow-auto relative w-full">

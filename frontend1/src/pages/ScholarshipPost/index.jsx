@@ -13,7 +13,7 @@ const ScholarshipPost = () => {
   const [deadlinedate, setdeadlinedate] = useState('');
   const [scholarshipBudget, setscholarshipBudget] = useState(0);
   const [requiredCGPA, setrequiredCGPA]=useState(0);
-  const [educationPreference, seteducationPreference] = useState('');
+  const [scholarshipLevel, setScholarshipLevel] = useState('');
   const [countryOfScholarship, setcountryOfScholarship] = useState('');
   const [eligibleDomain, seteligibleDomain] = useState('');
   const [description, setdescription] = useState('');
@@ -22,7 +22,7 @@ const ScholarshipPost = () => {
   const handleSubmit = async () => {
     try {
       setLoading(true); // Set loading state to true
-      if (!scholarshipName || !scholarshipType || !educationPreference || 
+      if (!scholarshipName || !scholarshipType || !scholarshipLevel || 
         !countryOfScholarship || !eligibleDomain || !description || !deadlinedate
         || !scholarshipBudget
          ) {
@@ -36,7 +36,7 @@ const ScholarshipPost = () => {
         {
           scholarshipName: scholarshipName,
           scholarshipType: scholarshipType,
-          educationPreference: educationPreference,
+          scholarshipLevel: scholarshipLevel,
           countryOfScholarship: countryOfScholarship,
           eligibleDomain: eligibleDomain,
           description: description,
@@ -54,7 +54,7 @@ const ScholarshipPost = () => {
       setscholarshipName('');
       setscholarshipType('');
       setscholarshipBudget(0);
-      seteducationPreference('');
+      setScholarshipLevel('');
       setcountryOfScholarship('');
       seteligibleDomain('');
       setdescription('');
@@ -240,15 +240,15 @@ const ScholarshipPost = () => {
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
                         size="txtNunitoSemiBold28"
                       >
-                        Education Preference
+                        Education Level
                       </Text>
 
                       <Input
                         name="Field"
-                        value={educationPreference}
+                        value={scholarshipLevel}
                         type="Text"
                         onChange={(e) =>{
-                        seteducationPreference(e.target.value)}}
+                        setScholarshipLevel(e.target.value)}}
                         placeholder="BS "
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"

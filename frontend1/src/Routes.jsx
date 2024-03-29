@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home.jsx";
 import NotFound from "pages/NotFound";
 import LoadingPage from "pages/LoadingPage";
+import RecommendedScholarships from "pages/RecommendedScholarships";
 const AcademicForm = React.lazy(() => import("pages/AcademicForm"));
 const PersonalForm= React.lazy(() => import("pages/PersonalForm"));
 const Signup = React.lazy(() => import("pages/Signup"));
@@ -62,6 +63,7 @@ const ProjectRoutes = () => {
           <Route path="/MentorProfile" element={<MentorProfile/>} />
           <Route path="/MentorForm" element={<MentorForm/>} />
           <Route path="/MentorPublished" element={<MentorPublished/>} />
+          <Route path="/RecommendedScholarships" element={<RecommendedScholarships/>}/>
         </Routes>
       </Router>
     </React.Suspense>
