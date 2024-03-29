@@ -54,7 +54,7 @@ const Scholarships = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${authToken}`,
+            Authorization: ` Bearer ${authToken}`,
           },
         }
       );
@@ -246,8 +246,9 @@ const Scholarships = () => {
 
                                 Cookies.set('scholarshipId', scholarship._id);
                                 Cookies.set('universityName', scholarship.uniname);
-                                Cookies.set('scholarshipName', scholarship.scholarshipName
-                                )
+                                Cookies.set('scholarshipName', scholarship.scholarshipName);
+                                Cookies.set('uniId', scholarship.uniId)
+                              
 
                                 window.location.href = '/applyPost';
                               }}

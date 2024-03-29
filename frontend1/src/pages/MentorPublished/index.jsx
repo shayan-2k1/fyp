@@ -42,37 +42,37 @@ const MentorPublished = () => {
             });
         }
     }, [mentorDetails]);
-    const animationContainersRefs1 = useRef([
-        useRef(null),
-        useRef(null),
-        useRef(null),
-        useRef(null)
-    ]);
+    // const animationContainersRefs1 = useRef([
+    //     useRef(null),
+    //     useRef(null),
+    //     useRef(null),
+    //     useRef(null)
+    // ]);
 
 
-    useEffect(() => {
-        if (mentorDetails.length > 0) {
-            mentorDetails.slice(0, 4).forEach((mentorDetails, index) => {
-                try {
-                    const containerRef = animationContainersRefs1.current[index];
-                    if (containerRef && containerRef.current) {
-                        // Clear previous animation
-                        containerRef.current.innerHTML = '';
-                        // Load new animation
-                        lottie.loadAnimation({
-                            container: containerRef.current,
-                            renderer: 'svg',
-                            loop: true,
-                            autoplay: true,
-                            animationData: require('./delete.json')
-                        });
-                    }
-                } catch (error) {
-                    console.error('Error loading animation:', error);
-                }
-            });
-        }
-    }, [mentorDetails]);
+    // useEffect(() => {
+    //     if (mentorDetails.length > 0) {
+    //         mentorDetails.slice(0, 4).forEach((mentorDetails, index) => {
+    //             try {
+    //                 const containerRef = animationContainersRefs1.current[index];
+    //                 if (containerRef && containerRef.current) {
+    //                     // Clear previous animation
+    //                     containerRef.current.innerHTML = '';
+    //                     // Load new animation
+    //                     lottie.loadAnimation({
+    //                         container: containerRef.current,
+    //                         renderer: 'svg',
+    //                         loop: true,
+    //                         autoplay: true,
+    //                         animationData: require('./delete.json')
+    //                     });
+    //                 }
+    //             } catch (error) {
+    //                 console.error('Error loading animation:', error);
+    //             }
+    //         });
+    //     }
+    // }, [mentorDetails]);
     useEffect(() => {
         const getinfo = async () => {
             try {
@@ -167,7 +167,7 @@ const MentorPublished = () => {
                                         {mentorDetails.map((mentor, index) => (
                                             <div key={index} className="flex flex-col items-center justify-start mt-[-10px] w-[99%] md:w-full">
                                                 
-                                                        {/* Add delete icon */}
+                                                       
                                                         <div ref={animationContainersRefs.current[index]} style={{ width: '10%', height: '20%' }}></div>
                                                     
                                                 <Text

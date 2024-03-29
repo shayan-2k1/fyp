@@ -22,6 +22,7 @@ const universityRoute = require("./Routes/universityRegistrationRouter.js")
 const scholarshipPostRoute = require("./Routes/scholarshipPostRouter.js")
 const scholarshipApply = require ("./Routes/scholarshipApplyRoutes.js")
 const mentorRoute=require("./Routes/mentorRoutes.js")
+const shortlist = require ("./Routes/shortlistRoute.js")
 const { ScholarshipApplicationController } = require('./Controllers/scholarshipApplicationController');
 
 const cors = require('cors');
@@ -65,6 +66,7 @@ app.use("/university", universityRoute)
 app.use("/universityP",scholarshipPostRoute)
 app.use("/scholarship", scholarshipApply)
 app.use("/universityP" , scholarshipPostRoute)
+app.use("/shortlist" , shortlist)
 
 const httpServer = require('http').createServer(app); // Create an HTTP server
 // const io = new Server(httpServer, {
@@ -115,40 +117,36 @@ const convertCustomDeadlineToCron = (customDeadline) => {
     return null;
 };
 
-cron.schedule('* * * * *', async () => {
-    console.log("In corns")
+cron.schedule('*/12 * * * *', async () => {
+    console.log("Checking for scholarships with deadlines approaching...");
+
     try {
+        const targetDate = "2024-05-29T00:00:00.000Z"; // The specific deadline date
+        const currentDate = new Date();
+
         const studentsWithSavedScholarships = await Student.find({
             savedScholarships: { $exists: true, $not: { $size: 0 } },
         });
 
         for (const student of studentsWithSavedScholarships) {
             const scholarship = student.savedScholarships.find(
-                (scholarship) => scholarship.deadline === "Apr-02"
+                (scholarship) => scholarship.deadline === targetDate
             );
 
-            if (scholarship) {
-               
-                const cronSchedule = convertCustomDeadlineToCron(scholarship.deadline);
+            if (scholarship && new Date(scholarship.deadline) > currentDate) {
+                // Only proceed if the scholarship deadline is still in the future
+                const userId = student.socketId; // Assuming socketId is stored in the student schema
+                const message = `The deadline i.e "${scholarship.deadline}"  for the scholarship "${scholarship.scholarshipName}" is approaching. Apply now!`;
 
-                if (cronSchedule) {
-                   
-                    
-
-                        const userId = student.socketId; // Assuming socketId is stored in the student schema
-                        const message = `The deadline for the scholarship "${scholarship.scholarshipName}" is approaching. Apply now!`;
-
-                        // Call the function from the notification service
-                        await sendNotification(userId, message, io);
-                
-                }
+                // Call the function from the notification service
+                // make sure that 'sendNotification' and 'io' are defined and imported correctly
+                await sendNotification(userId, message, io);
             }
         }
     } catch (error) {
-        console.error('Error checking approaching deadlines', error);
+        console.error('Error checking approaching deadlines:', error);
     }
 });
-
 
 let userSocketMap = {};
 
