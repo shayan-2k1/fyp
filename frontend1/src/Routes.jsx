@@ -29,6 +29,9 @@ const MentorRequestPage=React.lazy(()=>import("pages/MentorRequestPage"))
 const MentorProfile=React.lazy(()=>import("pages/MentorProfile"))
 const MentorForm=React.lazy(()=>import("pages/MentorForm"))
 const MentorPublished=React.lazy(()=>import("pages/MentorPublished"))
+const AllMentors=React.lazy(()=>import("pages/AllMentors"))
+const SChats=React.lazy(()=>import("pages/SChats"))
+const MChats=React.lazy(()=>import("pages/MChats"))
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<LoadingPage />}>
@@ -62,6 +65,9 @@ const ProjectRoutes = () => {
           <Route path="/MentorProfile" element={<MentorProfile/>} />
           <Route path="/MentorForm" element={<MentorForm/>} />
           <Route path="/MentorPublished" element={<MentorPublished/>} />
+          <Route path="/AllMentors" element={<AllMentors/>} />
+          <Route path="/chats" element={<SChats/>} />
+          <Route path="/Mchats" element={<MChats/>} />
         </Routes>
       </Router>
     </React.Suspense>

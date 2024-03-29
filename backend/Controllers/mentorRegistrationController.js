@@ -128,71 +128,7 @@ async function update(req, res) {
     return res.status(500).send({ message: 'Internal server error' });
   }
 }
-// async function mentorset(req, res) {
 
-//   try {
-//     const { authorization } = req.headers;
-//     if (!authorization) {
-//       return res.status(401).json({ error: "Unauthorized!" });
-//     }
-//     let {
-//       name , 
-//       title,
-//       email,
-//       tel,
-//       skills,
-//       about,
-//       universityname
-//     } = req.body
-
-
-
-//     const secretKey = process.env.SECRET_KEY;
-//     const token = authorization.split(" ")[1];
-//     const decodedToken = jwt.verify(token, secretKey);
-//     const userId = decodedToken.id;
-//     console.log(userId);
-//     const existingInfo = await MentorProfileModel.findOne({ user: userId });
-
-//     if (existingInfo) {
-//       // If information exists, update it
-//       await MentorProfileModel.findOneAndUpdate(
-//         { userid: userId },
-//         {
-//           name: req.body.name,
-//           title: req.body.title,
-//           email: req.body.email,
-//           tel: req.body.tel,
-//           skills: req.body.skills,
-//           about: req.body.about,
-//           universityname: req.body.universityname,
-//         },
-//         { new: true }
-//       );
-
-
-//       res.status(200).json({ message: "Mentor updated successfully" });
-//     } else {
-//       // If no information exists, add academicbackground
-//       const mentorProfile = new MentorProfileModel({
-//         userid: userId,
-//         name,
-//         title,
-//         email,
-//         tel,
-//         skills,
-//         about,
-//         universityname
-//       });
-
-//       await mentorProfile.save();
-//       res.status(201).json({ message: "Mentor added successfully." });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ error: "Server Error" });
-//     console.log(error);
-//   }
-// }
 async function getmentor(req, res) {
   
   try {
@@ -209,7 +145,7 @@ async function getmentor(req, res) {
     const mentorProfile = await MentorProfileModel.findOne({ userid: userId });
 
     if (!mentorProfile) {
-      console.log("ALLLAHHHH BACHA LAYYYY")
+      
       return res.status(404).json({ error: "Mentor Profile not found" });
     }
 
@@ -314,11 +250,35 @@ async function getMentorProfiles(req, res) {
   }
 }
 
+async function getAllMentorProfiles(req, res) {
+ console.log("In all mentor")
+  
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: "Unauthorized!" });
+    }
+    const mentors = await MentorProfileModel.find();
+
+    if (!mentors.length) {
+      return res.status(404).json({ message: "No mentors found" });
+    }
+
+    res.status(200).json(mentors);
+  } catch (error) {
+    console.error("Error fetching mentors:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+
+    
+    
+};
 
 module.exports = {
   signup,
   signin,
   mentorset,
   getmentor,
-  getMentorProfiles
+  getMentorProfiles,
+  getAllMentorProfiles,
 };

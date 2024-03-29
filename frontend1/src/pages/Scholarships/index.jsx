@@ -16,7 +16,8 @@ const Scholarships = () => {
   const [scholarshipName, setscholarshipName] = useState("");
   const [deadlineDate, setdeadlineDate] = useState("");
   const [scholarshipBudget, setscholarshipBudget] = useState("");
-
+  const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term
+  const [filteredData, setFilteredData] = useState([]);
   const authToken = Cookies.get("auth_token");
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +33,15 @@ const Scholarships = () => {
 
     fetchData();
   }, []);
+  useEffect(() => {
+    // Filter the scholarships based on the search term
+    const filtered = data.filter(scholarship => scholarship.scholarshipName.toLowerCase().includes(searchTerm.toLowerCase()));
+    setFilteredData(filtered);
+  }, [searchTerm, data]);
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
   const handleSave = async () => {
     try {
 
@@ -97,8 +106,8 @@ const Scholarships = () => {
 
 
   useEffect(() => {
-    if (data.length > 0) {
-      data.slice(0, 30).forEach((data, index) => {
+    if (filteredData.length > 0) {
+      filteredData.slice(0, 30).forEach((filteredData, index) => {
         try {
           const containerRef = animationContainersRefs.current[index];
           if (containerRef && containerRef.current) {
@@ -118,177 +127,10 @@ const Scholarships = () => {
         }
       });
     }
-  }, [data]);
+  }, [filteredData]);
   return (
     <>
-      {/* <div className="bg-gray-300 h-[1196px] mx-auto overflow-auto relative w-full">
-        <div className="absolute font-cairo md:h-[1175px] h-[1194px] inset-[4] justify-center m-auto md:px-5 w-full">
-          <div className="absolute h-[1175px] inset-[3] justify-left m-auto w-full">
-            <div className="bg-white-A700 flex flex-col h-full items-start justify-start m-auto p-6 sm:px-5 w-full">
-              <div className="absolute bg-white-A700 flex flex-col gap-[41px] items-center justify-end p-0.5 left-[20px] top-[8%] w-[47%]">
-                {" "}
-                <Text
-                  className="md:ml-[10] ml-[272px] mt-[20px] text-4xl sm:text-[20px] md:text-[5px] text-cyan-700 tracking-[3.60px]"
-                  size="txtOverpassExtraBold36"
-                >
-                  Scholarships{" "}
-                </Text>
-                
-              </div>
-            </div>
-          </div>
-          <div className="absolute bg-white-A700 flex md:flex-col flex-row gap-[53px] items-center justify-center p-1.5 right-[0] shadow-bs top-[0] w-[80%]">
-            <Input
-              name="searchbox"
-              placeholder="Search here"
-              className="font-semibold leading-[normal] p-0 placeholder:text-gray-500 text-base text-left w-full"
-              wrapClassName="flex md:ml-[0] ml-[34px] md:mt-0 mt-[9px] rounded-[34px] w-2/5 md:w-full"
-              prefix={
-                <Img
-                  className="h-7 mr-5 my-px"
-                  src="images/img_search_2.svg"
-                  alt="search 2"
-                />
-              }
-              color="gray_50"
-              size="sm"
-            ></Input>
-          
-            <div className="flex flex-row font-nunito gap-20 h-[29px] md:h-auto items-start justify-start mr-[245px] w-[445px] sm:w-full">
-              <button
-                className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
-                size="txtNunitoRegular20"
-             
-              >
-                Save
-              </button>
-              <button
-                className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
-                size="txtNunitoRegular20"
-              >
-                Notifications
-              </button>
-              <div className="flex flex-row items-start justify-between w-[100px]">
-                <button
-                  className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
-                  size="txtNunitoRegular20"
-                >
-                  Blogs
-                </button>
-                <div className="overflow-x-auto">
-                  <div className="flex flex-row items-center justify-between py-[7px] w-full">
-                    <Img
-                      className="h-3 w-3"
-                      src="images/img_arrowup_blue_gray_800.svg"
-                      alt="arrowup_One"
-                    />
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <Img
-          className="absolute h-[9px] left-[38%] top-[30%]"
-          src="images/img_megaphone.svg"
-          alt="megaphone"
-        />
-        <div className="absolute font-cairo overflow-x-auto right-[0] top-[1%] w-[14%]">
-          <div className="flex flex-row gap-6 items-center justify-between w-full">
-            <div className="flex flex-col h-[57px] items-center justify-start md:px-5 w-[57px]"></div>
-            <div className="flex flex-col items-center justify-start md:px-5"></div>
-          </div>
-        </div>
-        <Sidebar1 className="!sticky !w-[400px] bg-gradient3 flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
-        <div className="absolute flex flex-col font-nunito items-start justify-start left-[23%] md:px-5 top-[20%]">
-          <div>
-            {data.map((scholarship) => (
-              <div key={scholarship.scholarshipName} className="card">
-                <div className="bg-white-A700 flex flex-col items-center justify-end p-1 shadow-bs w-full">
-                  <div className="flex flex-col items-center justify-start mt-[21px] w-[99%] md:w-full">
-                    <div
-                      className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full"
-                      onChange={(e) => { }}
-                    >
-                      <Text
-                        className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
-                        size="txtNunitoBold25"
-                      >
-                        {scholarship.scholarshipName}
-                      </Text>
-                      <Text
-                        className="mb-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                        size="txtNunitoBold25Bluegray800"
-                      >
-                        {scholarship.scholarshipBudget} USD/YEAR
-                      </Text>
-                    </div>
-                    <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full">
-                      <Text
-                        className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
-                        size="txtNunitoRegular20"
-                      >
-                        {scholarship.description}
-                      </Text>
-                    </div>
-                    <div className="flex md:flex-col flex-row md:gap-5 items-end justify-start mt-[7px] w-full">
-                      <div className="flex flex-col items-start justify-start md:mt-0 mt-[9px]">
-                        <Text
-                          className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                          size="txtNunitoRegular18"
-                        >
-                          {scholarship.countryOfScholarship}
-                        </Text>
-                        <Text
-                          className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                          size="txtNunitoRegular18"
-                        >
-                          {scholarship.eligibleDomain}
-                        </Text>
-                        <Text
-                          className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                          size="txtNunitoBold25Bluegray800"
-                        >
-                          {scholarship.deadlinedate}
-                        </Text>
-                      </div>
-
-                      <Img
-                        className="h-[52px] mb-[11px]"
-                        src="images/img_bookmark.svg"
-                        alt="bookmark"
-                        onClick={() => {
-                          setscholarshipName(scholarship.scholarshipName);
-                          setdeadlineDate(scholarship.deadlinedate);
-                          setscholarshipBudget(scholarship.scholarshipBudget);
-                          handleSave();
-                        }}
-                      />
-                      <Button
-                        className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto min-w-[150px] sm:min-w-full ml-20 mt-[25px] text-[10px] sm:text-xl tracking-[1.60px] uppercase"
-                        shape="round"
-                        onClick={() => {
-                          // Set scholarship data in cookies
-                          Cookies.set('scholarshipId', scholarship._id);
-                          // Cookies.set('scholarshipName', scholarship.scholarshipName);
-                          Cookies.set('universityName', scholarship.uniname);
-                          Cookies.set('scholarshipName', scholarship.scholarshipName
-                          )
-                          // Redirect to apply page
-                          window.location.href = '/applyPost';
-                        }}
-                      >
-                        Apply
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div> */}
+      
       <div className="h-[1528px] md:h-auto relative">
         <div className="flex md:flex-col justify-center items-start w-full">
         </div>
@@ -311,6 +153,7 @@ const Scholarships = () => {
                   }
                   color="gray_50"
                   size="sm"
+                  onChange={handleSearchChange}
                 ></Input>
                 <div className="flex flex-row font-nunito gap-20 items-start justify-start w-auto sm:w-full">
                   <Text
@@ -363,7 +206,7 @@ const Scholarships = () => {
               SCHOLARSHIPS{" "}
             </Text>
             <>
-              {data.map((scholarship, index) => (
+              {filteredData.map((scholarship, index) => (
                 <div key={scholarship.scholarshipName} className="flex  overflow-hidden h-screen h-[298px] w-[79%] md:h-auto ml-[280px] mt-[30px] relative">
 
                   <div className="w-full font-nunito h-max left-0 bottom-0 right-0 top-0 p-[23px] m-auto sm:p-5 bg-teal-50 absolute rounded-[20px]">

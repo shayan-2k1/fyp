@@ -19,7 +19,7 @@ const studentSchema = mongoose.Schema({
         required: true,
       },
       deadline: {
-        type: String,
+        type: Date,
         required: true,
       },
       amount: {
