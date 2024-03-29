@@ -72,7 +72,9 @@ function ScholarshipApplicationForm() {
     const scholarshipId = Cookies.get('scholarshipId');
     const universityName = Cookies.get('universityName');
     const scholarshipName= Cookies.get('scholarshipName');
+    const universityId = Cookies.get('uniId')
 
+    setUniId(universityId)
     // Set scholarship data in state
     setScholarshipId(scholarshipId);
     setscholarshipName(scholarshipName);
@@ -1134,6 +1136,29 @@ function ScholarshipApplicationForm() {
                         onChange={(e) => {
                           // console.log('email: ',  e.target.value);
                           setScholarshipId(e.target.value);
+                        }}
+                        placeholder="8.5"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
+                      ></Input>
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        University Id
+                      </Text>
+
+                      <Input
+                        name="uniId"
+                        value={uniId}
+                        onChange={(e) => {
+                          // console.log('email: ',  e.target.value);
+                          setUniId(e.target.value);
                         }}
                         placeholder="8.5"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"

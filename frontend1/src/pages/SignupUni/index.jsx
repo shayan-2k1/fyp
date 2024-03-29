@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 const Signup = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [calendly, setcalendly] = useState("");
   const [password, setPassword] = useState("");
   const [uniname, setUniname] = useState("");
   const [phoneNumber, setphoneNumber] = useState("");
@@ -22,7 +23,7 @@ const Signup = () => {
 
     try {
 
-      if (!uniname || !password || !email || !phoneNumber || !address) {
+      if (!uniname || !password || !email || !phoneNumber || !address || !calendly) {
         alert("Please fill in all fields");
         return;
       }
@@ -34,7 +35,8 @@ const Signup = () => {
           uniname:uniname,
           password:password,
           phoneNumber:phoneNumber,
-          address:address
+          address:address,
+          calendly:calendly
           
         }
       );
@@ -246,7 +248,30 @@ const Signup = () => {
                           shape="round"
                           style={{ color: "#000000" }}
                         ></Input>
-                      </div>{" "}
+                      </div>
+
+                      <div className="flex flex-col gap-3 items-start justify-start w-full">
+                        <Text
+                          className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                          size="txtNunitoSemiBold28"
+                        >
+                          Calendly Link
+                        </Text>
+                        <Input
+                          name="calendly"
+                          value={calendly}
+                          onChange={(e) => {
+                            console.log("calendly link ", e.target.value);
+                            setcalendly(e.target.value);
+                          }}
+                          placeholder="abcuni"
+                          className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                          wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                          shape="round"
+                          style={{ color: "#000000" }}
+                        ></Input>
+                      </div>
+
                       <div className="flex flex-col gap-3 items-start justify-start w-full">
                         <Text
                           className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
@@ -267,7 +292,11 @@ const Signup = () => {
                           shape="round"
                           style={{ color: "#000000" }}
                         ></Input>
-                      </div>{" "}
+                      </div>
+
+                      
+
+
                       <List
                         className="sm:flex-col flex-row md:gap-4 grid md:grid-cols-1 grid-cols-2 justify-between max-w-[700px] w-full"
                         orientation="horizontal"
@@ -316,8 +345,8 @@ const Signup = () => {
                         Sign up
                       </Button>
                     </div>
-                     <div className="font-nunito mb-[20px] md:h-[100px] h-[50px] ml-2 md:ml-[0] mt-[40px] relative w-4/5 sm:w-full">
-                      <Line className="absolute bg-blue-100 bottom-[44%] h-0.5 inset-x-[0] mx-auto w-full" />
+                     {/* <div className="font-nunito mb-[20px] md:h-[100px] h-[50px] ml-2 md:ml-[0] mt-[40px] relative w-4/5 sm:w-full">
+                      {/* <Line className="absolute bg-blue-100 bottom-[44%] h-0.5 inset-x-[0] mx-auto w-full" /> */}
                       {/* { <Input
                         name="frameThirteen"
                         placeholder="or continue with"
@@ -326,9 +355,9 @@ const Signup = () => {
                         shape="square"
                         size="xs"
                       ></Input> } */}
-                    </div> 
+                    {/* </div>  */} 
 
-                    <div className="flex flex-row sm:gap-3 h-30 md:h-auto items-start justify-between ml-0 md:ml-[0] mt-100 w-[500px] sm:w-full">
+                    {/* <div className="flex flex-row sm:gap-3 h-30 md:h-auto items-start justify-between ml-0 md:ml-[0] mt-100 w-[500px] sm:w-full"> */}
                       {/* <div className="bg-white-A700 border-2 border-indigo-300 border-solid flex flex-col h-20 md:h-auto items-start justify-between sm:px-5 px-4 py-[15px] rounded-lg w-[120px]">
                         <div className="flex flex-col h-[50px] items-center justify-end p-[5px] w-[50px]">
                           { <Img
@@ -345,25 +374,25 @@ const Signup = () => {
                           alt="iconfontawesome_Two"
                         /> 
                       </div> */}
-                      <div >
+                      {/* <div >
                         { <Img
                           className="h-11 w-11"
                           src=""
                           alt=" "
                         /> }
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
-                <Img
+                {/* <Img
                   className="md:flex-1 h-[500px] sm:h-auto md:mt-0 mt-[100px] object-cover rounded-bl-[10px] rounded-br-[150px] rounded-tl-[150px] rounded-tr-[30px] w-[50%] md:w-full"
                   src="images/sc2.png"
                   alt="rectangleThree"
-                />
+                /> */}
               </div>
             </div>
           </div>
-        </div>
+        
       </>
     );
   };

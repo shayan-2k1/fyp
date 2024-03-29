@@ -45,6 +45,7 @@ const MentorLogin = () => {
       }
 
       console.log(response.data);
+      alert("Login Successful")
       navigate("/MentorProfile");
     } catch (error) {
       console.log(error);

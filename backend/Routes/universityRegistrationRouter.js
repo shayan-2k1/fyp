@@ -6,6 +6,7 @@ const authController = require('../Controllers/universityRegistrationController'
 router.post('/registerUniversity', authController.registerUniversity);
 router.post('/login' , authController.signin);
 router.put('/update', authController.update)
+router.put('/updateLink', authController.updateCalendly)
 // Route to verify the email of a university using OTP
 // router.post('/verifyUniversityOTP', authController.verifyUniversityOTP);
 

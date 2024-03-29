@@ -9,15 +9,6 @@ import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import lottie from 'lottie-web';
-const SearchResults = ({ results, handleResultClick }) => {
-  return (
-    <ul className="search-results">
-      {results.map((result, index) => (
-        <li key={index} onClick={() => handleResultClick(result)}>{result}</li>
-      ))}
-    </ul>
-  );
-};
 const Scholarships = () => {
   const navigate = useNavigate();
 
@@ -25,10 +16,9 @@ const Scholarships = () => {
   const [scholarshipName, setscholarshipName] = useState("");
   const [deadlineDate, setdeadlineDate] = useState("");
   const [scholarshipBudget, setscholarshipBudget] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState(data);
+  const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term
+  const [filteredData, setFilteredData] = useState([]);
   const authToken = Cookies.get("auth_token");
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,13 +33,14 @@ const Scholarships = () => {
 
     fetchData();
   }, []);
+  useEffect(() => {
+    // Filter the scholarships based on the search term
+    const filtered = data.filter(scholarship => scholarship.scholarshipName.toLowerCase().includes(searchTerm.toLowerCase()));
+    setFilteredData(filtered);
+  }, [searchTerm, data]);
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-    const filteredScholarships = data.filter((scholarship) =>
-      scholarship.scholarshipName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredData(filteredScholarships);
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
   };
   const handleSave = async () => {
     try {
@@ -63,7 +54,7 @@ const Scholarships = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${authToken}`,
+            Authorization: ` Bearer ${authToken}`,
           },
         }
       );
@@ -115,8 +106,8 @@ const Scholarships = () => {
 
 
   useEffect(() => {
-    if (data.length > 0) {
-      data.slice(0, 30).forEach((data, index) => {
+    if (filteredData.length > 0) {
+      filteredData.slice(0, 30).forEach((filteredData, index) => {
         try {
           const containerRef = animationContainersRefs.current[index];
           if (containerRef && containerRef.current) {
@@ -136,11 +127,7 @@ const Scholarships = () => {
         }
       });
     }
-  }, [data]);
-  const handleResultClick = (result) => {
-    setSearchTerm(result);
-    // Perform search based on the clicked result
-  };
+  }, [filteredData]);
   return (
     <>
       
@@ -151,35 +138,13 @@ const Scholarships = () => {
           <div className="flex flex-col items-start w-[95%] md:w-full mb-[736px] mr-[5px] md:mr-0">
             <div className="flex md:flex-col flex-row font-cairo md:gap-7 gap-[135px] items-start justify-end md:ml-[0] ml-[81px] w-[97%] md:w-full">
 
-            <div className="bg-white-A700 flex md:flex-col flex-row gap-[19px] items-center justify-start p-[13px] shadow-bs3 w-[90%] md:w-full relative">
- <Input
-                   
-                   type="text"
-                   placeholder="Search here"
-                   value={searchTerm}
-                   onChange={handleSearchChange}
-                 />
-                
-      {searchTerm && (
-        <SearchResults
-          results={filteredData.map((scholarship) => scholarship.scholarshipName)}
-          handleResultClick={handleResultClick}
-          style={{ position: 'absolute', top: '100%', left: 0, right: 0, zIndex: 10, backgroundColor: 'white' }}
-    
-        />
-      )}
-      {!searchTerm && (
-        <ul>
-          {filteredData.map((scholarship, index) => (
-            <li key={index} className="scholarship-item">
-              <p>{scholarship.scholarshipName}</p>
-              {/* Display other scholarship details as needed */}
-            </li>
-          ))}
-        </ul>
-      )}
-    
-               {/* </div>prefix={
+              <div className="bg-white-A700 flex md:flex-col flex-row gap-[19px] items-center justify-start p-[13px] shadow-bs3 w-[90%] md:w-full">
+                <Input
+                  name="searchbox"
+                  placeholder="Search here"
+                  className="font-semibold leading-[normal] p-0 placeholder:text-gray-500 text-base text-left w-full"
+                  wrapClassName="flex md:ml-[0] ml-[34px] md:mt-0 mt-[9px] rounded-[34px] w-2/5 md:w-full"
+                  prefix={
                     <Img
                       className="h-7 mr-5 my-px"
                       src="images/img_search_2.svg"
@@ -188,7 +153,8 @@ const Scholarships = () => {
                   }
                   color="gray_50"
                   size="sm"
-                </Input> */}
+                  onChange={handleSearchChange}
+                ></Input>
                 <div className="flex flex-row font-nunito gap-20 items-start justify-start w-auto sm:w-full">
                   <Text
                     className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
@@ -240,7 +206,7 @@ const Scholarships = () => {
               SCHOLARSHIPS{" "}
             </Text>
             <>
-              {data.map((scholarship, index) => (
+              {filteredData.map((scholarship, index) => (
                 <div key={scholarship.scholarshipName} className="flex  overflow-hidden h-screen h-[298px] w-[79%] md:h-auto ml-[280px] mt-[30px] relative">
 
                   <div className="w-full font-nunito h-max left-0 bottom-0 right-0 top-0 p-[23px] m-auto sm:p-5 bg-teal-50 absolute rounded-[20px]">
@@ -280,8 +246,9 @@ const Scholarships = () => {
 
                                 Cookies.set('scholarshipId', scholarship._id);
                                 Cookies.set('universityName', scholarship.uniname);
-                                Cookies.set('scholarshipName', scholarship.scholarshipName
-                                )
+                                Cookies.set('scholarshipName', scholarship.scholarshipName);
+                                Cookies.set('uniId', scholarship.uniId)
+                              
 
                                 window.location.href = '/applyPost';
                               }}

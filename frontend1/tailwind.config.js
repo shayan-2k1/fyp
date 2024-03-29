@@ -60,6 +60,8 @@ module.exports = {
         gradient6: "linear-gradient(90deg, #3995a2,#3c1536)",
         gradient7: "linear-gradient(180deg, #e3e9ea,#e3e9ea00)",
         gradient8: "linear-gradient(149deg, #1bbaff,#058b9e)",
+        gradient9: "linear-gradient(180deg, #e3e9ea,#e3e9ea00)",
+        gradient10: "linear-gradient(180deg, #cfecf0,#737373)",
       },
       boxShadow: {
         bs1: "0px 14px  28px 0px #5dceff4f",

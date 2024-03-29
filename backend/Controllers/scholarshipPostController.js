@@ -78,60 +78,8 @@ const createScholarship = async (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
   }
-    // Validate date
-//     const currentDate = new Date();
-//     const userDeadlineDate = new Date(deadlinedate);
-    
-//     // Set the time portion to 00:00:00 in UTC
-//     userDeadlineDate.setUTCHours(0, 0, 0, 0);
-    
-//     // Extract only the date portion
-//     const deadlineDateString = userDeadlineDate.toISOString().split('T')[0];
-    
-//     if (userDeadlineDate < currentDate) {
-//       return res
-//         .status(400)
-//         .json({ error: "Scholarship date must be in the future" });
-//     }
-    
-//     // Now use deadlineDateString to store the date without the time portion
-    
-
-// // Now you can use deadlineDateString to store the date without the time portion
-
-
-    
-    
-
-//     // Check if the country exists
-//     const countryExists = await checkCountryExists(countryOfScholarship);
-//     if (!countryExists) {
-//       return res.status(400).json({ error: "Country does not exist" });
-//     }
-
-//     // Create a new scholarship document
-//     const scholarship = new Scholarship({
-//       uniId: uniId, // Associate scholarship with user ID
-//       uniname: uniname,
-//       scholarshipName,
-//       scholarshipType,
-//       scholarshipBudget,
-//       educationPreference,
-//       countryOfScholarship,
-//       eligibleDomain,
-//       description,
-//       deadlinedate:deadlineDateString,
-//     });
-
-//     // Save the scholarship to the database
-//     const savedScholarship = await scholarship.save();
-
-//     res.status(201).json(savedScholarship);
-//   } catch (error) {
-//     console.error("Error creating scholarship:", error);
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// }
+   
+   
 
 async function checkCountryExists(countryName) {
   const url = `https://restcountries.com/v3.1/name/${encodeURIComponent(

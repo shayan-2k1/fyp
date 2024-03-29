@@ -30,6 +30,13 @@ const MentorRequestPage=React.lazy(()=>import("pages/MentorRequestPage"))
 const MentorProfile=React.lazy(()=>import("pages/MentorProfile"))
 const MentorForm=React.lazy(()=>import("pages/MentorForm"))
 const MentorPublished=React.lazy(()=>import("pages/MentorPublished"))
+const TrackApplication = React.lazy(()=>import("pages/TrackApplication"))
+const MeetingLink = React.lazy(()=> import("pages/Meeting"))
+const UpadteLink = React.lazy(()=> import ("pages/UpdateLink"))
+const ShowShortlist = React.lazy(()=> import("pages/ShowShortListed"))
+const AllMentors=React.lazy(()=>import("pages/AllMentors"))
+const SChats=React.lazy(()=>import("pages/SChats"))
+const MChats=React.lazy(()=>import("pages/MChats"))
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<LoadingPage />}>
@@ -64,6 +71,13 @@ const ProjectRoutes = () => {
           <Route path="/MentorForm" element={<MentorForm/>} />
           <Route path="/MentorPublished" element={<MentorPublished/>} />
           <Route path="/RecommendedScholarships" element={<RecommendedScholarships/>}/>
+          <Route path="/tracking" element={<TrackApplication/>}/>
+          <Route path="/link" element={<MeetingLink/>}/>
+          <Route path="/linkupdate" element={<UpadteLink/>}/>
+          <Route path="/shortlisted" element={<ShowShortlist/>}/>
+          <Route path="/AllMentors" element={<AllMentors/>} />
+          <Route path="/chats" element={<SChats/>} />
+          <Route path="/Mchats" element={<MChats/>} />
         </Routes>
       </Router>
     </React.Suspense>

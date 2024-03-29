@@ -26,6 +26,7 @@ const Update = () => {
           
 
           console.log(response.data);
+          alert("Password Updated")
           navigate("/desktopone");
       } catch (error) {
           console.log(error);

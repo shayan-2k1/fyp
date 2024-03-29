@@ -18,6 +18,9 @@ const universitySchema=mongoose.Schema({
       },
       address: {
         type: String
+      },
+      calendly:{
+        type: String
       }
     //   },
     //   otp: {
