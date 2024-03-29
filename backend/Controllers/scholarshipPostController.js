@@ -150,5 +150,5 @@ module.exports = {
   getAllScholarships,
   checkCountryExists,
   getOneScholarship
-  getOneScholarship
+  
 }
