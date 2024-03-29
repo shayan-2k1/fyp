@@ -35,6 +35,7 @@ const Signup = () => {
       }
 
       console.log(response.data);
+      alert("Signup Successful")
       navigate("/desktopone");
     } catch (error) {
       console.log(error);

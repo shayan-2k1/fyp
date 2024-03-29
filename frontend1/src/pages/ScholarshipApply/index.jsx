@@ -27,6 +27,7 @@ function ScholarshipApplicationForm() {
   const [scholarshipId, setScholarshipId] = useState('');
   const [scholarshipName, setscholarshipName ] = useState('');
   const [universityName, setUniversityName] = useState('');
+  const [uniId , setUniId] = useState('');
   const authToken = Cookies.get("auth_token");
   // const [academicBackground, setAcademicBackground] = useState({});
   const [personalInfo, setPersonalInfo] = useState({});
@@ -65,7 +66,9 @@ function ScholarshipApplicationForm() {
     const scholarshipId = Cookies.get('scholarshipId');
     const universityName = Cookies.get('universityName');
     const scholarshipName= Cookies.get('scholarshipName');
+    const universityId = Cookies.get('uniId')
 
+    setUniId(universityId)
     // Set scholarship data in state
     setScholarshipId(scholarshipId);
     setscholarshipName
@@ -221,7 +224,8 @@ function ScholarshipApplicationForm() {
       const response = await axios.post("http://localhost:3000/scholarship/applyS", {
       universityName,
       scholarshipId,
-      scholarshipName
+      scholarshipName,
+      uniId
 ,  
       ielts,
         toefl,
@@ -239,12 +243,27 @@ function ScholarshipApplicationForm() {
   });
       console.log("Application submitted successfully:", response.data);
       alert("Application Submitted Successfully!")
+      setUniversityName("");
+      setScholarshipId("");
+      setscholarshipName("");
+      setUniId("");
+      setIelts("");
+      setToefl("");
+      setLinkedIn("");
+      setGithub("");
+      setFieldOfInterest("");
+      setParticipationYear("");
+      setAchievements("");
+      setSelectedCertificate("");
+      setSelectedDocuments("");
       // setAcademicInfo('')
       // setAchievements('')
       // setFieldOfInterest('')
       // setIelts
       // Optionally, you can show a success message or redirect the user to another page
     } catch (error) {
+
+      alert("Fill in all field. Budget must be > 30000. Enter valid Country")
       console.error("Error submitting application:", error);
       // Handle error, show error message to user, etc.
     }
@@ -1040,6 +1059,29 @@ function ScholarshipApplicationForm() {
                         onChange={(e) => {
                           // console.log('email: ',  e.target.value);
                           setScholarshipId(e.target.value);
+                        }}
+                        placeholder="8.5"
+                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
+                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
+                        shape="round"
+                        style={{ color: "#000000" }}
+                      ></Input>
+                    </div>
+
+                    <div className="flex flex-col gap-2 items-start justify-start w-full">
+                      <Text
+                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
+                        size="txtNunitoSemiBold28"
+                      >
+                        University Id
+                      </Text>
+
+                      <Input
+                        name="uniId"
+                        value={uniId}
+                        onChange={(e) => {
+                          // console.log('email: ',  e.target.value);
+                          setUniId(e.target.value);
                         }}
                         placeholder="8.5"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"

@@ -35,7 +35,7 @@ async function ScholarshipApplicationController( req, res) {
     const username = decodedToken.name;
     console.log(username);
     const {
-      scholarshipId, universityName, scholarshipName,
+      scholarshipId, universityName, scholarshipName, uniId,
       ielts,
       toefl,
       linkedIn,
@@ -48,7 +48,17 @@ async function ScholarshipApplicationController( req, res) {
 
     } = req.body;
 
+    // const existingApplication = await ScholarshipApplication.findOne({
+    //   userId: userId,
+    //   scholarshipId: scholarshipId
+    // });
+
+    // // If an existing application is found, return an error response
+    // if (existingApplication) {
+    //   return res.status(400).json({ error: "You have already applied for this scholarship" });
+    // }
     // Check if the user meets the admission requirements
+    // else{
     if (
       !ielts ||
       !toefl ||
@@ -109,7 +119,7 @@ async function ScholarshipApplicationController( req, res) {
       userId: userId,
       username: decodedToken.name,
       scholarshipId : scholarshipId,
-      
+      uniId: uniId,
       universityName: universityName ,
       scholarshipName: scholarshipName
 ,
@@ -148,7 +158,7 @@ async function ScholarshipApplicationController( req, res) {
     });
 
     await scholarshipApplication.save();
-
+  // }
     return res
       .status(200)
       .json({ message: "Scholarship application created successfully" });

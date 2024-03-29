@@ -28,6 +28,7 @@ const AcademicForm = () => {
         }
       );
       console.log(response.data);
+      alert("Form Created")
       navigate('/desktopfive');
     } catch (error) {
       console.error(error);

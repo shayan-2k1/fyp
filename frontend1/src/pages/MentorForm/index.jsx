@@ -58,6 +58,7 @@ const MentorForm = () => {
         }
       );
       console.log(response.data);
+      alert("Successful")
     } catch (error) {
       console.error('Error updating mentor details:', error);
     }

@@ -26,6 +26,7 @@ const StudyInterest = () => {
         }
       );
       console.log(response.data);
+      alert("Form Submitted")
       navigate('/Profile');
     } catch (error) {
       console.error(error);

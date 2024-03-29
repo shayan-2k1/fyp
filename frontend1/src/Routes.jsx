@@ -29,6 +29,10 @@ const MentorRequestPage=React.lazy(()=>import("pages/MentorRequestPage"))
 const MentorProfile=React.lazy(()=>import("pages/MentorProfile"))
 const MentorForm=React.lazy(()=>import("pages/MentorForm"))
 const MentorPublished=React.lazy(()=>import("pages/MentorPublished"))
+const TrackApplication = React.lazy(()=>import("pages/TrackApplication"))
+const MeetingLink = React.lazy(()=> import("pages/Meeting"))
+const UpadteLink = React.lazy(()=> import ("pages/UpdateLink"))
+const ShowShortlist = React.lazy(()=> import("pages/ShowShortListed"))
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<LoadingPage />}>
@@ -62,6 +66,10 @@ const ProjectRoutes = () => {
           <Route path="/MentorProfile" element={<MentorProfile/>} />
           <Route path="/MentorForm" element={<MentorForm/>} />
           <Route path="/MentorPublished" element={<MentorPublished/>} />
+          <Route path="/tracking" element={<TrackApplication/>}/>
+          <Route path="/link" element={<MeetingLink/>}/>
+          <Route path="/linkupdate" element={<UpadteLink/>}/>
+          <Route path="/shortlisted" element={<ShowShortlist/>}/>
         </Routes>
       </Router>
     </React.Suspense>
