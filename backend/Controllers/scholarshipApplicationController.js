@@ -4,7 +4,6 @@ const PersonalInfo = require("../Models/personalInfoModel"); // Assuming you hav
 // const { createServerWithCookieHandling } = require('./index');
 const certificates = require("../Models/certificateModel.js");
 const documents = require("../Models/documentModel");
-const Scholarship = require("../Models/scholarshipPostModel");
 const jwt = require("jsonwebtoken");
 const cookieParser = require('cookie-parser');
 // app.use(cookieParser());
@@ -21,6 +20,7 @@ async function ScholarshipApplicationController( req, res) {
     if (!authorization) {
       return res.status(401).json({ error: "Unauthorized" });
     }
+    console.log("nhhjhnh")
     // console.log(cookies)
     // const { scholarshipId, universityName, scholarshipName } = req.cookies;
 
@@ -166,48 +166,8 @@ async function ScholarshipApplicationController( req, res) {
     console.error(error);
     return res.status(500).json({ message: "Internal server error" });
   }
-};
-
-const getID= async (req,res)=>{
-  try
-  {
-      const { authorization } = req.headers;
-      if (!authorization) {
-          return res.status(401).json({ error: "Unauthorized" });
-      }
-
-      const secretKey = process.env.SECRET_KEY;
-      // console.log(secretKey)
-      const token = authorization.split(" ")[1];
-      // console.log(token)
-      const decodedToken = jwt.verify(token, secretKey);
-      const userId = decodedToken.id;
-
-      const scholarship = await Scholarship.findOne({
-          userId: userId,
-      });
-      if (scholarship) {
-        // Extract the required information (uniID and stdId) from the studentShortlist
-          const scholarshipID = scholarship.scholarshipId;
-          return res.status(200).json({ scholarshipID, userId });
-      }     
-      else 
-      {
-          // Handle the case when the userId is not found in the ShortList
-          return res.status(404).json({ error: "Post not found in scholarships" });    
-      }
-
-
-  }
-  catch (error){
-
-      console.error("Error:", error);
-      return res.status(500).json({ error: "Internal Server Error" });
-  } 
-};
-
+}
 
 module.exports = {
   ScholarshipApplicationController,
-  getID,
 };

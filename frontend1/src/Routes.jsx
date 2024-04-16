@@ -4,6 +4,7 @@ import Home from "pages/Home.jsx";
 import NotFound from "pages/NotFound";
 import LoadingPage from "pages/LoadingPage";
 import RecommendedScholarships from "pages/RecommendedScholarships";
+import ShowShortlistedStudents from "pages/ShowShortListed";
 const AcademicForm = React.lazy(() => import("pages/AcademicForm"));
 const PersonalForm= React.lazy(() => import("pages/PersonalForm"));
 const Signup = React.lazy(() => import("pages/Signup"));
@@ -78,6 +79,7 @@ const ProjectRoutes = () => {
           <Route path="/AllMentors" element={<AllMentors/>} />
           <Route path="/chats" element={<SChats/>} />
           <Route path="/Mchats" element={<MChats/>} />
+          <Route path="/Shortlisted" element={<ShowShortlistedStudents/>} />
         </Routes>
       </Router>
     </React.Suspense>

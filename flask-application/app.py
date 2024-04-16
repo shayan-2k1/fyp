@@ -1,84 +1,111 @@
 from flask import Flask, request, jsonify
 import pandas as pd
-import tensorflow as tf
 import numpy as np
+import pickle
 from flask_cors import CORS
-from sklearn.preprocessing import OneHotEncoder
-
-loaded_model1 = tf.saved_model.load('recommender_system')
-loaded_model2 = tf.saved_model.load('shortlisting_model')
-
-def preprocess_recommender(input_data):
-    df=pd.DataFrame(input_data, columns=["CGPA","Education_Level","Required_GPA","Scholarship_Level"])
-
-    categorical_columns = ["Education_Level","Scholarship_Level"]
-    
-    df_encoded = pd.get_dummies(df, columns=categorical_columns)
-    # expected_columns = loaded_model2.signatures["serving_default"].inputs[1].shape
-    # if len(df_encoded.columns) < expected_columns:
-    #     missing_columns = set(range(expected_columns)) - set(df_encoded.columns)
-    #     for col in missing_columns:
-    #         df_encoded[col] = 0
-   
-    df_encoded = df_encoded[loaded_model1.signatures["serving_default"].inputs[1].shape]
-
-    input_array = df_encoded.values
-
-    return np.array(input_array).reshape(-1,-1).astype('float32')
-
-def preprocess_shortlist(input_data):
-    df=pd.DataFrame(input_data, columns=["CGPA","Education_Level","Required_GPA","Scholarship_Level"])
-
-    categorical_columns = ["Education_Level","Scholarship_Level"]
-    
-    df_encoded = pd.get_dummies(df, columns=categorical_columns)
-    # expected_columns = loaded_model2.signatures["serving_default"].inputs[1].shape
-    # if len(df_encoded.columns) < expected_columns:
-    #     missing_columns = set(range(expected_columns)) - set(df_encoded.columns)
-    #     for col in missing_columns:
-    #         df_encoded[col] = 0
-   
-    df_encoded = df_encoded[loaded_model2.signatures["serving_default"].inputs[1].shape]
-
-    input_array = df_encoded.values
-
-    return np.array(input_array).reshape(-1,-1).astype('float32')
-
-
+from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 
-CORS(app, origins=['http://localhost:3002'])  # Allow requests from http://localhost:3000 only
+CORS(app, origins='http://localhost:3001')
+
+# Load the saved model
+loaded_model1 = load_model("./recommender_system/my_model.h5")
+loaded_model2 = load_model("./shortlisting_model/my_model.h5")
+
+# Load label encoder from disk
+with open("./recommender_system/label_encoders.pkl", "rb") as f:
+    label_encoder1 = pickle.load(f)
+
+with open("./shortlisting_model/label_encoders.pkl", "rb") as f:
+    label_encoder2 = pickle.load(f)
 
 
-@app.route('/')
-def hello():
-    return "Hello World!!"
+# Load the scaler
+with open("./recommender_system/scaler.pkl", "rb") as f:
+    scaler1 = pickle.load(f)
 
+
+with open("./shortlisting_model/scaler.pkl", "rb") as f:
+    scaler2 = pickle.load(f)
+
+# Endpoint for prediction
 @app.route('/recommend', methods=['POST'])
 def recommend():
-    d1 = request.json
-    # Assuming the data is in the format suitable for your model
-    input_d1 = preprocess_recommender(d1)
-    # Make prediction
-    prediction = loaded_model1.signatures["serving_default"](tf.constant(input_d1, dtype=tf.float32))
-    prediction_value=prediction['dense_3'].numpy()[0][0]
-    return jsonify({'prediction': prediction_value})
+    # Get JSON data from the POST request
+    data = request.get_json()
+
+    print(data)
+
+    # Sample raw data from JSON
+    raw_data = pd.DataFrame(data)
+
+    # Initialize an empty DataFrame to store encoded raw data
+    encoded_raw_data = pd.DataFrame()
+    
+    
+    # Encode categorical features in the raw data using the loaded label encoders
+    for col in raw_data.columns:
+        if col in label_encoder1:
+            label_encoder_col = label_encoder1[col]
+            encoded_raw_data[col] = label_encoder_col.transform(raw_data[col])
+
+    # Scale the encoded raw data using the loaded scaler
+    scaled_raw_data = scaler1.transform(encoded_raw_data)
+
+    # Make predictions with the loaded model
+    predictions = loaded_model1.predict(scaled_raw_data)
+
+    # Set the threshold
+    threshold = 0.5
+
+    print(predictions[0][0])
+
+    # Apply threshold to convert probabilities to class labels
+    binary_predictions = (predictions > threshold).astype(int)
+
+    # Return predictions as JSON response
+    print({'predictions': binary_predictions.flatten().tolist()})
+    return jsonify({'predictions': binary_predictions.flatten().tolist()})
 
 @app.route('/shortlist', methods=['POST'])
 def shortlist():
-    # loaded_model_input_type = loaded_model2.signatures["serving_default"].inputs[0].shape
-    # print("Loaded model input type:", loaded_model_input_type) 
-    # dummy_data = np.array([[2.8,1,0,0,2.5,1,0,0]]).astype('float32')
-    d2 = request.get_json()
-    # Assuming the data is in the format suitable for your model
-    input_d2 = preprocess_shortlist(d2)
-    # Make prediction
-    output = loaded_model2.signatures["serving_default"](tf.constant(input_d2, dtype=tf.float32))
-    # prediction = output['output'].numpy()  # Assuming 'output' is the name of the output tensor
-    prediction_value=output['dense_3'].numpy()[0][0]
-    # return jsonify({'prediction': prediction.tolist()})
-    return jsonify({'prediction': prediction_value})
+    
+    # Get JSON data from the POST request
+    data = request.get_json()
+
+    
+    # Sample raw data from JSON
+    raw_data = pd.DataFrame(data)
+
+    # Initialize an empty DataFrame to store encoded raw data
+    encoded_raw_data = pd.DataFrame()
+
+    # Encode categorical features in the raw data using the loaded label encoders
+    for col in raw_data.columns:
+        if col in label_encoder2:
+            label_encoder_col = label_encoder2[col]
+            encoded_raw_data[col] = label_encoder_col.transform(raw_data[col])
+        else:
+            encoded_raw_data[col] = raw_data[col]
+
+# Scale the numerical columns
+# scaled_numeric_data = scaler.transform(raw_data[numeric_cols])
+    scaled_numeric_data = scaler2.transform(encoded_raw_data)
+
+    print(scaled_numeric_data)
+# Make predictions with the loaded model
+    predictions = loaded_model2.predict(scaled_numeric_data)
+
+    # Set the threshold
+    threshold = 0.5
+    print(predictions)
+
+    # Apply threshold to convert probabilities to class labels
+    binary_predictions = (predictions > threshold).astype(int)
+
+    # Return predictions as JSON response
+    return jsonify({'predictions': binary_predictions.flatten().tolist()})
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

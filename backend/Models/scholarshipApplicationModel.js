@@ -144,4 +144,4 @@ uniId:{
 
 const ScholarshipApplication = mongoose.model('ScholarshipApplication', scholarshipApplicationSchema);
 
-module.exports = ScholarshipApplication;
+module.exports = ScholarshipApplication
