@@ -36,6 +36,7 @@ const ShowShortlist = React.lazy(()=> import("pages/ShowShortListed"))
 const AllMentors=React.lazy(()=>import("pages/AllMentors"))
 const SChats=React.lazy(()=>import("pages/SChats"))
 const MChats=React.lazy(()=>import("pages/MChats"))
+const Recommended = React.lazy(()=> import("pages/RecommendedScholarships"))
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<LoadingPage />}>
@@ -76,6 +77,7 @@ const ProjectRoutes = () => {
           <Route path="/AllMentors" element={<AllMentors/>} />
           <Route path="/chats" element={<SChats/>} />
           <Route path="/Mchats" element={<MChats/>} />
+          <Route path="/Recommended" element={<Recommended/>} />
         </Routes>
       </Router>
     </React.Suspense>

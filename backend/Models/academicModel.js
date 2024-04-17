@@ -33,7 +33,7 @@ const academicBackgroundSchema = new mongoose.Schema({
     type: Number, // Use Number data type for year
     required: true,
     min: 2010, // Minimum year (e.g., 1970)
-    max: 2023,
+    // max: 2023,
   }
 });
 

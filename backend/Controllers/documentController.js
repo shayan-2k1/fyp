@@ -1,4 +1,7 @@
 const Document = require('../Models/documentModel');
+const CV = require('../Models/extractedDataModel');
+const axios = require('axios');
+const Cv = require ('../Models/cvModel')
 const jwt = require("jsonwebtoken");
 const AWS = require('aws-sdk');
 const dotenv = require('dotenv');
@@ -156,7 +159,7 @@ async function fetchDocument(req, res) {
         const params = {
           Bucket: 'student-doc-uploads',
           Key: file.fileName, // Assuming the file key is the fileName
-          Expires: 3600, // URL expires in 1 hour 
+          // Expires: 7200, // URL expires in 1 hour 
         };
 
         // Generate presigned URL for each file
@@ -240,9 +243,202 @@ async function delDocument(req, res) {
   }
 }
 
+//CV uploading 
+const uploadcvToS3 = async (fileData, fileName) => {
+  try {
+    const params = {
+      Bucket: 's3cvbucket',
+      Key: fileName,
+      Body: fileData,
+    };
+
+    const command = new PutObjectCommand(params);
+    const uploadResult = await s3Client.send(command);
+
+    // Ensure to return the S3 URL upon successful upload
+    if (uploadResult && uploadResult.$metadata && uploadResult.$metadata.httpStatusCode === 200) {
+      const s3Url = `https://s3cvbucket.s3.amazonaws.com/${fileName}`;
+      return s3Url;
+    } else {
+      throw new Error('S3 upload did not return a valid URL');
+    }
+  } catch (error) {
+    console.error('Error uploading file to S3:', error);
+    throw error;
+  }
+};
+
+
+async function cvUpload(req, res) {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, secretKey);
+    console.log(req.file);
+    const fileData = req.file.buffer; // Assuming file buffer is in req.file.buffer
+    const fileName = req.file.originalname; // Assuming original filename is in req.file.originalname
+
+    if (!fileData && !fileName) {
+            return res.status(400).json({ error: "No files uploaded" });
+          }
+
+    // console.log(fileName)
+    // console.log(fileData)
+    const s3Url = await uploadcvToS3(fileData, fileName);
+    console.log("url in s3",s3Url)
+    
+    const existingCv = await Cv.findOne({ user: decodedToken.id });
+
+    if (existingCv) {
+      // If document exists, return an error indicating that a CV already exists for the user
+      return res.status(400).json({ error: 'CV already exists for the user.' });
+    } else {
+    const document = new Cv({
+      user: decodedToken.id,
+      files: [
+        {
+          fileName: fileName, // Original filename
+          fileUrl: s3Url,     // URL of the uploaded file in S3
+          fileType: getMimeType(fileName), // MIME type based on file extension
+          uploadedAt: new Date(), // Set the upload timestamp
+        },
+      ],
+    });
+    //correcting errors
+
+
+  //  console.log(document)
+    const savedDocument = await document.save();
+    console.log('Cv metadata saved:', savedDocument);
+    res.status(200).json({ message: 'Cv uploaded successfully.' });
+  }
+
+  } catch (error) {
+    console.error('Error uploading cv:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+
+async function fetchCv(req, res) {
+  try {
+    const s3 = new AWS.S3({
+      region: 'us-east-1', // Change the region if needed
+      credentials: {
+        accessKeyId: 'AKIA6DVS3KHYZX3VMEUB',
+        secretAccessKey: '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',
+      },
+    });
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, secretKey);
+    const userid= decodedToken.id;
+    // Find the CV uploaded by the user
+    const cv = await Cv.findOne({ user: decodedToken.id });
+
+    if (!cv) {
+      return res.status(404).json({ message: 'CV not found for the user.' });
+    }
+
+    // Map the document files to get the presigned URL for each file
+    const documentUrls = await Promise.all(cv.files.map(async (file) => {
+      const params = {
+        Bucket: 's3cvbucket',
+        Key: file.fileName, // Assuming the file key is the fileName
+        Expires: 3600, // URL expires in 1 hour 
+      };
+      
+      // Generate presigned URL for each file
+      const fileUrl = await s3.getSignedUrlPromise('getObject', params);
+      return {
+        _id: file._id,
+        fileName: file.fileName,
+        fileUrl: fileUrl, // Use the variable in this scope
+        // Add other necessary document information as needed
+      };
+    }));
+
+    // Extract the fileUrl from the first documentUrls entry
+    const firstDocumentUrl = documentUrls.length > 0 ? documentUrls[0].fileUrl : null;
+    // console.log(firstDocumentUrl)
+
+    const flaskEndpoint = 'http://127.0.0.1:5000/extract_cv_data'; // Change to your Flask app's endpoint
+    const response = await axios.post(flaskEndpoint, { fileUrl: firstDocumentUrl });
+
+
+    const dataFromFlask = response.data;
+        console.log('Data received from Flask:', dataFromFlask);
+        await processDataFromFlask(dataFromFlask, userid);
+    // Send the document URLs to the client
+    res.status(200).json(documentUrls);
+  } catch (error) {
+    console.error('Error retrieving CV:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+async function processDataFromFlask(dataFromFlask, userid) {
+  console.log('Data processed:', dataFromFlask);
+  console.log('useriddd', userid)
+  try {
+    // Extract education_info and personal_info from dataFromFlask directly
+    const { education_info, personal_info } = dataFromFlask;
+    console.log("Received education info:", education_info);
+    console.log("Received personal info:", personal_info);
+
+    // Process education_info
+    const educationEntries = {
+      university_name: education_info.university_name,
+      year: education_info.degree_year,
+      degree_level: education_info.degree_level,
+      discipline: education_info.degree_discipline
+    };
+
+    // Process personal_info
+    const personalEntries = {
+      first_name: personal_info.first_name,
+      last_name: personal_info.last_name,
+      phone: personal_info.phone,
+      address: personal_info.email, // Assuming email is the address
+      linkedin: personal_info.linkedin
+    };
+
+    // Create new CV object and save
+    const newCV = new CV({
+      user: userid,
+      education_info: educationEntries,
+      personal_info: personalEntries
+    });
+
+    await newCV.save();
+
+    console.log('CV data saved successfully:', newCV);
+    // Return result or throw error, instead of handling res directly
+    return 'CV data saved successfully';
+  } catch (error) {
+    console.error('Error saving CV data:', error);
+    // Throw error to be caught by the caller function
+    throw new Error('Error saving CV data');
+  }
+}
+
+
+
 
 module.exports = {
   documentUpload,
+  cvUpload,
+  fetchCv,
   fetchDocument,
   delDocument
 };

@@ -6,9 +6,18 @@ const jwt=require("jsonwebtoken")
 const dotenv = require('dotenv');
 dotenv.config();
 // Controller to shortlist a student for a scholarship
- async function shortlistedScholarship (req, res)  {
+async function shortlistedScholarship(req, res) {
     try {
-        const { scholarshipId, userId } = req.body;
+        const { scholarshipId } = req.body;
+
+        // Extract userId from authorization header
+        const authToken = req.headers.authorization;
+        if (!authToken) {
+            return res.status(401).json({ error: 'Authorization header missing' });
+        }
+        const token = authToken.split(' ')[1];
+        const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+        const userId = decodedToken.userId;
 
         // Check if the student is already shortlisted for the scholarship
         let existingShortlist = await ShortlistStudent.findOne({ scholarshipId });
@@ -33,7 +42,7 @@ dotenv.config();
         console.error('Error shortlisting student:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-};
+}
 
 async function showShortlisted(req, res) {
     try {

@@ -117,7 +117,7 @@ const convertCustomDeadlineToCron = (customDeadline) => {
     return null;
 };
 
-cron.schedule('*/12 * * * *', async () => {
+cron.schedule('* * * * *', async () => {
     console.log("Checking for scholarships with deadlines approaching...");
 
     try {
@@ -133,10 +133,10 @@ cron.schedule('*/12 * * * *', async () => {
                 (scholarship) => scholarship.deadline === targetDate
             );
 
-            if (scholarship && new Date(scholarship.deadline) > currentDate) {
+            if (scholarship ) {
                 // Only proceed if the scholarship deadline is still in the future
                 const userId = student.socketId; // Assuming socketId is stored in the student schema
-                const message = `The deadline i.e "${scholarship.deadline}"  for the scholarship "${scholarship.scholarshipName}" is approaching. Apply now!`;
+                const message = `The deadline  for the scholarship "${scholarship.scholarshipName}" is approaching. Apply now!`;
 
                 // Call the function from the notification service
                 // make sure that 'sendNotification' and 'io' are defined and imported correctly

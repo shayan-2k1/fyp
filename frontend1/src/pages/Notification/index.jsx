@@ -8,6 +8,7 @@ const SOCKET_SERVER_URL = 'http://localhost:5000';
 
 
 const Notification = () => {
+  const container = useRef(null)
   const [notifications, setNotifications] = useState([]);
   const authToken = Cookies.get("auth_token");
   const animationContainersRefs = useRef([
@@ -16,7 +17,19 @@ const Notification = () => {
     useRef(null),
     useRef(null)
   ]);
-
+  useEffect(() => {
+    try {
+      lottie.loadAnimation({
+        container: container.current,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: require('./notifications.json')
+      });
+    } catch (error) {
+      console.error('Error loading animation:', error);
+    }
+  }, []);
   
   useEffect(() => {
     if (notifications.length > 0) {
@@ -148,7 +161,7 @@ const Notification = () => {
               
               <div className="flex md:flex-col self-stretch justify-between items-center mt-[43px] gap-5">
             <Heading size="s" as="h3" className="w-[5%] md:w-full !text-gray-500_01 !font-cairo">.</Heading>
-            <div className="w-[83%] gap-px grid-cols-[repeat(auto-fill,_minmax(571px_,_3fr))] grid gap-2">
+            <div className="w-[83%] gap-px grid-cols-[repeat(auto-fill,minmax(571px,_3fr))] grid gap-2">
               
               {notifications.map((notification, index) => (
                 <div key={index} className="flex justify-center w-full p-[15px] border-gray-800 border-solid bg-gradient6 rounded-[15px] mb-2">
@@ -167,6 +180,27 @@ const Notification = () => {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="w-[83%] gap-px grid-cols-[repeat(auto-fill,minmax(571px,_3fr))] grid gap-2">
+              
+              
+                <div className="flex justify-center w-full p-[15px] border-gray-800 border-solid bg-gradient6 rounded-[15px] mb-2">
+                  <div className="flex sm:flex-col justify-between items-start w-full mt-[11px] mb-[21px] gap-5">
+                    <div className="flex text-white-A700 flex-col items-start mb-[7px] gap-[3px]">
+                      <Text className="text-white-A700" as="h4">Scholarship New</Text>
+                      <Text as="p" className="opacity-0.5">Deadline is approching !</Text>
+                      <div className="w-[12%] sm:w-full object-cover rounded-[20px]">
+                      <div ref={container} className="absolute inset-0" style={{ width: '12%', height: '12%' }}></div>
+                       
+                      </div>
+                      
+                    </div>
+                    
+                     
+                 
+                  </div>
+                </div>
+             
             </div>
           </div>
         </div>

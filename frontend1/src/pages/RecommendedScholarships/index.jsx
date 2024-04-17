@@ -7,23 +7,22 @@ import { Button, Img, Line, List, Text, Input } from "components";
 import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import StudyInterest from "pages/StudyInterest";
+ 
 const RecommendedScholarships = () => {
   const navigate = useNavigate();
   // const { collapseSidebar, collapsed } = useProSidebar();
   const [scholarshipData, setScholarshipData] = useState([]);
-  const [interestData, setInterestData]=useState(null);
-  const [academicData, setAcademicData]=useState(null);
+  const [interestData, setInterestData]=useState({});
+  const [academicData, setAcademicData]=useState({});
   const [filteredData, setfilteredData]=useState([]);
   const [scholarshipName, setscholarshipName] = useState("");
+  const authToken = Cookies.get("auth_token");
   const [deadlineDate, setdeadlineDate] = useState("");
   const [scholarshipBudget, setscholarshipBudget] = useState("");
   // const [amount, setAmount] = useState("");
   // const []
-  const authToken = Cookies.get("auth_token");
-  const decodedToken=jwt_decode(authToken);
 
-  const userId=decodedToken.userID;
 
   useEffect(() => {
     const fetchScholarshipData = async () => {
@@ -48,10 +47,12 @@ const RecommendedScholarships = () => {
           },
         });
         setInterestData(response.data);
+        console.log(interestData);
       }catch(error){
         console.log("Error fetching study interest",error);
       }
-    }
+    };
+    fetchInterestData();
   },[])
 
   useEffect(()=>{
@@ -71,19 +72,60 @@ const RecommendedScholarships = () => {
     fetchAcademicData();
   },[])
 
-  useEffect(()=>{
-    const filterScholarships= async()=>{
-        scholarshipData.forEach((item)=>{
-          try{
+  console.log(academicData.degree);
+  console.log(academicData.discipline);
+  console.log(interestData.placeToStudy);
 
-          }
-          catch(error){
+  useEffect(() => {
+    const filterScholarships = async () => {
+      try {
+          const promises = scholarshipData.map(async (item) => {
+              if (
+                  ((academicData.degree === 'BS') && (item.scholarshipLevel === 'Masters')) ||
+                  ((academicData.degree === 'Masters') && (item.scholarshipLevel === 'PhD')) ||
+                  ((academicData.degree === 'PhD') && (item.scholarshipLevel === 'PhD')) ||
+                  (interestData.placeToStudy === item.placeOfScholarship) ||
+                  (academicData.discipline === item.eligibleDomain[0])
+              ) {
+                  return item;
+              }
+          });
+  
+          const filteredItems = await Promise.all(promises);
+           setfilteredData(filteredItems.filter(item => (item.eligibleDomain != academicData.discipline)));
+           console.log(filteredData);
+      } catch (error) {
+          console.log("Error recommending", error);
+      }
+  };
+  
+        // try {
+        //     const promises = scholarshipData.map(async (item) => {
+        //         const response = await axios.post("http://127.0.0.1:5000/recommend", {
+        //             edLevel: academicData.degree,
+        //             country: interestData.placeToStudy,
+        //             domain: academicData.discipline,
+        //             eduLevel: item.scholarshipLevel,
+        //             schlCountry: item.countryOfScholarship,
+        //             eligibleDomain: item.eligibleDomain[0]
+        //         });
+        //         const prediction_json = response.data;
+        //         if (prediction_json > 0.5) {
+        //             return item;
+        //         }
+        //         return null;
+        //     });
+        //     const filteredItems = await Promise.all(promises);
+        //     const filteredData = filteredItems.filter(item => item !== null);
+        //     console.log(filteredData);
+        //     // Do something with filteredData
+        // } catch (error) {
+        //     console.error("Error filtering scholarships:", error);
+        // }
 
-          }
-        })
-    }
-  })
-
+    
+    filterScholarships();
+}, [scholarshipData,academicData,interestData]);
   
   const handleSave = async () => {
    
@@ -101,7 +143,7 @@ const RecommendedScholarships = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${authToken}`,
+            Authorization:  `Bearer ${authToken}`,
           },
         }
       );
@@ -130,7 +172,7 @@ const RecommendedScholarships = () => {
                   className="md:ml-[10] ml-[272px] mt-[20px] text-4xl sm:text-[20px] md:text-[5px] text-cyan-700 tracking-[3.60px]"
                   size="txtOverpassExtraBold36"
                 >
-                  Scholarships{" "}
+                  Recommended{" "}
                 </Text>
 
                 {/* <Text
@@ -219,8 +261,8 @@ const RecommendedScholarships = () => {
         <Sidebar1 className="!sticky !w-[400px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
         <div className="absolute flex flex-col font-nunito items-start justify-start left-[23%] md:px-5 top-[20%]">
           <div>
-          {data.map((scholarship)=>(
-              <div key={scholarship.scholarshipName} className="card">
+          {filteredData.map((data)=>(
+              <div key={data.scholarshipName} className="card">
 
 
                 <div className="bg-white-A700 flex flex-col items-center justify-end p-1 shadow-bs w-full">
@@ -233,13 +275,13 @@ const RecommendedScholarships = () => {
                         className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
                         size="txtNunitoBold25"
                       >
-                        {scholarship.scholarshipName}
+                        {data.scholarshipName}
                       </Text>
                       <Text
                         className="mb-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
                         size="txtNunitoBold25Bluegray800"
                       >
-                        {scholarship.scholarshipBudget} USD/YEAR
+                        {data.scholarshipBudget} USD/YEAR
                       </Text>
                     </div>
                     <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full" >
@@ -247,13 +289,13 @@ const RecommendedScholarships = () => {
                         className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
                         size="txtNunitoRegular20"
                       >
-                        {scholarship.description}
+                        {data.description}
                       </Text>
                       <Text
                         className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
                         size="txtNunitoBold25Bluegray800"
                       >
-                        {scholarship.deadlineDate}
+                        {data.deadlineDate}
                       </Text>
                     </div>
                     <div className="flex md:flex-col flex-row md:gap-5 items-end justify-start mt-[7px] w-full">
@@ -263,14 +305,13 @@ const RecommendedScholarships = () => {
                           className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
                           size="txtNunitoRegular18"
                         >
-                          {scholarship.countryOfScholarship}
+                          {data.countryOfScholarship}
                         </Text>
                         <Text
                           className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
                           size="txtNunitoRegular18"
                         >
-                          {scholarship.eligibleDomain
-}
+                          {data.eligibleDomain}
                         </Text>
                       </div>
                       
@@ -279,9 +320,9 @@ const RecommendedScholarships = () => {
                         src="images/img_bookmark.svg"
                         alt="bookmark"
                         onClick={() => {
-                          setscholarshipName(scholarship.scholarshipName);
-                          setdeadlineDate(scholarship.deadlineDate);
-                          setscholarshipBudget(scholarship.scholarshipBudget);
+                          setscholarshipName(data.scholarshipName);
+                          setdeadlineDate(data.deadlineDate);
+                          setscholarshipBudget(data.scholarshipBudget);
                           handleSave();
                       }}
                       

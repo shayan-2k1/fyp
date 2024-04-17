@@ -31,22 +31,7 @@ const createScholarship = async (req, res) => {
       }
   
       // Validate date
-      const currentDate = new Date();
-      const oneYearFromNow = new Date(currentDate);
-      oneYearFromNow.setFullYear(currentDate.getFullYear() + 1);
-  
-      const userDeadlineDate = new Date(deadlinedate);
-      const userYear = userDeadlineDate.getFullYear();
-      const userTimestamp = userDeadlineDate.getTime();
-  
-      if (
-        userYear < oneYearFromNow.getFullYear() ||
-        userTimestamp < oneYearFromNow.getTime()
-      ) {
-        return res
-          .status(400)
-          .json({ error: "Scholarship date must be within one year from today" });
-      }
+      
   
       // Check if the country exists
       const countryExists = await checkCountryExists(countryOfScholarship);
