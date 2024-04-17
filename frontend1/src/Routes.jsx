@@ -80,8 +80,8 @@ const ProjectRoutes = () => {
           <Route path="/AllMentors" element={<AllMentors/>} />
           <Route path="/chats" element={<SChats/>} />
           <Route path="/Mchats" element={<MChats/>} />
-          <Route path="/Recommended" element={<Recommended/>} />
           <Route path="/Shortlisted" element={<ShowShortlistedStudents/>} />
+          {/* <Route path="/Recommended" element={<Recommended/>} /> */}
         </Routes>
       </Router>
     </React.Suspense>
