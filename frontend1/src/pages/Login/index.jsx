@@ -45,6 +45,7 @@ const Login = () => {
           }
 
           console.log(response.data);
+          alert("Signin Successful")
           navigate("/Scholarships");
           
       } catch (error) {
@@ -134,7 +135,7 @@ const Login = () => {
                   <Text
                     className="common-pointer mt-[25px] text-2xl md:text-[22px] text-blue_gray-800 sm:text-xl tracking-[2.40px]"
                     size="txtOpenSans24"
-                    onClick={() => navigate("/mentorSignup")}
+                    onClick={() => navigate("/desktoptwo")}
                   >
                     <span className="text-blue_gray-800 font-nunito text-left font-normal">
                       Don’t have a account,
@@ -224,6 +225,8 @@ const Login = () => {
                           </button>
                         </div>
                       </div>
+
+                      
                     </List>
                     <Button
                       className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[300px] sm:min-w-full ml-20 mt-[25px] text-0xl md:text-[10px] text-center sm:text-xl tracking-[1.60px] uppercase"

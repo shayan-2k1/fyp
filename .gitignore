@@ -24,6 +24,6 @@ dist-ssr
 *.sw?
 scrapy-project/venv/
 confidential/
-recommender-system/myenv/
-shortlisting-module/env/
-flask-application/newenv/
+recommender-system/env1/
+shortlisting-module/env2/
+flask-application/env3/

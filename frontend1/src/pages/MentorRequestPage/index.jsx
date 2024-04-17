@@ -31,7 +31,9 @@ const MentorRequestPage = () => {
           },
         }
       );
+      
       console.log(response.data);
+      alert("Mentor Created")
       navigate('/MentorPublished');
     } catch (error) {
       console.error(error);

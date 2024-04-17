@@ -30,7 +30,10 @@ const cors = require('cors');
 require("dotenv").config();
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3001', // Allow requests from this origin
+    credentials: true, // Allow credentials (e.g., cookies, authorization headers)
+  }));
 app.use(express.static('public'));
 app.use(cookieParser());
 app.get('/getcookies', function (req, res) {
@@ -76,7 +79,7 @@ const httpServer = require('http').createServer(app); // Create an HTTP server
 // });
 const io = new Server(httpServer, {
     cors: {
-        origin: ["http://localhost:3001", "http://localhost:3003"],
+        origin: ["http://localhost:3001", "http://localhost:3003","http://localhost:5000"],
         methods: ["GET", "POST"],
         credentials: true
     }

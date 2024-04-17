@@ -41,6 +41,7 @@ const PersonalForm = () => {
         }
       );
       console.log(response.data);
+      alert("Form Submitted")
       navigate('/desktopfour');
     } catch (error) {
       console.error(error);

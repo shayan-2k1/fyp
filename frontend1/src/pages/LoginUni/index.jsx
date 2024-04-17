@@ -227,6 +227,20 @@ const Login = () => {
                           </button>
                         </div>
                       </div>
+
+                      <div className="flex sm:flex-1 sm:flex-col flex-row gap-4 items-start justify-start w-auto sm:w-full">
+                       
+                        <div className="flex flex-col items-center justify-end py-2">
+                          <button
+                            className="mt-[3px] text-blue_gray-800 text-xl tracking-[2.00px]"
+                            size="txtNunitoRegular20"
+                            onClick={() => navigate("/linkupdate")}
+                          >
+                            Update Calendly Link
+                          </button>
+                        </div>
+                      </div>
+                      
                     </List>
                     <Button
                       className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[300px] sm:min-w-full ml-20 mt-[25px] text-0xl md:text-[10px] text-center sm:text-xl tracking-[1.60px] uppercase"

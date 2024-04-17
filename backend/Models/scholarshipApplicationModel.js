@@ -20,7 +20,11 @@ const scholarshipApplicationSchema = new mongoose.Schema({
         ref: 'studentModel',
         required: true,
       },
-
+uniId:{
+  type: mongoose.Schema.Types.ObjectId,
+  // ref: 'scholarshipPostModel', // Reference to the scholarship model
+  required: true,
+},
       scholarshipId: {
         type: mongoose.Schema.Types.ObjectId,
         // ref: 'scholarshipPostModel', // Reference to the scholarship model
@@ -140,4 +144,4 @@ const scholarshipApplicationSchema = new mongoose.Schema({
 
 const ScholarshipApplication = mongoose.model('ScholarshipApplication', scholarshipApplicationSchema);
 
-module.exports = ScholarshipApplication;
+module.exports = ScholarshipApplication

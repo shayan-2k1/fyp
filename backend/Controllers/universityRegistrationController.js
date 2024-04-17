@@ -7,8 +7,8 @@ const bcrypt = require('bcrypt');
 async function registerUniversity(req, res) {
   try {
       // Validate the request body
-      const { uniname, password, email, phoneNumber, address } = req.body;
-      if (!uniname || !password || !email || !phoneNumber || !address) {
+      const { uniname, password, email, phoneNumber, address, calendly } = req.body;
+      if (!uniname || !password || !email || !phoneNumber || !address || !calendly) {
           return res.status(400).json({ msg: "Enter all fields!" });
       }
 
@@ -35,6 +35,7 @@ async function registerUniversity(req, res) {
           email,
           phoneNumber,
           address,
+          calendly
          
       });
       const savedUniversity = await newUniversity.save();
@@ -158,11 +159,29 @@ async function signin(req, res) {
     }
   }
   
-
+  async function updateCalendly(req, res) {
+    const { email, calendly } = req.body;
+    
+    try {
+      const foundUni = await universityModel.findOne({ email });
+      
+      if (!foundUni) {
+        return res.status(404).send({ message: 'University not found' });
+      }
+      
+      foundUni.calendly = calendly;
+      await foundUni.save();
+      
+      return res.status(200).send({ message: 'Calendly link updated successfully' });
+    } catch (error) {
+      return res.status(500).send({ message: 'Internal server error' });
+    }
+  }
+  
 
 module.exports = {
     registerUniversity,
-    
+    updateCalendly,
     signin,
     update
 };

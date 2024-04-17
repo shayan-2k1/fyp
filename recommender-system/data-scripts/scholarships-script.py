@@ -32,5 +32,5 @@ def generate_unique_data(data):
 generate_unique_data(data)
 
 # Create a DataFrame and export to CSV
-df = pd.DataFrame(data, columns=["Scholarship_Name","Scholarship_Type","Required_GPA", "Scholarship_Budget", "Education_Preference", "Country_of_Scholarship", "Eligible_Domain"])
+df = pd.DataFrame(data, columns=["Scholarship_Name","Scholarship_Type","Required_GPA", "Scholarship_Budget", "Scholarship_Level", "Country_of_Scholarship", "Eligible_Domain"])
 df.to_csv("scholarship_dataset.csv", index=False)

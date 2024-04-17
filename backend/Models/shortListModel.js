@@ -8,9 +8,9 @@ const shortlistStudent = new mongoose.Schema({
         type : String,
         required: true,
     },
-    userId:{
+    userIds:{
         // ref: 'scholarshipPostModel',
-        type : String,
+        type : [String],
         required: true,
     },
 

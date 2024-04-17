@@ -180,7 +180,7 @@ const Sidebar1 = (props) => {
                
               </MenuItem>
               </Link>
-              <Link to="/Scholarships">
+              <Link to="/RecommendedScholarships">
               <MenuItem
                
               >
@@ -194,7 +194,8 @@ const Sidebar1 = (props) => {
               </MenuItem>
               </Link>
             {/*  change to track  */}
-              <Link to="/Notification">   
+              {/* <Link to="/Notification">    */}
+              <Link to="/tracking">
               <MenuItem
               
               >  
@@ -203,6 +204,7 @@ const Sidebar1 = (props) => {
                 
               </MenuItem>
               </Link>
+              
              
               <MenuItem
                 

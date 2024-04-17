@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home.jsx";
 import NotFound from "pages/NotFound";
 import LoadingPage from "pages/LoadingPage";
+import RecommendedScholarships from "pages/RecommendedScholarships";
+import ShowShortlistedStudents from "pages/ShowShortListed";
 const AcademicForm = React.lazy(() => import("pages/AcademicForm"));
 const PersonalForm= React.lazy(() => import("pages/PersonalForm"));
 const Signup = React.lazy(() => import("pages/Signup"));
@@ -29,6 +31,10 @@ const MentorRequestPage=React.lazy(()=>import("pages/MentorRequestPage"))
 const MentorProfile=React.lazy(()=>import("pages/MentorProfile"))
 const MentorForm=React.lazy(()=>import("pages/MentorForm"))
 const MentorPublished=React.lazy(()=>import("pages/MentorPublished"))
+const TrackApplication = React.lazy(()=>import("pages/TrackApplication"))
+const MeetingLink = React.lazy(()=> import("pages/Meeting"))
+const UpadteLink = React.lazy(()=> import ("pages/UpdateLink"))
+const ShowShortlist = React.lazy(()=> import("pages/ShowShortListed"))
 const AllMentors=React.lazy(()=>import("pages/AllMentors"))
 const SChats=React.lazy(()=>import("pages/SChats"))
 const MChats=React.lazy(()=>import("pages/MChats"))
@@ -65,9 +71,15 @@ const ProjectRoutes = () => {
           <Route path="/MentorProfile" element={<MentorProfile/>} />
           <Route path="/MentorForm" element={<MentorForm/>} />
           <Route path="/MentorPublished" element={<MentorPublished/>} />
+          <Route path="/RecommendedScholarships" element={<RecommendedScholarships/>}/>
+          <Route path="/tracking" element={<TrackApplication/>}/>
+          <Route path="/link" element={<MeetingLink/>}/>
+          <Route path="/linkupdate" element={<UpadteLink/>}/>
+          <Route path="/shortlisted" element={<ShowShortlist/>}/>
           <Route path="/AllMentors" element={<AllMentors/>} />
           <Route path="/chats" element={<SChats/>} />
           <Route path="/Mchats" element={<MChats/>} />
+          <Route path="/Shortlisted" element={<ShowShortlistedStudents/>} />
         </Routes>
       </Router>
     </React.Suspense>

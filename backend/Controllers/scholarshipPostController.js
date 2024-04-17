@@ -15,7 +15,7 @@ const createScholarship = async (req, res) => {
         scholarshipName,
         scholarshipType,
         scholarshipBudget,
-        educationPreference,
+        scholarshipLevel,
         countryOfScholarship,
         eligibleDomain,
         description,
@@ -46,7 +46,7 @@ const createScholarship = async (req, res) => {
         scholarshipName,
         scholarshipType,
         scholarshipBudget,
-        educationPreference,
+        scholarshipLevel,
         countryOfScholarship,
         eligibleDomain,
         description,
@@ -111,10 +111,10 @@ async function getOneScholarship (req,res){
   }
 
 }
-async function getOneScholarship (req,res){
-
+const getOneScholarship = async (req, res) => {
   try {
     const scholarshipId = req.params.scholarshipId; // Assuming the ID is passed as a URL parameter
+    console.log(scholarshipId);
     const scholarship = await Scholarship.findById(scholarshipId);
     console.log(scholarshipId)
     if (!scholarship) {
@@ -127,13 +127,11 @@ async function getOneScholarship (req,res){
     console.error('Error:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-
-}
+};
 // Export the controller functions
 module.exports = {
   createScholarship,
   getAllScholarships,
   checkCountryExists,
-  getOneScholarship
-  
+  getOneScholarship,
 }
