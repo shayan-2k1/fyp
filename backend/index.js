@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose")
 const cron = require('node-cron');
+const axios = require('axios');
+const Cookies = require("js-cookie");
 const { Server } = require('socket.io');
 const { sendNotification } = require('./notificationService.js');
 const socketIo = require('socket.io');
@@ -20,11 +22,10 @@ const projectRouter = require("./Routes/projectRoutes.js")
 const scholarshipRouter = require("./Routes/scholarshipRouter.js")
 const universityRoute = require("./Routes/universityRegistrationRouter.js")
 const scholarshipPostRoute = require("./Routes/scholarshipPostRouter.js")
-const scholarshipApply = require ("./Routes/scholarshipApplyRoutes.js")
-const mentorRoute=require("./Routes/mentorRoutes.js")
-const shortlist = require ("./Routes/shortlistRoute.js")
+const scholarshipApply = require("./Routes/scholarshipApplyRoutes.js")
+const mentorRoute = require("./Routes/mentorRoutes.js")
 const { ScholarshipApplicationController } = require('./Controllers/scholarshipApplicationController');
-
+const authToken = Cookies.get("auth_token");
 const cors = require('cors');
 require("dotenv").config();
 const app = express();
@@ -39,19 +40,19 @@ app.get('/getcookies', function (req, res) {
     // res.status(200).json({
     //     your_cookie:cookies,
     // });
-  })
-  const cookie = require('cookie');
-  
-  http.createServer((req, res) => {
+})
+const cookie = require('cookie');
+
+http.createServer((req, res) => {
     if (req.headers.cookie) {
-      const cookies = cookie.parse(req.headers.cookie);
-    //   console.log(cookies);
-    // ScholarshipApplicationController( { req, res, cookies });
+        const cookies = cookie.parse(req.headers.cookie);
+        //   console.log(cookies);
+        // ScholarshipApplicationController( { req, res, cookies });
     }
-  
+
     console.log('Hello World');
-  }).listen(3002);
-  
+}).listen(3002);
+
 app.use("/student", studentRoute);
 app.use("/document", documentRoute);
 app.use("/students", infoRoute);
@@ -63,10 +64,9 @@ app.use("/certificate", certificateRoute)
 app.use("/scholarship", scholarshipRouter)
 app.use("/mentor", mentorRoute)
 app.use("/university", universityRoute)
-app.use("/universityP",scholarshipPostRoute)
+app.use("/universityP", scholarshipPostRoute)
 app.use("/scholarship", scholarshipApply)
-app.use("/universityP" , scholarshipPostRoute)
-app.use("/shortlist" , shortlist)
+app.use("/universityP", scholarshipPostRoute)
 
 const httpServer = require('http').createServer(app); // Create an HTTP server
 // const io = new Server(httpServer, {
@@ -82,83 +82,20 @@ const io = new Server(httpServer, {
     }
 });
 
-// cron.schedule('* * * * *', async () => {
-//     try {
-//         const studentsWithSavedScholarships = await Student.find({
-//             savedScholarships: { $exists: true, $not: { $size: 0 } },
-//         });
 
-//         for (const student of studentsWithSavedScholarships) {
-//             for (const scholarship of student.savedScholarships) {
-//                 const deadlineTime = new Date(scholarship.deadline).getTime();
-//                 const twentyFourHoursLater = Date.now() + 24 * 60 * 60 * 1000;
 
-//                 if (deadlineTime >= Date.now() && deadlineTime <= twentyFourHoursLater) {
-//                     const userId = student.socketId; // Assuming socketId is stored in the student schema
-//                     const message = `The deadline for the scholarship "${scholarship.scholarshipName}" is approaching. Apply now!`;
-
-//                     // Call the function from the notification service
-//                     await sendNotification(userId, message, io);
-//                 }
-//             }
-//         }
-//     } catch (error) {
-//         console.error('Error checking approaching deadlines', error);
-//     }
-// });
-const convertCustomDeadlineToCron = (customDeadline) => {
-    const [month, day] = customDeadline.split('-');
-    const monthIndex = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].indexOf(month);
-
-    if (monthIndex !== -1) {
-        return `${parseInt(day) - 1} 2 * ${monthIndex + 1}`;
-    }
-
-    return null;
-};
-
-cron.schedule('*/12 * * * *', async () => {
-    console.log("Checking for scholarships with deadlines approaching...");
-
-    try {
-        const targetDate = "2024-05-29T00:00:00.000Z"; // The specific deadline date
-        const currentDate = new Date();
-
-        const studentsWithSavedScholarships = await Student.find({
-            savedScholarships: { $exists: true, $not: { $size: 0 } },
-        });
-
-        for (const student of studentsWithSavedScholarships) {
-            const scholarship = student.savedScholarships.find(
-                (scholarship) => scholarship.deadline === targetDate
-            );
-
-            if (scholarship && new Date(scholarship.deadline) > currentDate) {
-                // Only proceed if the scholarship deadline is still in the future
-                const userId = student.socketId; // Assuming socketId is stored in the student schema
-                const message = `The deadline i.e "${scholarship.deadline}"  for the scholarship "${scholarship.scholarshipName}" is approaching. Apply now!`;
-
-                // Call the function from the notification service
-                // make sure that 'sendNotification' and 'io' are defined and imported correctly
-                await sendNotification(userId, message, io);
-            }
-        }
-    } catch (error) {
-        console.error('Error checking approaching deadlines:', error);
-    }
-});
 
 let userSocketMap = {};
-
+let SocketID = null;
 io.on('connection', (socket) => {
     console.log(`User connected: ${socket.id}`);
-
+    SocketID = socket.id;
     // When a user sends their info (upon connection or login)
     socket.on('userInfo', (userInfo) => {
         userSocketMap[socket.id] = userInfo;
         console.log(`User Info received: ${JSON.stringify(userInfo)} for Socket ID: ${socket.id}`);
     });
-    
+
     // Handling incoming chat messages
     socket.on('sendMessage', (msg) => {
         console.log(`Message received: ${msg.text} from ${msg.senderId} to ${msg.recipientId}`);
@@ -180,6 +117,60 @@ io.on('connection', (socket) => {
         delete userSocketMap[socket.id]; // Remove the user from the mapping
     });
 });
+let lastNotificationTime = null; // Initialize lastNotificationTime variable
+
+
+cron.schedule('* * * * *', async () => { // Run once a day at midnight
+    try {
+        const currentTime = Date.now();
+
+        // Check if 24 hours have passed since the last notification
+        if (!lastNotificationTime || currentTime - lastNotificationTime >= 24 * 60 * 60 * 1000) {
+            const studentsWithSavedScholarships = await Student.find({
+                savedScholarships: { $exists: true, $not: { $size: 0 } },
+            });
+
+            for (const student of studentsWithSavedScholarships) {
+                for (const scholarship of student.savedScholarships) {
+                    const deadlineTime = new Date(scholarship.deadline).getTime();
+                    const twentyFourHoursLater = currentTime + 24 * 60 * 60 * 1000;
+
+                    if (deadlineTime >= currentTime && deadlineTime <= twentyFourHoursLater) {
+                        const userId = SocketID; // Assuming socketId is stored in the student schema
+                        const deadlineDate = new Date(scholarship.deadline).toDateString(); // Convert deadline to desired format
+                        const message = `The deadline for the scholarship "${scholarship.scholarshipName}" is ${deadlineDate}, which is just around the corner.\nApply now!`;
+                      
+                        const userId1 = student._id;
+                        
+                        // Check if the notification message already exists in the array
+                        const existingNotification = student.notifications.find(notification => notification.message === message);
+
+                        if (!existingNotification) {
+                            // Add the new notification to the array
+                            await Student.updateOne({ _id: userId1 }, { $push: { notifications: { message: message } } });
+
+                            // Log for debugging
+                            console.log(`Sending notification to user ${userId}: ${message}`);
+
+                            // Call the function from the notification service
+                            await sendNotification(userId, message, io);
+                        } else {
+                            console.log(`Notification already exists for user ${userId}: ${message}`);
+                        }
+                    }
+                }
+            }
+
+            // Update lastNotificationTime to current time
+            lastNotificationTime = currentTime;
+        } else {
+            console.log("Notifications already sent today.");
+        }
+    } catch (error) {
+        console.error('Error checking approaching deadlines', error);
+    }
+});
+
 
 const PORT = process.env.PORT || 3000;
 httpServer.listen(5000, () => {

@@ -199,7 +199,7 @@ const Sidebar1 = (props) => {
               
               >  
                 <div ref={container4} className="h-[40px] w-30 "></div>
-                <Text className="w-[70%] sm:w-full">Track Application </Text>
+                <Text className="w-[70%] sm:w-full">Notifications </Text>
                 
               </MenuItem>
               </Link>
