@@ -70,8 +70,7 @@ const SaveScholarship = () => {
   
 
   return (
-  
-
+ 
     <div className="h-[1528px] md:h-auto relative">
       <div className="flex md:flex-col justify-center items-start w-full">
       </div>
@@ -152,7 +151,7 @@ const SaveScholarship = () => {
                         Amount: {scholarship.amount}
                       </Text>
                       <Text size="txtNunitoRegular16" >
-                        Deadline: {scholarship.deadline}
+                        Deadline: {new Date(scholarship.deadline).toLocaleDateString('en-US')}
                       </Text>
                     </div>
                     <div className="w-[10%] sm:w-full object-cover rounded-[20px]">

@@ -28,7 +28,7 @@ const scholarshipPostSchema = new mongoose.Schema({
         type:Number,
         required: true
     },
-    educationPreference: {
+    scholarshipLevel: {
         type: String,
         required: true
     },

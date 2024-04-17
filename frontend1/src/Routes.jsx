@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "pages/Home.jsx";
 import NotFound from "pages/NotFound";
 import LoadingPage from "pages/LoadingPage";
+import RecommendedScholarships from "pages/RecommendedScholarships";
+import ShowShortlistedStudents from "pages/ShowShortListed";
 const AcademicForm = React.lazy(() => import("pages/AcademicForm"));
 const PersonalForm= React.lazy(() => import("pages/PersonalForm"));
 const Signup = React.lazy(() => import("pages/Signup"));
@@ -70,6 +72,7 @@ const ProjectRoutes = () => {
           <Route path="/MentorProfile" element={<MentorProfile/>} />
           <Route path="/MentorForm" element={<MentorForm/>} />
           <Route path="/MentorPublished" element={<MentorPublished/>} />
+          <Route path="/RecommendedScholarships" element={<RecommendedScholarships/>}/>
           <Route path="/tracking" element={<TrackApplication/>}/>
           <Route path="/link" element={<MeetingLink/>}/>
           <Route path="/linkupdate" element={<UpadteLink/>}/>
@@ -78,6 +81,7 @@ const ProjectRoutes = () => {
           <Route path="/chats" element={<SChats/>} />
           <Route path="/Mchats" element={<MChats/>} />
           <Route path="/Recommended" element={<Recommended/>} />
+          <Route path="/Shortlisted" element={<ShowShortlistedStudents/>} />
         </Routes>
       </Router>
     </React.Suspense>

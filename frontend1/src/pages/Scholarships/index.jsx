@@ -1,6 +1,4 @@
 import React from "react";
-import { database } from "../../utils/configFirebase";
-import { get, ref } from "firebase/database";
 import { useEffect, useState, useRef } from "react";
 import Cookies from "js-cookie";
 import { Link } from 'react-router-dom';
@@ -9,7 +7,38 @@ import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import lottie from 'lottie-web';
+import "./modal.css";
+
 const Scholarships = () => {
+  const [showModal, setShowModal] = useState(false); // Set to false initially to hide the modal
+
+  useEffect(() => {
+    console.log("Inside useEffect");
+  
+    const timeoutId = setTimeout(() => {
+      console.log("Timeout callback");
+  
+      const modalShown = localStorage.getItem("modalShown");
+      console.log("Modal shown from localStorage:", modalShown);
+  
+      // Check if modalShown is not a truthy string (e.g., "true")
+      if (!modalShown || modalShown !== "true") {
+        console.log("Modal not shown before, showing now");
+        setShowModal(true); // Show the modal if it hasn't been shown before
+        localStorage.setItem("modalShown", "true"); // Set modalShown in local storage
+      }
+    }, 2500); // Open the modal after 2.5 seconds
+  
+    return () => {
+      console.log("Cleanup function");
+      clearTimeout(timeoutId); // Cleanup the timeout on component unmount
+    };
+  }, []);
+  
+  const handleCloseModal = () => {
+    setShowModal(false); // Close the modal when the user clicks outside or on the close button
+  };
+  
   const navigate = useNavigate();
 
   const [data, setData] = useState([]);
@@ -33,6 +62,7 @@ const Scholarships = () => {
 
     fetchData();
   }, []);
+
   useEffect(() => {
     // Filter the scholarships based on the search term
     const filtered = data.filter(scholarship => scholarship.scholarshipName.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -103,8 +133,7 @@ const Scholarships = () => {
     useRef(null),
     useRef(null)
   ]);
-
-
+  
   useEffect(() => {
     if (filteredData.length > 0) {
       filteredData.slice(0, 30).forEach((filteredData, index) => {
@@ -130,7 +159,7 @@ const Scholarships = () => {
   }, [filteredData]);
   return (
     <>
-      
+
       <div className="h-[1528px] md:h-auto relative">
         <div className="flex md:flex-col justify-center items-start w-full">
         </div>
@@ -248,7 +277,7 @@ const Scholarships = () => {
                                 Cookies.set('universityName', scholarship.uniname);
                                 Cookies.set('scholarshipName', scholarship.scholarshipName);
                                 Cookies.set('uniId', scholarship.uniId)
-                              
+
 
                                 window.location.href = '/applyPost';
                               }}
@@ -288,6 +317,63 @@ const Scholarships = () => {
         </div>
         <Sidebar1 className="!fixed !w-[346px] bg-gradient3 flex f-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-10 shadow-bs" />
       </div>
+      {showModal && (
+  <div className="modal">
+    <div className="modal-content">
+      <span className="close" onClick={handleCloseModal}>
+        &times;
+      </span>
+      <div className="flex justify-center items-center h-full">
+        <div className="flex flex-col gap-8 items-center justify-center w-4/5 md:w-full">
+        <Text as="p" className="w-[87%] md:w-full mt-[15px] tracking-[2.00px] text-justify"
+                
+                >
+                  Streamline your search by uploading your CV to be matched with positions that best suit your qualifications.
+                </Text>
+          <div className="bg-gray-100 border border-solid border-white-A700 flex flex-col items-center justify-center p-6 md:p-5 rounded-md w-full">
+            
+            <div className="border border-black-900 border-dashed flex flex-col gap-8 items-center justify-center p-6 sm:p-5 rounded-md w-full">
+              <label className="custom-file-upload">
+                <input
+                  type="file"
+                  // onChange={handleFileChange}
+                  style={{ display: "none" }}
+                />
+                <img
+                  className="h-32 md:h-auto object-cover cursor-pointer"
+                  src="images/img_icons8files1.png"
+                  alt="icons8filesOne"
+                  // onClick={() => fileInputRef.current}
+                />
+              </label>
+              <div style={{ marginTop: "10px" }}>
+                <button
+                  // onClick={handleUpload}
+                  // style={{
+                  //   padding: "10px 20px",
+                  //   backgroundColor: "#058B9E",
+                  //   color: "white",
+                  //   border: "none",
+                  //   borderRadius: "5px",
+                  //   cursor: "pointer",
+                  //   fontSize: "16px",
+                  //   marginTop: "10px", // Add margin top for spacing
+                  //   display: fileSelected ? 'block' : 'none' // Show the button only if a file is selected
+                  // }}
+                >
+                  Upload Selected file
+                </button>
+              </div>
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
     </>
   );
 };

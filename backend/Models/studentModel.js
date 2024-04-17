@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const studentSchema = mongoose.Schema({
   username: {
     type: String,
@@ -29,6 +30,18 @@ const studentSchema = mongoose.Schema({
     },
   ],
   socketId: String,
+  notifications: [
+    {
+      message: {
+        type: String,
+        required: true,
+      },
+      timestamp: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 }, {
   timestamps: true
 });

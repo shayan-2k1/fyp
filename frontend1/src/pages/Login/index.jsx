@@ -7,6 +7,7 @@ import { Button, Img, Input, Line, List, Text } from "components";
 import lottie from 'lottie-web';
 
 const Login = () => {
+  localStorage.clear();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

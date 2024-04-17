@@ -203,7 +203,8 @@ const AllMentors = () => {
                                                       
                                                         onClick={() => {
                                                             console.log("mentor id fro passing "+ mentor._id);
-                                                            navigate("/chats", { state: { mentorId: mentor.userid } }); 
+                                                            navigate("/chats", { state: { mentorId: mentor.userid, mentorName: mentor.name } });
+ 
                                                           }}
                                                         ></div>
                                                            

@@ -8,39 +8,37 @@ dotenv.config();
 // Controller to shortlist a student for a scholarship
 async function shortlistedScholarship(req, res) {
     try {
-        const { scholarshipId } = req.body;
-
-        // Extract userId from authorization header
-        const authToken = req.headers.authorization;
-        if (!authToken) {
-            return res.status(401).json({ error: 'Authorization header missing' });
-        }
-        const token = authToken.split(' ')[1];
-        const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
-        const userId = decodedToken.userId;
-
-        // Check if the student is already shortlisted for the scholarship
-        let existingShortlist = await ShortlistStudent.findOne({ scholarshipId });
-
-        if (existingShortlist) {
-            // Check if the student is already in the shortlist
-            if (existingShortlist.userIds.includes(userId)) {
-                return res.status(400).json({ error: 'Student already shortlisted for this scholarship' });
-            } else {
-                // Append the new userId to the existing shortlist
-                existingShortlist.userIds.push(userId);
-                await existingShortlist.save();
-            }
+      const { authorization } = req.headers;
+  
+      if (!authorization) {
+        return res.status(401).json({ error: "Unauthorized!" });
+      }
+  
+      const token = authorization.split(" ")[1];
+      const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
+      const userId = decodedToken.id;
+      console.log(userId);
+  
+      const { scholarshipId } = req.body; // Make sure scholarshipId is available in the request body
+      console.log(scholarshipId);
+      let existingShortlist = await ShortlistStudent.findOne({ scholarshipId });
+  
+      if (existingShortlist) {
+        if (existingShortlist.userIds.includes(userId)) {
+          return res.status(400).json({ error: 'Student already shortlisted for this scholarship' });
         } else {
-            // Create a new shortlist entry
-            const shortlist = new ShortlistStudent({ scholarshipId, userIds: [userId] });
-            await shortlist.save();
+          existingShortlist.userIds.push(userId);
+          await existingShortlist.save();
         }
-
-        res.status(201).json({ message: 'Student successfully shortlisted for the scholarship' });
+      } else {
+        const shortlist = new ShortlistStudent({ scholarshipId, userIds: [userId] });
+        await shortlist.save();
+      }
+  
+      res.status(201).json({ message: 'Student successfully shortlisted for the scholarship' });
     } catch (error) {
-        console.error('Error shortlisting student:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+      console.error('Error shortlisting student:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
 }
 

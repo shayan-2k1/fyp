@@ -1,59 +1,66 @@
 import React from "react";
-import { database } from '../../utils/configFirebase';
-import { get, ref } from 'firebase/database';
-import { useEffect, useState } from "react";
+import { database } from "../../utils/configFirebase";
+import { get, ref } from "firebase/database";
+import { useEffect, useState, useRef } from "react";
 import Cookies from "js-cookie";
-import { Button, Img, Line, List, Text, Input } from "components";
+import { Link } from 'react-router-dom';
+import { Button, Img, Line, List, Text, Input, Heading } from "components";
 import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import StudyInterest from "pages/StudyInterest";
- 
+import lottie from 'lottie-web';
+
 const RecommendedScholarships = () => {
   const navigate = useNavigate();
-  // const { collapseSidebar, collapsed } = useProSidebar();
-  const [scholarshipData, setScholarshipData] = useState([]);
-  const [interestData, setInterestData]=useState({});
-  const [academicData, setAcademicData]=useState({});
-  const [filteredData, setfilteredData]=useState([]);
+
+  const [data, setData] = useState([]);
   const [scholarshipName, setscholarshipName] = useState("");
   const authToken = Cookies.get("auth_token");
   const [deadlineDate, setdeadlineDate] = useState("");
   const [scholarshipBudget, setscholarshipBudget] = useState("");
-  // const [amount, setAmount] = useState("");
-  // const []
-
-
+  const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term
+  const [filteredData, setFilteredData] = useState([]);
+  // const [interestData, setInterestData]=useState({});
+  const [academicData, setAcademicData]=useState({});
+  const [filteredScholarships, setfilteredScholarships]=useState([]);
+  const authToken = Cookies.get("auth_token");
   useEffect(() => {
-    const fetchScholarshipData = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/universityP/getS");
-        setScholarshipData(response.data);
+        const response = await axios.get(
+          "http://localhost:3000/universityP/getS"
+        );
+        setData(response.data);
       } catch (error) {
         console.error("Error fetching scholarships:", error);
       }
     };
 
-    fetchScholarshipData();
+    fetchData();
   }, []);
+  useEffect(() => {
+    // Filter the scholarships based on the search term
+    const filtered = data.filter(scholarship => scholarship.scholarshipName.toLowerCase().includes(searchTerm.toLowerCase()));
+    setFilteredData(filtered);
+  }, [searchTerm, data]);
 
-  useEffect(()=>{
-    const fetchInterestData = async ()=>{
-      try{
-        const response = await axios.get("http://localhost:3000/studyInterest/getStudyInterest",
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        });
-        setInterestData(response.data);
-        console.log(interestData);
-      }catch(error){
-        console.log("Error fetching study interest",error);
-      }
-    };
-    fetchInterestData();
-  },[])
+  // useEffect(()=>{
+  //   const fetchInterestData = async ()=>{
+  //     try{
+  //       const response = await axios.get("http://localhost:3000/studyInterest/getStudyInterest",
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${authToken}`,
+  //         },
+  //       });
+  //       setInterestData(response.data);
+  //       console.log("All interest data",interestData);
+  //     }catch(error){
+  //       console.log("Error fetching study interest",error);
+  //     }
+  //   };
+  //   fetchInterestData();
+  // },[])
 
   useEffect(()=>{
     const fetchAcademicData = async ()=>{
@@ -66,74 +73,58 @@ const RecommendedScholarships = () => {
         });
         setAcademicData(response.data);
       }catch(error){
-        console.log("Error fetching study interest",error);
+        console.log("Error fetching academic data",error);
       }
     }
     fetchAcademicData();
   },[])
 
-  console.log(academicData.degree);
-  console.log(academicData.discipline);
-  console.log(interestData.placeToStudy);
 
   useEffect(() => {
-    const filterScholarships = async () => {
-      try {
-          const promises = scholarshipData.map(async (item) => {
-              if (
-                  ((academicData.degree === 'BS') && (item.scholarshipLevel === 'Masters')) ||
-                  ((academicData.degree === 'Masters') && (item.scholarshipLevel === 'PhD')) ||
-                  ((academicData.degree === 'PhD') && (item.scholarshipLevel === 'PhD')) ||
-                  (interestData.placeToStudy === item.placeOfScholarship) ||
-                  (academicData.discipline === item.eligibleDomain[0])
-              ) {
-                  return item;
-              }
-          });
-  
-          const filteredItems = await Promise.all(promises);
-           setfilteredData(filteredItems.filter(item => (item.eligibleDomain != academicData.discipline)));
-           console.log(filteredData);
-      } catch (error) {
-          console.log("Error recommending", error);
-      }
-  };
-  
-        // try {
-        //     const promises = scholarshipData.map(async (item) => {
-        //         const response = await axios.post("http://127.0.0.1:5000/recommend", {
-        //             edLevel: academicData.degree,
-        //             country: interestData.placeToStudy,
-        //             domain: academicData.discipline,
-        //             eduLevel: item.scholarshipLevel,
-        //             schlCountry: item.countryOfScholarship,
-        //             eligibleDomain: item.eligibleDomain[0]
-        //         });
-        //         const prediction_json = response.data;
-        //         if (prediction_json > 0.5) {
-        //             return item;
-        //         }
-        //         return null;
-        //     });
-        //     const filteredItems = await Promise.all(promises);
-        //     const filteredData = filteredItems.filter(item => item !== null);
-        //     console.log(filteredData);
-        //     // Do something with filteredData
-        // } catch (error) {
-        //     console.error("Error filtering scholarships:", error);
-        // }
 
-    
-    filterScholarships();
-}, [scholarshipData,academicData,interestData]);
-  
+    console.log("Degree:",academicData.degree);
+    console.log("Discipline:",academicData.discipline);
+    console.log("Place to Study:",academicData.country);
+
+    if (academicData.degree && academicData.discipline && academicData.country) {
+        const filterScholarships = async () => {
+            try {
+                const promises = data.map(async (item) => {
+                    const response = await axios.post("http://127.0.0.1:5000/recommend", {
+                        Education_Level: [academicData.degree],
+                        Country_Preference: [academicData.country],
+                        Domain_Area: [academicData.discipline],
+                        Scholarship_Level: [item.scholarshipLevel],
+                        Country_of_Scholarship: [item.countryOfScholarship],
+                        Eligible_Domain: [item.eligibleDomain[0]],
+                    });
+                    
+                    if (response.data.predictions[0] === 1) {
+                        return item;
+                    }
+                });
+
+                const filteredItems = await Promise.all(promises);
+                setfilteredScholarships(filteredItems.filter(item => (item !== null && item!==undefined)));
+            } catch (error) {
+                console.log("Error recommending", error);
+            }
+        };
+
+        filterScholarships();
+    }
+}, [academicData]);
+
+useEffect(() => {
+  setData(filteredScholarships);
+}, [filteredScholarships]);
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
   const handleSave = async () => {
-   
     try {
-      console.log("in save")
-      console.log(scholarshipName)
-      console.log(deadlineDate)
-      console.log(scholarshipBudget)
+
       const response = await axios.post(
         "http://localhost:3000/scholarship/save",
         {
@@ -143,7 +134,7 @@ const RecommendedScholarships = () => {
         },
         {
           headers: {
-            Authorization:  `Bearer ${authToken}`,
+            Authorization: ` Bearer ${authToken}`,
           },
         }
       );
@@ -157,193 +148,232 @@ const RecommendedScholarships = () => {
   };
 
   const handleClick = () => {
-    // Navigate to the next page
-    navigate('/next-page');
+
+    navigate("/applyPost");
   };
+  const animationContainersRefs = useRef([
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null)
+  ]);
+
+
+  useEffect(() => {
+    if (filteredData.length > 0) {
+      filteredData.slice(0, 30).forEach((filteredData, index) => {
+        try {
+          const containerRef = animationContainersRefs.current[index];
+          if (containerRef && containerRef.current) {
+            // Clear previous animation
+            containerRef.current.innerHTML = '';
+            // Load new animation
+            lottie.loadAnimation({
+              container: containerRef.current,
+              renderer: 'svg',
+              loop: true,
+              autoplay: true,
+              animationData: require('./save.json')
+            });
+          }
+        } catch (error) {
+          console.error('Error loading animation:', error);
+        }
+      });
+    }
+  }, [filteredData]);
+
+  console.log("Filtered Scholarships: ",filteredScholarships);
+  console.log("Filtered Data: ",filteredData);
   return (
     <>
-      <div className="bg-gray-300 h-[1196px] mx-auto overflow-auto relative w-full">
-        <div className="absolute font-cairo md:h-[1175px] h-[1194px] inset-[4] justify-center m-auto md:px-5 w-full">
-          <div className="absolute h-[1175px] inset-[3] justify-left m-auto w-full">
-            <div className="bg-white-A700 flex flex-col h-full items-start justify-start m-auto p-6 sm:px-5 w-full">
-              <div className="absolute bg-white-A700 flex flex-col gap-[41px] items-center justify-end p-0.5 left-[20px] top-[8%] w-[47%]">
-                {" "}
-                <Text
-                  className="md:ml-[10] ml-[272px] mt-[20px] text-4xl sm:text-[20px] md:text-[5px] text-cyan-700 tracking-[3.60px]"
-                  size="txtOverpassExtraBold36"
-                >
-                  Recommended{" "}
-                </Text>
+      
+      <div className="h-[1528px] md:h-auto relative">
+        <div className="flex md:flex-col justify-center items-start w-full">
+        </div>
+        <div className="flex justify-end w-full top-[0.00px] right-0 left-0 p-6 m-auto sm:p-5 bg-white-A700 absolute">
+          <div className="flex flex-col items-start w-[95%] md:w-full mb-[736px] mr-[5px] md:mr-0">
+            <div className="flex md:flex-col flex-row font-cairo md:gap-7 gap-[135px] items-start justify-end md:ml-[0] ml-[81px] w-[97%] md:w-full">
 
-                {/* <Text
-                className="md:ml-[0] ml-[45px] mt-[3px] sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 tracking-[2.50px] text-center" // Aligns text to the center
-                size="txtOverpassExtraBold25"
-              >
-                Master’s degrees from all around the world
-              </Text> */}
-
-              </div>
-            </div>
-
-          </div>
-          <div className="absolute bg-white-A700 flex md:flex-col flex-row gap-[53px] items-center justify-center p-1.5 right-[0] shadow-bs top-[0] w-[80%]">
-
-            <Input
-              name="searchbox"
-              placeholder="Search here"
-              className="font-semibold leading-[normal] p-0 placeholder:text-gray-500 text-base text-left w-full"
-              wrapClassName="flex md:ml-[0] ml-[34px] md:mt-0 mt-[9px] rounded-[34px] w-2/5 md:w-full"
-              prefix={
-                <Img
-                  className="h-7 mr-5 my-px"
-                  src="images/img_search_2.svg"
-                  alt="search 2"
-                />
-              }
-              color="gray_50"
-              size="sm"
-            ></Input>
-            {/* </div> */}
-            <div className="flex flex-row font-nunito gap-20 h-[29px] md:h-auto items-start justify-start mr-[245px] w-[445px] sm:w-full">
-              <button
-                className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
-                size="txtNunitoRegular20"
-              // onClick={handleSave}
-              >
-                Save
-              </button>
-              <button
-                className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
-                size="txtNunitoRegular20"
-              >
-                Notifications
-              </button>
-              <div className="flex flex-row items-start justify-between w-[100px]">
-                <button
-                  className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
-                  size="txtNunitoRegular20"
-                >
-                  Blogs
-                </button>
-                <div className="overflow-x-auto">
-                  <div className="flex flex-row items-center justify-between py-[7px] w-full">
+              <div className="bg-white-A700 flex md:flex-col flex-row gap-[19px] items-center justify-start p-[13px] shadow-bs3 w-[90%] md:w-full">
+                <Input
+                  name="searchbox"
+                  placeholder="Search here"
+                  className="font-semibold leading-[normal] p-0 placeholder:text-gray-500 text-base text-left w-full"
+                  wrapClassName="flex md:ml-[0] ml-[34px] md:mt-0 mt-[9px] rounded-[34px] w-2/5 md:w-full"
+                  prefix={
                     <Img
-                      className="h-3 w-3"
-                      src="images/img_arrowup_blue_gray_800.svg"
-                      alt="arrowup_One"
+                      className="h-7 mr-5 my-px"
+                      src="images/img_search_2.svg"
+                      alt="search 2"
                     />
-                    {/* <Img
-                      className="h-2"
-                      src="images/img_arrow.svg"
-                      alt="arrow"
-                    /> */}
-                  </div>
+                  }
+                  color="gray_50"
+                  size="sm"
+                  onChange={handleSearchChange}
+                ></Input>
+                <div className="flex flex-row font-nunito gap-20 items-start justify-start w-auto sm:w-full">
+                  <Text
+                    className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
+                    size="txtNunitoRegular20"
+                  >
+
+                  </Text>
+                  <Text
+                    className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
+                    size="txtNunitoRegular20"
+                  >
+
+                  </Text>
+
+                  <Text
+                    className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
+                    size="txtNunitoRegular20"
+                  >
+
+                  </Text>
+                  <Text
+                    className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
+                    size="txtNunitoRegular20"
+                  >
+                    Save
+                  </Text>
+                  <Text
+                    className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
+                    size="txtNunitoRegular20"
+                  >
+                    Notifications
+                  </Text>
+                  <Text
+                    className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
+                    size="txtNunitoRegular20"
+                  >
+                    Blogs
+                  </Text>
+
+
+
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <Img
-          className="absolute h-[9px] left-[38%] top-[30%]"
-          src="images/img_megaphone.svg"
-          alt="megaphone"
-        />
-        <div className="absolute font-cairo overflow-x-auto right-[0] top-[1%] w-[14%]">
-          <div className="flex flex-row gap-6 items-center justify-between w-full">
-            <div className="flex flex-col h-[57px] items-center justify-start md:px-5 w-[57px]">
+            <Text
+              className="md:ml-[0] ml-[272px] mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px]"
+              size="txtOverpassExtraBold36"
+            >
+              RECOMMENDED SCHOLARSHIPS{" "}
+            </Text>
+            <>
+              {filteredData.map((scholarship, index) => (
+                <div key={scholarship.scholarshipName} className="flex  overflow-hidden h-screen h-[298px] w-[79%] md:h-auto ml-[280px] mt-[30px] relative">
 
-            </div>
-            <div className="flex flex-col items-center justify-start md:px-5">
-
-            </div>
-          </div>
-        </div>
-        <Sidebar1 className="!sticky !w-[400px] bg-gradient  flex h-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-5 shadow-bs" />
-        <div className="absolute flex flex-col font-nunito items-start justify-start left-[23%] md:px-5 top-[20%]">
-          <div>
-          {filteredData.map((data)=>(
-              <div key={data.scholarshipName} className="card">
-
-
-                <div className="bg-white-A700 flex flex-col items-center justify-end p-1 shadow-bs w-full">
-                  <div className="flex flex-col items-center justify-start mt-[21px] w-[99%] md:w-full">
-
-                    <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between w-full" onChange={(e) => {
-
-                    }}>
-                      <Text
-                        className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-cyan-700 text-right tracking-[2.50px]"
-                        size="txtNunitoBold25"
-                      >
-                        {data.scholarshipName}
-                      </Text>
-                      <Text
-                        className="mb-0.5 sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                        size="txtNunitoBold25Bluegray800"
-                      >
-                        {data.scholarshipBudget} USD/YEAR
-                      </Text>
-                    </div>
-                    <div className="flex sm:flex-col flex-row md:gap-10 items-start justify-between mt-2.5 w-full" >
-                      <Text
-                        className="sm:mt-0 mt-[7px] text-blue_gray-800 text-xl tracking-[2.00px]"
-                        size="txtNunitoRegular20"
+                  <div className="w-full font-nunito h-max left-0 bottom-0 right-0 top-0 p-[23px] m-auto sm:p-5 bg-teal-50 absolute rounded-[20px]">
+                    <div className="flex flex-col items-center ml-0.5 md:ml-0">
+                      <Heading as="h2"
+                        className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] !text-cyan-700 text-right tracking-[2.50px]"
+                        size="txtOverpassExtraBold36">
+                        {scholarship.scholarshipName}
+                      </Heading>
+                      <Text as="p" className="w-[87%] md:w-full mt-[15px] tracking-[2.00px] text-justify"
                       >
                         {data.description}
                       </Text>
-                      <Text
-                        className="sm:text-[21px] md:text-[23px] text-[25px] text-blue_gray-800 text-right tracking-[2.50px]"
-                        size="txtNunitoBold25Bluegray800"
+                      <div className="flex self-stretch justify-between items-center mt-[20px] gap-5"
                       >
-                        {data.deadlineDate}
-                      </Text>
-                    </div>
-                    <div className="flex md:flex-col flex-row md:gap-5 items-end justify-start mt-[7px] w-full">
+                        <div className="flex flex-col items-start">
+                          <Text as="p" className="!text-cyan-700"
+                          >
 
-                      <div className="flex flex-col items-start justify-start md:mt-0 mt-[9px]">
-                        <Text
-                          className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                          size="txtNunitoRegular18"
-                        >
-                          {data.countryOfScholarship}
-                        </Text>
-                        <Text
-                          className="text-blue_gray-800 text-center text-lg tracking-[1.80px]"
-                          size="txtNunitoRegular18"
-                        >
-                          {data.eligibleDomain}
-                        </Text>
+                            {new Date(scholarship.deadlinedate).toLocaleDateString('en-US')}
+                          </Text>
+                          <Text as="p" className="!text-cyan-700"
+                          >
+                            {scholarship.countryOfScholarship}
+                          </Text>
+                          <Text as="p" className="!text-cyan-700"
+                          >
+                            {scholarship.scholarshipBudget} USD/YEAR
+                          </Text>
+                        </div>
+                        <div className="flex md:flex-row self-end w-[12%] mb-1.5 gap-7">
+                          <div className="h-[40px] w-[40px] md:h-auto relative">
+                            <Button
+                              className="cursor-pointer font-bold font-roboto leading-[normal] min-h-[10px]   min-w-[80px] sm:min-w-full  mt-[1px] text-[10px] sm:text-xl tracking-[1.60px] uppercase "
+                              shape="round"
+                              onClick={() => {
+
+                                Cookies.set('scholarshipId', scholarship._id);
+                                Cookies.set('universityName', scholarship.uniname);
+                                Cookies.set('scholarshipName', scholarship.scholarshipName);
+                                Cookies.set('uniId', scholarship.uniId)
+                              
+
+                                window.location.href = '/applyPost';
+                              }}
+                            >
+                              Apply
+                            </Button>
+
+                          </div>
+                          <div className=" md:h-auto relative">
+
+
+                            <div ref={animationContainersRefs.current[index]} style={{ width: '100%', height: '100%' }}
+                              onClick={() => {
+                                setscholarshipName(scholarship.scholarshipName);
+                                setdeadlineDate(scholarship.deadlinedate);
+                                setscholarshipBudget(scholarship.scholarshipBudget);
+                                handleSave();
+                              }}
+                            ></div>
+
+
+                          </div>
+                        </div>
                       </div>
-                      
-                      <Img
-                        className="h-[52px] mb-[11px]"
-                        src="images/img_bookmark.svg"
-                        alt="bookmark"
-                        onClick={() => {
-                          setscholarshipName(data.scholarshipName);
-                          setdeadlineDate(data.deadlineDate);
-                          setscholarshipBudget(data.scholarshipBudget);
-                          handleSave();
-                      }}
-                      
-                      />
-                      <Button
-      className="cursor-pointer font-bold font-roboto leading-[normal] mx-auto  min-w-[150px] sm:min-w-full ml-20 mt-[25px] text-[10px] sm:text-xl tracking-[1.60px] uppercase"
-      shape="round"
-      onClick={handleClick} // Call handleClick when the button is clicked
-    >
-      Apply
-    </Button>
                     </div>
                   </div>
+
                 </div>
-              </div>
-            ))}
+              ))}
+
+            </>
+
           </div>
+
+
+
         </div>
+        <Sidebar1 className="!fixed !w-[346px] bg-gradient3 flex f-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-10 shadow-bs" />
       </div>
     </>
   );
 };
 
 export default RecommendedScholarships;
+ 

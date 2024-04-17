@@ -1,13 +1,16 @@
 import { useEffect, useState, useRef } from 'react';
 import { io } from 'socket.io-client';
 import Cookies from "js-cookie";
+import axios from 'axios';
 import { Img, Text, Heading, Input } from "../../components";
 import Sidebar1 from "components/Sidebar1";
 import lottie from 'lottie-web';
 const SOCKET_SERVER_URL = 'http://localhost:5000';
 
 
+
 const Notification = () => {
+  const container = useRef(null)
   const container = useRef(null)
   const [notifications, setNotifications] = useState([]);
   const authToken = Cookies.get("auth_token");
@@ -29,8 +32,41 @@ const Notification = () => {
     } catch (error) {
       console.error('Error loading animation:', error);
     }
+    fetchSavedNotifications();
   }, []);
-  
+  const fetchSavedNotifications = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/scholarship/getnotification', {
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
+      });
+
+      setNotifications(response.data.notifications);
+    } catch (error) {
+      console.error('Error fetching saved notifications:', error);
+    }
+  };
+  const dismissNotification = async (index, notificationId) => {
+    // Remove the notification from the notifications array
+    setNotifications((prevNotifications) => {
+      const updatedNotifications = [...prevNotifications];
+      updatedNotifications.splice(index, 1);
+      return updatedNotifications;
+    });
+
+    // Make an API request to remove the notification from the database
+    try {
+      await axios.delete(`http://localhost:3000/scholarship/dismissnotifications/${notificationId}`, {
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
+      });
+    } catch (error) {
+      console.error('Error dismissing notification:', error);
+    }
+  };
+
   useEffect(() => {
     if (notifications.length > 0) {
       notifications.slice(0, 4).forEach((notification, index) => {
@@ -77,14 +113,7 @@ const Notification = () => {
     };
   }, [authToken]);
   return (
-    // <div>
-    //   <p>Your Notification Component</p>
-    //   <ul>
-    //     {notifications.map((notification, index) => (
-    //       <li key={index}>{notification.message}</li>
-    //     ))}
-    //   </ul>
-    // </div>
+  
     <div className="h-[1528px] md:h-auto relative">
       <div className="flex md:flex-col justify-center items-start w-full">
       </div>
@@ -166,12 +195,14 @@ const Notification = () => {
               {notifications.map((notification, index) => (
                 <div key={index} className="flex justify-center w-full p-[15px] border-gray-800 border-solid bg-gradient6 rounded-[15px] mb-2">
                   <div className="flex sm:flex-col justify-between items-start w-full mt-[11px] mb-[21px] gap-5">
-                    <div className="flex text-white-A700 flex-col items-start mb-[7px] gap-[3px]">
-                      <Text className="text-white-A700" as="h4">{notification.title}</Text>
-                      <Text as="p" className="opacity-0.5">{notification.message}</Text>
+                    <div className=" flex  font-nunito text-white-A700 flex-col items-start mb-[7px] gap-[3px]">
+                      <Text className="font-nunito text-white-A700" as="h4">{notification.title}</Text>
+                      <Text as="p" >{notification.message}</Text>
                      
                     </div>
-                    
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => dismissNotification(index, notification._id)}>
+                          Dismiss
+                        </button>
                       <div className="w-[12%] sm:w-full object-cover rounded-[20px]">
                       <div ref={animationContainersRefs.current[index]} style={{ width: '100%', height: '100%' }}></div>
                        
@@ -181,27 +212,7 @@ const Notification = () => {
                 </div>
               ))}
             </div>
-            <div className="w-[83%] gap-px grid-cols-[repeat(auto-fill,minmax(571px,_3fr))] grid gap-2">
-              
-              
-                <div className="flex justify-center w-full p-[15px] border-gray-800 border-solid bg-gradient6 rounded-[15px] mb-2">
-                  <div className="flex sm:flex-col justify-between items-start w-full mt-[11px] mb-[21px] gap-5">
-                    <div className="flex text-white-A700 flex-col items-start mb-[7px] gap-[3px]">
-                      <Text className="text-white-A700" as="h4">Scholarship New</Text>
-                      <Text as="p" className="opacity-0.5">Deadline is approching !</Text>
-                      <div className="w-[12%] sm:w-full object-cover rounded-[20px]">
-                      <div ref={container} className="absolute inset-0" style={{ width: '12%', height: '12%' }}></div>
-                       
-                      </div>
-                      
-                    </div>
-                    
-                     
-                 
-                  </div>
-                </div>
-             
-            </div>
+            
           </div>
         </div>
       </div>
