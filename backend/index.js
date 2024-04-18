@@ -24,6 +24,7 @@ const universityRoute = require("./Routes/universityRegistrationRouter.js")
 const scholarshipPostRoute = require("./Routes/scholarshipPostRouter.js")
 const scholarshipApply = require("./Routes/scholarshipApplyRoutes.js")
 const mentorRoute = require("./Routes/mentorRoutes.js")
+const insightRoute = require("./Routes/insightRouter.js")
 const { ScholarshipApplicationController } = require('./Controllers/scholarshipApplicationController');
 const authToken = Cookies.get("auth_token");
 const cors = require('cors');
@@ -70,7 +71,7 @@ app.use("/university", universityRoute)
 app.use("/universityP", scholarshipPostRoute)
 app.use("/scholarship", scholarshipApply)
 app.use("/universityP", scholarshipPostRoute)
-
+app.use("/insight", insightRoute)
 const httpServer = require('http').createServer(app); // Create an HTTP server
 // const io = new Server(httpServer, {
 //     cors: {
