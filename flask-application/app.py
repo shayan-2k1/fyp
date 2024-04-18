@@ -7,8 +7,8 @@ from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 
-CORS(app, origins='http://localhost:3001')
-
+# CORS(app, origins='http://127.0.0.1:3001')
+CORS(app)
 # Load the saved model
 loaded_model1 = load_model("./recommender_system/my_model.h5")
 loaded_model2 = load_model("./shortlisting_model/my_model.h5")
