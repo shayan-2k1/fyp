@@ -363,7 +363,7 @@ const PersonalForm = () => {
                         name="gender"
                         value={gender}
                         onChange={(e) => setGender(e.target.value)}
-                        placeholder="male"
+                        placeholder="female"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"

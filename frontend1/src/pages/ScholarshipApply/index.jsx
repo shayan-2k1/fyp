@@ -281,8 +281,8 @@ function ScholarshipApplicationForm() {
         // fieldOfInterest,
         // participationYear,
         // achievements,
-        selectedCertificate:selectedCertificate,
-        selectedDocuments:selectedDocuments,
+        selectedCertificate,
+        selectedDocuments,
   }, {
     headers: {
       Authorization: `Bearer ${authToken}`,
@@ -310,7 +310,7 @@ function ScholarshipApplicationForm() {
       // Optionally, you can show a success message or redirect the user to another page
     } catch (error) {
 
-      alert("Fill in all field. Budget must be > 30000. Enter valid Country")
+      alert("Fill in all field. Budget must be > 30000. Enter valid Country. Can't apply Twice")
       console.error("Error submitting application:", error);
       // Handle error, show error message to user, etc.
     }
