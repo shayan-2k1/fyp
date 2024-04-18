@@ -8,7 +8,7 @@ const PersonalForm = () => {
   const navigate = useNavigate();
   const authToken = Cookies.get("auth_token");
   const [gender, setGender]=  useState('');
-  const [Nationality, setNationality] =   useState('');
+  const [nationality, setNationality] =   useState('');
   const [countryOfResidence, setCountryOfResidence]= useState('');
   const [dob, setdob] = useState('');
   const [day, setDay] = useState('');
@@ -71,7 +71,7 @@ const PersonalForm = () => {
         "http://localhost:3000/students/infos",
         {
           gender:gender,
-          Nationality:Nationality,
+          Nationality:nationality,
           countryOfResidence:countryOfResidence,
           dob: {
             day: day,
@@ -282,7 +282,7 @@ const PersonalForm = () => {
 
                       <Input
                         name="nationality"
-                        value={Nationality}
+                        value={nationality}
                         onChange={(e) => setNationality(e.target.value)}
                         placeholder="Pakistani"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"

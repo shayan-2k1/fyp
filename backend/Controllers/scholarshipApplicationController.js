@@ -146,15 +146,10 @@ async function ScholarshipApplicationController( req, res) {
         yearOfCompletion: academicBackground.yearOfCompletion,
       },
       extraCurricularActivities: {
-        // fieldOfInterest,
-        // participationYear,
-        // achievements,
+        
         certificates: selectedCertificate,
       },
-      // admissionRequirements: {
-      //   ielts: ielts,
-      //   toefl: toefl,
-      // },
+      
       attachDocuments: {
         transcript: selectedDocuments,
         links: {
@@ -175,6 +170,55 @@ async function ScholarshipApplicationController( req, res) {
   }
 }
 
+async function getapplication(req, res) {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, secretKey);
+    const userId = decodedToken.id;
+
+    // Query the scholarship application collection to retrieve all applications
+    const scholarships = await ScholarshipApplication.find();
+
+    // Create an array to store the matched scholarships
+    const matchedScholarships = [];
+
+    // Iterate through each scholarship application
+    scholarships.forEach((scholarship) => {
+      // If the scholarship matches the userId, add it to the matched scholarships array
+      if (scholarship.userId.toString() === userId) {
+        matchedScholarships.push({
+          // scholarshipId: scholarship._id,
+          // userId: scholarship.userId,
+          scholarshipName: scholarship.scholarshipName,
+          universityName: scholarship.universityName,
+          status: scholarship.status,
+          personalInfo: scholarship.personalInfo,
+          academicBackground: scholarship.academicBackground,
+          extraCurricularActivities: scholarship.extraCurricularActivities,
+          attachDocuments: scholarship.attachDocuments,
+          // Add other relevant fields you want to display for each scholarship
+        });
+        
+      }
+    });
+
+    // Send the matched scholarships as a response
+    res.json(matchedScholarships);
+  } catch (error) {
+    console.error('Error retrieving scholarships:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+
+
 module.exports = {
   ScholarshipApplicationController,
+  getapplication
 };

@@ -384,7 +384,7 @@ async function fetchCv(req, res) {
       const params = {
         Bucket: 's3cvbucket',
         Key: file.fileName, // Assuming the file key is the fileName
-        Expires: 3600, // URL expires in 1 hour 
+        // Expires: 3600, // URL expires in 1 hour 
       };
       
       // Generate presigned URL for each file

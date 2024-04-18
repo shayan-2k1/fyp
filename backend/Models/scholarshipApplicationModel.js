@@ -74,6 +74,7 @@ uniId:{
         // required: true,
       }
     }
+    
   },
   academicBackground: {
     degree: {
@@ -96,34 +97,14 @@ uniId:{
     }
   },
   extraCurricularActivities: [{
-    // fieldOfInterest: {
-    //   type: String
-    // },
-    // participationYear: {
-    //   type: Number
-    // },
-    // achievements: {
-    //   type: String
-    // },
+    
     certificates: [{
       value: String,
       label: String,
       fileUrl: String
     }]
   }],
-  // admissionRequirements: {
-  //   ielts: {
-  //     type: String
-  //   },
-  //   toefl: {
-  //     type: String
-  //   }
-  // },
-//   visaRequirements: {
-//     passport: {
-//       type: String // Store document URL or path
-//     }
-//   },
+ 
   attachDocuments: {
     transcript: [{
       value: String,
@@ -139,6 +120,12 @@ uniId:{
         type: String
       }
     }
+  },
+
+  status: {
+    type: String,
+    enum: ['applied', 'shortlisted', 'rejected', 'accepted'], // Add other possible statuses as needed
+    default: 'applied', // Default status when application is created
   }
 }, { timestamps: true });
 

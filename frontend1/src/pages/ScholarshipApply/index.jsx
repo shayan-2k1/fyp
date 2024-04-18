@@ -39,15 +39,15 @@ function ScholarshipApplicationForm() {
   const [documentUrls, setDocumentUrls] = useState([]);
   const [selectedDocuments, setSelectedDocuments] = useState([]);
   const [formState, setFormState] = useState({
-    ielts: "",
-    toefl: "",
+    // ielts: "",
+    // toefl: "",
     linkedIn: "",
     github: "",
-    fieldOfInterest: "",
-    participationYear: "",
-    achievements: "",
-    selectedCertificate: [],
-    selectedDocuments: [],
+    // fieldOfInterest: "",
+    // participationYear: "",
+    // achievements: "",
+    certificates: [],
+    transcript: [],
     academicBackground: {
       degree: "",
       discipline: "",
@@ -261,6 +261,13 @@ function ScholarshipApplicationForm() {
 
   const handleSubmit = async () => {
     try {
+      console.log('in post')
+      console.log(academicInfo.GPA)
+      console.log(academicInfo.degree)
+      console.log(requiredCGPA)
+      console.log(scholarshipLevel)
+      console.log(scholarshipId)
+      console.log(selectedCertificate)
       const response = await axios.post("http://localhost:3000/scholarship/applyS", {
       universityName,
       scholarshipId,
@@ -274,8 +281,8 @@ function ScholarshipApplicationForm() {
         // fieldOfInterest,
         // participationYear,
         // achievements,
-        selectedCertificate,
-        selectedDocuments,
+        selectedCertificate:selectedCertificate,
+        selectedDocuments:selectedDocuments,
   }, {
     headers: {
       Authorization: `Bearer ${authToken}`,
@@ -309,11 +316,11 @@ function ScholarshipApplicationForm() {
     }
 
     try {
-      console.log(academicInfo.GPA)
-      console.log(academicInfo.degree)
-      console.log(requiredCGPA)
-      console.log(scholarshipLevel)
-      console.log(scholarshipId)
+      // console.log(academicInfo.GPA)
+      // console.log(academicInfo.degree)
+      // console.log(requiredCGPA)
+      // console.log(scholarshipLevel)
+      // console.log(scholarshipId)
 
       const response2=await axios.post("http://localhost:5000/shortlist",
           {
@@ -770,140 +777,7 @@ function ScholarshipApplicationForm() {
                         style={{ color: "#000000" }} // Set the color to a darker shade, you can adjust the color code as needed
                       />
                     </div>
-                    {/* <Text
-                      className="mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px] text-left"
-                      size="txtOverpassExtraBold36"
-                    >
-                      Language
-                    </Text>
-                    <div className="flex flex-col gap-2 items-start justify-start w-full">
-                      <Text
-                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
-                        size="txtNunitoSemiBold28"
-                      >
-                        Ielts Score
-                      </Text>
-
-                      <Input
-                        name="ielts"
-                        value={ielts}
-                        onChange={(e) => {
-                          // console.log('email: ',  e.target.value);
-                          setIelts(e.target.value);
-                        }}
-                        placeholder="8.5"
-                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
-                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
-                        shape="round"
-                        style={{ color: "#000000" }}
-                      ></Input>
-                    </div>
-
-                    <div className="flex flex-col gap-2 items-start justify-start w-full">
-                      <Text
-                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
-                        size="txtNunitoSemiBold28"
-                      >
-                        Toefl Score
-                      </Text>
-
-                      <Input
-                        name="toefl"
-                        value={toefl}
-                        onChange={(e) => {
-                          // console.log('email: ',  e.target.value);
-                          setToefl(e.target.value);
-                        }}
-                        placeholder="7"
-                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
-                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
-                        shape="round"
-                        style={{ color: "#000000" }}
-                      ></Input>
-                    </div> */}
-                    {/* <Text
-                      className="mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px] text-left"
-                      size="txtOverpassExtraBold36"
-                    >
-                      Other Activities
-                    </Text>
-
-                    <div className="flex flex-col gap-2 items-start justify-start w-full">
-                      <Text
-                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
-                        size="txtNunitoSemiBold28"
-                      >
-                        Field Of Interest
-                      </Text>
-
-                      <Input
-                        name="fieldOfInterest"
-                        value={fieldOfInterest}
-                        onChange={(e) => {
-                          // console.log('email: ',  e.target.value);
-                          setFieldOfInterest(e.target.value);
-                        }}
-                        placeholder="Sports"
-                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
-                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
-                        shape="round"
-                        style={{ color: "#000000" }}
-                      ></Input>
-                    </div>
-                    <div className="flex flex-col gap-2 items-start justify-start w-full">
-                      <Text
-                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
-                        size="txtNunitoSemiBold28"
-                      >
-                        Participation Year
-                      </Text>
-
-                      <Input
-                        name="participationYear"
-                        value={participationYear}
-                        onChange={(e) => {
-                          const inputValue = e.target.value;
-                          // Check if the input value is numerical
-                          if (/^\d*$/.test(inputValue) || inputValue === "") {
-                            // If the input value is numerical or empty, update the state
-                            setParticipationYear(inputValue);
-                          }
-                        }}
-                        placeholder="2023"
-                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
-                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
-                        shape="round"
-                        style={{ color: "#000000" }}
-                      ></Input>
-                    </div>
-
-                    <div className="flex flex-col gap-2 items-start justify-start w-full">
-                      <Text
-                        className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
-                        size="txtNunitoSemiBold28"
-                      >
-                        Achievements
-                      </Text>
-
-                      <Input
-                        name="achievements"
-                        value={achievements}
-                        onChange={(e) => {
-                          const inputValue = e.target.value;
-                          const words = inputValue.trim().split(/\s+/);
-                          // Limit to 50 words
-                          if (words.length <= 50) {
-                            setAchievements(inputValue);
-                          }
-                        }}
-                        placeholder="0-50 words"
-                        className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-[50%]"
-                        wrapClassName="border-2 border-indigo-300 border-solid w-[70%]"
-                        shape="round"
-                        style={{ color: "#000000" }}
-                      ></Input>
-                    </div> */}
-{/* end */}
+                    
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <Text
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"
@@ -918,9 +792,11 @@ function ScholarshipApplicationForm() {
                           // Handle selected options
                           setSelectedDocuments(selectedOptions);
                         }}
+                        
                         options={documentUrls.map((doc) => ({
                           value: doc._id,
                           label: doc.fileName, // Render fileName property
+                          fileUrl:doc.fileUrl
                         }))}
                         isMulti
                         styles={{
@@ -985,6 +861,7 @@ function ScholarshipApplicationForm() {
                         options={certificateUrls.map((doc) => ({
                           value: doc._id,
                           label: doc.fileName, // Render fileName property
+                          fileUrl:doc.fileUrl
                         }))}
                         isMulti
                         styles={{
