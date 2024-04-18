@@ -204,16 +204,17 @@ const Sidebar1 = (props) => {
                 
               </MenuItem>
               </Link>
-              
+              <Link to="/Notification">
              
               <MenuItem
                 
               >
                  
                  <div ref={container5} className="h-[40px] w-30 "></div>
-                <Text className="w-[70%] sm:w-full">Group</Text>
+                <Text className="w-[70%] sm:w-full">Notification</Text>
                 
               </MenuItem>
+              </Link>
               <Link to="/AllMentors">
               <MenuItem
                

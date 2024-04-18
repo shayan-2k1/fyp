@@ -1,4 +1,5 @@
 const academicBackgroundSchema = require("../Models/academicModel");
+const extractedData = require('../Models/extractedDataModel')
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
@@ -19,18 +20,20 @@ async function academicBackground(req, res) {
     const existingInfo = await academicBackgroundSchema.findOne({
       user: userId,
     });
-
+    const dataExtraction = await extractedData .findOne({
+      user: userId,
+    });
     if (existingInfo) {
       // If information exists, update it
       await academicBackgroundSchema.findOneAndUpdate(
         { user: userId },
         {
-          degree: req.body.degree,
-          discipline: req.body.discipline,
+          degree: dataExtraction.education_info.degree_level,
+          discipline: dataExtraction.education_info.discipline,
           country: req.body.country,
-          university: req.body.university,
+          university: dataExtraction.education_info.university_name,
           GPA: req.body.GPA,
-          yearOfCompletion: req.body.yearOfCompletion,
+          yearOfCompletion: dataExtraction.education_info.year,
         },
         { new: true }
       );
@@ -42,12 +45,12 @@ async function academicBackground(req, res) {
       // If no information exists, add academicbackground
       const academicBackground = new academicBackgroundSchema({
         user: userId,
-        degree,
-        discipline,
+        degree: dataExtraction.education_info.degree_level,
+        discipline:dataExtraction.education_info.discipline,
         country,
-        university,
+        university:dataExtraction.education_info.university_name,
         GPA,
-        yearOfCompletion,
+        yearOfCompletion:dataExtraction.education_info.year,
       });
 
       await academicBackground.save();

@@ -1,6 +1,7 @@
 const personalInfoSchema = require("../Models/personalInfoModel");
 const jwt = require("jsonwebtoken");
 const dotenv = require('dotenv');
+const extractedData = require('../Models/extractedDataModel')
 // const { MongoClient } = require('mongodb');
 const uri = process.env.MONGO_URL;
 dotenv.config();
@@ -21,11 +22,11 @@ async function personalInfo(req, res) {
     const token = authorization.split(" ")[1];
     const decodedToken = jwt.verify(token, secretKey);
     const userId = decodedToken.id;
-
+    const dataExtraction = await extractedData .findOne({
+      user: userId,
+    });
     let {
-      firstName,
-      lastName,
-      contactNo,
+     
       gender,
       nationality,
       countryOfResidence,
@@ -39,9 +40,9 @@ async function personalInfo(req, res) {
       // If personal information doesn't exist, create a new one
       profile = new personalInfoSchema({
         user: userId,
-        firstName,
-        lastName,
-        contactNo,
+        firstName: dataExtraction.personal_info.first_name,
+        lastName: dataExtraction.personal_info.last_name,
+        contactNo: dataExtraction.personal_info.phone,
         gender,
         nationality,
         countryOfResidence,
@@ -49,9 +50,9 @@ async function personalInfo(req, res) {
       });
     } else {
       // If personal information already exists, update it
-      profile.firstName = firstName;
-      profile.lastName = lastName;
-      profile.contactNo = contactNo;
+      profile.firstName = dataExtraction.personal_info.first_name;
+      profile.lastName = dataExtraction.personal_info.last_name;
+      profile.contactNo = dataExtraction.personal_info.phone;
       profile.gender = gender;
       profile.nationality = nationality;
       profile.countryOfResidence = countryOfResidence;

@@ -15,6 +15,7 @@ const RecommendedScholarships = () => {
 
   const [data, setData] = useState([]);
   const [scholarshipName, setscholarshipName] = useState("");
+  const authToken = Cookies.get("auth_token");
   const [deadlineDate, setdeadlineDate] = useState("");
   const [scholarshipBudget, setscholarshipBudget] = useState("");
   const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term
@@ -300,7 +301,7 @@ useEffect(() => {
                       </Heading>
                       <Text as="p" className="w-[87%] md:w-full mt-[15px] tracking-[2.00px] text-justify"
                       >
-                        {scholarship.description}
+                        {data.description}
                       </Text>
                       <div className="flex self-stretch justify-between items-center mt-[20px] gap-5"
                       >

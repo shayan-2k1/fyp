@@ -40,7 +40,7 @@ async function shortlistedScholarship(req, res) {
       console.error('Error shortlisting student:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
-};
+}
 
 async function showShortlisted(req, res) {
     try {

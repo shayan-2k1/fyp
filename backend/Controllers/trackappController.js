@@ -82,9 +82,10 @@ async function getLink (req,res){
         });
         console.log("application post" , scholarshipPostApplication)
         // console.log("uni Id", scholarshipPostApplication.)
+        
         if (scholarshipPostApplication) {
           const uniId = scholarshipPostApplication.uniId;
-            
+            console.log("university" , uniId)
           // Find university document using uniId
           const university = await University.findOne({ _id: uniId });
 
