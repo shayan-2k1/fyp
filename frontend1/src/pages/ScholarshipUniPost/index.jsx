@@ -8,7 +8,7 @@ import Sidebar3 from "components/Sidebar3";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import lottie from 'lottie-web';
-
+import { Link } from 'react-router-dom';
 const Scholarships = () => {
   const navigate = useNavigate();
   const authToken = Cookies.get("auth_token");
@@ -20,7 +20,7 @@ const Scholarships = () => {
   // const token = Cookies.get("auth_token");
 
 
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,7 +31,7 @@ const Scholarships = () => {
         });
         setData(response.data.scholarships);
       }
-        catch (error) {
+      catch (error) {
         console.error("Error fetching scholarships:", error);
       }
     };
@@ -39,7 +39,7 @@ const Scholarships = () => {
     fetchData();
   }, []);
 
-  
+
 
   const handleClick = () => {
     // Navigate to the next page
@@ -47,7 +47,7 @@ const Scholarships = () => {
   };
   return (
     <>
-     
+
       <div className="h-[1528px] md:h-auto relative">
         <div className="flex md:flex-col justify-center items-start w-full">
         </div>
@@ -123,9 +123,9 @@ const Scholarships = () => {
             </Text>
             <>
               {data.map((scholarship) => (
-                <div  key={scholarship.scholarshipName} className="flex  overflow-hidden h-screen h-[298px] w-[79%] md:h-auto ml-[280px] mt-[30px] relative">
+                <div key={scholarship.scholarshipName} className="flex  overflow-hidden h-screen h-[298px] w-[79%] md:h-auto ml-[280px] mt-[30px] relative">
 
-                  <div  className="w-full font-nunito h-max left-0 bottom-0 right-0 top-0 p-[23px] m-auto sm:p-5 bg-teal-50 absolute rounded-[20px]">
+                  <div className="w-full font-nunito h-max left-0 bottom-0 right-0 top-0 p-[23px] m-auto sm:p-5 bg-teal-50 absolute rounded-[20px]">
                     <div className="flex flex-col items-center ml-0.5 md:ml-0">
                       <Heading as="h2"
                         className="sm:mt-0 mt-0.5 sm:text-[21px] md:text-[23px] text-[25px] !text-cyan-700 text-right tracking-[2.50px]"
@@ -141,7 +141,7 @@ const Scholarships = () => {
                         <div className="flex flex-col items-start">
                           <Text as="p" className="!text-cyan-700"
                           >
-                          
+
                             {new Date(scholarship.deadlinedate).toLocaleDateString('en-US')}
                           </Text>
                           <Text as="p" className="!text-cyan-700"
@@ -154,16 +154,18 @@ const Scholarships = () => {
                           </Text>
                         </div>
                         <div className="flex md:flex-row self-end w-[12%] mb-1.5 gap-7">
-                          <div className="h-[40px] w-[40px] md:h-auto relative">
-                            <Button
-                              className="cursor-pointer font-bold font-roboto leading-[normal] min-h-[10px]   min-w-[80px] sm:min-w-full  mt-[1px] text-[10px] sm:text-xl tracking-[1.60px] uppercase "
-                              shape="round"
-                              onClick={handleClick}
-                            >
-                              View 
-                            </Button>
-
-                          </div>
+                          <Button
+                            className="cursor-pointer font-bold font-roboto leading-[normal] min-h-[10px] min-w-[80px] sm:min-w-full mt-[1px] text-[10px] sm:text-xl tracking-[1.60px] uppercase"
+                            shape="round"
+                            onClick={() => navigate('/ShortlistedStudents', {
+                              state: {
+                                scholarshipName: scholarship.scholarshipName,
+                                scholarshipId: scholarship._id 
+                              }
+                            })}
+                          >
+                            View
+                          </Button>
                           <div className=" md:h-auto relative">
 
                             {/* <div ref={container} className="h-[120px] w-[120px]" ></div> */}
@@ -176,11 +178,11 @@ const Scholarships = () => {
 
                 </div>
               ))}
-              
+
             </>
-            
+
           </div>
-         
+
 
 
         </div>

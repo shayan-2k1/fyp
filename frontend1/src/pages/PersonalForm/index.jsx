@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Img, Input, Line, Text } from "components";
 import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
@@ -7,6 +7,54 @@ import { useNavigate } from "react-router-dom";
 const PersonalForm = () => {
   const navigate = useNavigate();
   const authToken = Cookies.get("auth_token");
+  const [gender, setGender]=  useState('');
+  const [Nationality, setNationality] =   useState('');
+  const [countryOfResidence, setCountryOfResidence]= useState('');
+  const [dob, setdob] = useState('');
+  const [day, setDay] = useState('');
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [formState, setFormState] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    
+    linkedin: '',
+  });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get("http://127.0.0.1:3000/document/getextracted", {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+
+        if (response.status === 200) {
+          const { personal_info } = response.data.cvData;
+          setFormState({
+            firstName: personal_info.first_name,
+            lastName: personal_info.last_name,
+            phone: personal_info.phone,
+            
+            // linkedin: personal_info.linkedin,
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [authToken]);
+  // console.log("react" + firstName);
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const months = [
     "January", "February", "March", "April",
@@ -18,52 +66,37 @@ const PersonalForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading('true');
-      const response = await axios.post("http://localhost:3000/students/infos",
+      setLoading(true);
+      const response = await axios.post(
+        "http://localhost:3000/students/infos",
         {
-          firstName: firstName,
-          lastName: lastName,
-          contactNo: contactNo,
-          gender: gender,
-          nationality: nationality,
-          countryOfResidence: country,
+          gender:gender,
+          Nationality:Nationality,
+          countryOfResidence:countryOfResidence,
           dob: {
             day: day,
             month: month,
             year: year
           }
+
+
         },
         {
-          headers: 
-          {
+          headers: {
             Authorization: `Bearer ${authToken}`,
           },
         }
       );
       console.log(response.data);
-      alert("Form Submitted")
+      alert("Form Submitted");
       navigate('/desktopfour');
     } catch (error) {
       console.error(error);
-      setError(error); // Set error state if there's an error
+      setError(error);
     } finally {
-      setLoading(false); // Set loading state to false after request completion (whether successful or not)
+      setLoading(false);
     }
   };
-
-
-  const [firstName, setfName] = useState('');
-  const [lastName, setlName] = useState('');
-  const [contactNo, setContact] = useState('');
-  const [gender, setGender] = useState('');
-  const [country, setCountry] = useState('');
-  const [nationality, setNationality] = useState('');
-  const [day, setDay] = useState('');
-  const [month, setMonth] = useState('');
-  const [year, setYear] = useState(0);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState('');
-  console.log("react" + firstName);
   return (
 
     <>
@@ -149,10 +182,9 @@ const PersonalForm = () => {
 
                       <Input
                         name="firstName"
-                        value={firstName}
-                        onChange={(e) => {
-                          setfName(e.target.value)
-                        }}
+                        value={formState.firstName}
+            onChange={(e) => setFormState({ ...formState, firstName: e.target.value })}
+        
 
 
                         placeholder="Alina"
@@ -175,9 +207,9 @@ const PersonalForm = () => {
 
                       <Input
                         name="contact"
-                        value={contactNo}
-                        onChange={(e) => setContact(e.target.value)}
-                        placeholder="12345"
+                        value={formState.phone}
+            onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+          placeholder="12345"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"
@@ -250,7 +282,7 @@ const PersonalForm = () => {
 
                       <Input
                         name="nationality"
-                        value={nationality}
+                        value={Nationality}
                         onChange={(e) => setNationality(e.target.value)}
                         placeholder="Pakistani"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
@@ -272,8 +304,8 @@ const PersonalForm = () => {
 
                       <Input
                         name="Countryofresidence"
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
+                        value={countryOfResidence}
+                        onChange={(e) => setCountryOfResidence(e.target.value)}
                         placeholder="Pakistan"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -307,9 +339,9 @@ const PersonalForm = () => {
 
                       <Input
                         name="lastname"
-                        value={lastName}
-                        onChange={(e) => setlName(e.target.value)}
-                        placeholder="Asim"
+                        value={formState.lastName}
+            onChange={(e) => setFormState({ ...formState, lastName: e.target.value })}
+          placeholder="Asim"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
                         shape="round"

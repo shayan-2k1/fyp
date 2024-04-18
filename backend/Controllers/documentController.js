@@ -279,50 +279,79 @@ async function cvUpload(req, res) {
     const secretKey = process.env.SECRET_KEY;
     const token = authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, secretKey);
-    console.log(req.file);
-    const fileData = req.file.buffer; // Assuming file buffer is in req.file.buffer
-    const fileName = req.file.originalname; // Assuming original filename is in req.file.originalname
 
-    if (!fileData && !fileName) {
-            return res.status(400).json({ error: "No files uploaded" });
-          }
+    const fileData = req.file.buffer; // File buffer from request
+    const fileName = req.file.originalname; // Original filename from request
 
-    // console.log(fileName)
-    // console.log(fileData)
-    const s3Url = await uploadcvToS3(fileData, fileName);
-    console.log("url in s3",s3Url)
-    
-    const existingCv = await Cv.findOne({ user: decodedToken.id });
+    if (!fileData || !fileName) {
+      return res.status(400).json({ error: "No files uploaded" });
+    }
+
+    const s3Url = await uploadcvToS3(fileData, fileName); // Upload file to S3
+
+    // Check if a CV already exists for the user
+    let existingCv = await Cv.findOne({ user: decodedToken.id });
 
     if (existingCv) {
-      // If document exists, return an error indicating that a CV already exists for the user
-      return res.status(400).json({ error: 'CV already exists for the user.' });
-    } else {
-    const document = new Cv({
+      // If a CV exists, delete the existing CV file from S3
+      await deleteFileFromS3(existingCv.files[0].fileUrl);
+      // Delete the existing CV document from the database
+      existingCv = await Cv.findOneAndDelete({ user: decodedToken.id });
+    }
+
+    // Create a new CV document with the uploaded file details
+    const newCv = new Cv({
       user: decodedToken.id,
-      files: [
-        {
-          fileName: fileName, // Original filename
-          fileUrl: s3Url,     // URL of the uploaded file in S3
-          fileType: getMimeType(fileName), // MIME type based on file extension
-          uploadedAt: new Date(), // Set the upload timestamp
-        },
-      ],
+      files: [{
+        fileName: fileName,
+        fileUrl: s3Url,
+        fileType: getMimeType(fileName),
+        uploadedAt: new Date(),
+      }],
     });
-    //correcting errors
 
-
-  //  console.log(document)
-    const savedDocument = await document.save();
-    console.log('Cv metadata saved:', savedDocument);
-    res.status(200).json({ message: 'Cv uploaded successfully.' });
-  }
-
+    // Save the new CV document
+    const savedCv = await newCv.save();
+    console.log('New CV uploaded:', savedCv);
+    res.status(200).json({ message: 'CV uploaded successfully.' });
   } catch (error) {
-    console.error('Error uploading cv:', error);
+    console.error('Error uploading CV:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+
+// const AWS = require('aws-sdk');
+
+// Configure AWS credentials and region
+AWS.config.update({
+  accessKeyId: 'AKIA6DVS3KHYZX3VMEUB',
+  secretAccessKey: '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',
+  region: 'us-east-1',
+});
+
+// Create an S3 instance
+const s3 = new AWS.S3();
+
+async function deleteFileFromS3(fileUrl) {
+  const bucketName = 's3cvbucket'; // Replace with your bucket name
+
+  // Extract the key from the file URL
+  const key = decodeURIComponent(fileUrl.split(`${bucketName}/`)[1]);
+
+  const params = {
+    Bucket: bucketName,
+    Key: key, // Set the key parameter with the extracted key
+  };
+
+  try {
+    await s3.deleteObject(params).promise();
+    console.log(`File deleted from S3: ${fileUrl}`);
+  } catch (error) {
+    console.error('Error deleting file from S3:', error);
+    throw error; // Rethrow the error for handling in the calling function
+  }
+}
+
 
 
 async function fetchCv(req, res) {
@@ -431,6 +460,35 @@ async function processDataFromFlask(dataFromFlask, userid) {
     throw new Error('Error saving CV data');
   }
 }
+  async function getExtractedData(req,res){
+
+    try {
+      const { authorization } = req.headers;
+      if (!authorization) {
+        return res.status(401).json({ error: "Unauthorized!" });
+      }
+  
+      const secretKey = process.env.SECRET_KEY;
+      const token = authorization.split(" ")[1];
+      const decodedToken = jwt.verify(token, secretKey);
+      const userId = decodedToken.id;
+      console.log(userId)
+      const cvData = await CV .findOne({
+        user: userId,
+      });
+      if (!cvData) {
+        return res.status(404).json({ error: "CV data not found for the user." });
+      }
+  
+      // Return the CV data
+      res.status(200).json({ cvData });
+    } catch (error) {
+      console.error("Error fetching CV data:", error);
+      res.status(500).json({ error: "Server Error" });
+    }
+
+  }
+
 
 
 
@@ -438,9 +496,12 @@ async function processDataFromFlask(dataFromFlask, userid) {
 module.exports = {
   documentUpload,
   cvUpload,
+  getExtractedData,
   fetchCv,
   fetchDocument,
-  delDocument
+  delDocument,
+  deleteFileFromS3, 
+  
 };
 
 

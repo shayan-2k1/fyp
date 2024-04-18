@@ -110,7 +110,8 @@ async function getOneScholarship (req,res){
     res.status(500).json({ error: 'Internal Server Error' });
   }
 
-};
+}
+
 // Export the controller functions
 module.exports = {
   createScholarship,

@@ -12,7 +12,7 @@ const shortlistStudent = new mongoose.Schema({
         // ref: 'scholarshipPostModel',
         type : [String],
         required: true,
-      },
+    },
 
 })
 

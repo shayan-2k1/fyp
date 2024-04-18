@@ -36,18 +36,25 @@ async function ScholarshipApplicationController( req, res) {
     console.log(username);
     const {
       scholarshipId, universityName, scholarshipName, uniId,
-      ielts,
-      toefl,
+      // ielts,
+      // toefl,
       linkedIn,
-      github,
-      fieldOfInterest,
-      participationYear,
-      achievements,
+      github
+      // fieldOfInterest,
+      // participationYear,
+      // achievements,
       
      
 
     } = req.body;
-
+    const existingApplication = await ScholarshipApplication.findOne({
+      userId: userId,
+      scholarshipId: scholarshipId
+    });
+    
+    if (existingApplication) {
+      return res.status(400).json({ error: "You have already applied for this scholarship" });
+    }
     // const existingApplication = await ScholarshipApplication.findOne({
     //   userId: userId,
     //   scholarshipId: scholarshipId
@@ -60,13 +67,13 @@ async function ScholarshipApplicationController( req, res) {
     // Check if the user meets the admission requirements
     // else{
     if (
-      !ielts ||
-      !toefl ||
+      // !ielts ||
+      // !toefl ||
       !linkedIn ||
-      !github ||
-      !fieldOfInterest ||
-      !participationYear ||
-      !achievements
+      !github 
+      // !fieldOfInterest ||
+      // !participationYear ||
+      // !achievements
     ) {
       return res.status(400).json({ error: "Fill all the required fields!" });
     }
@@ -139,15 +146,15 @@ async function ScholarshipApplicationController( req, res) {
         yearOfCompletion: academicBackground.yearOfCompletion,
       },
       extraCurricularActivities: {
-        fieldOfInterest,
-        participationYear,
-        achievements,
+        // fieldOfInterest,
+        // participationYear,
+        // achievements,
         certificates: selectedCertificate,
       },
-      admissionRequirements: {
-        ielts: ielts,
-        toefl: toefl,
-      },
+      // admissionRequirements: {
+      //   ielts: ielts,
+      //   toefl: toefl,
+      // },
       attachDocuments: {
         transcript: selectedDocuments,
         links: {
