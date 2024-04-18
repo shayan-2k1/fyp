@@ -267,13 +267,13 @@ function ScholarshipApplicationForm() {
       scholarshipName,
       uniId
 ,  
-      ielts,
-        toefl,
+      // ielts,
+      //   toefl,
         linkedIn,
         github,
-        fieldOfInterest,
-        participationYear,
-        achievements,
+        // fieldOfInterest,
+        // participationYear,
+        // achievements,
         selectedCertificate,
         selectedDocuments,
   }, {
@@ -287,13 +287,13 @@ function ScholarshipApplicationForm() {
       setScholarshipId("");
       setscholarshipName("");
       setUniId("");
-      setIelts("");
-      setToefl("");
+      // setIelts("");
+      // setToefl("");
       setLinkedIn("");
       setGithub("");
-      setFieldOfInterest("");
-      setParticipationYear("");
-      setAchievements("");
+      // setFieldOfInterest("");
+      // setParticipationYear("");
+      // setAchievements("");
       setSelectedCertificate("");
       setSelectedDocuments("");
       // setAcademicInfo('')
@@ -770,7 +770,7 @@ function ScholarshipApplicationForm() {
                         style={{ color: "#000000" }} // Set the color to a darker shade, you can adjust the color code as needed
                       />
                     </div>
-                    <Text
+                    {/* <Text
                       className="mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px] text-left"
                       size="txtOverpassExtraBold36"
                     >
@@ -820,8 +820,8 @@ function ScholarshipApplicationForm() {
                         shape="round"
                         style={{ color: "#000000" }}
                       ></Input>
-                    </div>
-                    <Text
+                    </div> */}
+                    {/* <Text
                       className="mt-[51px] text-4xl sm:text-[30px] md:text-[3px] text-cyan-700 tracking-[3.60px] text-left"
                       size="txtOverpassExtraBold36"
                     >
@@ -902,8 +902,8 @@ function ScholarshipApplicationForm() {
                         shape="round"
                         style={{ color: "#000000" }}
                       ></Input>
-                    </div>
-
+                    </div> */}
+{/* end */}
                     <div className="flex flex-col gap-2 items-start justify-start w-full">
                       <Text
                         className="sm:text-2xl md:text-[26px] text-[27px] text-blue_gray-800 tracking-[2.00px] w-auto"

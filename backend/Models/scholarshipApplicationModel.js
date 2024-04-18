@@ -96,29 +96,29 @@ uniId:{
     }
   },
   extraCurricularActivities: [{
-    fieldOfInterest: {
-      type: String
-    },
-    participationYear: {
-      type: Number
-    },
-    achievements: {
-      type: String
-    },
+    // fieldOfInterest: {
+    //   type: String
+    // },
+    // participationYear: {
+    //   type: Number
+    // },
+    // achievements: {
+    //   type: String
+    // },
     certificates: [{
       value: String,
       label: String,
       fileUrl: String
     }]
   }],
-  admissionRequirements: {
-    ielts: {
-      type: String
-    },
-    toefl: {
-      type: String
-    }
-  },
+  // admissionRequirements: {
+  //   ielts: {
+  //     type: String
+  //   },
+  //   toefl: {
+  //     type: String
+  //   }
+  // },
 //   visaRequirements: {
 //     passport: {
 //       type: String // Store document URL or path
