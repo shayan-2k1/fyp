@@ -21,16 +21,16 @@ def generate_unique_data(data):
 
         education_level = random.choice(["BS", "Masters", "PhD"])
         required_gpa=random.choice([2.0,2.5,3.0])
-        country = random.choice(["USA", "Canada", "UK", "Australia"])
-        domain_area = random.choice(["Computer Science", "Medical Science", "Fine Arts", "Physics", "Business Administration", "Electrical Engineering", "Medical Research", "History", "Chemistry", "Finance"])
+        country = random.choice(["USA", "Canada", "UK", "Australia","Pakistan","United States","United Kingdom"])
+        domain_area = random.choice(["Computer Science","SE","CS","Software Engineering", "Medical Science", "Fine Arts", "Physics", "Business Administration", "Electrical Engineering", "Medical Research", "History", "Chemistry", "Finance"])
 
         scholarship_type = random.choice(["Need-Based", "Merit-Based"])
 
-        data.append([name, scholarship_type,required_gpa, budget_limit, education_level, country, domain_area])
+        data.append([name, scholarship_type, required_gpa, budget_limit, education_level, country, domain_area])
 
 # Generate unique data
 generate_unique_data(data)
 
 # Create a DataFrame and export to CSV
-df = pd.DataFrame(data, columns=["Scholarship_Name","Scholarship_Type","Required_GPA", "Scholarship_Budget", "Education_Preference", "Country_of_Scholarship", "Eligible_Domain"])
+df = pd.DataFrame(data, columns=["Scholarship_Name","Scholarship_Type","Required_GPA", "Scholarship_Budget", "Scholarship_Level", "Country_of_Scholarship", "Eligible_Domain"])
 df.to_csv("scholarship_dataset.csv", index=False)

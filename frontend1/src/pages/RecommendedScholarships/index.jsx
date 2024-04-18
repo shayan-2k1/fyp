@@ -15,7 +15,6 @@ const RecommendedScholarships = () => {
 
   const [data, setData] = useState([]);
   const [scholarshipName, setscholarshipName] = useState("");
-  const authToken = Cookies.get("auth_token");
   const [deadlineDate, setdeadlineDate] = useState("");
   const [scholarshipBudget, setscholarshipBudget] = useState("");
   const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term

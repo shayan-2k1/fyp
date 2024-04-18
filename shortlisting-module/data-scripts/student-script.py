@@ -20,9 +20,9 @@ def generate_unique_data(data):
         cgpa_set.add(cgpa)
 
         education_level = random.choice(["BS", "Masters", "PhD"])
-        country_preference = random.choice(["USA", "Canada", "UK", "Australia"])
+        country_preference = random.choice(["USA", "Canada", "UK", "Australia","Pakistan","United States","United Kingdom"])
         budget_preference=random.choice([0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5])*1000
-        domain_area = random.choice(["Computer Science", "Medical Science", "Fine Arts", "Physics", "Business Administration", "Electrical Engineering", "Medical Research", "History", "Chemistry", "Finance"])
+        domain_area = random.choice(["Computer Science","CS","SE","Software Engineering", "Medical Science", "Fine Arts", "Physics", "Business Administration", "Electrical Engineering", "Medical Research", "History", "Chemistry", "Finance"])
 
         data.append([name, cgpa, budget_preference, education_level, country_preference, domain_area])
 
