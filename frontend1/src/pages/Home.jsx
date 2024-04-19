@@ -126,6 +126,23 @@ const Home = () => {
                       </Link>
                     </div>
                   </div>
+
+                  <div className="font-alfaslabone md:h-[113px] h-[72px] mb-2 ml-9 md:ml-[0] mt-[34px] relative w-[65%]">
+                    <div className="bg-black-900 h-[71px] m-auto rounded-[35px] shadow-bs w-full"></div>
+
+                    <div className="flex flex-col items-center justify-center">
+                      <Link to="/adminLogin">
+                        <a
+                          href="javascript:"
+                          className="absolute inset-x-[0] mx-auto text-base text-center text-white-A700 top-[32%] w-max"
+                        >
+                          <Text size="txtAlfaSlabOneRegular16">
+                            Login as a Admin
+                          </Text>
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div

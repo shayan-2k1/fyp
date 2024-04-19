@@ -39,7 +39,9 @@ const AllMentors=React.lazy(()=>import("pages/AllMentors"))
 const SChats=React.lazy(()=>import("pages/SChats"))
 const MChats=React.lazy(()=>import("pages/MChats"))
 const ShortlistedStudents=React.lazy(()=>import("pages/ShortlistedStudents"))
-const Recommended = React.lazy(()=> import("pages/RecommendedScholarships"))
+// const Recommended = React.lazy(()=> import("pages/RecommendedScholarships"))
+const AdminLogin = React.lazy(()=>import("pages/LoginAdmin"))
+const ViewUni = React.lazy(()=>import("pages/ViewUni") )
 const Applications=React.lazy(()=> import("pages/ApplicationsShortlisted"))
 const AllApp=React.lazy(()=> import("pages/StudentsAllApplications"))
 const ProjectRoutes = () => {
@@ -85,8 +87,6 @@ const ProjectRoutes = () => {
           <Route path="/Mchats" element={<MChats/>} />
           <Route path="/Shortlisted" element={<ShowShortlistedStudents/>} />
           <Route path="/ShortlistedStudents" element={<ShortlistedStudents/>} />
-          <Route path="/application" element={<Applications/>} />
-          <Route path="/Allapplication" element={<AllApp/>} />
           {/* <Route path="/Recommended" element={<Recommended/>} /> */}
         </Routes>
       </Router>

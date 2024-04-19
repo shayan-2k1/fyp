@@ -23,14 +23,17 @@ const scholarshipRouter = require("./Routes/scholarshipRouter.js")
 const universityRoute = require("./Routes/universityRegistrationRouter.js")
 const scholarshipPostRoute = require("./Routes/scholarshipPostRouter.js")
 const scholarshipApply = require("./Routes/scholarshipApplyRoutes.js")
+const shortlistRouter=require("./Routes/shortlistRoute.js")
 const mentorRoute = require("./Routes/mentorRoutes.js")
 const insightRoute = require("./Routes/insightRouter.js")
+const adminRoute = require("./Routes/adminRoutes.js")
 const { ScholarshipApplicationController } = require('./Controllers/scholarshipApplicationController');
 const authToken = Cookies.get("auth_token");
 const cors = require('cors');
 require("dotenv").config();
 const app = express();
 app.use(express.json());
+// app.use(cors());
 app.use(cors({
     origin: 'http://localhost:3001', // Allow requests from this origin
     credentials: true, // Allow credentials (e.g., cookies, authorization headers)
@@ -69,9 +72,11 @@ app.use("/scholarship", scholarshipRouter)
 app.use("/mentor", mentorRoute)
 app.use("/university", universityRoute)
 app.use("/universityP", scholarshipPostRoute)
+app.use("/shortlist",shortlistRouter)
 app.use("/scholarship", scholarshipApply)
 app.use("/universityP", scholarshipPostRoute)
 app.use("/insight", insightRoute)
+app.use("/admin" , adminRoute)
 const httpServer = require('http').createServer(app); // Create an HTTP server
 // const io = new Server(httpServer, {
 //     cors: {

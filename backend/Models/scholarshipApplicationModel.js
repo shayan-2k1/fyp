@@ -124,7 +124,7 @@ uniId:{
 
   status: {
     type: String,
-    enum: ['applied', 'Shortlisted', 'rejected', 'accepted'], // Add other possible statuses as needed
+    enum: ['applied', 'shortlisted', 'rejected', 'accepted'], // Add other possible statuses as needed
     default: 'applied', // Default status when application is created
   }
 }, { timestamps: true });

@@ -11,6 +11,62 @@ import "./modal.css";
 
 const Scholarships = () => {
   const [showModal, setShowModal] = useState(false); // Set to false initially to hide the modal
+  const [currentPage, setCurrentPage] = useState("myDocuments");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [userDocuments, setUserDocuments] = useState([]);
+  const [viewDocumentUrl, setViewDocumentUrl] = useState("");
+  const authToken = Cookies.get("auth_token");
+
+  const [fileSelected, setFileSelected] = useState(false); // Add state for file selection
+  const fileInputRef = useRef(null);
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+    setFileSelected(true); // Set the flag to indicate a file has been selected
+  };
+
+  const handleUpload = async () => {
+    try {
+      if (!selectedFile) {
+        console.error("No file selected.");
+        alert("Please select a file.");
+        return; // Exit the function if no file is selected
+      }
+
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+
+      const response = await axios.post(
+        "http://127.0.0.1:3000/document/uploadcv",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("Document uploaded successfully.");
+        alert("Document added!");
+        setFileSelected(false);
+        setShowModal(false);
+        // Add logic for UI update or success message
+
+        await axios.get("http://127.0.0.1:3000/document/getcv", {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+      } else {
+        console.error("Failed to upload the document.");
+        alert("Document failed to upload!");
+        // Handle failure - show error message or take appropriate action
+      }
+    } catch (error) {
+      console.error("Error uploading the document:", error);
+      // Handle error scenario - show error message or take appropriate action
+    }
+  };
 
   useEffect(() => {
     console.log("Inside useEffect");
@@ -47,7 +103,7 @@ const Scholarships = () => {
   const [scholarshipBudget, setscholarshipBudget] = useState("");
   const [searchTerm, setSearchTerm] = useState(""); // State to hold the search term
   const [filteredData, setFilteredData] = useState([]);
-  const authToken = Cookies.get("auth_token");
+  // const authToken = Cookies.get("auth_token");
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -336,7 +392,7 @@ const Scholarships = () => {
               <label className="custom-file-upload">
                 <input
                   type="file"
-                  // onChange={handleFileChange}
+                  onChange={handleFileChange}
                   style={{ display: "none" }}
                 />
                 <img
@@ -348,20 +404,20 @@ const Scholarships = () => {
               </label>
               <div style={{ marginTop: "10px" }}>
                 <button
-                  // onClick={handleUpload}
-                  // style={{
-                  //   padding: "10px 20px",
-                  //   backgroundColor: "#058B9E",
-                  //   color: "white",
-                  //   border: "none",
-                  //   borderRadius: "5px",
-                  //   cursor: "pointer",
-                  //   fontSize: "16px",
-                  //   marginTop: "10px", // Add margin top for spacing
-                  //   display: fileSelected ? 'block' : 'none' // Show the button only if a file is selected
-                  // }}
+                  onClick={handleUpload}
+                  style={{
+                    padding: "10px 20px",
+                    backgroundColor: "#058B9E",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    fontSize: "16px",
+                    marginTop: "10px", // Add margin top for spacing
+                    display: fileSelected ? 'block' : 'none' // Show the button only if a file is selected
+                  }}
                 >
-                  Upload Selected file
+                  Upload Your CV
                 </button>
               </div>
               

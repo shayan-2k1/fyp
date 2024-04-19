@@ -301,7 +301,7 @@ useEffect(() => {
                       </Heading>
                       <Text as="p" className="w-[87%] md:w-full mt-[15px] tracking-[2.00px] text-justify"
                       >
-                        {data.description}
+                        {scholarship.description}
                       </Text>
                       <div className="flex self-stretch justify-between items-center mt-[20px] gap-5"
                       >

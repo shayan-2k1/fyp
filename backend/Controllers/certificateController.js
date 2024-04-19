@@ -155,7 +155,7 @@ async function fetchDocument(req, res) {
           const params = {
             Bucket: 'certificates-githublinks-students',
             Key: file.fileName, // Assuming the file key is the fileName
-            Expires: 3600, // URL expires in 1 hour 
+            // Expires: 3600, // URL expires in 1 hour 
           };
   
           // Generate presigned URL for each file

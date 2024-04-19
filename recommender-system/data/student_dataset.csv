@@ -1,501 +1,501 @@
 Name,CGPA,Budget_Prefrence,Education_Level,Country_Preference,Domain_Area
-Person0,2.53,5500.0,BS,Australia,Business Administration
-Person1,2.88,8500.0,BS,UK,Medical Science
-Person2,3.93,1500.0,BS,Australia,Computer Science
-Person3,3.47,3500.0,BS,UK,Electrical Engineering
-Person4,2.74,1500.0,BS,Australia,Computer Science
-Person5,3.17,4000.0,PhD,Canada,Business Administration
-Person6,3.38,4500.0,PhD,Canada,Business Administration
-Person7,2.73,9500.0,Masters,Canada,History
-Person8,2.92,8000.0,PhD,UK,Business Administration
-Person9,2.96,2500.0,PhD,Canada,Physics
-Person10,3.17,9500.0,Masters,UK,Finance
-Person11,3.48,500.0,BS,USA,Business Administration
-Person12,3.76,7500.0,Masters,Australia,Fine Arts
-Person13,2.92,5500.0,BS,Canada,Finance
-Person14,3.97,4000.0,BS,Australia,Finance
-Person15,3.2,5000.0,BS,Australia,Finance
-Person16,3.52,7500.0,PhD,Australia,Medical Research
-Person17,3.11,7000.0,BS,Australia,Medical Research
-Person18,3.94,8000.0,BS,UK,Physics
-Person19,3.23,9000.0,PhD,USA,Electrical Engineering
-Person20,3.07,7000.0,PhD,Australia,Physics
-Person21,2.91,5500.0,PhD,USA,History
-Person22,3.65,2500.0,Masters,USA,Fine Arts
-Person23,2.51,7000.0,BS,Canada,Electrical Engineering
-Person24,2.72,2000.0,Masters,Canada,Physics
-Person25,3.4,4000.0,PhD,Canada,Finance
-Person26,3.01,7500.0,BS,UK,Computer Science
-Person27,3.74,1500.0,Masters,Canada,Chemistry
-Person28,3.96,5000.0,Masters,Australia,History
-Person29,2.7,4500.0,BS,Canada,Business Administration
-Person30,3.76,8500.0,BS,Canada,Medical Science
-Person31,3.79,8000.0,BS,USA,History
-Person32,2.96,5500.0,BS,UK,Finance
-Person33,2.55,9500.0,PhD,USA,Business Administration
-Person34,2.8,9000.0,Masters,USA,Finance
-Person35,2.7,1500.0,BS,UK,Physics
-Person36,3.14,6000.0,BS,USA,Electrical Engineering
-Person37,3.86,7500.0,Masters,UK,Electrical Engineering
-Person38,2.52,4000.0,BS,Canada,History
-Person39,3.01,8000.0,PhD,Canada,Finance
-Person40,2.59,6000.0,PhD,Australia,History
-Person41,3.82,2500.0,BS,USA,Business Administration
-Person42,2.94,6500.0,PhD,Australia,History
-Person43,3.86,8000.0,BS,USA,Finance
-Person44,2.56,3000.0,Masters,Australia,Medical Research
-Person45,3.82,6500.0,Masters,Australia,Fine Arts
-Person46,3.35,5500.0,PhD,Canada,Electrical Engineering
-Person47,2.63,8500.0,Masters,Australia,Medical Science
-Person48,3.95,4000.0,BS,Canada,Physics
-Person49,3.79,3500.0,Masters,USA,Physics
-Person50,3.24,4500.0,BS,Canada,Medical Science
-Person51,3.97,9500.0,BS,Canada,History
-Person52,3.59,7500.0,BS,Australia,Fine Arts
-Person53,3.59,3000.0,BS,USA,Electrical Engineering
-Person54,3.65,2000.0,PhD,Canada,History
-Person55,3.04,9000.0,PhD,USA,Physics
-Person56,2.5,3000.0,Masters,Australia,Medical Science
-Person57,3.51,9500.0,Masters,Canada,Medical Research
-Person58,2.82,7500.0,PhD,Australia,Electrical Engineering
-Person59,2.69,3000.0,PhD,Australia,Chemistry
-Person60,3.27,2000.0,BS,UK,Chemistry
-Person61,3.4,1000.0,PhD,UK,Physics
-Person62,3.4,3500.0,BS,USA,Fine Arts
-Person63,2.68,4000.0,BS,UK,Finance
-Person64,3.31,9000.0,Masters,USA,Medical Science
-Person65,3.78,3500.0,PhD,Canada,Physics
-Person66,2.6,9000.0,BS,USA,Computer Science
-Person67,2.54,2500.0,Masters,Canada,Computer Science
-Person68,3.69,6000.0,PhD,Canada,Medical Research
-Person69,2.75,9000.0,Masters,Australia,Computer Science
-Person70,3.62,5500.0,PhD,UK,Fine Arts
-Person71,3.24,7500.0,Masters,UK,Business Administration
-Person72,3.25,2500.0,PhD,Canada,Medical Research
-Person73,3.37,2000.0,BS,USA,Chemistry
-Person74,2.87,8500.0,PhD,UK,Business Administration
-Person75,3.47,8500.0,Masters,UK,Medical Research
-Person76,2.84,500.0,PhD,USA,Fine Arts
-Person77,3.73,500.0,BS,Canada,Medical Research
-Person78,3.68,4500.0,PhD,Canada,History
-Person79,3.07,1000.0,Masters,UK,Chemistry
-Person80,3.53,7000.0,Masters,USA,Computer Science
-Person81,3.47,8500.0,Masters,USA,Medical Research
-Person82,2.99,3000.0,Masters,Australia,Fine Arts
-Person83,3.18,4000.0,PhD,UK,Physics
-Person84,2.71,1500.0,BS,Canada,Medical Research
-Person85,2.76,9000.0,Masters,Australia,Electrical Engineering
-Person86,3.46,1000.0,BS,USA,Chemistry
-Person87,3.89,2000.0,Masters,USA,Business Administration
-Person88,2.8,4000.0,PhD,USA,Finance
-Person89,3.34,4000.0,BS,Australia,Physics
-Person90,2.64,8500.0,BS,Australia,Chemistry
-Person91,3.91,500.0,Masters,Canada,Medical Research
-Person92,2.83,2500.0,PhD,USA,Fine Arts
-Person93,2.99,6500.0,BS,Australia,Medical Science
-Person94,2.5,2500.0,BS,UK,Finance
-Person95,2.74,4000.0,Masters,Australia,Physics
-Person96,3.63,500.0,PhD,USA,Chemistry
-Person97,3.98,8500.0,Masters,Australia,Fine Arts
-Person98,2.96,2500.0,Masters,Australia,Chemistry
-Person99,2.83,8500.0,PhD,Australia,Finance
-Person100,2.68,7000.0,Masters,Australia,Chemistry
-Person101,3.04,8500.0,BS,Canada,Business Administration
-Person102,3.41,500.0,Masters,Australia,Business Administration
-Person103,3.9,1500.0,PhD,Canada,Finance
-Person104,3.11,7000.0,PhD,USA,Business Administration
-Person105,3.69,9000.0,PhD,Australia,Medical Science
-Person106,3.73,2000.0,Masters,USA,Physics
-Person107,3.78,3000.0,BS,Australia,History
-Person108,3.95,4000.0,PhD,Australia,Electrical Engineering
-Person109,3.08,5500.0,Masters,Canada,Chemistry
-Person110,2.99,6500.0,PhD,Australia,Medical Research
-Person111,2.92,9500.0,Masters,Canada,Fine Arts
-Person112,3.58,1500.0,BS,USA,Chemistry
-Person113,3.32,2000.0,BS,Canada,Fine Arts
-Person114,3.66,1500.0,Masters,Australia,History
-Person115,3.39,1500.0,PhD,Australia,Finance
-Person116,3.23,6500.0,Masters,Canada,Medical Research
-Person117,2.64,3000.0,BS,USA,Medical Research
-Person118,2.58,9000.0,Masters,Canada,Computer Science
-Person119,2.6,4500.0,Masters,Canada,Chemistry
-Person120,3.09,8000.0,Masters,Australia,Medical Research
-Person121,2.81,4500.0,BS,USA,Physics
-Person122,3.43,8000.0,BS,USA,Fine Arts
-Person123,3.3,4000.0,PhD,UK,Business Administration
-Person124,2.74,4500.0,BS,Canada,Fine Arts
-Person125,3.98,6500.0,BS,UK,Finance
-Person126,2.83,2500.0,BS,USA,Chemistry
-Person127,2.62,4500.0,PhD,Canada,Physics
-Person128,3.95,4000.0,Masters,Australia,Business Administration
-Person129,2.71,4000.0,PhD,UK,Business Administration
-Person130,3.32,3000.0,Masters,Canada,Computer Science
-Person131,3.85,5500.0,PhD,Canada,Finance
-Person132,3.85,9500.0,BS,USA,Medical Research
-Person133,2.89,2500.0,Masters,UK,Electrical Engineering
-Person134,3.46,1500.0,BS,USA,Medical Research
-Person135,3.56,3500.0,Masters,Australia,Computer Science
-Person136,3.26,1000.0,BS,USA,Chemistry
-Person137,3.95,3500.0,PhD,UK,Medical Science
-Person138,3.94,3500.0,Masters,UK,Finance
-Person139,2.88,4500.0,BS,USA,History
-Person140,3.86,6500.0,BS,Canada,Computer Science
-Person141,3.14,7000.0,PhD,UK,Medical Research
-Person142,3.09,4000.0,BS,UK,Electrical Engineering
-Person143,3.23,500.0,Masters,UK,Business Administration
-Person144,3.38,6000.0,Masters,USA,Fine Arts
-Person145,3.68,500.0,Masters,Australia,Physics
-Person146,3.91,7000.0,Masters,Australia,Business Administration
-Person147,3.4,1000.0,PhD,UK,History
-Person148,3.14,4000.0,BS,Australia,History
-Person149,3.51,9000.0,Masters,USA,Electrical Engineering
-Person150,3.97,6000.0,PhD,Australia,Medical Research
-Person151,2.7,2500.0,BS,Australia,Fine Arts
-Person152,3.68,6000.0,PhD,Canada,Physics
-Person153,3.67,1000.0,Masters,Canada,History
-Person154,3.24,9000.0,Masters,UK,History
-Person155,3.68,6500.0,Masters,Canada,Business Administration
-Person156,2.75,4000.0,PhD,Canada,History
-Person157,2.67,6500.0,BS,Canada,Fine Arts
-Person158,3.52,5500.0,Masters,Australia,History
-Person159,3.66,8500.0,BS,USA,Chemistry
-Person160,3.01,7000.0,PhD,USA,Business Administration
-Person161,3.31,3000.0,Masters,Australia,Medical Science
-Person162,3.12,5000.0,BS,UK,Chemistry
-Person163,3.23,8000.0,PhD,UK,Fine Arts
-Person164,3.91,6500.0,BS,UK,Finance
-Person165,3.55,5000.0,PhD,Canada,Medical Science
-Person166,2.86,2000.0,PhD,USA,Finance
-Person167,2.58,1500.0,BS,Canada,Electrical Engineering
-Person168,2.55,5500.0,BS,Australia,Finance
-Person169,3.23,3000.0,PhD,Australia,Chemistry
-Person170,2.81,1500.0,PhD,Canada,Chemistry
-Person171,3.08,8000.0,PhD,Australia,Business Administration
-Person172,3.13,6000.0,Masters,USA,Finance
-Person173,3.09,3500.0,PhD,Canada,Fine Arts
-Person174,3.83,5500.0,BS,Canada,Electrical Engineering
-Person175,2.66,5500.0,PhD,USA,Medical Research
-Person176,2.98,2500.0,PhD,Australia,History
-Person177,3.61,6000.0,PhD,Australia,Business Administration
-Person178,2.63,8000.0,PhD,Canada,Chemistry
-Person179,2.93,4000.0,PhD,UK,Fine Arts
-Person180,2.69,3500.0,BS,USA,Medical Science
-Person181,2.73,8500.0,BS,Australia,History
-Person182,2.56,1500.0,Masters,Canada,Medical Science
-Person183,3.86,3500.0,PhD,UK,Finance
-Person184,2.6,8000.0,Masters,USA,Finance
-Person185,3.06,6500.0,BS,USA,Medical Science
-Person186,3.14,8000.0,BS,Australia,Business Administration
-Person187,3.65,4000.0,BS,UK,Medical Research
-Person188,2.72,9500.0,PhD,Australia,Computer Science
-Person189,2.92,3500.0,PhD,UK,Medical Research
-Person190,2.91,2000.0,Masters,Australia,Physics
-Person191,3.85,8000.0,Masters,Australia,Fine Arts
-Person192,2.92,8500.0,BS,USA,Electrical Engineering
-Person193,2.99,3500.0,PhD,Canada,Business Administration
-Person194,3.74,6000.0,Masters,USA,Physics
-Person195,2.97,2500.0,Masters,UK,Computer Science
-Person196,3.06,8000.0,Masters,Australia,Physics
-Person197,3.33,9000.0,BS,UK,Fine Arts
-Person198,3.23,6000.0,PhD,USA,Business Administration
-Person199,2.51,3500.0,PhD,USA,Fine Arts
-Person200,3.52,8500.0,PhD,Canada,Fine Arts
-Person201,3.43,2000.0,BS,Canada,History
-Person202,3.71,8000.0,BS,Australia,Finance
-Person203,2.8,2000.0,PhD,UK,Electrical Engineering
-Person204,2.99,6500.0,Masters,UK,Finance
-Person205,3.13,8500.0,Masters,UK,History
-Person206,3.28,1000.0,PhD,Australia,Business Administration
-Person207,3.33,7500.0,Masters,UK,Chemistry
-Person208,2.8,2500.0,BS,USA,Finance
-Person209,2.81,4500.0,PhD,Canada,Chemistry
-Person210,3.93,8500.0,PhD,UK,Chemistry
-Person211,3.36,6000.0,Masters,Canada,Computer Science
-Person212,2.93,7000.0,BS,Canada,Finance
-Person213,4.0,7000.0,BS,Canada,Computer Science
-Person214,3.83,2000.0,Masters,Australia,History
-Person215,2.75,6500.0,Masters,Australia,Finance
-Person216,2.58,2500.0,BS,USA,Chemistry
-Person217,2.81,2500.0,BS,USA,Medical Science
-Person218,2.67,9000.0,PhD,UK,Business Administration
-Person219,3.01,8500.0,PhD,UK,Medical Research
-Person220,3.76,9500.0,PhD,Australia,Physics
-Person221,3.74,8000.0,BS,UK,Physics
-Person222,3.92,5500.0,PhD,Canada,Finance
-Person223,2.81,1000.0,BS,Australia,Computer Science
-Person224,3.93,4000.0,BS,Canada,Physics
-Person225,2.63,4500.0,BS,USA,Medical Research
-Person226,3.12,9500.0,PhD,Canada,History
-Person227,3.52,3500.0,PhD,UK,Physics
-Person228,2.64,5500.0,BS,Australia,Finance
-Person229,3.02,3500.0,PhD,UK,Business Administration
-Person230,3.22,9000.0,Masters,Australia,Computer Science
-Person231,3.1,3000.0,PhD,UK,Business Administration
-Person232,3.38,3000.0,Masters,USA,Chemistry
-Person233,3.84,2500.0,Masters,UK,Finance
-Person234,3.85,9500.0,PhD,Australia,History
-Person235,3.28,1000.0,PhD,USA,Electrical Engineering
-Person236,3.91,2500.0,BS,UK,Physics
-Person237,2.96,1500.0,Masters,UK,Computer Science
-Person238,2.98,8000.0,BS,UK,Fine Arts
-Person239,2.67,3000.0,BS,UK,History
-Person240,3.76,1500.0,PhD,Canada,Medical Science
-Person241,2.6,8000.0,PhD,Canada,Business Administration
-Person242,3.38,2000.0,Masters,USA,Medical Science
-Person243,2.58,8000.0,PhD,Australia,Chemistry
-Person244,3.59,8000.0,BS,Canada,Fine Arts
-Person245,3.98,6500.0,Masters,Canada,Finance
-Person246,3.49,4000.0,Masters,UK,Chemistry
-Person247,3.68,5000.0,BS,Canada,Medical Research
-Person248,3.88,7500.0,BS,Australia,Electrical Engineering
-Person249,3.36,7000.0,BS,Australia,Electrical Engineering
-Person250,2.97,4500.0,Masters,Canada,Physics
-Person251,3.18,4000.0,BS,UK,Physics
-Person252,3.51,4500.0,PhD,Canada,Medical Research
-Person253,3.81,2500.0,Masters,UK,Finance
-Person254,3.16,9500.0,Masters,UK,Chemistry
-Person255,3.32,7500.0,BS,UK,Medical Science
-Person256,3.54,6000.0,Masters,Canada,Computer Science
-Person257,3.42,9500.0,PhD,USA,Physics
-Person258,3.84,6000.0,Masters,UK,Medical Science
-Person259,3.25,500.0,Masters,USA,Electrical Engineering
-Person260,3.32,4000.0,BS,Australia,Medical Science
-Person261,3.12,7500.0,PhD,USA,Business Administration
-Person262,2.82,9500.0,BS,USA,Fine Arts
-Person263,3.55,1500.0,PhD,Australia,Finance
-Person264,2.95,1000.0,BS,Canada,Finance
-Person265,2.57,6500.0,BS,USA,Medical Science
-Person266,2.5,9000.0,Masters,Canada,Business Administration
-Person267,3.31,6500.0,BS,Canada,Computer Science
-Person268,2.89,2500.0,BS,USA,Physics
-Person269,3.96,4500.0,Masters,USA,History
-Person270,3.78,7500.0,PhD,Canada,Medical Research
-Person271,2.59,4000.0,PhD,Australia,Business Administration
-Person272,3.93,8000.0,PhD,Australia,Medical Science
-Person273,2.7,4000.0,BS,Australia,Electrical Engineering
-Person274,3.99,7500.0,PhD,Canada,Finance
-Person275,3.42,7500.0,BS,Canada,History
-Person276,3.37,1000.0,BS,UK,Finance
-Person277,3.99,5500.0,PhD,UK,Chemistry
-Person278,3.12,5000.0,BS,UK,Electrical Engineering
-Person279,3.5,4500.0,Masters,UK,Medical Research
-Person280,3.08,3000.0,BS,UK,History
-Person281,2.52,9500.0,BS,Australia,Fine Arts
-Person282,3.89,1000.0,BS,USA,Chemistry
-Person283,3.58,4500.0,BS,Australia,Electrical Engineering
-Person284,3.0,3000.0,Masters,Canada,Finance
-Person285,3.22,5500.0,Masters,Canada,Electrical Engineering
-Person286,3.32,8500.0,PhD,Canada,Medical Science
-Person287,3.67,1500.0,Masters,USA,Medical Research
-Person288,3.49,2000.0,BS,Canada,Electrical Engineering
-Person289,2.73,9000.0,BS,Australia,Finance
-Person290,3.75,1500.0,BS,USA,Physics
-Person291,2.79,4000.0,Masters,UK,History
-Person292,3.17,4000.0,PhD,USA,Medical Science
-Person293,2.7,5500.0,PhD,UK,History
-Person294,2.61,1500.0,PhD,Australia,Physics
-Person295,3.99,1500.0,Masters,UK,Physics
-Person296,2.51,1500.0,BS,USA,Electrical Engineering
-Person297,3.38,6000.0,BS,Australia,Fine Arts
-Person298,3.77,2500.0,BS,UK,Electrical Engineering
-Person299,3.27,9500.0,Masters,UK,Computer Science
-Person300,2.95,500.0,PhD,Canada,Electrical Engineering
-Person301,3.79,9500.0,Masters,UK,Fine Arts
-Person302,3.49,8000.0,PhD,USA,Chemistry
-Person303,3.31,6500.0,PhD,Canada,Medical Science
-Person304,3.23,1500.0,Masters,Canada,Chemistry
-Person305,3.81,9500.0,BS,Australia,Physics
-Person306,3.56,6500.0,Masters,Australia,Medical Research
-Person307,3.83,6000.0,Masters,USA,Business Administration
-Person308,3.84,1000.0,Masters,Australia,Medical Science
-Person309,3.0,8000.0,PhD,Australia,Electrical Engineering
-Person310,2.65,6500.0,Masters,Australia,Medical Science
-Person311,3.25,1000.0,Masters,Australia,Physics
-Person312,2.83,9000.0,BS,USA,Electrical Engineering
-Person313,2.67,9500.0,BS,Australia,Business Administration
-Person314,2.62,1500.0,Masters,Canada,Business Administration
-Person315,3.99,3500.0,Masters,Canada,History
-Person316,3.52,8500.0,Masters,Canada,Physics
-Person317,3.7,5500.0,Masters,UK,Finance
-Person318,3.97,3000.0,PhD,Australia,Medical Research
-Person319,3.96,9000.0,Masters,Australia,Electrical Engineering
-Person320,2.9,4000.0,PhD,Australia,Medical Research
-Person321,3.74,8000.0,BS,UK,Business Administration
-Person322,3.93,1000.0,Masters,USA,Business Administration
-Person323,3.87,7000.0,Masters,Canada,Business Administration
-Person324,3.37,8500.0,BS,Australia,Computer Science
-Person325,3.45,1500.0,Masters,USA,Medical Research
-Person326,3.95,1000.0,BS,Canada,Physics
-Person327,2.58,3000.0,PhD,UK,Fine Arts
-Person328,3.15,6500.0,Masters,USA,Medical Research
-Person329,2.58,7000.0,PhD,UK,Physics
-Person330,3.94,7500.0,PhD,Australia,Medical Science
-Person331,3.62,1000.0,Masters,UK,Fine Arts
-Person332,3.42,2000.0,BS,UK,Computer Science
-Person333,2.78,5500.0,BS,Australia,Physics
-Person334,3.35,6000.0,BS,USA,Electrical Engineering
-Person335,3.74,5500.0,PhD,Australia,Finance
-Person336,3.78,1000.0,Masters,Canada,Computer Science
-Person337,3.22,7000.0,PhD,Canada,Medical Science
-Person338,3.22,7000.0,PhD,USA,Computer Science
-Person339,3.45,2000.0,Masters,USA,Business Administration
-Person340,2.66,6000.0,BS,Australia,Chemistry
-Person341,3.96,9500.0,PhD,Australia,Fine Arts
-Person342,3.22,1500.0,BS,USA,Chemistry
-Person343,2.89,6000.0,PhD,USA,Medical Research
-Person344,3.23,500.0,BS,USA,Electrical Engineering
-Person345,3.05,8000.0,BS,UK,Physics
-Person346,2.56,500.0,Masters,USA,Electrical Engineering
-Person347,3.35,1500.0,Masters,USA,Fine Arts
-Person348,3.76,500.0,Masters,Canada,Chemistry
-Person349,2.67,3000.0,BS,UK,Electrical Engineering
-Person350,2.59,3500.0,PhD,Australia,History
-Person351,3.11,9500.0,BS,UK,Electrical Engineering
-Person352,2.99,6500.0,BS,UK,Medical Research
-Person353,3.36,8000.0,PhD,Australia,Electrical Engineering
-Person354,3.38,5000.0,Masters,UK,Chemistry
-Person355,3.15,6000.0,PhD,UK,Physics
-Person356,3.95,7000.0,BS,UK,History
-Person357,3.55,8500.0,BS,Australia,Electrical Engineering
-Person358,3.04,3500.0,PhD,UK,Medical Research
-Person359,2.83,9500.0,PhD,Australia,Electrical Engineering
-Person360,3.23,8500.0,PhD,Australia,Chemistry
-Person361,3.19,3000.0,Masters,UK,Business Administration
-Person362,3.82,9000.0,PhD,Canada,Electrical Engineering
-Person363,2.53,2500.0,PhD,Australia,Business Administration
-Person364,2.65,6000.0,PhD,UK,Finance
-Person365,2.67,6000.0,PhD,UK,Business Administration
-Person366,3.77,2000.0,Masters,Australia,Chemistry
-Person367,3.35,3000.0,Masters,Canada,Finance
-Person368,3.42,9000.0,Masters,Australia,Business Administration
-Person369,3.67,8500.0,PhD,UK,Finance
-Person370,3.48,9500.0,PhD,UK,Computer Science
-Person371,3.8,3000.0,PhD,UK,History
-Person372,3.5,2000.0,BS,Australia,Physics
-Person373,3.89,7500.0,Masters,Australia,History
-Person374,2.53,8000.0,BS,USA,Medical Research
-Person375,3.81,2500.0,PhD,Australia,History
-Person376,3.09,8000.0,Masters,UK,History
-Person377,3.01,9500.0,BS,UK,Chemistry
-Person378,3.92,2500.0,Masters,Canada,History
-Person379,3.9,2500.0,Masters,Australia,Business Administration
-Person380,2.72,7000.0,BS,Australia,Computer Science
-Person381,3.39,6500.0,Masters,USA,Finance
-Person382,3.49,8500.0,BS,USA,Physics
-Person383,2.65,3500.0,BS,Canada,Medical Research
-Person384,2.76,1000.0,PhD,UK,Medical Science
-Person385,3.13,1500.0,Masters,Australia,Medical Science
-Person386,3.92,9000.0,PhD,Canada,Finance
-Person387,3.36,5000.0,BS,UK,Computer Science
-Person388,3.08,2000.0,PhD,Canada,Physics
-Person389,3.57,2000.0,PhD,Australia,Business Administration
-Person390,3.46,1500.0,Masters,UK,Medical Research
-Person391,3.12,4500.0,PhD,Australia,Computer Science
-Person392,3.01,9500.0,BS,UK,Fine Arts
-Person393,2.79,9500.0,BS,Canada,Medical Science
-Person394,3.56,8500.0,PhD,UK,Electrical Engineering
-Person395,3.48,7500.0,BS,Australia,Business Administration
-Person396,3.24,2500.0,BS,Canada,Fine Arts
-Person397,3.4,4000.0,PhD,Canada,Medical Research
-Person398,3.2,3500.0,BS,USA,Medical Science
-Person399,2.7,4500.0,Masters,Canada,Chemistry
-Person400,2.92,8500.0,PhD,UK,Computer Science
-Person401,3.31,6500.0,PhD,Canada,Physics
-Person402,2.55,2500.0,Masters,Canada,Electrical Engineering
-Person403,3.9,4500.0,PhD,Canada,Medical Research
-Person404,3.11,3500.0,PhD,UK,Chemistry
-Person405,3.29,4000.0,PhD,Canada,Computer Science
-Person406,3.23,4500.0,PhD,Canada,Electrical Engineering
-Person407,3.56,500.0,PhD,UK,Physics
-Person408,2.91,9500.0,PhD,USA,Chemistry
-Person409,2.9,8500.0,Masters,UK,Electrical Engineering
-Person410,3.67,5000.0,Masters,Canada,Physics
-Person411,2.57,3500.0,BS,Australia,Computer Science
-Person412,2.72,1000.0,PhD,USA,History
-Person413,3.48,1000.0,PhD,Canada,Fine Arts
-Person414,3.05,2500.0,Masters,UK,Electrical Engineering
-Person415,2.82,3000.0,PhD,Canada,History
-Person416,3.93,3000.0,Masters,UK,Electrical Engineering
-Person417,3.32,7500.0,BS,Australia,Business Administration
-Person418,3.61,6000.0,PhD,USA,Finance
-Person419,2.89,1000.0,BS,USA,Medical Research
-Person420,3.9,500.0,Masters,UK,Electrical Engineering
-Person421,3.14,9500.0,Masters,Canada,Finance
-Person422,3.75,2000.0,BS,UK,Electrical Engineering
-Person423,2.69,2000.0,Masters,USA,Fine Arts
-Person424,2.51,8000.0,PhD,Australia,Electrical Engineering
-Person425,3.77,6000.0,PhD,Canada,Physics
-Person426,2.63,9500.0,PhD,USA,Fine Arts
-Person427,3.52,4500.0,PhD,USA,Business Administration
-Person428,2.68,5000.0,BS,UK,Fine Arts
-Person429,2.63,4000.0,Masters,Australia,Computer Science
-Person430,3.97,8500.0,BS,Australia,Finance
-Person431,3.09,7000.0,Masters,UK,Fine Arts
-Person432,3.5,9500.0,BS,UK,Finance
-Person433,3.33,3500.0,BS,UK,Fine Arts
-Person434,2.58,8500.0,Masters,Australia,Finance
-Person435,3.34,6500.0,PhD,Australia,Business Administration
-Person436,2.65,9500.0,PhD,UK,Electrical Engineering
-Person437,3.13,2500.0,BS,Canada,Computer Science
-Person438,3.94,8000.0,BS,UK,Electrical Engineering
-Person439,3.19,8500.0,BS,UK,Business Administration
-Person440,2.72,7500.0,BS,Canada,Chemistry
-Person441,3.88,4000.0,PhD,USA,Computer Science
-Person442,2.53,5000.0,BS,USA,History
-Person443,3.63,500.0,BS,Canada,Computer Science
-Person444,3.41,2000.0,PhD,USA,Finance
-Person445,3.2,2000.0,BS,Canada,History
-Person446,3.83,6500.0,Masters,Australia,Physics
-Person447,3.75,9500.0,PhD,USA,Medical Research
-Person448,3.32,3500.0,Masters,Canada,Medical Research
-Person449,3.25,5000.0,PhD,USA,Finance
-Person450,3.73,4000.0,BS,USA,Finance
-Person451,2.74,5500.0,Masters,USA,Finance
-Person452,3.37,8000.0,PhD,USA,Computer Science
-Person453,3.07,7500.0,Masters,USA,Business Administration
-Person454,3.7,9000.0,Masters,Canada,Electrical Engineering
-Person455,2.67,2500.0,Masters,Australia,Business Administration
-Person456,3.98,4000.0,PhD,USA,Computer Science
-Person457,3.76,3000.0,BS,USA,Physics
-Person458,3.38,5000.0,BS,UK,Physics
-Person459,2.88,2500.0,PhD,USA,Physics
-Person460,3.49,9500.0,BS,USA,Finance
-Person461,3.86,1500.0,BS,Australia,Business Administration
-Person462,3.89,2000.0,Masters,USA,Electrical Engineering
-Person463,3.11,3000.0,PhD,Canada,History
-Person464,3.45,5500.0,BS,USA,Finance
-Person465,3.14,9000.0,BS,UK,Fine Arts
-Person466,3.42,1500.0,PhD,Canada,Business Administration
-Person467,2.53,500.0,PhD,USA,Fine Arts
-Person468,3.06,500.0,BS,Australia,Medical Science
-Person469,3.06,5500.0,BS,UK,Electrical Engineering
-Person470,3.15,9500.0,PhD,Australia,Medical Science
-Person471,2.88,6000.0,Masters,UK,Physics
-Person472,2.55,7500.0,BS,USA,Chemistry
-Person473,3.07,3000.0,PhD,USA,Medical Research
-Person474,3.57,9500.0,Masters,Australia,Medical Science
-Person475,2.85,4500.0,PhD,USA,Finance
-Person476,2.73,8000.0,Masters,USA,Finance
-Person477,2.61,500.0,Masters,USA,Electrical Engineering
-Person478,2.55,5500.0,PhD,UK,History
-Person479,3.32,3500.0,BS,UK,Medical Research
-Person480,2.93,8000.0,Masters,Canada,Medical Research
-Person481,3.82,7000.0,PhD,USA,Fine Arts
-Person482,3.85,8500.0,PhD,Australia,Physics
-Person483,3.93,5000.0,PhD,Canada,Electrical Engineering
-Person484,3.85,1000.0,Masters,UK,History
-Person485,3.69,6500.0,Masters,USA,Chemistry
-Person486,2.82,1000.0,Masters,UK,Medical Research
-Person487,2.93,1000.0,PhD,UK,Physics
-Person488,3.8,2500.0,Masters,UK,Chemistry
-Person489,3.14,7500.0,PhD,UK,Medical Science
-Person490,2.85,7000.0,Masters,USA,Fine Arts
-Person491,3.81,8500.0,Masters,Australia,Computer Science
-Person492,3.8,6500.0,PhD,USA,Fine Arts
-Person493,2.88,3000.0,BS,Australia,Electrical Engineering
-Person494,2.87,3500.0,BS,Canada,Electrical Engineering
-Person495,3.53,8000.0,Masters,USA,Medical Research
-Person496,2.78,3500.0,PhD,Canada,History
-Person497,2.62,5000.0,Masters,Australia,Business Administration
-Person498,4.0,5000.0,Masters,Australia,Finance
-Person499,3.46,4000.0,PhD,USA,Computer Science
+Person0,2.59,9000.0,BS,Canada,Business Administration
+Person1,2.54,6500.0,PhD,USA,Computer Science
+Person2,3.41,3500.0,Masters,United Kingdom,Business Administration
+Person3,2.77,9000.0,Masters,UK,History
+Person4,2.96,6000.0,Masters,USA,CS
+Person5,2.54,9000.0,BS,Canada,CS
+Person6,3.2,5500.0,PhD,Canada,Chemistry
+Person7,3.43,8000.0,Masters,USA,Finance
+Person8,2.86,8000.0,PhD,United States,Software Engineering
+Person9,3.29,2500.0,PhD,Pakistan,Computer Science
+Person10,2.72,8000.0,BS,UK,Software Engineering
+Person11,2.99,8000.0,Masters,UK,Software Engineering
+Person12,3.08,4000.0,Masters,UK,Computer Science
+Person13,3.76,8000.0,BS,United States,Medical Science
+Person14,3.38,500.0,Masters,Pakistan,Medical Research
+Person15,2.55,500.0,Masters,Pakistan,History
+Person16,3.8,7000.0,Masters,United States,Medical Science
+Person17,3.66,5500.0,BS,Australia,History
+Person18,2.58,1000.0,Masters,USA,History
+Person19,3.73,2500.0,Masters,United Kingdom,Electrical Engineering
+Person20,3.98,4500.0,PhD,United Kingdom,History
+Person21,3.4,8000.0,PhD,Canada,Medical Science
+Person22,3.86,8500.0,Masters,UK,Computer Science
+Person23,3.59,7000.0,BS,USA,Business Administration
+Person24,3.68,6500.0,Masters,Canada,Software Engineering
+Person25,3.78,4500.0,BS,Australia,Software Engineering
+Person26,3.97,9000.0,Masters,Pakistan,SE
+Person27,2.71,5500.0,Masters,Australia,Electrical Engineering
+Person28,2.55,1000.0,Masters,Canada,Electrical Engineering
+Person29,3.27,3500.0,BS,UK,Physics
+Person30,2.75,6000.0,BS,Australia,History
+Person31,3.69,5000.0,BS,UK,Finance
+Person32,3.54,5500.0,Masters,UK,Physics
+Person33,3.08,6000.0,PhD,United Kingdom,Business Administration
+Person34,3.07,4000.0,PhD,USA,Software Engineering
+Person35,3.26,7500.0,Masters,Pakistan,Medical Science
+Person36,3.64,7500.0,Masters,Australia,SE
+Person37,3.87,5500.0,Masters,United Kingdom,Electrical Engineering
+Person38,3.09,8000.0,Masters,UK,Electrical Engineering
+Person39,3.45,9000.0,BS,United States,Software Engineering
+Person40,3.06,5500.0,PhD,USA,Chemistry
+Person41,2.56,3500.0,PhD,Australia,Electrical Engineering
+Person42,3.77,6000.0,BS,USA,Physics
+Person43,3.1,3500.0,BS,United States,Software Engineering
+Person44,3.27,9500.0,PhD,United Kingdom,Computer Science
+Person45,3.45,3000.0,BS,UK,Physics
+Person46,3.02,7000.0,Masters,Pakistan,Finance
+Person47,2.94,500.0,Masters,United States,Finance
+Person48,3.49,5000.0,PhD,Pakistan,CS
+Person49,2.84,9500.0,Masters,UK,Physics
+Person50,2.9,1000.0,PhD,Pakistan,SE
+Person51,2.62,2500.0,Masters,USA,Software Engineering
+Person52,3.57,6000.0,BS,USA,Electrical Engineering
+Person53,3.34,6000.0,PhD,United Kingdom,Electrical Engineering
+Person54,3.84,7000.0,PhD,United States,SE
+Person55,2.57,6000.0,Masters,Australia,Medical Science
+Person56,3.37,9000.0,BS,Canada,Fine Arts
+Person57,3.02,7000.0,Masters,United States,Computer Science
+Person58,3.02,8500.0,BS,Australia,SE
+Person59,3.37,2500.0,PhD,United States,Fine Arts
+Person60,2.56,8500.0,BS,Australia,CS
+Person61,3.81,7000.0,BS,Australia,Business Administration
+Person62,3.48,5000.0,PhD,Canada,History
+Person63,2.84,8500.0,BS,United Kingdom,Computer Science
+Person64,3.13,4000.0,BS,Australia,Finance
+Person65,2.96,7000.0,PhD,Canada,Business Administration
+Person66,3.96,1500.0,PhD,United Kingdom,Medical Research
+Person67,3.46,500.0,PhD,Australia,History
+Person68,3.54,2500.0,PhD,Australia,Electrical Engineering
+Person69,2.64,6500.0,BS,UK,Medical Science
+Person70,2.69,1500.0,Masters,Australia,Physics
+Person71,3.58,1500.0,Masters,UK,Physics
+Person72,2.91,5000.0,BS,Canada,CS
+Person73,3.76,3500.0,BS,Pakistan,Electrical Engineering
+Person74,3.81,7000.0,BS,USA,Computer Science
+Person75,3.01,7000.0,Masters,Pakistan,CS
+Person76,3.61,500.0,BS,UK,Business Administration
+Person77,3.56,4000.0,Masters,USA,Finance
+Person78,2.74,8000.0,PhD,USA,Computer Science
+Person79,3.33,2000.0,BS,United Kingdom,Finance
+Person80,2.69,2500.0,PhD,Canada,Chemistry
+Person81,2.77,4500.0,PhD,USA,SE
+Person82,2.57,5000.0,BS,United States,Finance
+Person83,2.52,9000.0,Masters,UK,History
+Person84,3.94,6000.0,Masters,Pakistan,Medical Research
+Person85,3.96,9500.0,Masters,Australia,Medical Science
+Person86,3.73,8000.0,BS,UK,Medical Science
+Person87,2.73,6000.0,PhD,USA,CS
+Person88,2.63,1000.0,Masters,Pakistan,Medical Science
+Person89,3.71,1500.0,Masters,Australia,Computer Science
+Person90,3.12,1000.0,PhD,United States,Computer Science
+Person91,3.48,3500.0,BS,UK,CS
+Person92,3.11,5500.0,Masters,Australia,History
+Person93,3.23,6000.0,Masters,USA,Electrical Engineering
+Person94,3.5,9000.0,Masters,United Kingdom,Electrical Engineering
+Person95,3.45,2500.0,BS,USA,History
+Person96,3.98,3000.0,BS,USA,Medical Science
+Person97,2.56,8000.0,BS,USA,Computer Science
+Person98,3.48,8000.0,Masters,Pakistan,Computer Science
+Person99,3.18,3000.0,Masters,United States,Physics
+Person100,3.89,6500.0,PhD,Pakistan,Business Administration
+Person101,3.21,5000.0,PhD,United States,Medical Science
+Person102,3.83,7500.0,PhD,Australia,CS
+Person103,3.72,7000.0,PhD,United Kingdom,Medical Research
+Person104,2.85,2000.0,PhD,United Kingdom,Business Administration
+Person105,3.27,9500.0,Masters,United States,Medical Science
+Person106,3.44,1500.0,Masters,United States,Electrical Engineering
+Person107,2.94,6500.0,PhD,Pakistan,Electrical Engineering
+Person108,2.99,1000.0,BS,United Kingdom,Electrical Engineering
+Person109,3.35,6000.0,PhD,USA,Software Engineering
+Person110,3.37,8500.0,Masters,USA,Finance
+Person111,3.21,2000.0,PhD,Australia,Finance
+Person112,3.27,6000.0,Masters,Pakistan,Physics
+Person113,3.98,1000.0,BS,Pakistan,Medical Research
+Person114,3.31,3500.0,BS,United Kingdom,Computer Science
+Person115,3.75,7500.0,PhD,Canada,Business Administration
+Person116,3.2,8500.0,BS,USA,Fine Arts
+Person117,2.63,1500.0,BS,United Kingdom,Business Administration
+Person118,3.64,4500.0,PhD,UK,Electrical Engineering
+Person119,3.68,7500.0,BS,UK,SE
+Person120,2.85,500.0,BS,USA,Software Engineering
+Person121,3.29,4500.0,Masters,USA,Medical Research
+Person122,3.19,500.0,PhD,UK,Computer Science
+Person123,3.68,4500.0,Masters,United Kingdom,Physics
+Person124,2.88,7000.0,BS,United Kingdom,Chemistry
+Person125,3.89,7500.0,Masters,USA,Computer Science
+Person126,2.76,3000.0,Masters,Australia,Medical Science
+Person127,3.52,3000.0,BS,Canada,Fine Arts
+Person128,2.56,5500.0,PhD,USA,Business Administration
+Person129,2.58,4500.0,Masters,UK,SE
+Person130,3.79,9500.0,PhD,United Kingdom,Finance
+Person131,2.59,5500.0,PhD,United States,Fine Arts
+Person132,3.13,9500.0,PhD,United Kingdom,Software Engineering
+Person133,3.29,6500.0,PhD,USA,History
+Person134,3.28,4000.0,Masters,United States,Computer Science
+Person135,3.06,7500.0,BS,UK,Software Engineering
+Person136,3.32,3000.0,PhD,Australia,Chemistry
+Person137,3.63,3500.0,PhD,United Kingdom,Computer Science
+Person138,3.19,3500.0,PhD,United States,Physics
+Person139,3.7,2000.0,Masters,Australia,Chemistry
+Person140,3.77,1500.0,Masters,Canada,CS
+Person141,2.69,7000.0,BS,UK,Medical Science
+Person142,3.07,1000.0,BS,USA,SE
+Person143,3.64,1000.0,Masters,UK,History
+Person144,3.77,9500.0,BS,United States,Fine Arts
+Person145,3.05,5500.0,Masters,Canada,Medical Research
+Person146,2.68,5500.0,Masters,United States,History
+Person147,3.52,8500.0,Masters,USA,SE
+Person148,2.69,9500.0,BS,Australia,Fine Arts
+Person149,3.95,3500.0,BS,Pakistan,Finance
+Person150,3.75,4500.0,Masters,USA,History
+Person151,3.41,3000.0,Masters,Pakistan,CS
+Person152,3.05,3000.0,BS,Australia,Business Administration
+Person153,2.99,2000.0,PhD,UK,Finance
+Person154,3.75,3000.0,BS,Canada,Electrical Engineering
+Person155,3.2,1000.0,PhD,Canada,Medical Science
+Person156,3.84,6000.0,BS,Pakistan,Computer Science
+Person157,3.87,9000.0,PhD,United States,Business Administration
+Person158,3.89,7500.0,Masters,United Kingdom,Finance
+Person159,2.98,4000.0,BS,United States,Computer Science
+Person160,2.82,6000.0,BS,Canada,History
+Person161,3.29,1500.0,PhD,United Kingdom,CS
+Person162,3.57,7000.0,BS,Pakistan,Electrical Engineering
+Person163,2.52,6500.0,BS,United Kingdom,Finance
+Person164,3.81,2000.0,Masters,USA,Fine Arts
+Person165,3.31,8500.0,BS,United Kingdom,CS
+Person166,3.12,5000.0,Masters,Canada,Physics
+Person167,3.37,3000.0,Masters,United States,Computer Science
+Person168,2.85,6000.0,BS,United Kingdom,Chemistry
+Person169,2.77,1500.0,Masters,Pakistan,Business Administration
+Person170,3.42,1500.0,Masters,Pakistan,Physics
+Person171,2.63,6000.0,Masters,UK,Business Administration
+Person172,3.27,2500.0,Masters,Canada,Chemistry
+Person173,3.45,2000.0,PhD,UK,Business Administration
+Person174,2.54,5000.0,BS,USA,SE
+Person175,3.6,8000.0,BS,UK,Finance
+Person176,3.42,6000.0,Masters,Pakistan,Computer Science
+Person177,3.71,9000.0,BS,United Kingdom,Finance
+Person178,2.76,8500.0,BS,UK,Medical Research
+Person179,3.79,1500.0,Masters,United Kingdom,Fine Arts
+Person180,2.75,5000.0,Masters,USA,SE
+Person181,3.41,9500.0,BS,USA,Medical Research
+Person182,2.63,6500.0,PhD,UK,Business Administration
+Person183,3.99,7000.0,Masters,United States,Finance
+Person184,2.8,2000.0,BS,Canada,Medical Research
+Person185,2.87,4500.0,BS,Australia,CS
+Person186,3.64,6500.0,Masters,Canada,CS
+Person187,2.64,2000.0,Masters,USA,Finance
+Person188,3.39,3500.0,BS,UK,CS
+Person189,3.3,4000.0,BS,Canada,Physics
+Person190,3.51,5000.0,PhD,UK,Electrical Engineering
+Person191,3.31,4500.0,BS,United States,SE
+Person192,3.67,500.0,Masters,UK,Fine Arts
+Person193,3.45,4000.0,PhD,Australia,Computer Science
+Person194,3.85,7000.0,BS,UK,Fine Arts
+Person195,2.77,6500.0,BS,United Kingdom,Electrical Engineering
+Person196,2.71,5000.0,Masters,Pakistan,Physics
+Person197,3.91,7500.0,PhD,Canada,Software Engineering
+Person198,3.93,500.0,Masters,UK,Fine Arts
+Person199,3.96,9000.0,PhD,UK,Software Engineering
+Person200,2.56,9500.0,Masters,UK,Fine Arts
+Person201,2.66,4500.0,PhD,United States,Medical Science
+Person202,2.58,1000.0,PhD,United States,Physics
+Person203,3.79,7000.0,Masters,United States,Medical Science
+Person204,3.33,2000.0,Masters,USA,Finance
+Person205,3.24,1000.0,Masters,USA,Medical Research
+Person206,2.7,4000.0,BS,Canada,Software Engineering
+Person207,3.3,4000.0,Masters,Canada,Fine Arts
+Person208,2.53,9500.0,Masters,United Kingdom,Software Engineering
+Person209,2.73,6500.0,PhD,Pakistan,SE
+Person210,3.11,2000.0,BS,UK,Medical Research
+Person211,2.51,1000.0,Masters,United States,Medical Research
+Person212,3.69,2000.0,BS,Canada,Electrical Engineering
+Person213,3.43,7500.0,PhD,UK,History
+Person214,3.27,500.0,PhD,Canada,Computer Science
+Person215,3.49,7000.0,PhD,USA,Physics
+Person216,3.14,1000.0,BS,Pakistan,Business Administration
+Person217,2.85,1000.0,Masters,UK,Medical Research
+Person218,2.58,1500.0,BS,United States,Business Administration
+Person219,3.76,8500.0,PhD,United States,Electrical Engineering
+Person220,2.92,7500.0,Masters,United States,Software Engineering
+Person221,2.87,2500.0,Masters,United States,Software Engineering
+Person222,2.66,8500.0,PhD,UK,Physics
+Person223,3.7,9000.0,PhD,USA,History
+Person224,2.68,1000.0,Masters,Canada,Computer Science
+Person225,2.76,7500.0,PhD,United States,Electrical Engineering
+Person226,2.64,1500.0,Masters,United States,SE
+Person227,3.77,4500.0,PhD,United Kingdom,SE
+Person228,3.69,1000.0,Masters,Pakistan,Software Engineering
+Person229,3.36,4500.0,Masters,Australia,Software Engineering
+Person230,3.88,2000.0,Masters,UK,Medical Research
+Person231,3.6,2000.0,PhD,United Kingdom,Business Administration
+Person232,2.61,3000.0,Masters,United States,SE
+Person233,3.55,1500.0,PhD,Australia,Medical Research
+Person234,3.93,6000.0,BS,Australia,Chemistry
+Person235,2.87,8000.0,PhD,United Kingdom,Physics
+Person236,3.75,5000.0,Masters,UK,Computer Science
+Person237,3.29,8500.0,Masters,UK,Business Administration
+Person238,3.63,3500.0,PhD,Canada,SE
+Person239,3.59,3000.0,BS,Australia,Medical Science
+Person240,3.68,5500.0,Masters,Australia,SE
+Person241,3.79,2500.0,BS,United Kingdom,Medical Science
+Person242,2.69,9500.0,BS,Pakistan,Physics
+Person243,2.52,5000.0,PhD,Australia,Finance
+Person244,3.77,2500.0,PhD,Pakistan,Computer Science
+Person245,2.73,4500.0,BS,Pakistan,History
+Person246,3.75,1500.0,Masters,United States,Medical Science
+Person247,3.97,6000.0,Masters,United States,Medical Research
+Person248,3.62,5500.0,PhD,United Kingdom,History
+Person249,3.84,9000.0,BS,Canada,Medical Research
+Person250,3.52,2500.0,Masters,Canada,Electrical Engineering
+Person251,3.51,8000.0,BS,United Kingdom,SE
+Person252,3.52,4500.0,PhD,Pakistan,Electrical Engineering
+Person253,2.71,500.0,BS,United Kingdom,Medical Research
+Person254,3.22,6000.0,PhD,Canada,Business Administration
+Person255,2.88,7000.0,Masters,United Kingdom,Software Engineering
+Person256,3.99,2500.0,PhD,United Kingdom,Computer Science
+Person257,2.53,7000.0,Masters,United States,Electrical Engineering
+Person258,3.22,6000.0,BS,Pakistan,History
+Person259,2.97,3000.0,PhD,USA,Medical Research
+Person260,2.71,6000.0,Masters,United Kingdom,Medical Science
+Person261,2.78,9000.0,Masters,United Kingdom,Electrical Engineering
+Person262,2.82,4500.0,Masters,UK,Medical Research
+Person263,3.94,8000.0,Masters,United States,Business Administration
+Person264,2.69,6000.0,BS,USA,CS
+Person265,3.73,5000.0,BS,Canada,Medical Research
+Person266,3.07,1000.0,Masters,USA,Finance
+Person267,2.61,9500.0,PhD,United States,SE
+Person268,2.88,3500.0,Masters,UK,Physics
+Person269,3.78,1500.0,Masters,United States,CS
+Person270,2.84,7000.0,BS,UK,SE
+Person271,3.26,9000.0,PhD,United Kingdom,Medical Research
+Person272,3.99,4000.0,Masters,Pakistan,Finance
+Person273,3.68,1500.0,BS,Pakistan,History
+Person274,3.02,6000.0,BS,Canada,Software Engineering
+Person275,3.93,9000.0,Masters,Canada,Physics
+Person276,3.11,8000.0,Masters,USA,CS
+Person277,2.59,7500.0,PhD,Pakistan,Fine Arts
+Person278,3.07,8500.0,PhD,United Kingdom,Medical Research
+Person279,2.83,500.0,Masters,Pakistan,History
+Person280,2.78,4500.0,Masters,Australia,Software Engineering
+Person281,2.58,1500.0,PhD,Australia,History
+Person282,3.94,4000.0,BS,Canada,Finance
+Person283,3.8,3500.0,Masters,United Kingdom,Fine Arts
+Person284,3.6,1500.0,Masters,United States,CS
+Person285,3.91,2500.0,BS,United Kingdom,Computer Science
+Person286,3.36,3500.0,Masters,United States,Chemistry
+Person287,3.38,4500.0,PhD,USA,History
+Person288,3.05,5000.0,Masters,USA,Physics
+Person289,3.92,1000.0,BS,UK,Business Administration
+Person290,3.78,4000.0,BS,Pakistan,Medical Science
+Person291,3.9,1500.0,BS,United Kingdom,Medical Science
+Person292,3.97,4000.0,PhD,UK,History
+Person293,3.28,8500.0,PhD,Australia,SE
+Person294,2.79,4500.0,PhD,Canada,Computer Science
+Person295,3.65,6500.0,Masters,UK,Medical Research
+Person296,3.35,8000.0,Masters,UK,SE
+Person297,2.93,1500.0,BS,Pakistan,Fine Arts
+Person298,2.6,9500.0,Masters,USA,Finance
+Person299,2.8,4000.0,PhD,United States,Fine Arts
+Person300,2.93,5500.0,BS,United Kingdom,History
+Person301,3.89,2500.0,Masters,Canada,History
+Person302,3.02,1000.0,Masters,United Kingdom,Fine Arts
+Person303,2.97,9000.0,PhD,United States,Software Engineering
+Person304,3.16,5500.0,PhD,United Kingdom,Fine Arts
+Person305,2.58,4000.0,Masters,UK,Electrical Engineering
+Person306,2.57,7500.0,PhD,UK,Medical Science
+Person307,3.08,6500.0,BS,UK,Electrical Engineering
+Person308,3.64,8000.0,PhD,United Kingdom,Computer Science
+Person309,3.91,5500.0,BS,USA,Fine Arts
+Person310,3.97,3000.0,Masters,Pakistan,Finance
+Person311,2.62,9500.0,BS,Pakistan,Electrical Engineering
+Person312,3.64,3000.0,Masters,UK,Computer Science
+Person313,3.22,1000.0,Masters,United States,SE
+Person314,2.91,1500.0,PhD,UK,Computer Science
+Person315,2.74,3500.0,BS,Australia,Software Engineering
+Person316,3.46,7000.0,BS,USA,Medical Research
+Person317,3.91,4000.0,PhD,USA,Finance
+Person318,3.38,7000.0,Masters,Australia,Physics
+Person319,3.8,4500.0,BS,Canada,CS
+Person320,3.89,6500.0,BS,United States,Computer Science
+Person321,3.06,2000.0,BS,Pakistan,History
+Person322,3.19,1000.0,PhD,United States,CS
+Person323,3.81,8500.0,Masters,UK,Medical Research
+Person324,2.91,2500.0,Masters,USA,SE
+Person325,3.34,6000.0,PhD,Pakistan,Finance
+Person326,3.11,8500.0,PhD,United Kingdom,Chemistry
+Person327,3.3,3500.0,PhD,United States,Fine Arts
+Person328,3.14,5500.0,BS,Canada,Fine Arts
+Person329,3.93,6000.0,Masters,United Kingdom,Software Engineering
+Person330,2.95,8500.0,BS,UK,SE
+Person331,2.73,500.0,BS,USA,Fine Arts
+Person332,2.7,9500.0,BS,United States,Software Engineering
+Person333,2.74,8500.0,PhD,United States,Finance
+Person334,3.12,5500.0,Masters,Pakistan,Physics
+Person335,3.23,4000.0,BS,Canada,Fine Arts
+Person336,3.89,1000.0,BS,UK,Medical Research
+Person337,2.75,3000.0,BS,United Kingdom,History
+Person338,2.95,6500.0,BS,Pakistan,Business Administration
+Person339,3.9,500.0,Masters,Canada,Medical Science
+Person340,2.89,2500.0,BS,United Kingdom,Software Engineering
+Person341,2.72,2500.0,PhD,USA,Computer Science
+Person342,2.8,3500.0,PhD,United Kingdom,Chemistry
+Person343,3.89,7000.0,BS,Pakistan,History
+Person344,3.54,2500.0,BS,United Kingdom,Software Engineering
+Person345,3.73,500.0,Masters,UK,SE
+Person346,3.91,8500.0,BS,Canada,Chemistry
+Person347,2.85,6500.0,Masters,United States,CS
+Person348,2.54,3000.0,Masters,United States,Computer Science
+Person349,3.87,8000.0,PhD,USA,Medical Research
+Person350,3.67,2000.0,PhD,USA,Physics
+Person351,3.03,9500.0,BS,United States,Medical Science
+Person352,2.57,7000.0,BS,Canada,Software Engineering
+Person353,2.72,2500.0,PhD,UK,CS
+Person354,3.08,3500.0,PhD,Canada,Computer Science
+Person355,2.58,1000.0,Masters,United Kingdom,Chemistry
+Person356,3.17,3000.0,PhD,Pakistan,Fine Arts
+Person357,3.39,7000.0,BS,Pakistan,Software Engineering
+Person358,3.81,1500.0,Masters,USA,Physics
+Person359,3.28,1000.0,BS,USA,Electrical Engineering
+Person360,3.15,6500.0,PhD,UK,Fine Arts
+Person361,3.5,3000.0,Masters,United States,CS
+Person362,3.61,6000.0,BS,Australia,Software Engineering
+Person363,3.18,9500.0,PhD,USA,Chemistry
+Person364,2.95,3000.0,BS,USA,Chemistry
+Person365,2.54,2500.0,Masters,United States,Finance
+Person366,3.56,8500.0,Masters,Pakistan,Fine Arts
+Person367,3.94,2000.0,Masters,United States,Medical Research
+Person368,3.22,8500.0,PhD,United States,CS
+Person369,3.41,500.0,Masters,United States,History
+Person370,2.87,8500.0,Masters,United Kingdom,Chemistry
+Person371,3.83,8500.0,BS,United Kingdom,Medical Research
+Person372,3.3,500.0,BS,Pakistan,Chemistry
+Person373,3.16,9500.0,Masters,USA,Software Engineering
+Person374,3.47,1500.0,BS,Canada,CS
+Person375,2.93,8000.0,BS,USA,Medical Science
+Person376,3.09,2500.0,PhD,United States,Fine Arts
+Person377,2.54,8500.0,Masters,Canada,Physics
+Person378,3.43,2000.0,PhD,Pakistan,Business Administration
+Person379,3.07,9500.0,PhD,UK,History
+Person380,2.78,9000.0,PhD,UK,Business Administration
+Person381,2.83,7500.0,BS,United States,CS
+Person382,3.91,4500.0,BS,UK,Computer Science
+Person383,2.83,1000.0,Masters,USA,Medical Science
+Person384,2.76,6500.0,Masters,USA,Electrical Engineering
+Person385,3.54,7500.0,Masters,Pakistan,Fine Arts
+Person386,2.73,5000.0,PhD,UK,Fine Arts
+Person387,3.99,9000.0,Masters,Canada,Medical Research
+Person388,3.51,4500.0,Masters,Pakistan,Computer Science
+Person389,2.65,5000.0,PhD,USA,Medical Research
+Person390,3.9,500.0,PhD,Australia,Physics
+Person391,3.82,9500.0,BS,UK,Chemistry
+Person392,3.64,8500.0,BS,UK,History
+Person393,2.51,8500.0,BS,Pakistan,Software Engineering
+Person394,3.54,4500.0,BS,UK,Medical Science
+Person395,3.84,8000.0,Masters,United Kingdom,History
+Person396,3.92,4000.0,PhD,Canada,Medical Science
+Person397,3.93,6000.0,BS,UK,CS
+Person398,2.84,7500.0,PhD,Australia,Medical Research
+Person399,3.56,9500.0,BS,UK,Physics
+Person400,2.76,500.0,PhD,United Kingdom,Electrical Engineering
+Person401,3.52,2500.0,PhD,United Kingdom,Computer Science
+Person402,3.75,1000.0,PhD,USA,Medical Research
+Person403,3.27,3000.0,BS,United States,Business Administration
+Person404,3.71,5000.0,BS,Canada,Physics
+Person405,3.5,2000.0,PhD,Australia,Medical Science
+Person406,3.98,7500.0,Masters,USA,Chemistry
+Person407,2.71,6500.0,PhD,Pakistan,CS
+Person408,3.23,7500.0,Masters,Australia,Chemistry
+Person409,2.65,8000.0,PhD,Canada,CS
+Person410,2.87,6500.0,BS,Pakistan,Computer Science
+Person411,3.74,4000.0,PhD,Canada,History
+Person412,3.85,9000.0,PhD,United Kingdom,History
+Person413,3.18,6000.0,BS,United Kingdom,History
+Person414,3.07,3000.0,BS,Pakistan,Computer Science
+Person415,3.04,4000.0,PhD,United States,Business Administration
+Person416,2.71,8000.0,PhD,UK,Business Administration
+Person417,2.68,500.0,BS,USA,Business Administration
+Person418,2.51,9000.0,Masters,Pakistan,CS
+Person419,2.95,6500.0,PhD,UK,Finance
+Person420,3.17,1000.0,Masters,United Kingdom,CS
+Person421,3.95,1500.0,Masters,Pakistan,Medical Research
+Person422,3.17,5000.0,PhD,UK,Finance
+Person423,3.43,3500.0,PhD,USA,Medical Science
+Person424,2.86,8000.0,Masters,United Kingdom,Medical Research
+Person425,2.98,7000.0,PhD,Australia,Electrical Engineering
+Person426,3.45,500.0,BS,UK,History
+Person427,3.72,2000.0,Masters,UK,Fine Arts
+Person428,2.59,5500.0,Masters,UK,Medical Research
+Person429,3.62,7500.0,Masters,Australia,CS
+Person430,3.73,3500.0,BS,United Kingdom,Fine Arts
+Person431,3.57,500.0,PhD,Canada,Medical Science
+Person432,2.79,9500.0,Masters,Canada,Finance
+Person433,3.47,9500.0,BS,USA,Chemistry
+Person434,3.72,6000.0,PhD,Canada,Finance
+Person435,3.71,8500.0,BS,USA,CS
+Person436,2.56,4500.0,Masters,Pakistan,CS
+Person437,2.88,1500.0,PhD,Pakistan,Medical Science
+Person438,3.38,5500.0,PhD,UK,Software Engineering
+Person439,3.72,3500.0,BS,Australia,Finance
+Person440,2.73,7000.0,BS,USA,Chemistry
+Person441,2.62,6000.0,Masters,USA,Medical Science
+Person442,2.63,2500.0,BS,United Kingdom,Medical Science
+Person443,2.76,8000.0,Masters,Pakistan,History
+Person444,3.33,4500.0,BS,Australia,Medical Science
+Person445,2.58,8500.0,Masters,Australia,Medical Research
+Person446,2.84,3000.0,PhD,Pakistan,Medical Research
+Person447,3.47,4500.0,Masters,UK,SE
+Person448,3.75,6000.0,Masters,USA,Electrical Engineering
+Person449,3.89,5500.0,PhD,United Kingdom,Software Engineering
+Person450,3.3,9500.0,BS,United Kingdom,Electrical Engineering
+Person451,2.7,3000.0,BS,Australia,Electrical Engineering
+Person452,3.05,5500.0,PhD,UK,Software Engineering
+Person453,2.97,5000.0,BS,United Kingdom,Electrical Engineering
+Person454,3.86,5000.0,BS,United Kingdom,Computer Science
+Person455,3.95,6000.0,BS,United States,Fine Arts
+Person456,3.06,8000.0,BS,Pakistan,Chemistry
+Person457,3.41,7000.0,PhD,Canada,SE
+Person458,3.29,4000.0,PhD,USA,Computer Science
+Person459,2.99,4000.0,Masters,Australia,Chemistry
+Person460,3.96,3500.0,BS,Australia,Physics
+Person461,2.75,5500.0,PhD,UK,Finance
+Person462,2.71,7500.0,PhD,United Kingdom,Computer Science
+Person463,3.68,5000.0,Masters,United States,Finance
+Person464,3.79,9000.0,Masters,UK,Physics
+Person465,3.61,500.0,PhD,Canada,CS
+Person466,3.58,4500.0,BS,Canada,Business Administration
+Person467,3.77,6000.0,Masters,USA,Electrical Engineering
+Person468,3.1,4500.0,BS,Australia,Medical Research
+Person469,3.46,500.0,BS,UK,SE
+Person470,2.87,1500.0,BS,United States,Physics
+Person471,3.88,9000.0,Masters,Australia,Medical Science
+Person472,2.69,8500.0,BS,Pakistan,Software Engineering
+Person473,2.54,4000.0,BS,United States,Computer Science
+Person474,2.7,6000.0,BS,USA,Software Engineering
+Person475,2.65,7500.0,Masters,United States,Fine Arts
+Person476,2.88,5000.0,PhD,USA,Software Engineering
+Person477,3.49,2000.0,PhD,USA,Business Administration
+Person478,3.02,2000.0,BS,USA,Computer Science
+Person479,3.2,5000.0,BS,UK,Fine Arts
+Person480,3.11,3000.0,Masters,United Kingdom,Business Administration
+Person481,3.29,4500.0,Masters,Canada,Physics
+Person482,3.13,8500.0,PhD,United Kingdom,CS
+Person483,3.36,4000.0,BS,UK,Computer Science
+Person484,2.97,3500.0,BS,United States,Finance
+Person485,3.46,2500.0,PhD,Canada,Electrical Engineering
+Person486,2.91,8000.0,PhD,Canada,Fine Arts
+Person487,3.46,4500.0,BS,Pakistan,CS
+Person488,2.92,2000.0,BS,Canada,Medical Science
+Person489,3.93,3500.0,Masters,USA,History
+Person490,2.76,4500.0,Masters,Australia,Fine Arts
+Person491,2.56,5000.0,Masters,United States,Computer Science
+Person492,3.42,5000.0,Masters,Pakistan,CS
+Person493,3.4,8500.0,PhD,United States,Fine Arts
+Person494,3.45,5000.0,PhD,USA,History
+Person495,3.38,6000.0,Masters,United States,Medical Research
+Person496,3.29,500.0,Masters,United States,CS
+Person497,2.57,6500.0,PhD,Canada,Software Engineering
+Person498,3.64,2500.0,BS,UK,SE
+Person499,2.51,3500.0,Masters,Canada,Software Engineering

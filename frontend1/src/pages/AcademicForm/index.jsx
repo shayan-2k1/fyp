@@ -1,4 +1,4 @@
-import React,{ useState }  from "react";
+import React,{ useState, useEffect }  from "react";
 import {Button, Img, Input, Line, Text } from "components";
 import Sidebar1 from "components/Sidebar1";
 import axios from "axios";
@@ -6,20 +6,71 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 const AcademicForm = () => {
+  const [degree, setDegree] = useState('');
+  const [discipline, setDiscipline] = useState('');
+  const [country, setCountry] = useState('');
+  const [university, setUniversity] = useState('');
+  const [GPA, setGpa] = useState('');
+  const [yearOfCompletion, setYearOfCompletion] = useState('');
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState('');
+  const [formState, setFormState] = useState({
+    academicBackground: {
+      degree: '',
+      discipline: '',
+      university: '',
+      yearOfCompletion: '',
+    },
+  });
   const navigate = useNavigate();
   const authToken = Cookies.get("auth_token");
+  useEffect(() => {
+    // Fetch data from the getextracted route and populate form fields
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        // const authToken = "YOUR_AUTH_TOKEN"; // Replace with your authentication token
+        const response = await axios.get("http://127.0.0.1:3000/document/getextracted", {
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+          },
+        });
+       
+
+        if (response.status === 200) {
+          const { education_info } = response.data.cvData;
+          setFormState((prevState) => ({
+            ...prevState,
+            academicBackground: {
+              degree: education_info.degree_level,
+              discipline: education_info.discipline,
+              university: education_info.university_name,
+              yearOfCompletion: education_info.year.toString(),
+            },
+          }));
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const handleSubmit = async () => {
     try {
       setLoading(true); // Set loading state to true
       const response = await axios.post(
         "http://localhost:3000/academic/info",
         {
-          degree:degree,
-          discipline:discipline,
+          
           country:country,
-          university:university,
+          
           GPA:GPA,
-          yearOfCompletion,
+          
         },
         {
           headers: {
@@ -38,14 +89,7 @@ const AcademicForm = () => {
     }
   };
 
-  const [degree, setDegree] = useState('');
-  const [discipline, setDiscipline] = useState('');
-  const [country, setCountry] = useState('');
-  const [university, setUniversity] = useState('');
-  const [GPA, setGpa] = useState('');
-  const [yearOfCompletion, setYearOfCompletion] = useState('');
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState('');
+ 
   return (
     <>
       <div className="bg-gray-300 font-cairo h-[1210px] mx-auto overflow-auto relative w-full">
@@ -129,9 +173,16 @@ const AcademicForm = () => {
 
                       <Input
                         name="degree"
-                        value={degree}
-                        onChange={(e) =>{
-                        setDegree(e.target.value)}}
+                        value={formState.academicBackground.degree}
+          onChange={(e) =>
+            setFormState((prevState) => ({
+              ...prevState,
+              academicBackground: {
+                ...prevState.academicBackground,
+                degree: e.target.value,
+              },
+            }))
+          }
                         placeholder="Bachelor’s degree"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -150,9 +201,16 @@ const AcademicForm = () => {
 
                       <Input
                         name="discipline"
-                        value={discipline}
-                        onChange={(e) =>{
-                        setDiscipline(e.target.value)}}
+                        value={formState.academicBackground.discipline}
+          onChange={(e) =>
+            setFormState((prevState) => ({
+              ...prevState,
+              academicBackground: {
+                ...prevState.academicBackground,
+                discipline: e.target.value,
+              },
+            }))
+          }
                         placeholder="Software Engineering"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -194,9 +252,16 @@ const AcademicForm = () => {
 
                       <Input
                         name="university"
-                        value={university}
-                        onChange={(e) =>{
-                        setUniversity(e.target.value)}}
+                        value={formState.academicBackground.university}
+                        onChange={(e) =>
+                          setFormState((prevState) => ({
+                            ...prevState,
+                            academicBackground: {
+                              ...prevState.academicBackground,
+                              university: e.target.value,
+                            },
+                          }))
+                        }
                         placeholder="university"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
@@ -217,9 +282,16 @@ const AcademicForm = () => {
                       </Text>
                       <Input
                         name="YOC"
-                        value={yearOfCompletion}
-                        onChange={(e) =>{
-                        setYearOfCompletion(e.target.value)}}
+                        value={formState.academicBackground.yearOfCompletion}
+          onChange={(e) =>
+            setFormState((prevState) => ({
+              ...prevState,
+              academicBackground: {
+                ...prevState.academicBackground,
+                yearOfCompletion: e.target.value,
+              },
+            }))
+          }
                         placeholder="2023"
                         className="!placeholder:text-blue-100_2f !text-blue-100_2f leading-[normal] md:text-[19px] p-0 sm:text-xl text-1xl text-left tracking-[2.00px] w-full"
                         wrapClassName="border-2 border-indigo-300 border-solid w-full"
