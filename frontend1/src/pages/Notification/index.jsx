@@ -11,7 +11,7 @@ const SOCKET_SERVER_URL = 'http://localhost:5000';
 
 const Notification = () => {
   const container = useRef(null)
-  const container = useRef(null)
+
   const [notifications, setNotifications] = useState([]);
   const authToken = Cookies.get("auth_token");
   const animationContainersRefs = useRef([

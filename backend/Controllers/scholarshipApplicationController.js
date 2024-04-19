@@ -36,18 +36,25 @@ async function ScholarshipApplicationController( req, res) {
     console.log(username);
     const {
       scholarshipId, universityName, scholarshipName, uniId,
-      ielts,
-      toefl,
+      // ielts,
+      // toefl,
       linkedIn,
-      github,
-      fieldOfInterest,
-      participationYear,
-      achievements,
+      github
+      // fieldOfInterest,
+      // participationYear,
+      // achievements,
       
      
 
     } = req.body;
-
+    const existingApplication = await ScholarshipApplication.findOne({
+      userId: userId,
+      scholarshipId: scholarshipId
+    });
+    
+    if (existingApplication) {
+      return res.status(400).json({ error: "You have already applied for this scholarship" });
+    }
     // const existingApplication = await ScholarshipApplication.findOne({
     //   userId: userId,
     //   scholarshipId: scholarshipId
@@ -60,13 +67,13 @@ async function ScholarshipApplicationController( req, res) {
     // Check if the user meets the admission requirements
     // else{
     if (
-      !ielts ||
-      !toefl ||
+      // !ielts ||
+      // !toefl ||
       !linkedIn ||
-      !github ||
-      !fieldOfInterest ||
-      !participationYear ||
-      !achievements
+      !github 
+      // !fieldOfInterest ||
+      // !participationYear ||
+      // !achievements
     ) {
       return res.status(400).json({ error: "Fill all the required fields!" });
     }
@@ -85,7 +92,7 @@ async function ScholarshipApplicationController( req, res) {
       fileUrl: document.fileUrl, // Assuming you have a fileUrl field in the Certificate model
     }));
     const selectedDocumentIds = req.body.selectedDocuments;
-    console.log(selectedDocumentIds) //in frontend these are certificates
+    // console.log(selectedDocumentIds) //in frontend these are certificates
     // Filter the document options based on the selected document IDs
     const selectedDocuments = documentOptions.filter((option) =>
       selectedDocumentIds.includes(option.value)
@@ -107,14 +114,16 @@ async function ScholarshipApplicationController( req, res) {
     // }
 
     // Filter the certificateOptions based on the selectedCertificateIds
-    console.log(selectedCertificateIds)
+    // console.log(selectedCertificateIds)
     const selectedCertificate = certificateOptions.filter((option) =>
       selectedCertificateIds.includes(option.value)
     );
-    console.log(certificateOptions);
+    // console.log(certificateOptions);
     const personalInfo = await PersonalInfo.findOne({ user: userId }); // Assuming you have a userId field in PersonalInfo model
     console.log(personalInfo.gender)
     // Populate the fields in the scholarship application form
+    console.log(selectedCertificate)
+    console.log(selectedDocuments)
     const scholarshipApplication = new ScholarshipApplication({
       userId: userId,
       username: decodedToken.name,
@@ -139,15 +148,10 @@ async function ScholarshipApplicationController( req, res) {
         yearOfCompletion: academicBackground.yearOfCompletion,
       },
       extraCurricularActivities: {
-        fieldOfInterest,
-        participationYear,
-        achievements,
+        
         certificates: selectedCertificate,
       },
-      admissionRequirements: {
-        ielts: ielts,
-        toefl: toefl,
-      },
+      
       attachDocuments: {
         transcript: selectedDocuments,
         links: {
@@ -168,6 +172,56 @@ async function ScholarshipApplicationController( req, res) {
   }
 }
 
+async function getapplication(req, res) {
+  try {
+    const { authorization } = req.headers;
+    if (!authorization) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    const secretKey = process.env.SECRET_KEY;
+    const token = authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, secretKey);
+    const userId = decodedToken.id;
+
+    // Query the scholarship application collection to retrieve all applications
+    const scholarships = await ScholarshipApplication.find();
+
+    // Create an array to store the matched scholarships
+    const matchedScholarships = [];
+
+    // Iterate through each scholarship application
+    scholarships.forEach((scholarship) => {
+      // If the scholarship matches the userId, add it to the matched scholarships array
+      if (scholarship.userId.toString() === userId) {
+        matchedScholarships.push({
+          // scholarshipId: scholarship._id,
+          // userId: scholarship.userId,
+          userName:scholarship.username,
+          scholarshipName: scholarship.scholarshipName,
+          universityName: scholarship.universityName,
+          status: scholarship.status,
+          personalInfo: scholarship.personalInfo,
+          academicBackground: scholarship.academicBackground,
+          
+          
+          // Add other relevant fields you want to display for each scholarship
+        });
+        
+      }
+    });
+
+    // Send the matched scholarships as a response
+    res.json(matchedScholarships);
+  } catch (error) {
+    console.error('Error retrieving scholarships:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+
+
 module.exports = {
   ScholarshipApplicationController,
+  getapplication
 };
