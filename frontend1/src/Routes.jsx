@@ -39,7 +39,11 @@ const AllMentors=React.lazy(()=>import("pages/AllMentors"))
 const SChats=React.lazy(()=>import("pages/SChats"))
 const MChats=React.lazy(()=>import("pages/MChats"))
 const ShortlistedStudents=React.lazy(()=>import("pages/ShortlistedStudents"))
-const Recommended = React.lazy(()=> import("pages/RecommendedScholarships"))
+// const Recommended = React.lazy(()=> import("pages/RecommendedScholarships"))
+const AdminLogin = React.lazy(()=>import("pages/LoginAdmin"))
+const ViewUni = React.lazy(()=>import("pages/ViewUni") )
+const Applications=React.lazy(()=> import("pages/ApplicationsShortlisted"))
+const AllApp=React.lazy(()=> import("pages/StudentsAllApplications"))
 const ProjectRoutes = () => {
   return (
     <React.Suspense fallback={<LoadingPage />}>
