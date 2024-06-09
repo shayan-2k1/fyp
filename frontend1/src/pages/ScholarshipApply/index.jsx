@@ -350,7 +350,7 @@ function ScholarshipApplicationForm() {
   };
   return (
     <>
-      <div className="bg-gray-300 font-cairo h-[1210px] mx-auto overflow-auto relative w-full">
+      <div className="bg-gray-300 font-cairo h-[1310px] mx-auto overflow-auto relative w-full">
         <div className="absolute sm:h-[1208px] h-[2900px] md:h-[1384px] inset-[0] justify-center m-auto md:px-5 w-full">
           <div className="absolute bg-white-A700 h-[109px] left-[0] top-[0] w-[22%]"></div>
           <div className="absolute bg-white-A700 flex flex-col h-full inset-[0] items-end justify-center m-auto pl-0.5 py-0.5 w-full">

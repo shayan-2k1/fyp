@@ -108,6 +108,7 @@ const Sidebar3 = (props) => {
                 <MenuItem
                  
                 >
+                   
                    <div ref={container2} className="h-[40px] w-30 "></div>
                   <Text className="w-[70%] sm:w-full">Mentor Mangement</Text>
                   
@@ -123,15 +124,7 @@ const Sidebar3 = (props) => {
               </MenuItem>
                </Link>
 
-                <Link to="/shortlisted">
-                <MenuItem
-                 
-                >
-                   <div ref={container2} className="h-[40px] w-30 "></div>
-                  <Text className="w-[70%] sm:w-full">Short Listed</Text>
-                  
-                </MenuItem>
-              </Link>  
+               
          {/* <Text className="w-[49%] sm:w-full">Save Scholarships</Text>
                
               </MenuItem>

@@ -197,22 +197,17 @@ async function getapplication(req, res) {
         matchedScholarships.push({
           // scholarshipId: scholarship._id,
           // userId: scholarship.userId,
-<<<<<<< HEAD
           userName:scholarship.username,
-=======
->>>>>>> e8f5c739e8b42179e17da721de152fafbc1b1841
           scholarshipName: scholarship.scholarshipName,
           universityName: scholarship.universityName,
           status: scholarship.status,
           personalInfo: scholarship.personalInfo,
           academicBackground: scholarship.academicBackground,
-<<<<<<< HEAD
           
           
-=======
           extraCurricularActivities: scholarship.extraCurricularActivities,
           attachDocuments: scholarship.attachDocuments,
->>>>>>> e8f5c739e8b42179e17da721de152fafbc1b1841
+          status:scholarship.status
           // Add other relevant fields you want to display for each scholarship
         });
         
