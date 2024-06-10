@@ -227,6 +227,9 @@ def extract_cv_data():
         print(error_message)  # Print the error message to the terminal
         return '', 500  # Return an empty response with 500 status code
 
+# @app.route('/auth', methods=['POST'])
+# def authenticate():
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
