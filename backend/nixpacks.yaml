@@ -1,0 +1,6 @@
+# nixpacks.yaml
+
+settings:
+  nodejs_version: 18
+  npm_version: 8.x
+  start_command: "node index.js"
