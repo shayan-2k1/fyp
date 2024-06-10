@@ -87,6 +87,12 @@ const ProjectRoutes = () => {
           <Route path="/Mchats" element={<MChats/>} />
           <Route path="/Shortlisted" element={<ShowShortlistedStudents/>} />
           <Route path="/ShortlistedStudents" element={<ShortlistedStudents/>} />
+          <Route path="/application" element={<Applications/>} />
+          <Route path="/Allapplication" element={<AllApp/>} />
+          {/* <Route path="/Allapplication" element={AllApp}/> */}
+          <Route path="/adminLogin" element={<AdminLogin/>}/>
+          <Route path="/viewUni" element={<ViewUni/>}/>
+
           {/* <Route path="/Recommended" element={<Recommended/>} /> */}
         </Routes>
       </Router>
