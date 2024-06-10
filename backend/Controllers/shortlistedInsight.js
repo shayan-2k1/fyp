@@ -2,33 +2,51 @@ const Scholarship = require('../Models/scholarshipApplicationModel');
 const Studentshortlisted = require('../Models/shortListModel');
 
 async function fetchusers(req, res) {
-    console.log("alinaaa");
-    try {
-        const { scholarshipId } = req.params;
-        console.log("ssss" + scholarshipId);
+  console.log("alinaaa");
+  try {
+      const { scholarshipId } = req.params;
+      console.log("ssss" + scholarshipId);
 
-        // Find the shortlisted entry for the given scholarship ID
-        const shortlistedEntry = await Studentshortlisted.findOne({ scholarshipId });
-        if (!shortlistedEntry) {
-            console.log("No shortlisted entries found for this scholarship.");
-            return res.status(404).send('No shortlisted entries found for this scholarship.');
-        }
+      // Initialize variables
+      let userIds = [];
+      let shortlistedCount = 0;
 
-        // Extract user IDs from the shortlisted document
-        const userIds = shortlistedEntry.userIds;
+      // Find the shortlisted entry for the given scholarship ID
+      const shortlistedEntry = await Studentshortlisted.findOne({ scholarshipId });
 
-        // Find all applications for these user IDs and the specific scholarship
-        const applications = await Scholarship.find({
-            userId: { $in: userIds },
-            scholarshipId: scholarshipId
-        }).exec();  // Use exec() to explicitly execute the query
+      if (shortlistedEntry) {
+          // Extract user IDs from the shortlisted document
+          userIds = shortlistedEntry.userIds;
+          shortlistedCount = userIds.length;
+      } else {
+          console.log("No shortlisted entries found for this scholarship.");
+      }
 
-        res.json(applications);
-    } catch (error) {
-        console.error('Failed to fetch scholarship applications:', error);
-        res.status(500).send('Internal server error');
-    }
+      // Count all applications for the given scholarship ID
+      const totalApplicationsCount = await Scholarship.countDocuments({ scholarshipId }).exec();
+
+      // Calculate the number of non-shortlisted applications
+      const nonShortlistedCount = totalApplicationsCount - shortlistedCount;
+
+      // Find all applications for these user IDs and the specific scholarship
+      const applications = await Scholarship.find({
+          userId: { $in: userIds },
+          scholarshipId: scholarshipId
+      }).exec();
+
+      res.json({
+          shortlistedCount: shortlistedCount,
+          totalApplicationsCount: totalApplicationsCount,
+          nonShortlistedCount: nonShortlistedCount,
+          applications: applications
+      });
+  } catch (error) {
+      console.error('Failed to fetch scholarship applications:', error);
+      res.status(500).send('Internal server error');
+  }
 }
+
+
 async function getuser(req, res) {
     console.log("Alina ")
     const { applicationId } = req.params;

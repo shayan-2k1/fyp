@@ -5,6 +5,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie'; // Import js-cookie
 import { Button, Img, Input, Line, List, Text } from "components";
 import lottie from 'lottie-web';
+import { Link } from "react-router-dom";
 
 const Login = () => {
   localStorage.clear();
@@ -63,47 +64,50 @@ const Login = () => {
         {/* to change navbar */}
         <div className="bg-white-A700 flex flex-col items-center justify-start pr-[1px] py-[1px] w-full">
           <div className="flex flex-col gap-[50px] items-center justify-start mb-[10px] w-full">
-            <header className="bg-light_teal flex md:flex-col flex-row md:gap-5 items-center justify-center md:px-5 shadow-bs3 w-full">
+            <header className="bg-light_teal flex md:flex-col flex-row  md:gap-5 items-center justify-center md:px-5 shadow-bs3 w-full">
               <Img
-                className="md:flex-1 h-[63px] sm:h-auto mb-[18px] md:ml-[0] ml-[25px] md:mt-0 mt-[11px] object-cover w-[5%] md:w-full"
+                className="md:flex-1 h-[63px] sm:h-auto mb-[18px] md:ml-[0] ml-[850px] md:mt-0 mt-[11px] object-cover w-[5%] md:w-full"
                 src="images/img_logo1.png"
                 alt="logoOne"
               />
               <ul className="flex sm:flex-col flex-row gap-20 sm:hidden items-start justify-start mb-2 md:ml-[0] ml-[744px] md:mt-0 mt-[53px] w-auto common-row-list">
                 <li>
+                <Link to="/">
                   <a
                     href="javascript:"
                     className="text-blue_gray-800 text-right text-xl tracking-[2.00px]"
                   >
                     <Text size="txtNunitoRegular20">Home</Text>
                   </a>
+                  </Link>
                 </li>
                 <li>
+                <Link to="/ScrappedScholarships">
                   <a
+                  
                     href="javascript:"
                     className="text-blue_gray-800  text-right text-xl tracking-[2.00px]"
                   >
-                    <Text size="txtNunitoRegular20">About us</Text>
+                    <Text size="txtNunitoRegular20">Scholarships</Text>
                   </a>
+                  </Link>
                 </li>
                 <li>
+                <Link to="/Login">
                   <a href="javascript:">
                     <div className="flex flex-row items-start justify-between">
                       <Text
                         className="text-blue_gray-800 text-right text-xl tracking-[2.00px] w-auto"
                         size="txtNunitoRegular20"
                       >
-                        English
+                      Login
                       </Text>
                       <div className="flex flex-col items-center justify-start py-[7px]">
-                        <Img
-                          className="h-3 w-3"
-                          src="images/img_arrowup.svg"
-                          alt="arrowup"
-                        />
+                        
                       </div>
                     </div>
                   </a>
+                  </Link>
                 </li>
                 <li>
                   <a
