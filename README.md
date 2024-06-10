@@ -1,4 +1,4 @@
-# FYP
-Our Final Year Project.
-We are developing a Web App for assisting both universities and students by bringing them to one platform.
-We would be using MERN Stack for the web application, will be integrating the API of ML model trained using TensorFlow for the personalized recommendations.
+# Ease Assist (Final Year Project)
+A centralized scholarship platform to facilitate easy apply and shortlisting mechanism.
+
+React was used for frontend development of interface using components. NodeJS and ExpressJS was used for backend development of CRUD APIs. A TensorFlow was utilized for the development of AI models. Last but not least, Flask was being utilized for integration of those models as API endpoints.
