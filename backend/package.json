@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test-jest": "jest",
-    "test-mocha": "mocha"
+    "test-mocha": "mocha",
+    "start": "node index.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.461.0",
