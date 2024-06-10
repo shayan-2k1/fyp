@@ -313,32 +313,7 @@ export default function ApplicationShortlisted() {
           </div>
         </div>
 
-        {/* footer section */}
-        {/* <div className="absolute bottom-[-363.00px] left-[0.00px] m-auto flex w-[20%] flex-col items-start bg-teal-50 shadow-xs">
-          <Img src="images/img_logo_1.png" alt="logoone_one" className="ml-2 h-[63px] w-[27%] object-cover md:ml-0" />
-          <Img src="images/img_megaphone.svg" alt="megaphone_one" className="mt-[77px] h-[45px] w-[44px] self-end" />
-          <div className="relative mb-[573px] mt-[570px] h-[209px] w-[76%] self-center">
-
-            <div className="absolute left-0 right-0 top-[0.00px] m-auto h-[202px] w-[96%] md:h-auto">
-              <div className="h-[202px] w-[62%] rounded-[32px] bg-gradient shadow-md" />
-              <div className="absolute bottom-0 left-0 right-0 top-0 m-auto h-max w-full rounded-[32px] bg-gradient">
-                <div className="h-[202px] bg-[url(/public/images/img_group_7.png)] bg-cover bg-no-repeat p-5 md:h-auto">
-                  <div className="mb-[19px] mt-3 flex flex-col">
-                    <Img src="images/img_grid.svg" alt="grid_one" className="ml-0.5 h-[28px] md:ml-0" />
-                    <Heading size="lg" as="h3" className="mt-1 !font-cairo leading-[34px] !text-white-A700">
-                      A new scholarship might interest you
-                    </Heading>
-                    <Img
-                      src="images/img_arrow_left.svg"
-                      alt="arrowleft_one"
-                      className="ml-[5px] mt-3.5 h-[11px] md:ml-0"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
+      
         <Sidebar3 className="!fixed !w-[346px] bg-gradient3 flex f-screen md:hidden inset-y-[0] justify-start left-[0] overflow-auto md:px-10 shadow-bs" />
       </div>
     </>
