@@ -195,12 +195,15 @@ async function getapplication(req, res) {
       // If the scholarship matches the userId, add it to the matched scholarships array
       if (scholarship.userId.toString() === userId) {
         matchedScholarships.push({
-          // scholarshipId: scholarship._id,
-          // userId: scholarship.userId,
+          scholarshipId: scholarship.scholarshipId          ,
+          userId: scholarship.userId,
           userName:scholarship.username,
+=======
+>>>>>>> e8f5c739e8b42179e17da721de152fafbc1b1841
           scholarshipName: scholarship.scholarshipName,
           universityName: scholarship.universityName,
           status: scholarship.status,
+          uniId: scholarship.uniId,
           personalInfo: scholarship.personalInfo,
           academicBackground: scholarship.academicBackground,
           
