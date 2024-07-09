@@ -1,0 +1,82 @@
+
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/RobotoRomanBold.ttf"); font-family : "Roboto"; font-weight : 700;  }
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/OverpassExtraBold.ttf"); font-family : "Overpass"; font-weight : 800;  }
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/OpenSans.ttf"); font-family : "Open Sans"; font-weight : 400;  }
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/NunitoRegular.ttf"); font-family : "Nunito"; font-weight : 400;  }
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/NunitoBold.ttf"); font-family : "Nunito"; font-weight : 700;  }
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/NunitoSemiBold.ttf"); font-family : "Nunito"; font-weight : 600;  }
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/CairoSemiBold.ttf"); font-family : "Cairo"; font-weight : 600;  }
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/InterRegular.ttf"); font-family : "Inter"; font-weight : 400;  }
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/CairoBold.ttf"); font-family : "Cairo"; font-weight : 700;  }
+ @font-face { font-display: swap; font-style : normal; src: url("assets/fonts/CairoRegular.ttf"); font-family : "Cairo"; font-weight : 400;  }
+@font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/NunitoSansSemiBold.ttf");
+    font-family: "Nunito Sans";
+    font-weight: 600;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/QuicksandBold.ttf");
+    font-family: "Quicksand";
+    font-weight: 700;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/QuicksandRegular.ttf");
+    font-family: "Quicksand";
+    font-weight: 400;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/OutfitMedium.ttf");
+    font-family: "Outfit";
+    font-weight: 500;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/CairoSemiBold.ttf");
+    font-family: "Cairo";
+    font-weight: 600;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/NunitoRegular.ttf");
+    font-family: "Nunito";
+    font-weight: 400;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/CairoBold.ttf");
+    font-family: "Cairo";
+    font-weight: 700;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/OverpassExtraBold.ttf");
+    font-family: "Overpass";
+    font-weight: 800;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/PoppinsSemiBold.ttf");
+    font-family: "Poppins";
+    font-weight: 600;
+  }
+  @font-face {
+    font-display: swap;
+    font-style: normal;
+    src: url("assets/fonts/PoppinsMedium.ttf");
+    font-family: "Poppins";
+    font-weight: 500;
+  }
+  
