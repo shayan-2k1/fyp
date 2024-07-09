@@ -1,0 +1,24 @@
+.message {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.message-content {
+    background-color: #c7d2e2; /* Gray background color */
+    max-width: 70%; /* Limiting the width of the message box */
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.message-content:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -1px; /* Adjust this value to change the position of the pointy edge */
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #c7d2e2; /* Transparent on top and sides, same color as background on the bottom */
+    transform: rotate(-85deg); /* Rotating the triangle to create the pointy edge */
+}

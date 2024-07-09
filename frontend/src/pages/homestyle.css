@@ -1,0 +1,36 @@
+.applicants-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-right: 39px;
+    margin-top: 31px;
+}
+
+.table-header, .table-body {
+    display: flex;
+    align-items: center;
+}
+
+.table-header > div, .table-body > div {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center; /* Center align content */
+}
+
+.heading-icon {
+    width: 50px;
+    height: 50px;
+    /* Add background image or icon */
+}
+
+.student-name {
+    min-width: 150px; /* Adjust as needed */
+}
+
+.date {
+    min-width: 150px; /* Adjust as needed */
+}
+
+.application, .status {
+    min-width: 200px; /* Adjust as needed */
+}
