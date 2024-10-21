@@ -1,4 +1,10 @@
 # Ease Assist (Final Year Project)
-A centralized scholarship platform to facilitate easy apply and shortlisting mechanism.
+Overview
+EaseAssist is a web application designed to simplify the scholarship search and application process for students and universities. Students can upload their CVs, which are parsed to auto-fill application forms, matching them with the most relevant scholarships. The system allows students to save scholarships, apply directly, and track their application status, while also enabling mentor communication for guidance. For universities, it offers automatic shortlisting of candidates and scheduling options for meetings.
 
-React was used for frontend development of interface using components. NodeJS and ExpressJS was used for backend development of CRUD APIs. A TensorFlow was utilized for the development of AI models. Last but not least, Flask was being utilized for integration of those models as API endpoints.
+Technologies Used
+The project utilizes React.js for the frontend, Node.js and Express for the backend, AWS S3 for document storage, JWT for authentication, and Nodemailer for email services. Additionally, TensorFlow is employed for AI model development, with Flask used for API integration.
+
+Getting Started
+To set up the project locally, clone this repository and follow the installation instructions in the documentation.
+
